@@ -1,0 +1,44 @@
+[
+    {
+        "_id": "u101",
+        "fullname": "shany pollack",
+        "username": "shany777@gmail.com",
+        "password": "shanypo",
+        "imgUrl": "http://some-img.jpg",
+        "mentions": [
+            {
+                "id": "m101",
+                "boardId": "m101",
+                "taskId": "t101"
+            }
+        ]
+    },
+    {
+        "_id": "u102",
+        "fullname": "amit weinre",
+        "username": "amitweinreb@gmail.com",
+        "password": "amitee",
+        "imgUrl": "http://some-img.jpg",
+        "mentions": [
+            {
+                "id": "m101",
+                "boardId": "m101",
+                "taskId": "t101"
+            }
+        ]
+    },
+    {
+        "_id": "u103",
+        "fullname": "michael uzan",
+        "username": "looply@gmail.com",
+        "password": "looply",
+        "imgUrl": "http://some-img.jpg",
+        "mentions": [
+            {
+                "id": "m101",
+                "boardId": "m101",
+                "taskId": "t101"
+            }
+        ]
+    }
+]

@@ -1,0 +1,1 @@
+let gBoards = storage || board.json;
