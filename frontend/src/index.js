@@ -6,7 +6,7 @@ import { RootCmp } from './root-cmp';
 import '../src/assets/styles/main.scss';
 import { BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux';
-import {store} from './store/store';
+import { store } from './store/store';
 
 ReactDOM.render(
   <React.StrictMode>
