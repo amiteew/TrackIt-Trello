@@ -1,16 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import { RootCmp } from './root-cmp';
+import '../src/assets/styles/main.scss';
+import { BrowserRouter as Router } from 'react-router-dom'
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {/* <Provider store={store}> */}
+      <Router>
+        <RootCmp />
+      </Router>
+    {/* </Provider> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
