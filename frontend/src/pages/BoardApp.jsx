@@ -4,7 +4,7 @@ import { loadBoards, removeBoard, addBoard, updateBoard, } from '../store/board.
 import { boardService } from '../services/board.service.js';
 import { ListsList } from '../cmp/ListsList.jsx';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-
+import { BoardHeader } from '../cmp/BoardHeader.jsx';
 
 class _BoardApp extends React.Component {
     state = {
@@ -32,6 +32,7 @@ class _BoardApp extends React.Component {
         return (
             <main>
                 <section className="board-app flex">
+                    <BoardHeader board={board} onUpdateBoard={this.onUpdateBoard} />
                     <ListsList lists={board.lists} onUpdateBoard={this.onUpdateBoard} />
                 </section>
             </main>

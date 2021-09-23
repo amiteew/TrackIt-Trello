@@ -1,10 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { boardService } from '../services/board.service.js';
-import { loadBoards, removeBoard, addBoard, } from '../store/board.actions.js';
+import { loadBoards, removeBoard, addBoard, updateBoard } from '../store/board.actions.js';
 import { DebounceInput } from 'react-debounce-input';
 import { Loading } from '../cmp/Loading';
 import { AddToCard } from '../cmp/AddToCard';
+import { MembersList } from '../cmp/MembersList'
+import { CardLabelsList } from '../cmp/CardLabelsList';
+import { CardActivities } from '../cmp/CardActivities'
 
 class _CardDetails extends React.Component {
     state = {
@@ -75,6 +78,9 @@ class _CardDetails extends React.Component {
                     onChange={this.handleChange}
                     value={currCard.cardTitle}
                 />
+                <MembersList members={currCard.cardMembers} />
+                <CardLabelsList cardLabelIds={currCard.cardLabelIds} boardLabels={board.labels} />
+
                 <h3>Description</h3>
                 <DebounceInput
                     minLength={0}
@@ -83,8 +89,9 @@ class _CardDetails extends React.Component {
                     type='text'
                     placeholder='Add a more detailed description...'
                     onChange={this.handleChange}
-                    value={currCard.decription}
+                    value={currCard.description}
                 />
+                <CardActivities cardActivities={currCard.activities} />
 
                 <div className="add-to-card">
                     <AddToCard />
@@ -106,6 +113,7 @@ const mapDispatchToProps = {
     loadBoards,
     removeBoard,
     addBoard,
+    updateBoard
 }
 
 export const CardDetails = connect(mapStateToProps, mapDispatchToProps)(_CardDetails)
