@@ -19,6 +19,7 @@ export function loadBoards() {
   }
 }
 
+
 export function addBoard(board) {
   return async dispatch => {
     try {
