@@ -1,129 +1,131 @@
-{
-    "_id": "b101",
-    "boardTitle": "final project",
-    "createdAt": 1589983468418,
-    "createdBy": {
-        "_id": "u101",
-        "fullname": "amitee weiner",
-        "imgUrl": ""
-    },
-    "boardStyle": {
-        "background": "red"
-    },
-    "labels": [
-        {
-            "id": "l101",
-            "title": "Done",
-            "color": "#61bd4f"
-        },
-        {
-            "id": "l102",
-            "title": "In prograss",
-            "color": "#FFA500"
-        },
-        {
-            "id": "l103",
-            "title": "Stuck",
-            "color": "#DC143C"
-        }
-    ],
-    "boardMembers": [
-        {
+[
+    {
+        "_id": "b101",
+        "boardTitle": "final project",
+        "createdAt": 1589983468418,
+        "createdBy": {
             "_id": "u101",
-            "fullname": "Shany pollack",
+            "fullname": "amitee weiner",
             "imgUrl": ""
-        }
-    ],
-    "isStarred": false,
-    "lists": [
-        {
-            "id": "g101",
-            "listTitle": "frontend",
-            "cards": [
-                {
-                    "id": "c101",
-                    "cardTitle": "create json",
-                    "description": "",
-                    "activities": [
-                        {
-                            "id": "a101",
-                            "type": "userAction",
-                            "txt": "Add member",
-                            "createdAt": 154514,
-                            "byMember": {
-                                "_id": "u101",
-                                "fullname": "amit weiner",
-                                "imgUrl": ""
-                            }
-                        },
-                        {
-                            "id": "a102",
-                            "type": "comment",
-                            "txt": "Hello",
-                            "createdAt": 154514,
-                            "byMember": {
-                                "_id": "u101",
-                                "fullname": "amit weiner",
-                                "imgUrl": ""
-                            }
-                        }
-                    ],
-                    "cardMembers": [
-                        {
-                            "_id": "u101",
-                            "username": "Tal",
-                            "fullname": "Tal Tarablus",
-                            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                        }
-                    ],
-                    "cardLabelIds": [
-                        "l102"
-                    ],
-                    "checklists": [
-                        {
-                            "id": "c105",
-                            "title": "todo",
-                            "tasks": [
-                                {
-                                    "id": "t106",
-                                    "txt": "write json",
-                                    "isDone": false
-                                }
-                            ]
-                        }
-                    ],
-                    "createdAt": 1590999730348,
-                    "dueDate": {
-                        "date": 16156215211,
-                        "isDone": false
-                    },
-                    "attachment": [
-                        {
-                            "id": "a123",
-                            "src": "hello/byby.png"
-                        }
-                    ],
-                    "cardStyle": {
-                        "bgColor": "#26de81"
-                    }
-                }
-            ]
-        }
-    ],
-    "activities": [
-        {
-            "id": "a101",
-            "action": "Changed Color",
-            "createdAt": 154514,
-            "byMember": {
-                "_id": "u101",
-                "fullname": "amit weiner",
-                "imgUrl": ""
+        },
+        "boardStyle": {
+            "background": "red"
+        },
+        "labels": [
+            {
+                "id": "l101",
+                "title": "Done",
+                "color": "#61bd4f"
             },
-            "card": {
-                "id": "c101",
-                "cardTitle": "Replace Logo"
+            {
+                "id": "l102",
+                "title": "In prograss",
+                "color": "#FFA500"
+            },
+            {
+                "id": "l103",
+                "title": "Stuck",
+                "color": "#DC143C"
             }
-        }
-    ]
-}
+        ],
+        "boardMembers": [
+            {
+                "_id": "u101",
+                "fullname": "Shany pollack",
+                "imgUrl": ""
+            }
+        ],
+        "isStarred": false,
+        "lists": [
+            {
+                "id": "g101",
+                "listTitle": "frontend",
+                "cards": [
+                    {
+                        "id": "c101",
+                        "cardTitle": "create json",
+                        "description": "",
+                        "activities": [
+                            {
+                                "id": "a101",
+                                "type": "userAction",
+                                "txt": "Add member",
+                                "createdAt": 154514,
+                                "byMember": {
+                                    "_id": "u101",
+                                    "fullname": "amit weiner",
+                                    "imgUrl": ""
+                                }
+                            },
+                            {
+                                "id": "a102",
+                                "type": "comment",
+                                "txt": "Hello",
+                                "createdAt": 154514,
+                                "byMember": {
+                                    "_id": "u101",
+                                    "fullname": "amit weiner",
+                                    "imgUrl": ""
+                                }
+                            }
+                        ],
+                        "cardMembers": [
+                            {
+                                "_id": "u101",
+                                "username": "Tal",
+                                "fullname": "Tal Tarablus",
+                                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                            }
+                        ],
+                        "cardLabelIds": [
+                            "l102"
+                        ],
+                        "checklists": [
+                            {
+                                "id": "c105",
+                                "title": "todo",
+                                "tasks": [
+                                    {
+                                        "id": "t106",
+                                        "txt": "write json",
+                                        "isDone": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "createdAt": 1590999730348,
+                        "dueDate": {
+                            "date": 16156215211,
+                            "isDone": false
+                        },
+                        "attachment": [
+                            {
+                                "id": "a123",
+                                "src": "hello/byby.png"
+                            }
+                        ],
+                        "cardStyle": {
+                            "bgColor": "#26de81"
+                        }
+                    }
+                ]
+            }
+        ],
+        "activities": [
+            {
+                "id": "a101",
+                "action": "Changed Color",
+                "createdAt": 154514,
+                "byMember": {
+                    "_id": "u101",
+                    "fullname": "amit weiner",
+                    "imgUrl": ""
+                },
+                "card": {
+                    "id": "c101",
+                    "cardTitle": "Replace Logo"
+                }
+            }
+        ]
+    }
+]
