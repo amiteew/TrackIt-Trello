@@ -1,4 +1,5 @@
 import React from "react"
+import { MembersList } from "./MembersList"
 
 export class BoardHeader extends React.Component {
   state = {
@@ -62,7 +63,9 @@ export class BoardHeader extends React.Component {
           </form>
         }
         <button onClick={this.onToggleStarBoard}>{board.isStarred ? '🌟' : '⭐'}</button>
-
+        <div className="board-members">
+          <MembersList members={board.boardMembers}/>
+        </div>
       </div>
     )
   }
