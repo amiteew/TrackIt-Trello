@@ -1,10 +1,10 @@
 import React from 'react'
-// import { connect } from 'react-redux'
+import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 // import { UserMsg } from './user-msg.jsx'
 // import { onLogout } from '../store/user.actions.js'
 
-export class AppHeader extends React.Component {
+class _AppHeader extends React.Component {
 
     render() {
         // const {user} = this.props;
@@ -28,7 +28,9 @@ function mapStateToProps() {
 }
 
 const mapDispatchToProps = {
-    // onLogout
+    onLogin,
+    onSignup,
+    onLogout,
 }
 
-// export const AppHeader = connect(mapStateToProps, mapDispatchToProps)(_AppHeader)
+export const AppHeader = connect(mapStateToProps, mapDispatchToProps)(_AppHeader)

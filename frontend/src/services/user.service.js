@@ -1,0 +1,78 @@
+import { storageService } from './async-storage.service'
+// import { httpService } from './http.service'
+// import { socketService, SOCKET_EVENT_USER_UPDATED } from './socket.service'
+
+const USER_KEY = 'usersDB'
+const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
+
+export const userService = {
+    login,
+    logout,
+    signup,
+    getLoggedinUser,
+    getUsers,
+    getById,
+    remove,
+    update,
+}
+
+function getUsers() {
+    return storageService.query(USER_KEY)
+    // return httpService.get(`user`)
+}
+
+async function getById(userId) {
+    const user = await storageService.get(USER_KEY, userId)
+    // const user = await httpService.get(`user/${userId}`)
+    gWatchedUser = user;
+    return user;
+}
+function remove(userId) {
+    return storageService.remove(USER_KEY, userId)
+    // return httpService.delete(`user/${userId}`)
+}
+
+async function update(user) {
+    await storageService.put(USER_KEY, user)
+    // user = await httpService.put(`user/${user._id}`, user)
+    // Handle case in which admin updates other user's details
+    if (getLoggedinUser()._id === user._id) _saveLocalUser(user)
+    return user;
+}
+
+async function login(userCred) {
+    const users = await storageService.query(USER_KEY)
+    const user = users.find(user => user.username === userCred.username)
+    return _saveLocalUser(user)
+
+    // const user = await httpService.post('auth/login', userCred)
+    // socketService.emit('set-user-socket', user._id);
+    // if (user) return _saveLocalUser(user)
+}
+async function signup(userCred) {
+    const user = await storageService.post(USER_KEY, userCred)
+    // const user = await httpService.post('auth/signup', userCred)
+    // socketService.emit('set-user-socket', user._id);
+    return _saveLocalUser(user)
+}
+async function logout() {
+    sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+    // socketService.emit('unset-user-socket');
+    // return await httpService.post('auth/logout')
+}
+
+function _saveLocalUser(user) {
+    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+    return user
+}
+
+function getLoggedinUser() {
+    return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER) || 'null')
+}
+
+// This is relevant when backend is connected
+// (async () => {
+//     var user = getLoggedinUser()
+//     if (user) socketService.emit('set-user-socket', user._id)
+// })();
+
