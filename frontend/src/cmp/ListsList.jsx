@@ -1,10 +1,11 @@
-import {  ListPreview  } from './ListPreview.jsx';
+import { ListPreview } from './ListPreview.jsx';
 
-export function ListsList({ groups: lists, onRemoveBoard }) {
+export function ListsList({ lists, onUpdateBoard }) {
+
     return (
-        <section className="group-list flex">
+        <section className="lists-list flex">
             {lists.map(list => (
-                <ListPreview key={list.id} list={list} onRemoveBoard={onRemoveBoard} />
+                <ListPreview key={list.listId} list={list} onUpdateBoard={onUpdateBoard} />
             ))}
         </section>
     )

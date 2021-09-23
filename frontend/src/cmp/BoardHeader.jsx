@@ -47,6 +47,4 @@ const mapDispatchToProps = {
     loadBoards
 }
 
-
-
 export const BoardHeader = connect(mapStateToProps, mapDispatchToProps)(_BoardHeader)
