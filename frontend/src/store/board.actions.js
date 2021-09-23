@@ -41,3 +41,13 @@ export function removeBoard(boardId) {
     }
   }
 }
+
+export function updateBoard(boardId) {
+  return async dispatch => {
+    try {
+      dispatch({type: 'UPDATE BOARD', boardId})
+    } catch (err) {
+      console.log('BoardActions: err in updateBoard', err)
+    }
+  }
+}

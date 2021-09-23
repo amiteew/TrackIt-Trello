@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { loadBoards, removeBoard, addBoard, } from '../store/board.actions.js';
 import { boardService } from '../services/board.service.js';
-import { GroupList } from '../cmp/ListsList.jsx';
+import { ListsList } from '../cmp/ListsList.jsx';
 
 class _BoardApp extends React.Component {
         state = {
@@ -29,7 +29,7 @@ class _BoardApp extends React.Component {
             return (
                 <main>
                     <section className="board-app">
-                        <GroupList groups={board.lists} onAddBoard={this.onAddBoard} onRemoveBoard={this.onRemoveBoard} />
+                        <ListsList groups={board.lists} onAddBoard={this.onAddBoard} onRemoveBoard={this.onRemoveBoard} />
                     </section>
                 </main>
             )
