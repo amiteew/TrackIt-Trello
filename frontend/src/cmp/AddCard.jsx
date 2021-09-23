@@ -40,6 +40,7 @@ export class _AddCard extends React.Component {
                         onChange={this.handleChange}
                     />
                     <button>Add card</button>
+                    <button onClick={this.props.onCloseAdding}>X</button>
                 </form>
             </div>
         )

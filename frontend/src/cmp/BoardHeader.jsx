@@ -1,50 +1,61 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React from "react"
 
+export class BoardHeader extends React.Component {
+  state = {
+    isEditTitle: false,
+    title: ''
+  }
 
-class _BoardHeader extends React.Component {
+  componentDidMount() {
+    this.setState({ title: this.props.board.boardTitle })
+    // this.props.loadUsers();
+    // this.props.loadBoard();
+  }
 
-    state = {
-        boardTitle: ""
+  handleChange = (ev) => {
+    const value = ev.target.value
+    this.setState({ title: value })
+    // this.setState((prevState) => ({ ...prevState, title: value }))
+  }
 
-    }
-    componentDidMount() {
-        this.props.loadUsers();
-        this.props.loadBoard();
-    }
+  toggleChangeTitle = () => {
+    const { isEditTitle } = this.state
+    this.setState({ isEditTitle: !isEditTitle })
+    // this.setState((prevState) => ({ ...prevState, isEditTitle: !isEditTitle }))
+  }
 
-    render() {
-        const { boardTitle: boardName } = this.state;
+  saveBoardTitle = (ev) => {
+    ev.preventDefault()
+    const { title } = this.state
+    if (!title) return
+    const { board, onUpdateBoard } = this.props
+    board.boardTitle = title
+    onUpdateBoard(board)
+    this.toggleChangeTitle()
+  }
 
-        return (
-            <div className="board-Header">
-                <h1>
-                    <input
-                        name='boardName'
-                        id='boardName'
-                        type='text'
-                        placeholder='boardName'
-                        value={boardName}
-                        onChange={this.handleChange}
-                    />
+  render() {
+    const { board } = this.props
+    const { title, isEditTitle } = this.state
 
-                </h1>
+    return (
+      <div className="board-header">
+        {!isEditTitle && <h1 onClick={this.toggleChangeTitle}>{board.boardTitle}</h1>}
+        {isEditTitle &&
+          <form onSubmit={this.saveBoardTitle}>
+            <input
+              autoFocus
+              name="boardTitle"
+              type="text"
+              placeholder="Enter Title"
+              value={title}
+              onChange={this.handleChange}
+              onBlur={this.saveBoardTitle}
+            />
+          </form>
+        }
 
-            </div>
-        )
-    }
+      </div>
+    )
+  }
 }
-
-function mapStateToProps(state) {
-    return {
-        users: state.userModule.users,
-        user: state.userModule.user,
-        boards: state.boardModule.boards
-    }
-}
-const mapDispatchToProps = {
-    loadUsers,
-    loadBoards
-}
-
-export const BoardHeader = connect(mapStateToProps, mapDispatchToProps)(_BoardHeader)
