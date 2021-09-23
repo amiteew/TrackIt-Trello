@@ -5,32 +5,28 @@ import { loadBoards, removeBoard, addBoard, } from '../store/board.actions.js'
 
 class _CardDetails extends React.Component {
     state = {
+        board: null
     }
 
     componentDidMount() {
-
+        // IN THE FUTURE FROM PARAMS:
         const boardId = 'b101';
+
+        boardService.getBoardById(boardId)
+            .then((board) => {
+                console.log('board from service', board);
+                this.setState({ board })
+            })
+    }
+
+    getCurrCard = () => {
+        // IN THE FUTURE FROM PARAMS:
         const listId = 'g101';
         const cardId = this.props.match.params.cardId
-        boardService.getCardById(boardId, listId, cardId)
+        // const currCard = this.state.board.list
 
 
-        // IN THE FUTURE FROM PARAMS:
-        // const boardId = this.props.match.params.boardId
-        // const boardId =
-        // console.log('this.props', this.props);
-        // console.log('cardId', cardId);
-
-        // this.setState({ ...this.state, user: this.props.user })
-
-
-        // toyService.getById(toyId)
-        //     .then(toy => {
-        //         toy.labels = toy.labels.map(label => ({ value: label, label: label }))
-        //         this.setState({ toy })
-        //         // console.log('toy to edit from props params: ', toy)
-        //     })
-
+        // entities => entities.find(entity => entity._id === entityId)
     }
 
     onRemoveCar = (carId) => {
@@ -61,11 +57,11 @@ function mapStateToProps(state) {
         boards: state.boardReducer.boards
     }
 }
+
 const mapDispatchToProps = {
     loadBoards,
     removeBoard,
     addBoard,
 }
-
 
 export const CardDetails = connect(mapStateToProps, mapDispatchToProps)(_CardDetails)
