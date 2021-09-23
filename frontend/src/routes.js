@@ -1,9 +1,10 @@
+import { HomePage } from "./pages/HomePage";
 
 const routes = [
-    // {
-    //     path: '/toy/edit/:toyId',
-    //     component: ToyEdit,
-    // }
+    {
+        path: '/',
+        component: HomePage,
+    }
 
 ]
 
