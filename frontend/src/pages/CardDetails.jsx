@@ -4,7 +4,7 @@ import { boardService } from '../services/board.service.js';
 import { loadBoards, removeBoard, addBoard, } from '../store/board.actions.js';
 import { DebounceInput } from 'react-debounce-input';
 import { Loading } from '../cmp/Loading';
-import { AddToCard } from '../cmp/AddCard';
+import { AddToCard } from '../cmp/AddToCard';
 
 class _CardDetails extends React.Component {
     state = {
