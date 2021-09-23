@@ -1,7 +1,7 @@
-import { httpService } from './http.service'
+// import { httpService } from './http.service'
 import { storageService } from './async-storage.service'
-import {userService} from './user.service'
-import { socketService, SOCKET_EVENT_REVIEW_ADDED } from './socket.service'
+// import {userService} from './user.service'
+// import { socketService, SOCKET_EVENT_REVIEW_ADDED } from './socket.service'
 
 export const boardService = {
   add,
@@ -9,10 +9,14 @@ export const boardService = {
   remove
 }
 
+
 function query() {
   // return httpService.get(`board${queryStr}`)
   let boards = storageService.query('board')
-  if(!boards.length) boards = require('../data/board.json');
+  if (!boards.length) {
+    boards = require('../data/board.json');
+    storageService.save('board', boards)
+  }
   return boards;
 }
 
@@ -24,8 +28,8 @@ function remove(boardId) {
 async function add(board) {
   // const addedBoard = await httpService.post(`board`, board)
 
-  board.byUser = userService.getLoggedinUser()
-  board.aboutUser = await userService.getById(board.aboutUserId)
+  // board.byUser = userService.getLoggedinUser()
+  // board.aboutUser = await userService.getById(board.aboutUserId)
   const addedBoard = storageService.post('board', board)
   return addedBoard
 }

@@ -1,26 +1,31 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import {loadBoards, removeBoard,addBoard,} from '../store/board.actions.js'
 
 class _BoardApp extends React.Component {
     state = {
     }
+
     componentDidMount() {
-        this.props.loadBaords()
+        this.props.loadBoards()
     }
 
     onRemoveCar = (boardId) => {
-        this.props.onRemoveBoard(boardId)
+        this.props.removeBoard(boardId)
     }
     onAddCar = () => {
-        this.props.onAddBoard()
+        this.props.addBoard()
     }
     render() {
+        const { boards } = this.props;
+        console.log('boards', boards);
         return (
-           <main>
-               <section className="board-app">
-
-               </section>
-           </main>
+            <main>
+                <section className="board-app">
+                    <h1>hello</h1>
+                    <h2>{boards.boardTitle}</h2>
+                </section>
+            </main>
         )
 
     }
@@ -29,13 +34,13 @@ class _BoardApp extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        boards: state.boardModule.boards
+        boards: state.boardReducer.boards
     }
 }
 const mapDispatchToProps = {
-    loadBaords,
-    onRemoveBoard,
-    onAddBoard,
+    loadBoards,
+    removeBoard,
+    addBoard,
 }
 
 
