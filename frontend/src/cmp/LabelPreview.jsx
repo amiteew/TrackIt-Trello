@@ -2,11 +2,11 @@ import { bgcolor } from "@mui/system";
 
 export function LabelPreview({ labelId, boardLabels }) {
 
-    const currLabelIdx = boardLabels.find(label => label.id === labelId)
-    console.log('currLabelIdx', currLabelIdx);
+    const currLabel = boardLabels.find(label => label.id === labelId)
+
     return (
-        <div>
-            <p>{currLabelIdx.title}</p>
+        <div className={currLabel.color}>
+            <p>{currLabel.title}</p>
         </div>
     )
 }

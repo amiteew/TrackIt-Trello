@@ -7,6 +7,7 @@ import { Loading } from '../cmp/Loading';
 import { AddToCard } from '../cmp/AddToCard';
 import { MembersList } from '../cmp/MembersList'
 import { CardLabelsList } from '../cmp/CardLabelsList';
+import { CardActivities } from '../cmp/CardActivities'
 
 class _CardDetails extends React.Component {
     state = {
@@ -77,7 +78,7 @@ class _CardDetails extends React.Component {
                     onChange={this.handleChange}
                     value={currCard.cardTitle}
                 />
-                <MembersList cardMembers={currCard.cardMembers} />
+                <MembersList members={currCard.cardMembers} />
                 <CardLabelsList cardLabelIds={currCard.cardLabelIds} boardLabels={board.labels} />
 
                 <h3>Description</h3>
@@ -90,6 +91,7 @@ class _CardDetails extends React.Component {
                     onChange={this.handleChange}
                     value={currCard.description}
                 />
+                <CardActivities cardActivities={currCard.activities} />
 
                 <div className="add-to-card">
                     <AddToCard />
