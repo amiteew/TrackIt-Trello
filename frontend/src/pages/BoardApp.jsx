@@ -1,36 +1,42 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import {loadBoards, removeBoard,addBoard,} from '../store/board.actions.js'
+import React from 'react';
+import { connect } from 'react-redux';
+import { loadBoards, removeBoard, addBoard, } from '../store/board.actions.js';
+import { boardService } from '../services/board.service.js';
+import { GroupList } from '../cmp/ListsList.jsx';
 
 class _BoardApp extends React.Component {
-    state = {
-    }
+        state = {
+            board: null
+        }
 
-    componentDidMount() {
-        this.props.loadBoards()
-    }
+        componentDidMount() {
+            this.props.loadBoards()
+            boardService.getBoardById('b101')
+                .then((board) => {
+                    this.setState({ board })
+                })
+        }
 
-    onRemoveCar = (boardId) => {
-        this.props.removeBoard(boardId)
-    }
-    onAddCar = () => {
-        this.props.addBoard()
-    }
-    render() {
-        const { boards } = this.props;
-        console.log('boards', boards);
-        return (
-            <main>
-                <section className="board-app">
-                    <h1>hello</h1>
-                    <h2>{boards.boardTitle}</h2>
-                </section>
-            </main>
-        )
+        onRemoveBoard = (boardId) => {
+            this.props.removeBoard(boardId)
+        }
+        onAddBoard = () => {
+            this.props.addBoard()
+        }
+        render() {
+            const { board } = this.state;
+            if (!board) return <> </>
+            return (
+                <main>
+                    <section className="board-app">
+                        <GroupList groups={board.lists} onAddBoard={this.onAddBoard} onRemoveBoard={this.onRemoveBoard} />
+                    </section>
+                </main>
+            )
+
+        }
 
     }
-
-}
 
 function mapStateToProps(state) {
     return {
@@ -38,10 +44,9 @@ function mapStateToProps(state) {
     }
 }
 const mapDispatchToProps = {
-    loadBoards,
     removeBoard,
     addBoard,
+    loadBoards
 }
-
 
 export const BoardApp = connect(mapStateToProps, mapDispatchToProps)(_BoardApp)
