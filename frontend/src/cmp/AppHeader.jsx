@@ -28,9 +28,9 @@ function mapStateToProps() {
 }
 
 const mapDispatchToProps = {
-    onLogin,
-    onSignup,
-    onLogout,
+    // onLogin,
+    // onSignup,
+    // onLogout,
 }
 
 export const AppHeader = connect(mapStateToProps, mapDispatchToProps)(_AppHeader)

@@ -15,13 +15,16 @@ export const boardService = {
 
 function query() {
   // return httpService.get(`board${queryStr}`)
-  let boards = storageService.query(BOARD_KEY)
-  if (!boards.length) {
-    boards = require('../data/board.json');
-    storageService.save(BOARD_KEY, boards)
-  }
-  return boards
+  return storageService.query(BOARD_KEY)
+    .then((boards) => {
+      if (!boards.length) {
+        boards = require('../data/board.json');
+        storageService.save(BOARD_KEY, boards)
+        return boards 
+      }
+    })
 }
+
 
 function remove(boardId) {
   // return httpService.delete(`board/${boardId}`)
@@ -30,7 +33,6 @@ function remove(boardId) {
 }
 async function add(board) {
   // const addedBoard = await httpService.post(`board`, board)
-
   // board.byUser = userService.getLoggedinUser()
   // board.aboutUser = await userService.getById(board.aboutUserId)
 
@@ -42,8 +44,11 @@ function getBoardById(boardId) {
   return storageService.get(BOARD_KEY, boardId)
 }
 
+
+
 function save(board) {
   if (board._id) {
+    console.log('board in sae', board);
     return storageService.put(BOARD_KEY, board)
   } else {
     // board.owner = userService.getLoggedinUser()
