@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { loadBoards, removeBoard, addBoard, updateBoard, } from '../store/board.actions.js';
 import { boardService } from '../services/board.service.js';
 import { ListsList } from '../cmp/ListsList.jsx';
+import { BoardHeader } from '../cmp/BoardHeader.jsx';
 
 class _BoardApp extends React.Component {
     state = {
@@ -30,6 +31,7 @@ class _BoardApp extends React.Component {
         return (
             <main>
                 <section className="board-app">
+                    <BoardHeader board={board} onUpdateBoard={this.onUpdateBoard} />
                     <ListsList lists={board.lists} onUpdateBoard={this.onUpdateBoard} />
                 </section>
             </main>
