@@ -5,13 +5,8 @@ import reportWebVitals from './reportWebVitals';
 import { RootCmp } from './root-cmp';
 import '../src/assets/styles/main.scss';
 import { BrowserRouter as Router } from 'react-router-dom'
-<<<<<<< HEAD
-import { store } from './store/store'
-import { Provider } from 'react-redux'
-=======
 import { Provider } from 'react-redux';
-import {store} from './store/store';
->>>>>>> 71891b9dc46f41d09356081ebd2bf826c4572888
+import { store } from './store/store';
 
 ReactDOM.render(
   <React.StrictMode>

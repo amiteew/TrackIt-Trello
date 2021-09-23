@@ -9,7 +9,7 @@ export function loadBoards() {
     try {
       const boards = await boardService.query()
       dispatch({ type: 'SET_BOARDS', boards })
-      socketService.on(SOCKET_EVENT_BOARD_ADDED, (board) =>{
+      socketService.on(SOCKET_EVENT_BOARD_ADDED, (board) => {
         dispatch({ type: 'ADD_BOARD', board })
       })
 
@@ -27,7 +27,7 @@ export function addBoard(board) {
 
       const score = await userService.changeScore(SCORE_FOR_BOARD)
       dispatch({ type: 'SET_SCORE', score })
-      
+
     } catch (err) {
       console.log('BoardActions: err in addBoard', err)
     }

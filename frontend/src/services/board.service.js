@@ -1,24 +1,31 @@
 import { httpService } from './http.service'
 import { storageService } from './async-storage.service'
-import {userService} from './user.service'
+import { userService } from './user.service'
 import { socketService, SOCKET_EVENT_REVIEW_ADDED } from './socket.service'
+
+const BOARD_KEY = 'boardsDB'
 
 export const boardService = {
   add,
   query,
-  remove
+  remove,
+  getBoardById,
+  save
 }
+
+
 
 function query() {
   // return httpService.get(`board${queryStr}`)
-  let boards = storageService.query('board')
-  if(!boards.length) boards = require('../data/board.json');
+  let boards = storageService.query(BOARD_KEY)
+  if (!boards.length) boards = require('../data/board.json');
+  console.log('boards', boards);
   return boards;
 }
 
 function remove(boardId) {
   // return httpService.delete(`board/${boardId}`)
-  return storageService.remove('board', boardId)
+  return storageService.remove(BOARD_KEY, boardId)
 
 }
 async function add(board) {
@@ -26,8 +33,21 @@ async function add(board) {
 
   board.byUser = userService.getLoggedinUser()
   board.aboutUser = await userService.getById(board.aboutUserId)
-  const addedBoard = storageService.post('board', board)
+  const addedBoard = storageService.post(BOARD_KEY, board)
   return addedBoard
+}
+
+function getBoardById(boardId) {
+  return storageService.get(BOARD_KEY, boardId)
+}
+
+function save(board) {
+  if (board._id) {
+    return storageService.put(BOARD_KEY, board)
+  } else {
+    // board.owner = userService.getLoggedinUser()
+    return storageService.post(BOARD_KEY, board)
+  }
 }
 
 // This IIFE functions for Dev purposes 
