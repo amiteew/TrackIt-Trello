@@ -1,10 +1,10 @@
 import React from 'react';
-// import { BasicPopover } from './Members';
+import { BasicPopOver } from './BasicPopOver'
 export function AddToCard() {
     return (
         <ul className="clean-list">
             <li>Members</li>
-            {/* <li><BasicPopover /></li> */}
+            <li><BasicPopOver /></li>
             <li>Labels</li>
             <li>Checklist</li>
             <li>Dates</li>
