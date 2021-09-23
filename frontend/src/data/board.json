@@ -38,16 +38,16 @@
         "isStarred": false,
         "lists": [
             {
-                "id": "g101",
+                "listId": "g101",
                 "listTitle": "frontend",
                 "cards": [
                     {
-                        "id": "c101",
+                        "cardId": "c101",
                         "cardTitle": "create json",
                         "description": "",
                         "activities": [
                             {
-                                "id": "a101",
+                                "activityId": "a101",
                                 "type": "userAction",
                                 "txt": "Add member",
                                 "createdAt": 154514,
@@ -58,7 +58,7 @@
                                 }
                             },
                             {
-                                "id": "a102",
+                                "activityId": "a102",
                                 "type": "comment",
                                 "txt": "Hello",
                                 "createdAt": 154514,
@@ -82,7 +82,7 @@
                         ],
                         "checklists": [
                             {
-                                "id": "c105",
+                                "checklistId": "c105",
                                 "title": "todo",
                                 "tasks": [
                                     {

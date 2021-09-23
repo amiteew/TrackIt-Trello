@@ -4,7 +4,7 @@ export const utilService = {
     getRandomIntInclusive,
 }
 
-function makeId(length = 6) {
+function makeId(length = 8) {
     var txt = '';
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 

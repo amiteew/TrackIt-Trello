@@ -1,14 +1,36 @@
 import React from 'react'
 import { connect } from 'react-redux'
-// import { loadCars, onAddCar, onEditCar, onRemoveCar, addToCart } from '../store/car.actions.js'
+import { boardService } from '../services/board.service.js'
+import { loadBoards, removeBoard, addBoard, } from '../store/board.actions.js'
 
 class _CardDetails extends React.Component {
     state = {
     }
+
     componentDidMount() {
-        const boards = this.props.loadBoards()
-        console.log('boards', boards);
-        // this.props.loadCars()
+
+        const boardId = 'b101';
+        const listId = 'g101';
+        const cardId = this.props.match.params.cardId
+        boardService.getCardById(boardId, listId, cardId)
+
+
+        // IN THE FUTURE FROM PARAMS:
+        // const boardId = this.props.match.params.boardId
+        // const boardId =
+        // console.log('this.props', this.props);
+        // console.log('cardId', cardId);
+
+        // this.setState({ ...this.state, user: this.props.user })
+
+
+        // toyService.getById(toyId)
+        //     .then(toy => {
+        //         toy.labels = toy.labels.map(label => ({ value: label, label: label }))
+        //         this.setState({ toy })
+        //         // console.log('toy to edit from props params: ', toy)
+        //     })
+
     }
 
     onRemoveCar = (carId) => {
@@ -40,11 +62,9 @@ function mapStateToProps(state) {
     }
 }
 const mapDispatchToProps = {
-    // loadCars,
-    // onRemoveCar,
-    // onAddCar,
-    // onEditCar,
-    // addToCart
+    loadBoards,
+    removeBoard,
+    addBoard,
 }
 
 
