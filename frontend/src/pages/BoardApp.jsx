@@ -17,7 +17,9 @@ class _BoardApp extends React.Component {
     render() {
         return (
            <main>
-               
+               <section className="board-app">
+
+               </section>
            </main>
         )
 
