@@ -9,9 +9,8 @@ export class _AddCard extends React.Component {
     }
 
     handleChange = (ev) => {
-        const field = ev.target.name;
         const value = ev.target.value;
-        this.setState({ [field]: value });
+        this.setState({ cardTitle: value });
     }
 
     onAddCard = (ev) => {

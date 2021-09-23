@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { loadBoards, removeBoard, addBoard, updateBoard, } from '../store/board.actions.js';
 import { boardService } from '../services/board.service.js';
 import { ListsList } from '../cmp/ListsList.jsx';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+
 
 class _BoardApp extends React.Component {
     state = {
@@ -19,9 +21,9 @@ class _BoardApp extends React.Component {
 
     onUpdateBoard = () => {
         const { board } = this.state;
-        this.setState({board})
+        this.setState({ board })
         this.props.updateBoard(board);
-        this.props.loadBoards(); 
+        this.props.loadBoards();
     }
 
     render() {
@@ -29,7 +31,7 @@ class _BoardApp extends React.Component {
         if (!board) return <> </>
         return (
             <main>
-                <section className="board-app">
+                <section className="board-app flex">
                     <ListsList lists={board.lists} onUpdateBoard={this.onUpdateBoard} />
                 </section>
             </main>
