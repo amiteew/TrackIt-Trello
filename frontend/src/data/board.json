@@ -15,17 +15,17 @@
             {
                 "id": "l101",
                 "title": "Done",
-                "color": "#61bd4f"
+                "color": "clr1"
             },
             {
                 "id": "l102",
                 "title": "In prograss",
-                "color": "#FFA500"
+                "color": "clr2"
             },
             {
                 "id": "l103",
                 "title": "Stuck",
-                "color": "#DC143C"
+                "color": "clr3"
             }
         ],
         "boardMembers": [

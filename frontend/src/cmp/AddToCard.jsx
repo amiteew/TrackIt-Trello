@@ -1,5 +1,5 @@
 import React from 'react';
-import { BasicPopover } from './Members';
+// import { BasicPopover } from './Members';
 export function AddToCard() {
     return (
         <ul className="clean-list">
