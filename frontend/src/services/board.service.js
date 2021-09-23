@@ -13,7 +13,6 @@ export const boardService = {
   save
 }
 
-
 function query() {
   // return httpService.get(`board${queryStr}`)
   let boards = storageService.query(BOARD_KEY)
@@ -21,6 +20,7 @@ function query() {
     boards = require('../data/board.json');
     storageService.save(BOARD_KEY, boards)
   }
+  return boards
 }
 
 function remove(boardId) {
