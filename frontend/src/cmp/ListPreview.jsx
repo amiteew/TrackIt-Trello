@@ -22,15 +22,17 @@ export class ListPreview extends React.Component {
         return (
             <section className="list flex direction-col">
                 <div className="list-wrapper">
-                    <div className="list-header">
-                        <h1>{list.listTitle}</h1>
-                        <h1></h1>
-                    </div>
-                            <CardList key={list.id} cards={list.cards} />
-                    {!isAdding && <h1 onClick={() => {
-                        this.toggleOnAdd()
-                    }}>Add a card</h1>}
-                    {isAdding && <AddCard list={list} onUpdateBoard={onUpdateBoard} onCloseAdding={this.onCloseAdding} />}
+                    <DragDropContext>
+                        <div className="list-header">
+                            <h1>{list.listTitle}</h1>
+                            <h1></h1>
+                        </div>
+                        <CardList key={list.id} cards={list.cards} />
+                        {!isAdding && <h1 onClick={() => {
+                            this.toggleOnAdd()
+                        }}>Add a card</h1>}
+                        {isAdding && <AddCard list={list} onUpdateBoard={onUpdateBoard} onCloseAdding={this.onCloseAdding} />}
+                    </DragDropContext>
                 </div>
             </section >
 

@@ -7,7 +7,7 @@ export function CardList({ cards }) {
             {cards.map((card, index) => (
                 <Droppable droppableId={card.cardId}>
                     {provided => (
-                        <CardPreview key={card.cardId} index={index} card={card} innerRef={provided.innerRef} {...provided.droppableProps} {...provided.placeholder}/>
+                        <CardPreview key={card.cardId} index={index} card={card} ref={provided.innerRef} {...provided.droppableProps} {...provided.placeholder}/>
                     )}
                 </Droppable>
             ))}
