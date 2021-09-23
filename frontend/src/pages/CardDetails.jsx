@@ -8,7 +8,7 @@ import { AddToCard } from '../cmp/AddToCard';
 import { MembersList } from '../cmp/MembersList'
 import { CardLabelsList } from '../cmp/CardLabelsList';
 import { CardActivities } from '../cmp/CardActivities'
-
+import { DueDatePreview } from '../cmp/DueDatePreview';
 class _CardDetails extends React.Component {
     state = {
         board: null,
@@ -50,6 +50,16 @@ class _CardDetails extends React.Component {
         })
     }
 
+    onToggleDone = () => {
+        const { currListIdx, currCardIdx } = this.state
+        const boardToUpdate = { ...this.state.board }
+        boardToUpdate.lists[currListIdx].cards[currCardIdx].dueDate.isDone =
+            !boardToUpdate.lists[currListIdx].cards[currCardIdx].dueDate.isDone
+        this.setState({ ...this.state, board: boardToUpdate }, () => {
+            this.props.updateBoard({ ...this.state.board })
+        })
+    }
+
     onRemoveCar = (carId) => {
         // this.props.onRemoveCar(carId)
     }
@@ -69,7 +79,7 @@ class _CardDetails extends React.Component {
         console.log('currCard', currCard)
         return (
             <div className="card-details" >
-                <DebounceInput
+                <DebounceInput // לבחליף לטקסט אריע
                     minLength={0}
                     debounceTimeout={450}
                     name='cardTitle'
@@ -78,9 +88,18 @@ class _CardDetails extends React.Component {
                     onChange={this.handleChange}
                     value={currCard.cardTitle}
                 />
-                <h3>Members</h3>
-                <MembersList members={currCard.cardMembers} />
-                <CardLabelsList cardLabelIds={currCard.cardLabelIds} boardLabels={board.labels} />
+
+                {
+                    currCard.cardMembers && <div>
+                        <h3>Members</h3>
+                        <MembersList members={currCard.cardMembers} />
+                    </div>
+                }
+
+
+                {currCard.cardLabelIds && <CardLabelsList cardLabelIds={currCard.cardLabelIds} boardLabels={board.labels} />}
+
+                {currCard.dueDate && <DueDatePreview dueDate={currCard.dueDate} onToggleDone={this.onToggleDone} />}
 
                 <h3>Description</h3>
                 <DebounceInput

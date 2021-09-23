@@ -52,3 +52,12 @@ export function updateBoard(board) {
     }
   }
 }
+
+// const activity = {
+//   "id": makeId(),
+//   "txt": "Changed Color",
+//   "createdAt": Date.now(),
+//   "byMember": userService.getLoggedinUser(),
+//   "task": task
+// }
+// board = boardService.saveTask(boardId, payload.groupId, payload.task, activity)
