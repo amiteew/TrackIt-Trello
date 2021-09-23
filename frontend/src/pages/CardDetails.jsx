@@ -78,6 +78,7 @@ class _CardDetails extends React.Component {
                     onChange={this.handleChange}
                     value={currCard.cardTitle}
                 />
+                <h3>Members</h3>
                 <MembersList members={currCard.cardMembers} />
                 <CardLabelsList cardLabelIds={currCard.cardLabelIds} boardLabels={board.labels} />
 
