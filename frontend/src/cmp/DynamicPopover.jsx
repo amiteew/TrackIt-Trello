@@ -19,8 +19,6 @@ export class DynamicPopover extends React.Component {
         this.setState({ anchorEl: null })
     };
 
-
-
     render() {
         const { type, title, titleModal } = this.props
         const { anchorEl } = this.state

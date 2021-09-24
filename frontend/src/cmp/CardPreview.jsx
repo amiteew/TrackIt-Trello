@@ -5,6 +5,8 @@ import { DueDatePreview } from './DueDatePreview.jsx';
 import { CardLabelsList } from './CardLabelsList.jsx';
 import { CardCheckPreview } from './CardCheckPreview.jsx';
 import { MoveCard } from './MoveCard.jsx';
+import { DynamicPopover } from './DynamicPopover.jsx';
+
 export class CardPreview extends React.Component {
 
     state = {
@@ -33,9 +35,8 @@ export class CardPreview extends React.Component {
     }
 
     render() {
-        const { card, board } = this.props
+        const { card, board, currListIdx, currCardIdx, onUpdateBoard } = this.props
         const { cardTitle, isEditTitle } = this.state;
-        console.log('card', card);
         return (
             <Draggable draggableId={card.cardId} index={this.props.index}>
                 {(provided) => (
@@ -48,9 +49,8 @@ export class CardPreview extends React.Component {
                             </form>
                         }
                         {card.cardMembers && <MembersList members={card.cardMembers} />}
-                        {/* {card.checklists && <CardCheckPreview card={card.checklists} />} */}
+                        {card.checklists && <CardCheckPreview checklists={card.checklists} />}
                         <MoveCard />
-
                     </div>
                 )
                 }
