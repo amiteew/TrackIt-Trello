@@ -10,12 +10,7 @@ export function AddToCard({ board, currListIdx, currCardIdx, OnUpdateBoard }) {
                 currCardIdx={currCardIdx}
                 OnUpdateBoard={OnUpdateBoard}
             />
-            <DynamicPopover type={'members'} title={'Members'} titleModal={'Members'}
-                board={board}
-                currListIdx={currListIdx}
-                currCardIdx={currCardIdx}
-                OnUpdateBoard={OnUpdateBoard}
-            />
+            
             <li>Labels</li>
             <li>Checklist</li>
             <li>Dates</li>

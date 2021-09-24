@@ -2,7 +2,7 @@ import React from 'react';
 import Avatar from '@mui/material/Avatar';
 import { connect } from 'react-redux';
 import { loadBoards, removeBoard, addBoard, updateBoard } from '../../store/board.actions.js';
-export class MembersPopover extends React.Component {
+class _MembersPopover extends React.Component {
     state = {
         board: null,
         currListIdx: null,
@@ -26,7 +26,7 @@ export class MembersPopover extends React.Component {
             newBoard.lists[currListIdx].cards[currCardIdx].cardMembers.push(member)
             var action = 'Added to '
         }
-        this.props.OnUpdateBoard(newBoard, action, currCard)
+        this.props.updateBoard(newBoard, action, currCard)
     }
 
     isMemberOnCard = (currCard, memberId) => {
@@ -52,3 +52,14 @@ export class MembersPopover extends React.Component {
         )
     }
 }
+function mapStateToProps(state) {
+    return {
+        boards: state.boardReducer.boards,
+        loggedInUser: state.userReducer.loggedInUser
+    }
+}
+const mapDispatchToProps = {
+    updateBoard
+}
+
+export const MembersPopover = connect(mapStateToProps, mapDispatchToProps)(_MembersPopover)

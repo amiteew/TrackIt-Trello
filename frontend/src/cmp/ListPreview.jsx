@@ -59,7 +59,7 @@ export class ListPreview extends React.Component {
 
                                 <DynamicPopover type={'list actions'} board={board} list={list} title={'...'} onUpdateBoard={onUpdateBoard} titleModal={'List actions'}/>
                             </div>
-                            <CardList key={list.listId} cards={list.cards} board={board} list={list} onUpdateBoard={onUpdateBoard} />
+                            <CardList key={list.listId} cards={list.cards} board={board} currListIdx={currListIdx} list={list} onUpdateBoard={onUpdateBoard} />
                             {!isAdding && <h1 onClick={() => {
                                 this.toggleOnAdd()
                             }}>Add a card</h1>}
