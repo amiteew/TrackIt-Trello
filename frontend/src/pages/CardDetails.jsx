@@ -20,7 +20,7 @@ class _CardDetails extends React.Component {
     }
 
     componentDidMount() {
-        // this.props.loadBoards()
+        this.props.loadBoards()
         const boardId = 'b101'; // IN THE FUTURE FROM PARAMS
         boardService.getBoardById(boardId)
             .then((board) => {
@@ -95,7 +95,7 @@ class _CardDetails extends React.Component {
                     OnUpdateBoard={this.OnUpdateBoard} />
 
                 {
-                    currCard.cardMembers && <div>
+                    currCard.cardMembers.length && <div>
                         <h3>Members</h3>
                         <MembersList members={currCard.cardMembers} />
                     </div>
@@ -116,12 +116,12 @@ class _CardDetails extends React.Component {
                     currCardIdx={currCardIdx}
                     OnUpdateBoard={this.OnUpdateBoard} />
 
-                <CardActivities board={board}
+                <AddToCard board={board}
                     currListIdx={currListIdx}
                     currCardIdx={currCardIdx}
                     OnUpdateBoard={this.OnUpdateBoard} />
 
-                <AddToCard board={board}
+                <CardActivities board={board}
                     currListIdx={currListIdx}
                     currCardIdx={currCardIdx}
                     OnUpdateBoard={this.OnUpdateBoard} />

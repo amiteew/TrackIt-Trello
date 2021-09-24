@@ -4,7 +4,12 @@ import { DynamicPopover } from './DynamicPopover';
 export function AddToCard({ board, currListIdx, currCardIdx, OnUpdateBoard }) {
     return (
         <ul className="clean-list">
-            <li>Members</li>
+            <DynamicPopover type={'members'} title={'Members'} titleModal={'Members'}
+                board={board}
+                currListIdx={currListIdx}
+                currCardIdx={currCardIdx}
+                OnUpdateBoard={OnUpdateBoard}
+            />
             <DynamicPopover type={'members'} title={'Members'} titleModal={'Members'}
                 board={board}
                 currListIdx={currListIdx}
