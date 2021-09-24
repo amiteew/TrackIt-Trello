@@ -5,13 +5,12 @@ export class ActivityPreview extends React.Component {
     render() {
         const { activity } = this.props
         return (
-            <div className="card-preview-title">
+            <div className="activity-preview">
                 <Avatar alt={activity.byMember.fullname} src={activity.byMember.imgUrl}
                     key={activity.byMember._id} />
-                <h4>{activity.byMember.fullname}</h4>
-                {(activity.type === 'userAction') && <p>{activity.txt}</p>}
+                <h4>{activity.byMember.fullname} {activity.action} {activity.txt}
+                    On Card: "{activity.card.cardTitle}"</h4>
                 <small> {new Date(activity.createdAt).toString().substring(0, 16)}</small>
-                {(activity.type !== 'userAction') && <p>{activity.txt}</p>}
             </div>
 
         )

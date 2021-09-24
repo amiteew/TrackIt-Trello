@@ -9,6 +9,9 @@ import { MembersList } from '../cmp/MembersList'
 import { CardLabelsList } from '../cmp/CardLabelsList';
 import { CardActivities } from '../cmp/CardActivities'
 import { DueDatePreview } from '../cmp/DueDatePreview';
+import { CardTitle } from '../cmp/CardTitle';
+import { CardDescription } from '../cmp/CardDescription.jsx';
+
 class _CardDetails extends React.Component {
     state = {
         board: null,
@@ -45,8 +48,12 @@ class _CardDetails extends React.Component {
         const { currListIdx, currCardIdx } = this.state
         const boardToUpdate = { ...this.state.board }
         boardToUpdate.lists[currListIdx].cards[currCardIdx][target.name] = target.value
+        // CAN BE DIFFERNET FUNCTION:
+        var currCard = boardToUpdate.lists[currListIdx].cards[currCardIdx];
+        var action = `changed ${target.name}`
+        var txt = target.value
         this.setState({ ...this.state, board: boardToUpdate }, () => {
-            this.props.updateBoard({ ...this.state.board })
+            this.props.updateBoard({ ...this.state.board }, action, currCard, txt)
         })
     }
 
@@ -58,6 +65,10 @@ class _CardDetails extends React.Component {
         this.setState({ ...this.state, board: boardToUpdate }, () => {
             this.props.updateBoard({ ...this.state.board })
         })
+    }
+
+    OnUpdateBoard = (board, action, currCard, txt) => {
+        this.props.updateBoard(board, action, currCard, txt)
     }
 
     onRemoveCar = (carId) => {
@@ -76,18 +87,12 @@ class _CardDetails extends React.Component {
         const { board, currListIdx, currCardIdx } = this.state
         if (!board || currCardIdx === null || currListIdx === null) return <Loading />
         const currCard = board.lists[currListIdx].cards[currCardIdx]
-        console.log('currCard', currCard)
         return (
             <div className="card-details" >
-                <DebounceInput // לבחליף לטקסט אריע
-                    minLength={0}
-                    debounceTimeout={450}
-                    name='cardTitle'
-                    type='text'
-                    placeholder='Enter title'
-                    onChange={this.handleChange}
-                    value={currCard.cardTitle}
-                />
+                <CardTitle board={board}
+                    currListIdx={currListIdx}
+                    currCardIdx={currCardIdx}
+                    OnUpdateBoard={this.OnUpdateBoard} />
 
                 {
                     currCard.cardMembers && <div>
@@ -96,26 +101,30 @@ class _CardDetails extends React.Component {
                     </div>
                 }
 
+                {
+                    currCard.cardLabelIds &&
+                    <CardLabelsList cardLabelIds={currCard.cardLabelIds} boardLabels={board.labels} />
+                }
 
-                {currCard.cardLabelIds && <CardLabelsList cardLabelIds={currCard.cardLabelIds} boardLabels={board.labels} />}
+                {
+                    currCard.dueDate &&
+                    <DueDatePreview dueDate={currCard.dueDate} onToggleDone={this.onToggleDone} />
+                }
 
-                {currCard.dueDate && <DueDatePreview dueDate={currCard.dueDate} onToggleDone={this.onToggleDone} />}
+                <CardDescription board={board}
+                    currListIdx={currListIdx}
+                    currCardIdx={currCardIdx}
+                    OnUpdateBoard={this.OnUpdateBoard} />
 
-                <h3>Description</h3>
-                <DebounceInput
-                    minLength={0}
-                    debounceTimeout={450}
-                    name='description'
-                    type='text'
-                    placeholder='Add a more detailed description...'
-                    onChange={this.handleChange}
-                    value={currCard.description}
-                />
-                <CardActivities cardActivities={currCard.activities} />
+                <CardActivities board={board}
+                    currListIdx={currListIdx}
+                    currCardIdx={currCardIdx}
+                    OnUpdateBoard={this.OnUpdateBoard} />
 
-                <div className="add-to-card">
-                    <AddToCard />
-                </div>
+                <AddToCard board={board}
+                    currListIdx={currListIdx}
+                    currCardIdx={currCardIdx}
+                    OnUpdateBoard={this.OnUpdateBoard} />
 
             </div >
         )

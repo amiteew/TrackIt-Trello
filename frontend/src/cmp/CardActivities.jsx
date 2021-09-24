@@ -1,19 +1,33 @@
 import React from 'react';
 import { Loading } from './Loading';
-import { ActivityList } from './ActivityList';
+import { CommentsList } from './CommentsList';
 import { DebounceInput } from 'react-debounce-input';
+import { ActivityList } from '../cmp/ActivityList';
+import { utilService } from '../services/util.service';
 export class CardActivities extends React.Component {
-
     state = {
-        activities: null,
+        board: null,
+        currListIdx: null,
+        currCardIdx: null,
         isEditing: false,
-        isEditing: false,
+        isDetails: false,
         newActivityTxt: ''
     }
 
     componentDidMount() {
-        this.setState({ activities: this.props.cardActivities })
+        const { board, currListIdx, currCardIdx } = this.props
+        this.setState({ ...this.state, board, currListIdx, currCardIdx })
     }
+
+    // state = {
+    //     activities: null,
+    //     isEditing: false,
+    //     newActivityTxt: ''
+    // }
+
+    // componentDidMount() {
+    //     this.setState({ activities: this.props.cardActivities })
+    // }
 
     onToggleDetails = () => {
         this.setState({ ...this.state, isDetails: !this.state.isDetails })
@@ -27,23 +41,33 @@ export class CardActivities extends React.Component {
     onSaveActivity = (ev) => {
         ev.stopPropagation()
         if (!this.state.newActivityTxt) return
-        // const newActivity = {
-        //     activityId: 'a34hb34',
-        //     txt: this.state.newActivityTxt,
-        //     type: 'userAction',
-        //     byMember: { _id: '3231ff', fullname: 'Guest', imgUrl: '' },
-        //     createdAt: Date.now()
-        // }
+        const { currListIdx, currCardIdx } = this.state
+        const newBoard = { ...this.state.board }
+        newBoard.lists[currListIdx].cards[currCardIdx].comments.unshift({
+            // byMember: userService.getLoggedinUser(),
+            byMember: {
+                _id: utilService.makeId(),
+                fullname: "amit weiner",
+                imgUrl: "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            createdAt: Date.now(),
+            id: utilService.makeId(),
+            txt: this.state.newActivityTxt
+        })
 
+        const currCard = newBoard.lists[currListIdx].cards[currCardIdx];
+        const action = `Added comment`
+        const txt = this.state.newActivityTxt.substring(0, 20)
+        this.props.OnUpdateBoard(newBoard, action, currCard, txt)
         this.setState({ ...this.state, newActivityTxt: '', isEditing: false });
     }
 
     render() {
-        let { activities, isEditing, isDetails, newActivityTxt } = this.state
-        if (!activities) return <Loading />
-        if (!isDetails) {
-            activities = activities.filter(activity => activity.type === "comment")
-        }
+        let { isEditing, isDetails, newActivityTxt, board, currListIdx, currCardIdx } = this.state
+        if (!board || currCardIdx === null || currListIdx === null) return <Loading />
+        const comments = board.lists[currListIdx].cards[currCardIdx].comments
+        const currCard = board.lists[currListIdx].cards[currCardIdx]
+        // if (!comments) return <Loading />
         return (
             <div>
                 <h3>Activity</h3>
@@ -61,7 +85,9 @@ export class CardActivities extends React.Component {
 
                 {!isDetails && <button onClick={this.onToggleDetails}>Show details</button>}
                 {isDetails && <button onClick={this.onToggleDetails}>Hide details</button>}
-                <ActivityList activities={activities} />
+                {currCard.comments && <CommentsList comments={currCard.comments} />}
+                {isDetails && <ActivityList currCard={currCard} activities={board.activities} />}
+
             </div>
         )
     }
