@@ -102,7 +102,7 @@ class _CardDetails extends React.Component {
                 }
 
                 {
-                    currCard.cardLabelIds &&
+                    currCard.cardLabelIds.length &&
                     <CardLabelsList cardLabelIds={currCard.cardLabelIds} boardLabels={board.labels} />
                 }
 
@@ -118,8 +118,7 @@ class _CardDetails extends React.Component {
 
                 <AddToCard board={board}
                     currListIdx={currListIdx}
-                    currCardIdx={currCardIdx}
-                    OnUpdateBoard={this.OnUpdateBoard} />
+                    currCardIdx={currCardIdx} />
 
                 <CardActivities board={board}
                     currListIdx={currListIdx}

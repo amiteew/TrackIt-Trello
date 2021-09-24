@@ -8,17 +8,20 @@ export function AddToCard({ board, currListIdx, currCardIdx, OnUpdateBoard }) {
                 board={board}
                 currListIdx={currListIdx}
                 currCardIdx={currCardIdx}
-                OnUpdateBoard={OnUpdateBoard}
             />
-            <DynamicPopover type={'members'} title={'Members'} titleModal={'Members'}
+            <DynamicPopover type={'labels'} title={'Labels'} titleModal={'Labels'}
                 board={board}
                 currListIdx={currListIdx}
                 currCardIdx={currCardIdx}
-                OnUpdateBoard={OnUpdateBoard}
             />
-            <li>Labels</li>
+
             <li>Checklist</li>
             <li>Dates</li>
+            <DynamicPopover type={'dates'} title={'Dates'} titleModal={'Dates'}
+                board={board}
+                currListIdx={currListIdx}
+                currCardIdx={currCardIdx}
+            />
             <li>Attachment</li>
             <li>Cover</li>
         </ul>
