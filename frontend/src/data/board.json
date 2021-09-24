@@ -118,8 +118,12 @@
                 "cards": [
                     {
                         "cardId": "c131",
-                        "cardTitle": "create wheel"
+                        "cardTitle": "create wheel",
+                        "cardLabelIds": [
+                        
+                        ]
                     }
+                   
                 ]
             }
         ],
@@ -140,9 +144,5 @@
                 }
             }
         ]
-    },
-    {
-        "_id": "b107",
-        "boardTitle": "engenier and fun"
     }
 ]
