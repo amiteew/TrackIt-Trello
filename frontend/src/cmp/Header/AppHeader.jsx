@@ -20,7 +20,7 @@ class _AppHeader extends React.Component {
                     <header className="main-header">
                         <nav className="main-nav-bar flex space-between" >
                             <div className="main-nav-links">
-                                <img className="main-logo" src="https://loading.io/asset/515249" alt="" />
+                                <img className="main-logo" src="https://icons-for-free.com/iconfiles/png/512/trello-1324440245560066218.png" alt="" />
                                 <NavLink to="/" className="logo-name"><h1>Trello</h1></NavLink> |
                                 <NavLink to="/b">Boards</NavLink> |
                             </div>
