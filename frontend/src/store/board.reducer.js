@@ -12,10 +12,9 @@ export function boardReducer(state = initialState, action) {
       return { ...state, boards: state.boards.filter(board => board._id !== action.boardId) }
     case 'UPDATE_BOARD':
       return {
-        ...state,
-        boards: state.boards.map(board =>
-          board._id === action.board._id ? action.board : board
-        )}
+        ...state, boards: state.boards.map(board => board._id === action.board._id ?
+          action.board : board)
+      }
     default:
       return state
   }
