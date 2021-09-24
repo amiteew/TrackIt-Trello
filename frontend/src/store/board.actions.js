@@ -1,7 +1,7 @@
 import { boardService } from '../services/board.service'
 // import { socketService, SOCKET_EVENT_BOARD_ADDED } from '../services/socket.service'
-// import { userService } from '../services/user.service'
-
+import { userService } from '../services/user.service'
+import { utilService } from '../services/util.service.js'
 
 export function loadBoards() {
   return async dispatch => {
@@ -42,22 +42,48 @@ export function removeBoard(boardId) {
   }
 }
 
-export function updateBoard(board) {
+export function updateBoard(board, action, card, txt = "") {
   return async dispatch => {
     try {
-      await boardService.save(board)
-      dispatch({ type: 'UPDATE BOARD', board })
+      const activity = _storeSaveActivity(txt, action, card);
+      board.activities.unshift(activity);
+      console.log('board from action',board);
+      await boardService.save(board);
+      dispatch({ type: 'UPDATE BOARD', board });
     } catch (err) {
-      console.log('BoardActions: err in updateBoard', err)
+      console.log('BoardActions: err in updateBoard', err);
     }
   }
 }
 
+function _storeSaveActivity(txt, action, card) {
+  const activity = {
+    id: utilService.makeId(),
+    txt,
+    createdAt: Date.now(),
+    // byMember: userService.getLoggedinUser(),
+    byMember: {
+      "_id": "u101",
+      "fullname": "amit weiner",
+      "imgUrl": ""
+    },
+    action,
+    card
+  }
+  return activity
+}
+
+
+
 // const activity = {
-//   "id": makeId(),
-//   "txt": "Changed Color",
-//   "createdAt": Date.now(),
-//   "byMember": userService.getLoggedinUser(),
-//   "task": task
-// }
+  //   "id": makeId(),
+  //   "txt": "Changed Color",
+  //   "createdAt": Date.now(),
+  //   "byMember": userService.getLoggedinUser(),
+  //   "task": task
+  // }
+  // "card": {
+  //     "id": "c101",
+  //     "cardTitle": "Replace Logo"
+  // }
 // board = boardService.saveTask(boardId, payload.groupId, payload.task, activity)

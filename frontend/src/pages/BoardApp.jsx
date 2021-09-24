@@ -21,10 +21,10 @@ class _BoardApp extends React.Component {
             })
     }
 
-    onUpdateBoard = () => {
+    onUpdateBoard = (action, card, txt) => {
         const { board } = this.state;
         this.setState({ board })
-        this.props.updateBoard(board);
+        this.props.updateBoard(board, action, card, txt );
         this.props.loadBoards();
     }
 
