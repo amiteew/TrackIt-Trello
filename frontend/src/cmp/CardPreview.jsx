@@ -1,6 +1,10 @@
 import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-
+import { MembersList } from './MembersList.jsx';
+import { DueDatePreview } from './DueDatePreview.jsx';
+import { CardLabelsList } from './CardLabelsList.jsx';
+import { CardCheckPreview } from './CardCheckPreview.jsx';
+import { MoveCard } from './MoveCard.jsx';
 export class CardPreview extends React.Component {
 
     state = {
@@ -26,23 +30,27 @@ export class CardPreview extends React.Component {
         const { list, onUpdateBoard, currCardIdx } = this.props;
         list.cards[currCardIdx].cardTitle = cardTitle;
         onUpdateBoard();
-
     }
 
     render() {
-        const { card } = this.props
+        const { card, board } = this.props
         const { cardTitle, isEditTitle } = this.state;
+        console.log('card', card);
         return (
             <Draggable draggableId={card.cardId} index={this.props.index}>
                 {(provided) => (
                     < div className="card-preview-title" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+                        {card.cardLabelIds && <CardLabelsList cardLabelIds={card.cardLabelIds} boardLabels={board.labels} />}
                         {!isEditTitle && <h1 onClick={this.toggleEditTitle}>{card.cardTitle}</h1>}
                         {isEditTitle &&
                             <form onSubmit={this.onSaveCardTitle}>
                                 <input type="text" value={cardTitle} autoFocus onChange={this.handleChange} />
                             </form>
                         }
-                    
+                        {card.cardMembers && <MembersList members={card.cardMembers} />}
+                        {/* {card.checklists && <CardCheckPreview card={card.checklists} />} */}
+                        <MoveCard />
+
                     </div>
                 )
                 }

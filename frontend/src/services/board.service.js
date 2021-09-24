@@ -20,8 +20,8 @@ function query() {
       if (!boards.length) {
         boards = require('../data/board.json');
         storageService.save(BOARD_KEY, boards)
-        return boards 
       }
+      return boards 
     })
 }
 
