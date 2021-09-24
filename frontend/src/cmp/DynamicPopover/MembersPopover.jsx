@@ -2,10 +2,7 @@ import React from 'react';
 import Avatar from '@mui/material/Avatar';
 import { connect } from 'react-redux';
 import { loadBoards, removeBoard, addBoard, updateBoard } from '../../store/board.actions.js';
-<<<<<<< HEAD
 import DoneIcon from '@mui/icons-material/Done';
-=======
->>>>>>> e916bfaf994e69a4364b81c625d1c1f56217632d
 class _MembersPopover extends React.Component {
     state = {
         board: null,
