@@ -1,16 +1,20 @@
 import { CardPreview } from './CardPreview.jsx'
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { Droppable } from 'react-beautiful-dnd';
 
-export function CardList({ cards }) {
+export function CardList({ cards, list, onUpdateBoard }) {
+    if (!cards) return <> </>
     return (
         <section className="cards-list">
-            {cards.map((card, index) => (
-                <Droppable droppableId={card.cardId}>
-                    {provided => (
-                        <CardPreview key={card.cardId} index={index} card={card} ref={provided.innerRef} {...provided.droppableProps} {...provided.placeholder}/>
-                    )}
-                </Droppable>
-            ))}
+            <Droppable droppableId={list.listId}>
+                {provided => (
+                    <div ref={provided.innerRef} {...provided.droppableProps}>
+                        {cards.map((card, idx) => (
+                            <CardPreview key={card.cardId} list={list} currCardIdx={idx} card={card} onUpdateBoard={onUpdateBoard} />
+                        ))}
+                        {provided.placeholder}
+                    </div>
+                )}
+            </Droppable>
         </section>
     )
 }

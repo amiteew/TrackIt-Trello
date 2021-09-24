@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { updateBoard } from '../store/board.actions.js';
 import { utilService } from '../services/util.service.js';
+import { TextareaAutosize } from '@mui/material';
+
 
 export class _AddCard extends React.Component {
     state = {
@@ -22,8 +24,9 @@ export class _AddCard extends React.Component {
         }
         const { list } = this.props;
         list.cards.push(newCard);
-        this.setState({cardTitle: ""})
-        this.props.onUpdateBoard();
+        this.setState({ cardTitle: "" })
+        const action = "added card";
+        this.props.onUpdateBoard(action, newCard, cardTitle);
     }
 
     render() {
@@ -31,12 +34,12 @@ export class _AddCard extends React.Component {
         return (
             <div>
                 <form onSubmit={this.onAddCard} >
-                    <textarea
-                        type="text"
-                        name="cardTitle"
+                    <TextareaAutosize
                         value={cardTitle}
                         placeholder="Enter a title for this card..."
+                        aria-label="empty textarea"
                         onChange={this.handleChange}
+                        autoFocus
                     />
                     <button>Add card</button>
                     <button onClick={this.props.onCloseAdding}>X</button>

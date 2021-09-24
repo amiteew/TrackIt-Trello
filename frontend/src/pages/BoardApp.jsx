@@ -2,9 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { loadBoards, removeBoard, addBoard, updateBoard, } from '../store/board.actions.js';
 import { boardService } from '../services/board.service.js';
-import { ListsList } from '../cmp/ListsList.jsx';
+import { BoardList as BoardList } from '../cmp/BoardList.jsx';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { BoardHeader } from '../cmp/BoardHeader.jsx';
+import { TextareaAutosize } from '@mui/material';
+import { AddList } from '../cmp/AddList.jsx';
 
 class _BoardApp extends React.Component {
     state = {
@@ -19,10 +21,10 @@ class _BoardApp extends React.Component {
             })
     }
 
-    onUpdateBoard = () => {
+    onUpdateBoard = (action, card, txt) => {
         const { board } = this.state;
         this.setState({ board })
-        this.props.updateBoard(board);
+        this.props.updateBoard(board, action, card, txt );
         this.props.loadBoards();
     }
 
@@ -31,10 +33,13 @@ class _BoardApp extends React.Component {
         if (!board) return <> </>
         return (
             <main>
-                <section className="board-app flex">
-                    <BoardHeader board={board} onUpdateBoard={this.onUpdateBoard} />
-                    <ListsList lists={board.lists} onUpdateBoard={this.onUpdateBoard} />
-                </section>
+                <DragDropContext onDragEnd={this.onDragEnd}>
+                    <section className="board-app flex">
+                        <BoardHeader board={board} onUpdateBoard={this.onUpdateBoard} />
+                        <BoardList board={board} lists={board.lists} onUpdateBoard={this.onUpdateBoard} />
+                        <AddList board={board} onUpdateBoard={this.onUpdateBoard} />
+                    </section>
+                </DragDropContext>
             </main>
         )
 

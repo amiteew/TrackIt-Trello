@@ -2,12 +2,14 @@
     box-sizing: border-box;
 }
 
-html {
+body ,button, html, input, select, textarea {
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue,
         sans-serif;
     // line-height: 1.75;
     background-image: url(https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/5470b505916b9719327bb1ee44cbb801/photo-1631539816626-9b5abd9acf9f.jpg);
     color: $fontColor;
+    font-size: 14px;
+    font-weight: 400;
 }
 
 body {
