@@ -2,7 +2,7 @@
     {
         "_id": "u101",
         "fullname": "shany pollack",
-        "username": "shany777@gmail.com",
+        "username": "shany",
         "password": "shanypo",
         "imgUrl": "http://some-img.jpg",
         "mentions": [
@@ -30,7 +30,7 @@
     {
         "_id": "u103",
         "fullname": "michael uzan",
-        "username": "looply@gmail.com",
+        "username": "looply",
         "password": "looply",
         "imgUrl": "http://some-img.jpg",
         "mentions": [

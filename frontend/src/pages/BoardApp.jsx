@@ -48,7 +48,8 @@ class _BoardApp extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        boards: state.boardReducer.boards
+        boards: state.boardReducer.boards,
+        loggedInUser: state.userReducer.loggedInUser
     }
 }
 const mapDispatchToProps = {
