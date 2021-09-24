@@ -11,8 +11,10 @@
 @import "basics/buttons.scss";
 
 // Components
+@import "cmps/header";
 @import "cmps/listsList";
-@import "cmps/cardPreview"
+@import "cmps/cardPreview";
 
 // Views (pages)
-// @import "psges/";
+@import "pages/home-page";
+@import "pages/login-signup";

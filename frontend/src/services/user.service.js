@@ -15,9 +15,16 @@ export const userService = {
     remove,
     update,
 }
-
+getUsers()
 function getUsers() {
     return storageService.query(USER_KEY)
+        .then((users) => {
+            if (!users.length) {
+                users = require('../data/user.json');
+                storageService.save(USER_KEY, users)
+                return users
+            }
+        })
     // return httpService.get(`user`)
 }
 
@@ -43,6 +50,9 @@ async function update(user) {
 async function login(userCred) {
     const users = await storageService.query(USER_KEY)
     const user = users.find(user => user.username === userCred.username)
+    if (!user) {
+        throw new Error('login service error')
+    }
     return _saveLocalUser(user)
 
     // const user = await httpService.post('auth/login', userCred)

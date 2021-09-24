@@ -1,10 +1,7 @@
 import React from 'react'
-
 import { Switch, Route } from 'react-router'
-
 import routes from './routes.js'
-
-import { AppHeader } from '../src/cmp/AppHeader.jsx'
+import { AppHeader } from './cmp/Header/AppHeader.jsx'
 
 export class RootCmp extends React.Component {
 

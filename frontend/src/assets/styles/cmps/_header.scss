@@ -1,0 +1,26 @@
+.home-header {
+    // height: 68px;
+    .nav-bar {
+        margin: 1rem;
+        height: rem(36.25px);
+        width: 100%;
+        .logo-container {
+            gap: rem(6px);
+            .icon {
+                height: 25px;
+            }
+        }
+    }
+}
+
+.main-header {
+}
+
+.logo-name {
+    h1 {
+        font-family: SourceSansPro-Bold;
+        color: black;
+        margin: unset;
+        display: inline-block;
+    }
+}

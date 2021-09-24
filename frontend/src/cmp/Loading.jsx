@@ -1,11 +1,10 @@
 import React from 'react'
+import RoundLoader from '../assets/imgs/oval-loader.svg'
 
 export function Loading() {
     return (
-        <section className="loader-container">
             <div className="loader">
-                <h1>Loading...</h1>
+                <img src={RoundLoader} alt="loading..." />
             </div>
-        </section>
     )
 }

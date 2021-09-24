@@ -9,8 +9,6 @@ export const storageService = {
     save
 }
 
-const gUsers = require('../data/user.json');
-
 function query(entityType, delay = 1200) {
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
     // console.log('entities', entities);
