@@ -13,7 +13,7 @@ class _BoardApp extends React.Component {
     }
 
     componentDidMount() {
-        this.props.loadBoards()
+        this.props.loadBoards();
         boardService.getBoardById('b101')
             .then((board) => {
                 this.setState({ board })
@@ -21,10 +21,8 @@ class _BoardApp extends React.Component {
     }
 
     onUpdateBoard = (action, card, txt) => {
-        const { board } = this.state;
-        this.setState({ board })
-        this.props.updateBoard(board, action, card, txt);
-        this.props.loadBoards();
+        const  newBoard  = {...this.state.board};
+        this.props.updateBoard(newBoard, action, card, txt);
     }
 
     render() {
@@ -33,7 +31,7 @@ class _BoardApp extends React.Component {
         return (
             <main>
                 <DragDropContext onDragEnd={this.onDragEnd}>
-                    <section className="board-app flex">
+                    <section className="board-app">
                         <BoardHeader board={board} onUpdateBoard={this.onUpdateBoard} />
                         <BoardList board={board} lists={board.lists} onUpdateBoard={this.onUpdateBoard} />
                         <AddList board={board} onUpdateBoard={this.onUpdateBoard} />
