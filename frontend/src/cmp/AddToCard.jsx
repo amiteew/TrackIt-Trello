@@ -1,10 +1,11 @@
 import React from 'react';
-import { BasicPopOver } from './BasicPopOver'
+import { DynamicPopover } from './DynamicPopover';
+
 export function AddToCard() {
     return (
         <ul className="clean-list">
             <li>Members</li>
-            <li><BasicPopOver /></li>
+            <DynamicPopover type={'members'} title={'Members'} />
             <li>Labels</li>
             <li>Checklist</li>
             <li>Dates</li>
