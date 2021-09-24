@@ -3,6 +3,7 @@ import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { MembersPopover } from './DynamicPopover/MembersPopover';
+import { ActionList } from './DynamicPopover/ActionListPopOver';
 
 export class DynamicPopover extends React.Component {
     state = {
@@ -20,7 +21,7 @@ export class DynamicPopover extends React.Component {
 
 
     render() {
-        const { type, title } = this.props
+        const { type, title , titleModal} = this.props
         const { anchorEl } = this.state
         const open = Boolean(anchorEl);
         const id = open ? 'simple-popover' : undefined;
@@ -29,6 +30,8 @@ export class DynamicPopover extends React.Component {
             switch (props.type) {
                 case 'members':
                     return <MembersPopover {...props} />
+                    case 'list actions':
+                    return <ActionList {...props} />
                 // case 'fontSize':
                 //     return <FontSizeInput {...props} />
                 default:
@@ -54,12 +57,12 @@ export class DynamicPopover extends React.Component {
                 >
                     {/* OPEN MODAL */}
                     <div>
-                        <h3>{title}</h3>
+                        <h3>{titleModal}</h3>
                         <Button onClick={this.handleClose}>X</Button>
 
                     </div>
 
-                    <DynamicCmp type={type} />
+                    <DynamicCmp type={type} {...this.props}/>
 
                 </Popover >
             </div>

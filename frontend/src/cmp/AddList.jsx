@@ -24,7 +24,8 @@ export class AddList extends React.Component {
         const { board } = this.props;
         board.lists.push(newList);
         this.setState({ listTitle: "" });
-        this.props.onUpdateBoard();
+        const action = "added list"
+        this.props.onUpdateBoard(action, newList, listTitle);
     }
 
     toggleOnAdd = () => {

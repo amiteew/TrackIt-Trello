@@ -3,7 +3,7 @@ import { CardList } from './CardList.jsx';
 import { AddCard } from './AddCard';
 import { Draggable } from 'react-beautiful-dnd';
 import { boardService } from '../services/board.service.js';
-
+import { DynamicPopover } from './DynamicPopover.jsx';
 
 export class ListPreview extends React.Component {
 
@@ -43,7 +43,6 @@ export class ListPreview extends React.Component {
 
     render() {
         const { list, onUpdateBoard, currListIdx } = this.props
-        console.log('listidx', currListIdx);
         const { isAdding, isEditTitle, listTitle } = this.state
         return (
             <Draggable draggableId={list.listId} idx={currListIdx}>
@@ -57,8 +56,10 @@ export class ListPreview extends React.Component {
                                         <input type="text" value={listTitle} autoFocus onChange={this.handleChange} />
                                     </form>
                                 }
+
+                                <DynamicPopover type={'list actions'} list={list} title={'...'} titleModal={'List actions'}/>
                             </div>
-                            <CardList key={list.listId} cards={list.cards} onUpdateBoard={onUpdateBoard} list={list} />
+                            <CardList key={list.listId} cards={list.cards} list={list} onUpdateBoard={onUpdateBoard} />
                             {!isAdding && <h1 onClick={() => {
                                 this.toggleOnAdd()
                             }}>Add a card</h1>}

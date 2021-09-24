@@ -1,5 +1,5 @@
 import React from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { Draggable } from 'react-beautiful-dnd';
 
 export class CardPreview extends React.Component {
 
@@ -31,7 +31,7 @@ export class CardPreview extends React.Component {
 
     render() {
         const { card } = this.props
-        const {cardTitle, isEditTitle} = this.state;
+        const { cardTitle, isEditTitle } = this.state;
         return (
             <Draggable draggableId={card.cardId} index={this.props.index}>
                 {(provided) => (
@@ -42,7 +42,7 @@ export class CardPreview extends React.Component {
                                 <input type="text" value={cardTitle} autoFocus onChange={this.handleChange} />
                             </form>
                         }
-                        {provided.placeholder}
+                    
                     </div>
                 )
                 }

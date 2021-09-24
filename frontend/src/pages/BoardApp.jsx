@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import { loadBoards, removeBoard, addBoard, updateBoard, } from '../store/board.actions.js';
 import { boardService } from '../services/board.service.js';
 import { BoardList as BoardList } from '../cmp/BoardList.jsx';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { DragDropContext } from 'react-beautiful-dnd';
 import { BoardHeader } from '../cmp/BoardHeader.jsx';
-import { TextareaAutosize } from '@mui/material';
 import { AddList } from '../cmp/AddList.jsx';
 
 class _BoardApp extends React.Component {
@@ -24,7 +23,7 @@ class _BoardApp extends React.Component {
     onUpdateBoard = (action, card, txt) => {
         const { board } = this.state;
         this.setState({ board })
-        this.props.updateBoard(board, action, card, txt );
+        this.props.updateBoard(board, action, card, txt);
         this.props.loadBoards();
     }
 
