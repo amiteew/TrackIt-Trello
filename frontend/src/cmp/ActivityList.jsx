@@ -1,10 +1,12 @@
 import React from 'react'
 import { ActivityPreview } from './ActivityPreview'
-export function ActivityList({ activities }) {
+export function ActivityList({ activities, currCard }) {
+    if (!activities) return <React.Fragment></React.Fragment>
+    activities = activities.filter(activity => activity.card.cardId === currCard.cardId)
     return (
         <div>
             {activities.length && activities.map(activity => <ActivityPreview activity={activity}
-                key={activity.activityId} />)}
+                key={activity.id} />)}
         </div>
     )
 }

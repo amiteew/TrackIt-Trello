@@ -1,16 +1,56 @@
 import React from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-
+import { Draggable } from 'react-beautiful-dnd';
+import { MembersList } from './MembersList.jsx';
+import { DueDatePreview } from './DueDatePreview.jsx';
+import { CardLabelsList } from './CardLabelsList.jsx';
+import { CardCheckPreview } from './CardCheckPreview.jsx';
+import { MoveCard } from './MoveCard.jsx';
 export class CardPreview extends React.Component {
 
+    state = {
+        cardTitle: "",
+        isEditTitle: false
+    }
+
+    toggleEditTitle = () => {
+        const { card } = this.props;
+        this.setState({ isEditTitle: !this.state.isEditTitle, cardTitle: card.cardTitle })
+    }
+
+    handleChange = (ev) => {
+        const value = ev.target.value;
+        this.setState({ cardTitle: value });
+    }
+
+    onSaveCardTitle = (ev) => {
+        ev.preventDefault();
+        this.toggleEditTitle();
+        const { cardTitle } = this.state;
+        if (!cardTitle) cardTitle = 'Untitled';
+        const { list, onUpdateBoard, currCardIdx } = this.props;
+        list.cards[currCardIdx].cardTitle = cardTitle;
+        onUpdateBoard();
+    }
+
     render() {
-        const { card } = this.props
+        const { card, board } = this.props
+        const { cardTitle, isEditTitle } = this.state;
+        console.log('card', card);
         return (
             <Draggable draggableId={card.cardId} index={this.props.index}>
                 {(provided) => (
-                    < div className="card-preview-title" {...provided.draggableProps}
-                        {...provided.dragHandleProps} innertRef={provided.innerRef}>
-                        <h1>{card.cardTitle}</h1>
+                    < div className="card-preview-title" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+                        {card.cardLabelIds && <CardLabelsList cardLabelIds={card.cardLabelIds} boardLabels={board.labels} />}
+                        {!isEditTitle && <h1 onClick={this.toggleEditTitle}>{card.cardTitle}</h1>}
+                        {isEditTitle &&
+                            <form onSubmit={this.onSaveCardTitle}>
+                                <input type="text" value={cardTitle} autoFocus onChange={this.handleChange} />
+                            </form>
+                        }
+                        {card.cardMembers && <MembersList members={card.cardMembers} />}
+                        {/* {card.checklists && <CardCheckPreview card={card.checklists} />} */}
+                        <MoveCard />
+
                     </div>
                 )
                 }

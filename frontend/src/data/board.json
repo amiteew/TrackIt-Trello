@@ -32,16 +32,19 @@
             {
                 "_id": "u101",
                 "fullname": "Shany pollack",
+                "username": "looply@gmail.com",
                 "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632417771/shanypo_nzjhlq.jpg"
             },
             {
                 "_id": "u102",
                 "fullname": "Amitee Weiner",
+                "username": "looply@gmail.com",
                 "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg"
             },
             {
                 "_id": "u103",
                 "fullname": "Looply Uzan",
+                "username": "looply@gmail.com",
                 "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
             }
         ],
@@ -55,27 +58,16 @@
                         "cardId": "c101",
                         "cardTitle": "create json",
                         "description": "",
-                        "activities": [
+                        "comments": [
                             {
-                                "activityId": "a101",
-                                "type": "userAction",
-                                "txt": "Add member",
-                                "createdAt": 154514,
+                                "id": "ZdPnm",
+                                "txt": "also @yaronb please CR this",
+                                "createdAt": 1590999817436.0,
                                 "byMember": {
                                     "_id": "u101",
-                                    "fullname": "amit weiner",
-                                    "imgUrl": ""
-                                }
-                            },
-                            {
-                                "activityId": "a102",
-                                "type": "comment",
-                                "txt": "Hello",
-                                "createdAt": 154514,
-                                "byMember": {
-                                    "_id": "u101",
-                                    "fullname": "amit weiner",
-                                    "imgUrl": ""
+                                    "fullname": "Tal Tarablus",
+                                    "username": "looply@gmail.com",
+                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                                 }
                             }
                         ],
@@ -126,8 +118,12 @@
                 "cards": [
                     {
                         "cardId": "c131",
-                        "cardTitle": "create wheel"
+                        "cardTitle": "create wheel",
+                        "cardLabelIds": [
+                        
+                        ]
                     }
+                   
                 ]
             }
         ],
@@ -135,6 +131,7 @@
             {
                 "id": "a101",
                 "action": "Changed Color",
+                "txt": "",
                 "createdAt": 154514,
                 "byMember": {
                     "_id": "u101",
@@ -147,9 +144,5 @@
                 }
             }
         ]
-    },
-    {
-        "_id": "b107",
-        "boardTitle": "engenier and fun"
     }
 ]
