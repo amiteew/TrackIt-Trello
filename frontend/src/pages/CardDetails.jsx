@@ -11,6 +11,7 @@ import { CardActivities } from '../cmp/CardActivities'
 import { DueDatePreview } from '../cmp/DueDatePreview';
 import { CardTitle } from '../cmp/CardTitle';
 import { CardDescription } from '../cmp/CardDescription.jsx';
+import { ChecklistListApp } from '../cmp/ChecklistListApp';
 
 class _CardDetails extends React.Component {
     state = {
@@ -112,6 +113,11 @@ class _CardDetails extends React.Component {
                 }
 
                 <CardDescription board={board}
+                    currListIdx={currListIdx}
+                    currCardIdx={currCardIdx}
+                    OnUpdateBoard={this.OnUpdateBoard} />
+
+                <ChecklistListApp board={board}
                     currListIdx={currListIdx}
                     currCardIdx={currCardIdx}
                     OnUpdateBoard={this.OnUpdateBoard} />

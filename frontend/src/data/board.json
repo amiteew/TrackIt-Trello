@@ -91,6 +91,11 @@
                                         "id": "t106",
                                         "txt": "write json",
                                         "isDone": false
+                                    },
+                                    {
+                                        "id": "t10y7",
+                                        "txt": "read json",
+                                        "isDone": true
                                     }
                                 ]
                             }
@@ -119,11 +124,8 @@
                     {
                         "cardId": "c131",
                         "cardTitle": "create wheel",
-                        "cardLabelIds": [
-                        
-                        ]
+                        "cardLabelIds": []
                     }
-                   
                 ]
             }
         ],
