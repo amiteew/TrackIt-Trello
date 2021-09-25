@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { onLogin } from '../store/user.actions'
 import { Loading } from '../cmp/Loading.jsx'
+import { LogoName } from '../cmp/Header/LogoName'
 
 class _Login extends React.Component {
     state = {
@@ -52,9 +53,7 @@ class _Login extends React.Component {
         const { isLoginFailed, isLoading } = this.state
         return (
             <div className="login-page">
-                <Link to="/">
-                    <img className="logo" src="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/trello-header-logos/167dc7b9900a5b241b15ba21f8037cf8/trello-logo-blue.svg" alt="" />
-                </Link>
+                <LogoName isLoggedIn={false} />
                 <div className="form-container">
                     {isLoading && <Loading />}
                     {isLoginFailed && <p className="login-error">Login failed, please check your username and password</p>}
@@ -79,6 +78,7 @@ class _Login extends React.Component {
                         />
                         <button>Log in</button>
                     </form>
+                    <Link className="to-signup" to="/signup">Sign up for an account</Link>
                 </div>
             </div>
         )

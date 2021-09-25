@@ -1,9 +1,55 @@
 .home-page {
-    background-color: #ece9ff;
-    min-height: 100vh;
-    .first-fold {
+    position: relative;
+    top: rem(67px);
+    background-color: #edfffc;
+    // background-color: #ece9ff;
+    min-height: 89vh;
+    .hero {
+        .info {
+            h1 {
+                font-family: SourceSansPro-Semi;
+                font-size: rem(32px);
+            }
+            p {
+                font-size: rem(20px);
+            }
+            button {
+                width: 100%;
+                font-size: rem(20px);
+                padding: rem(6px) rem(24px);
+            }
+        }
         img {
-            height: 500px;
+            display: none;
+        }
+        @include for-narrow-layout {
+            .info h1 {
+                font-size: rem(38px);
+            }
+        }
+        @include for-normal-layout {
+            gap: rem(40px);
+            .info {
+                h1 {
+                    font-size: rem(44px);
+                }
+                button {
+                    
+                }
+            }
+            img {
+                display: inline-block;
+                height: 60vh;
+            }
+        }
+        @include for-wide-layout {
+            gap: rem(60px);
+            .info h1 {
+                font-size: rem(48px);
+            }
+            img {
+                height: 80vh;
+            }
         }
     }
 }

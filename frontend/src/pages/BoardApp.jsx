@@ -23,6 +23,7 @@ class _BoardApp extends React.Component {
     onUpdateBoard = (action, card, txt) => {
         const  newBoard  = {...this.state.board};
         this.props.updateBoard(newBoard, action, card, txt);
+        this.props.loadBoards()
     }
 
     render() {

@@ -2,30 +2,27 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import Avatar from '@mui/material/Avatar';
+
 import { HomeHeader } from './HomeHeader';
+import { LogoName } from './LogoName';
 // import { UserMsg } from './user-msg.jsx'
 // import { onLogout } from '../store/user.actions.js'
 
 class _AppHeader extends React.Component {
-    state = {
-        user: null
-        // user: "null"
-    }
-
     render() {
-        const { user } = this.state;
+        const user = this.props.loggedInUser;
         return (
             <>
                 {user ?
                     <header className="main-header">
-                        <nav className="main-nav-bar flex space-between" >
-                            <div className="main-nav-links">
-                                <img className="main-logo" src="https://icons-for-free.com/iconfiles/png/512/trello-1324440245560066218.png" alt="" />
-                                <NavLink to="/" className="logo-name"><h1>Trello</h1></NavLink> |
-                                <NavLink to="/b">Boards</NavLink> |
+                        <nav className="nav-bar flex space-between" >
+                            <div className="main-nav-links flex align-center">
+                                <LogoName isLoggedIn={true} />
+                                <NavLink to="/boards">Boards ➤</NavLink>
+                                <NavLink to="/b">Create</NavLink>
                             </div>
                             <div className="user-section">
-                                <Avatar alt={"AW"} src={"httpx://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg"} />
+                                <Avatar alt={user.initials} src={user.imgUrl} />
                             </div>
                         </nav >
                     </header >
@@ -37,16 +34,10 @@ class _AppHeader extends React.Component {
     }
 }
 
-function mapStateToProps() {
+function mapStateToProps(state) {
     return {
-        // user: state.userReducer.user,
+        loggedInUser: state.userReducer.loggedInUser
     }
 }
 
-const mapDispatchToProps = {
-    // onLogin,
-    // onSignup,
-    // onLogout,
-}
-
-export const AppHeader = connect(mapStateToProps, mapDispatchToProps)(_AppHeader)
+export const AppHeader = connect(mapStateToProps)(_AppHeader)
