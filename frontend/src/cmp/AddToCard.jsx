@@ -26,7 +26,11 @@ export function AddToCard({ board, currListIdx, currCardIdx, OnUpdateBoard }) {
                 currCardIdx={currCardIdx}
             />
             <li>Attachment</li>
-            <li>Cover</li>
+            <DynamicPopover type={'cover'} title={'Cover'} titleModal={'Cover'}
+                board={board}
+                currListIdx={currListIdx}
+                currCardIdx={currCardIdx}
+            />
         </ul>
     )
 }

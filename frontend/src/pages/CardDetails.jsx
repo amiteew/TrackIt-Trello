@@ -89,6 +89,7 @@ class _CardDetails extends React.Component {
         const currCard = board.lists[currListIdx].cards[currCardIdx]
         return (
             <div className="card-details" >
+                {/* <CardDetailsHeader /> */}
                 <CardTitle board={board}
                     currListIdx={currListIdx}
                     currCardIdx={currCardIdx}

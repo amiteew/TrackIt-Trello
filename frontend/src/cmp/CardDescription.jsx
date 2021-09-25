@@ -1,6 +1,6 @@
 import React from 'react';
 import { Loading } from './Loading';
-
+import TextareaAutosize from '@mui/material/TextareaAutosize';
 export class CardDescription extends React.Component {
     state = {
         board: null,
@@ -24,7 +24,7 @@ export class CardDescription extends React.Component {
         this.setState({ ...this.state, board: boardToUpdate })
     }
 
-    onSaveTitle = (ev) => {
+    onSaveDescription = (ev) => {
         ev.preventDefault();
         ev.stopPropagation()
         const { board, currListIdx, currCardIdx } = this.state
@@ -41,18 +41,23 @@ export class CardDescription extends React.Component {
         const currCard = board.lists[currListIdx].cards[currCardIdx]
         return (<div >
             <h3>Description</h3>
-            <div onClick={this.onToggleEditing}>
-                <form onSubmit={this.onSaveTitle} >
-                    <input
-                        name='description'
-                        type='text'
-                        placeholder='Enter title'
-                        onChange={this.handleChange}
-                        value={currCard.description}
-                    />
-                    {isEditing && <button onClick={this.onSaveTitle}>Save</button>}
-                </form>
-            </div>
+            {isEditing &&
+                <div onClick={this.onToggleEditing}>
+                    <form onSubmit={this.onSaveDescription} >
+                        <TextareaAutosize
+                            name='description'
+                            type='text'
+                            placeholder='Enter title'
+                            onChange={this.handleChange}
+                            value={currCard.description}
+                            onBlur={this.onSaveDescription}
+                            autoFocus
+                        />
+                        {isEditing && <button onClick={this.onSaveDescription}>Save</button>}
+                    </form>
+                </div>
+            }
+            {!isEditing && <p onClick={this.onToggleEditing}>{currCard.description}</p>}
         </div>
         )
     }

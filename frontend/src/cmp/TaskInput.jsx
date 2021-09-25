@@ -1,5 +1,5 @@
 import React from 'react';
-
+import TextareaAutosize from '@mui/material/TextareaAutosize';
 export class TaskInput extends React.Component {
     state = {
         newTaskTxt: null,
@@ -32,10 +32,11 @@ export class TaskInput extends React.Component {
             {!isEdit && <div onClick={this.onToggleEdit}>{task.txt}</div>}
             {isEdit &&
                 <div>
-                    <textarea
+                    <TextareaAutosize
                         type='text'
                         value={newTaskTxt}
                         onChange={this.handleChange}
+                        onBlur={this.onDiscardChanges}
                     />
                     <button onClick={this.onSaveTask}>Save</button>
                     <button onClick={this.onDiscardChanges}>X</button>
