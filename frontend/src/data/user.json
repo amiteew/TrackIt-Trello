@@ -1,5 +1,11 @@
 [
     {
+        "_id": "u100",
+        "fullname": "Guest123",
+        "username": "guest123",
+        "password": "1"
+    },
+    {
         "_id": "u101",
         "fullname": "shany pollack",
         "username": "shany",
