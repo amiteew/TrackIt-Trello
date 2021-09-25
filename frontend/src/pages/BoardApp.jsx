@@ -6,6 +6,7 @@ import { BoardList as BoardList } from '../cmp/BoardList.jsx';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { BoardHeader } from '../cmp/BoardHeader.jsx';
 import { AddList } from '../cmp/AddList.jsx';
+import {ShowMenu} from '../cmp/ShowMenu.jsx';
 
 class _BoardApp extends React.Component {
     state = {
@@ -33,7 +34,7 @@ class _BoardApp extends React.Component {
 
     onDragEnd = (res) => {
         const { destination, source, draggableId } = res;
-        const {board} = this.state;
+        const { board } = this.state;
         console.log('res', res);
         if (!destination) return;
         const dndStart = source.droppableId;
@@ -52,13 +53,16 @@ class _BoardApp extends React.Component {
         const { board } = this.state;
         if (!board) return <> </>
         return (
-            <DragDropContext onDragEnd={this.onDragEnd}>
-                <section className="board-app">
-                    <BoardHeader board={board} onUpdateBoard={this.onUpdateBoard} />
-                    <BoardList board={board} lists={board.lists} onUpdateBoard={this.onUpdateBoard} />
-                    <AddList board={board} onUpdateBoard={this.onUpdateBoard} />
-                </section>
-            </DragDropContext>
+            <section className="board-app flex direction-col">
+                <BoardHeader board={board} onUpdateBoard={this.onUpdateBoard} />
+                <DragDropContext onDragEnd={this.onDragEnd}>
+                    <div className="board-canvas flex">
+                        <BoardList board={board} lists={board.lists} onUpdateBoard={this.onUpdateBoard} className="board" />
+                        <AddList board={board} onUpdateBoard={this.onUpdateBoard} />
+                        <ShowMenu board={board}/> 
+                    </div>
+                </DragDropContext>
+            </section>
         )
 
     }

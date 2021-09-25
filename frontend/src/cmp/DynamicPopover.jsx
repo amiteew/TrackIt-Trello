@@ -45,10 +45,10 @@ export class DynamicPopover extends React.Component {
 
 
         return (
-            <div>
-                <Button aria-describedby={id} variant="contained" onClick={this.handleClick}>
+            <React.Fragment>
+                <button aria-describedby={id} variant="contained" onClick={this.handleClick}>
                     {title}
-                </Button>
+                </button>
                 <Popover
                     id={id}
                     open={open}
@@ -64,13 +64,11 @@ export class DynamicPopover extends React.Component {
                         <h3>{titleModal}</h3>
                         <Button onClick={this.handleClose}>X</Button>
                         <hr></hr>
-
                     </div>
 
                     <DynamicCmp type={type} {...this.props} handleClose={this.handleClose} />
-
                 </Popover >
-            </div>
+            </React.Fragment>
         );
     }
 

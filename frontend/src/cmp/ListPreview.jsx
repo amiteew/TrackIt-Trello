@@ -4,7 +4,7 @@ import { AddCard } from './AddCard';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
 import { boardService } from '../services/board.service.js';
 import { DynamicPopover } from './DynamicPopover.jsx';
-
+import {BsPlus} from 'react-icons/bs'
 export class ListPreview extends React.Component {
 
     state = {
@@ -47,23 +47,25 @@ export class ListPreview extends React.Component {
         return (
             <Draggable draggableId={list.listId} index={currListIdx}>
                 {provided => (
-                    <section className="list flex direction-col" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                    <section className="list-wrapper" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                         <Droppable droppableId={list.listId}>
                             {provided => (
-                                <div className="list-wrapper" ref={provided.innerRef} {...provided.droppableProps}>
+                                <div className="list-content flex direction-col" ref={provided.innerRef} {...provided.droppableProps}>
                                     <div className="list-header">
-                                        {!isEditTitle && <h1 onClick={this.toggleEditTitle}>{list.listTitle}</h1>}
+                                        {!isEditTitle && <h2 onClick={this.toggleEditTitle}>{list.listTitle}</h2>}
                                         {isEditTitle &&
                                             <form onSubmit={this.onSaveListTitle}>
                                                 <input type="text" value={listTitle} autoFocus onChange={this.handleChange} />
                                             </form>
                                         }
-                                        <DynamicPopover type={'list actions'} board={board} list={list} title={'...'} onUpdateBoard={onUpdateBoard} titleModal={'List actions'} />
+                                        <div className="list-header-menu-btn">
+                                            <DynamicPopover type={'list actions'} board={board} list={list} title={'...'} onUpdateBoard={onUpdateBoard} titleModal={'List actions'} />
+                                        </div>
                                     </div>
                                     <CardList key={list.listId} cards={list.cards} board={board} currListIdx={currListIdx} list={list} onUpdateBoard={onUpdateBoard} />
-                                    {!isAdding && <h1 onClick={() => {
+                                    {!isAdding && <h1  className="add-card-container" onClick={() => {
                                         this.toggleOnAdd()
-                                    }}>Add a card</h1>}
+                                    }}><BsPlus /> Add another card</h1>}
                                     {isAdding && <AddCard list={list} onUpdateBoard={onUpdateBoard} onCloseAdding={this.onCloseAdding} />}
                                     {provided.placeholder}
                                 </div>

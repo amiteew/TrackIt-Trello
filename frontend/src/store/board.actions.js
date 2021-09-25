@@ -61,7 +61,7 @@ function _storeSaveActivity(txt, action, card) {
     id: utilService.makeId(),
     txt,
     createdAt: Date.now(),
-    // byMember: userService.getLoggedinUser(),
+    byMember: userService.getLoggedinUser(),
     byMember: {
       "_id": "u101",
       "fullname": "amit weiner",

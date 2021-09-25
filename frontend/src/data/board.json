@@ -10,7 +10,6 @@
         },
         "boardStyle": {
             "bgColor": "red"
-            // "background": "red"
         },
         "labels": [
             {
@@ -126,7 +125,15 @@
                     {
                         "cardId": "c131",
                         "cardTitle": "create wheel",
-                        "cardLabelIds": []
+                        "description": "",
+                        "comments": [],
+                        "cardMembers": [],
+                        "cardLabelIds": [],
+                        "checklists": [],
+                        "createdAt": "",
+                        "dueDate": {},
+                        "attachment": [],
+                        "cardStyle": {}
                     }
                 ]
             }
@@ -292,10 +299,11 @@
                     "imgUrl": ""
                 },
                 "card": {
-                    "id": "c101",
+                    "cardId": "c101",
                     "cardTitle": "Replace Logo"
                 }
             }
+            
         ]
     }
 ]

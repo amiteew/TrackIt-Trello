@@ -11,22 +11,36 @@ export class _AddCard extends React.Component {
     }
 
     handleChange = (ev) => {
+        if(ev.key === 'Enter'){
+            ev.preventDefault();
+            this.onAddCard();
+            return;
+        }
         const value = ev.target.value;
         this.setState({ cardTitle: value });
     }
 
-    onAddCard = (ev) => {
-        ev.preventDefault();
+    onAddCard = () => {
         const cardTitle = this.state.cardTitle;
         const newCard = {
             cardId: utilService.makeId(),
-            cardTitle
+            cardTitle,
+            description: "",
+            comments: [],
+            cardMembers: [],
+            cardLabelIds: [],
+            checklists: [],
+            createdAt: new Date(),
+            dueDate: {},
+            attachment: [],
+            cardStyle: {}
         }
         const { list } = this.props;
         list.cards.push(newCard);
         this.setState({ cardTitle: "" })
-        const action = "added card";
+        const action = `Added card "${cardTitle}"`;
         this.props.onUpdateBoard(action, newCard, cardTitle);
+        this.props.onCloseAdding();
     }
 
     render() {
@@ -39,6 +53,8 @@ export class _AddCard extends React.Component {
                         placeholder="Enter a title for this card..."
                         aria-label="empty textarea"
                         onChange={this.handleChange}
+                        onKeyPress={this.handleChange}
+                        maxRows={1}
                         autoFocus
                     />
                     <button>Add card</button>

@@ -1,4 +1,4 @@
-import { Checkbox } from '@mui/material';
+import { BsCheckBox } from 'react-icons/bs';
 
 export function CardCheckPreview({ checklists }) {
 
@@ -16,10 +16,10 @@ export function CardCheckPreview({ checklists }) {
     const { taskCount, taskCountDone } = countTasks();
     const isDoneLabel = taskCount === taskCountDone ? 'done' : '';
     return (
-        <div>
-            <Checkbox disabled checked /> 
-            <p className={isDoneLabel}> { taskCountDone + '/' + taskCount} </p>
-        </div>
+        <span>
+            <BsCheckBox className="card-icon"/>
+            <p className={"card-txt "  + isDoneLabel}> {taskCountDone + '/' + taskCount} </p>
+        </span>
     )
 
 }

@@ -7,10 +7,10 @@ export function CardCommentPreview({ cardComments }) {
         return countComment
     }
     return (
-        <div>
-            <i className="far fa-comment"></i>
-            <p>{countComments()}</p>
-        </div>
+        <span className="badge-icon">
+            <i className="far fa-comment card-icon"></i>
+            <p className="card-txt">{countComments()}</p>
+        </span>
     )
 
 
