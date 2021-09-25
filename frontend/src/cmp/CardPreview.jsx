@@ -8,12 +8,15 @@ import { MoveCard } from './MoveCard.jsx';
 import { DynamicPopover } from './DynamicPopover.jsx';
 import { CardCommentPreview } from './CardCommentPreview.jsx';
 import { CardVisibilityPreview } from './CardVisibilityPreview.jsx';
+import { Route, Link } from 'react-router-dom';
+import { CardDetails } from '../pages/CardDetails.jsx';
 
 export class CardPreview extends React.Component {
 
     state = {
         cardTitle: "",
-        isEditTitle: false
+        isEditTitle: false,
+        isOpenDetails: false
     }
 
     toggleEditTitle = () => {
@@ -37,10 +40,10 @@ export class CardPreview extends React.Component {
     }
 
     render() {
-        const { card, board, currListIdx, currCardIdx, onUpdateBoard } = this.props
-        const { cardTitle, isEditTitle } = this.state;
+        const { card, board, currListIdx, currCardIdx, onUpdateBoard, list } = this.props
+        const { cardTitle, isEditTitle, isOpenDetails } = this.state;
         return (
-            <Draggable draggableId={card.cardId} index={this.props.index}>
+            <Draggable draggableId={card.cardId} index={currCardIdx}>
                 {(provided) => (
                     < div className="card-preview-title" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
                         {card.cardLabelIds && <CardLabelsList cardLabelIds={card.cardLabelIds} boardLabels={board.labels} />}
@@ -50,7 +53,11 @@ export class CardPreview extends React.Component {
                                 <input type="text" value={cardTitle} autoFocus onChange={this.handleChange} />
                             </form>
                         }
-                        {card.cardMembers && <CardVisibilityPreview cardMembers={card.cardMembers}/>}
+                        <Route exact component={CardDetails} path="/board/:boardId/:listId/:cardId" />
+                        <Link to={`/boards/${board._id}/${list.listId}/${card.cardId}`} ></Link>
+
+
+                        {card.cardMembers && <CardVisibilityPreview cardMembers={card.cardMembers} />}
                         {card.cardMembers && <MembersList members={card.cardMembers} />}
                         {card.checklists && <CardCheckPreview checklists={card.checklists} />}
                         {card.comments && <CardCommentPreview cardComments={card.comments} />}

@@ -1,6 +1,5 @@
 export function CardCommentPreview({ cardComments }) {
     function countComments() {
-        console.log('card', cardComments);
         const countComment = cardComments.reduce((acc, comment) => {
             acc++
             return acc;
@@ -9,7 +8,7 @@ export function CardCommentPreview({ cardComments }) {
     }
     return (
         <div>
-            <i class="far fa-comment"></i>
+            <i className="far fa-comment"></i>
             <p>{countComments()}</p>
         </div>
     )
