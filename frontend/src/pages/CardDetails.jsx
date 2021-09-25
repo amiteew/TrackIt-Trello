@@ -25,7 +25,6 @@ class _CardDetails extends React.Component {
         const boardId = 'b101'; // IN THE FUTURE FROM PARAMS
         boardService.getBoardById(boardId)
             .then((board) => {
-                // console.log('board from service', board);
                 this.setState({ board })
             })
             .then(() => this.getCurrCard())
@@ -39,8 +38,8 @@ class _CardDetails extends React.Component {
         // console.log('currBoard', currBoard)
         const currListIdx = currBoard.lists.findIndex(list => list.listId === listId)
         const currCardIdx = currBoard.lists[currListIdx].cards.findIndex(card => card.cardId === cardId)
-        // console.log('currListIdx', currListIdx);
-        // console.log('currCardIdx', currCardIdx);
+        console.log('currListIdx', currListIdx);
+        console.log('currCardIdx', currCardIdx);
         this.setState({ ...this.state, currListIdx, currCardIdx })
     }
 
@@ -68,8 +67,8 @@ class _CardDetails extends React.Component {
         })
     }
 
-    OnUpdateBoard = (board, action, currCard, txt) => {
-        this.props.updateBoard(board, action, currCard, txt)
+    OnUpdateBoard = async (board, action, currCard, txt) => {
+        await this.props.updateBoard(board, action, currCard, txt)
     }
 
     onRemoveCar = (carId) => {

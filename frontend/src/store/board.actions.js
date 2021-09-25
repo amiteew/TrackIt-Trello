@@ -57,6 +57,7 @@ export function updateBoard(board, action, card, txt = "") {
 }
 
 function _storeSaveActivity(txt, action, card) {
+  const cardCopy = { ...card } // MAYBE WE DONT NEED IT
   const activity = {
     id: utilService.makeId(),
     txt,
@@ -68,22 +69,10 @@ function _storeSaveActivity(txt, action, card) {
       "imgUrl": ""
     },
     action,
-    card
+    card: { cardId: cardCopy.cardId, cardTitle: cardCopy.cardTitle }
   }
   return activity
 }
 
 
 
-// const activity = {
-  //   "id": makeId(),
-  //   "txt": "Changed Color",
-  //   "createdAt": Date.now(),
-  //   "byMember": userService.getLoggedinUser(),
-  //   "task": task
-  // }
-  // "card": {
-  //     "id": "c101",
-  //     "cardTitle": "Replace Logo"
-  // }
-// board = boardService.saveTask(boardId, payload.groupId, payload.task, activity)
