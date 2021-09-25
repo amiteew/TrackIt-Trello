@@ -10,7 +10,7 @@ export class AddList extends React.Component {
     }
 
     handleChange = (ev) => {
-        if(ev.key === 'Enter'){
+        if (ev.key === 'Enter') {
             ev.preventDefault();
             this.onAddList();
             return;
@@ -21,6 +21,10 @@ export class AddList extends React.Component {
 
     onAddList = () => {
         const listTitle = this.state.listTitle;
+        if (!listTitle) {
+            this.onCloseAdding()
+            return
+        }
         const newList = {
             listId: utilService.makeId(),
             listTitle,
@@ -54,6 +58,7 @@ export class AddList extends React.Component {
                         style={{ width: 100 }}
                         onChange={this.handleChange}
                         onKeyPress={this.handleChange}
+                        onBlur={this.onAddList}
                         maxRows={1}
                         autoFocus
                     />

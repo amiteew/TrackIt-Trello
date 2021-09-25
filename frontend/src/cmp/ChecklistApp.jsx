@@ -27,7 +27,7 @@ class _ChecklistApp extends React.Component {
         const boardToUpdate = { ...this.state.board }
         boardToUpdate.lists[currListIdx].cards[currCardIdx].checklists.splice(checklistIdx, 1)
         const action = `Deleted Checklist ${title}`
-            `added List ${tilte}`
+            `added List ${title}`
         await this.props.updateBoard(boardToUpdate, action, currCard)
     }
 

@@ -40,6 +40,7 @@ export class CardTitle extends React.Component {
                     type='text'
                     placeholder='Enter title'
                     onChange={this.handleChange}
+                    onBlur={this.onSaveTitle}
                     value={currCard.cardTitle}
                 />
             </form>

@@ -45,30 +45,28 @@ export class CardPreview extends React.Component {
         const { cardTitle, isEditTitle, isOpenDetails } = this.state;
         return (
             <div className="card-list-preview">
-            <Draggable draggableId={card.cardId} index={currCardIdx}>
-                {(provided) => (
-                    <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-                        <Route exact component={CardDetails} path="/board/:boardId/:listId/:cardId" />
-                        <Link to={`/boards/${board._id}/${list.listId}/${card.cardId}`} >
-                            {/* {card.cardLabelIds && <CardLabelsList cardLabelIds={card.cardLabelIds} boardLabels={board.labels} />} */}
-                            {!isEditTitle && <h1 className="card-preview-title" onClick={this.toggleEditTitle}>{card.cardTitle}</h1>}
-                            {isEditTitle && <QuickCardEditor />
-                                // <form onSubmit={this.onSaveCardTitle}>
-                                //     <input type="text" value={cardTitle} autoFocus onChange={this.handleChange} />
-                                // </form>
-                            }
-                            <div className="card-preview-icon flex">
-                                <span className="badge-icon">{card.cardMembers && <CardVisibilityPreview cardMembers={card.cardMembers} />} </span>
-                                {card.cardMembers && <MembersList members={card.cardMembers} />}
-                                <span className="badge-icon" title="checklist">{card.checklists.length ? <CardCheckPreview checklists={card.checklists} /> : <> </>}</span>
-                                {card.comments.length ? <CardCommentPreview cardComments={card.comments} /> : <> </>}
-                            </div>
-                        </Link>
-                        {/* <MoveCard /> */}
-                    </div>
-                )
-                }
-            </Draggable>
+                <Draggable draggableId={card.cardId} index={currCardIdx}>
+                    {(provided) => (
+                        <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+                            <Link to={`/boards/${board._id}/${list.listId}/${card.cardId}`}>
+                                {/* {card.cardLabelIds && <CardLabelsList cardLabelIds={card.cardLabelIds} boardLabels={board.labels} />} */}
+                                {!isEditTitle && <h1 className="card-preview-title" onClick={this.toggleEditTitle}>{card.cardTitle}</h1>}
+                                {/* {isEditTitle && <QuickCardEditor /> */}
+                                {/* <form onSubmit={this.onSaveCardTitle}>
+                                    <input type="text" value={cardTitle} autoFocus onChange={this.handleChange} />
+                                </form> */}
+                                <div className="card-preview-icon flex">
+                                    <span className="badge-icon">{card.cardMembers && <CardVisibilityPreview cardMembers={card.cardMembers} />} </span>
+                                    {card.cardMembers && <MembersList members={card.cardMembers} />}
+                                    <span className="badge-icon" title="checklist">{card.checklists.length ? <CardCheckPreview checklists={card.checklists} /> : <> </>}</span>
+                                    {card.comments.length ? <CardCommentPreview cardComments={card.comments} /> : <> </>}
+                                </div>
+                            </Link>
+                            {/* <MoveCard /> */}
+                        </div>
+                    )
+                    }
+                </Draggable>
             </div>
 
         )

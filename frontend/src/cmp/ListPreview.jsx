@@ -4,7 +4,9 @@ import { AddCard } from './AddCard';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
 import { boardService } from '../services/board.service.js';
 import { DynamicPopover } from './DynamicPopover.jsx';
-import {BsPlus} from 'react-icons/bs'
+import { BsPlus } from 'react-icons/bs';
+import { TextField } from '@mui/material';
+
 export class ListPreview extends React.Component {
 
     state = {
@@ -26,12 +28,15 @@ export class ListPreview extends React.Component {
     }
 
     handleChange = (ev) => {
+        if (ev.key === 'Enter') {
+            ev.preventDefault();
+            this.onSaveListTitle();
+        }
         const value = ev.target.value;
         this.setState({ listTitle: value });
     }
 
-    onSaveListTitle = (ev) => {
-        ev.preventDefault();
+    onSaveListTitle = () => {
         this.toggleEditTitle();
         const { listTitle } = this.state;
         if (!listTitle) listTitle = 'Untitled';
@@ -54,16 +59,24 @@ export class ListPreview extends React.Component {
                                     <div className="list-header">
                                         {!isEditTitle && <h2 onClick={this.toggleEditTitle}>{list.listTitle}</h2>}
                                         {isEditTitle &&
-                                            <form onSubmit={this.onSaveListTitle}>
-                                                <input type="text" value={listTitle} autoFocus onChange={this.handleChange} />
-                                            </form>
+                                            <TextField
+                                                id="outlined-basic"
+                                                variant="outlined"
+                                                value={listTitle}
+                                                aria-label="empty textarea"
+                                                onChange={this.handleChange}
+                                                onKeyPress={this.handleChange}
+                                                onBlur={this.onSaveListTitle}
+                                                maxRows={1}
+                                                autoFocus
+                                            />
                                         }
                                         <div className="list-header-menu-btn">
                                             <DynamicPopover type={'list actions'} board={board} list={list} title={'...'} onUpdateBoard={onUpdateBoard} titleModal={'List actions'} />
                                         </div>
                                     </div>
                                     <CardList key={list.listId} cards={list.cards} board={board} currListIdx={currListIdx} list={list} onUpdateBoard={onUpdateBoard} />
-                                    {!isAdding && <h1  className="add-card-container" onClick={() => {
+                                    {!isAdding && <h1 className="add-card-container" onClick={() => {
                                         this.toggleOnAdd()
                                     }}><BsPlus /> Add another card</h1>}
                                     {isAdding && <AddCard list={list} onUpdateBoard={onUpdateBoard} onCloseAdding={this.onCloseAdding} />}

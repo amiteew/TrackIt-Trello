@@ -11,7 +11,7 @@ export class _AddCard extends React.Component {
     }
 
     handleChange = (ev) => {
-        if(ev.key === 'Enter'){
+        if (ev.key === 'Enter') {
             ev.preventDefault();
             this.onAddCard();
             return;
@@ -21,7 +21,8 @@ export class _AddCard extends React.Component {
     }
 
     onAddCard = () => {
-        const cardTitle = this.state.cardTitle;
+        let cardTitle = this.state.cardTitle;
+        if (!cardTitle) cardTitle = 'Untitled';
         const newCard = {
             cardId: utilService.makeId(),
             cardTitle,
@@ -32,7 +33,9 @@ export class _AddCard extends React.Component {
             checklists: [],
             createdAt: new Date(),
             dueDate: {},
-            attachment: [],
+            attachment: [{
+                src: ''
+            }],
             cardStyle: {}
         }
         const { list } = this.props;
@@ -47,19 +50,17 @@ export class _AddCard extends React.Component {
         const { cardTitle } = this.state;
         return (
             <div>
-                <form onSubmit={this.onAddCard} >
-                    <TextareaAutosize
-                        value={cardTitle}
-                        placeholder="Enter a title for this card..."
-                        aria-label="empty textarea"
-                        onChange={this.handleChange}
-                        onKeyPress={this.handleChange}
-                        maxRows={1}
-                        autoFocus
-                    />
-                    <button>Add card</button>
-                    <button onClick={this.props.onCloseAdding}>X</button>
-                </form>
+                <TextareaAutosize
+                    value={cardTitle}
+                    placeholder="Enter a title for this card..."
+                    aria-label="empty textarea"
+                    onChange={this.handleChange}
+                    onKeyPress={this.handleChange}
+                    onBlur={this.onAddCard}
+                    autoFocus
+                />
+                <button>Add card</button>
+                <button onClick={this.props.onCloseAdding}>X</button>
             </div>
         )
     }

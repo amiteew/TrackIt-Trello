@@ -1,3 +1,5 @@
+import { FaRegComment } from "react-icons/fa";
+
 export function CardCommentPreview({ cardComments }) {
     function countComments() {
         const countComment = cardComments.reduce((acc, comment) => {
@@ -8,7 +10,7 @@ export function CardCommentPreview({ cardComments }) {
     }
     return (
         <span className="badge-icon">
-            <i className="far fa-comment card-icon"></i>
+            <FaRegComment />
             <p className="card-txt">{countComments()}</p>
         </span>
     )
