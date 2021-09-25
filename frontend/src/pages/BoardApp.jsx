@@ -21,13 +21,25 @@ class _BoardApp extends React.Component {
     }
 
     onUpdateBoard = (action, card, txt) => {
-        const newBoard  = {...this.state.board};
+        const newBoard = { ...this.state.board };
         this.props.updateBoard(newBoard, action, card, txt);
         this.props.loadBoards()
     }
 
-    onDragEnd = (res) =>{
+    onDragEnd = (res) => {
+        const { destination, source, draggableId } = res;
+        const {board} = this.state;
         console.log('res', res);
+        if (!destination) return;
+        const dndStart = source.droppableId;
+        const dndEnd = destination.droppableId;
+        const dndStartIdx = source.index;
+        const dndEndIdx = destination.index;
+        if (dndStart === dndEnd && dndEndIdx === dndStartIdx) return;
+        const list = board.lists.find(list => list.listId === dndStart)
+        // const card = board.lists.cards.find(card => card.cardId === dndStart)
+        console.log('list dnd', list);
+
 
     }
 
@@ -35,15 +47,13 @@ class _BoardApp extends React.Component {
         const { board } = this.state;
         if (!board) return <> </>
         return (
-            <main>
-                <DragDropContext onDragEnd={this.onDragEnd}>
-                    <section className="board-app">
-                        <BoardHeader board={board} onUpdateBoard={this.onUpdateBoard} />
-                        <BoardList board={board} lists={board.lists} onUpdateBoard={this.onUpdateBoard} />
-                        <AddList board={board} onUpdateBoard={this.onUpdateBoard} />
-                    </section>
-                </DragDropContext>
-            </main>
+            <DragDropContext onDragEnd={this.onDragEnd}>
+                <section className="board-app">
+                    <BoardHeader board={board} onUpdateBoard={this.onUpdateBoard} />
+                    <BoardList board={board} lists={board.lists} onUpdateBoard={this.onUpdateBoard} />
+                    <AddList board={board} onUpdateBoard={this.onUpdateBoard} />
+                </section>
+            </DragDropContext>
         )
 
     }

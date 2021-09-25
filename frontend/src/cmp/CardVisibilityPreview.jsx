@@ -7,7 +7,7 @@ export class CardVisibilityPreview extends React.Component {
         const { cardMembers } = this.props;
         return (
             <div className="card-preview-icon" >
-                {cardMembers.map(member => member.isWatch && <img src={isWatch} alt="isWatch" />)}
+                {cardMembers.map(member => <div key={member._id}> {member.isWatch && <img src={isWatch} alt="isWatch" />}</div>)}
             </div>
         )
 
