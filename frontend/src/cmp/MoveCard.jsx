@@ -41,13 +41,13 @@ class _MoveCard extends React.Component {
                         position
                     </InputLabel>
                     <NativeSelect
-                        value={boards[0]._id}
+                        value={'hello'}
                         inputProps={{
                             name: 'position',
                             id: 'uncontrolled-native',
                         }}
                     >
-                         <MenuItem value={boards[0]._id}>{boards.title}</MenuItem>                        
+                         <MenuItem value={'hello'}>{'hello'}</MenuItem>                        
                     </NativeSelect>
                 </FormControl>
                 <p onClick={this.countOptions}>hello</p>

@@ -2,9 +2,11 @@ import * as React from 'react';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { MembersPopover } from './DynamicPopover/MembersPopover';
 import { ActionList } from './DynamicPopover/ActionListPopOver';
-
+import { MembersPopover } from './DynamicPopover/MembersPopover';
+import { LabelsPopover } from './DynamicPopover/LabelsPopover';
+import { DatesPopover } from './DynamicPopover/DatesPopover';
+import { ChecklistPopover } from './DynamicPopover/ChecklistPopover';
 export class DynamicPopover extends React.Component {
     state = {
         anchorEl: null,
@@ -18,10 +20,8 @@ export class DynamicPopover extends React.Component {
         this.setState({ anchorEl: null })
     };
 
-
-
     render() {
-        const { type, title , titleModal} = this.props
+        const { type, title, titleModal } = this.props
         const { anchorEl } = this.state
         const open = Boolean(anchorEl);
         const id = open ? 'simple-popover' : undefined;
@@ -30,10 +30,14 @@ export class DynamicPopover extends React.Component {
             switch (props.type) {
                 case 'members':
                     return <MembersPopover {...props} />
-                    case 'list actions':
+                case 'list actions':
                     return <ActionList {...props} />
-                // case 'fontSize':
-                //     return <FontSizeInput {...props} />
+                case 'labels':
+                    return <LabelsPopover {...props} />
+                case 'dates':
+                    return <DatesPopover {...props} />
+                case 'checklist':
+                    return <ChecklistPopover {...props} />
                 default:
                     break;
             }
@@ -59,10 +63,11 @@ export class DynamicPopover extends React.Component {
                     <div>
                         <h3>{titleModal}</h3>
                         <Button onClick={this.handleClose}>X</Button>
+                        <hr></hr>
 
                     </div>
 
-                    <DynamicCmp type={type} {...this.props}/>
+                    <DynamicCmp type={type} {...this.props} handleClose={this.handleClose} />
 
                 </Popover >
             </div>

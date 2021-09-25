@@ -1,22 +1,20 @@
 export function CardCheckPreview({ checklists }) {
 
-    function countTodos() {
-        console.log(checklists);
-        const todosDisplay = checklists.reduce((acc, checklist) => {
-            acc['todoCound'] += checklist.tasks 
+    function countTasks() {
+        const tasksDisplay = checklists.reduce((acc, checklist) => {
+            acc['taskCount'] += checklist.tasks.length
             checklist.tasks.forEach(task => {
-                if (task.isDone) acc['todoCounDone']++
+                if (task.isDone) acc['taskCountDone']++
             })
             return acc;
-        }, { todoCound: 0, todoCounDone: 0 })
-        return todosDisplay
+        }, { taskCount: 0, taskCountDone: 0 })
+        return tasksDisplay
     }
 
-    const { todoCound, todoCounDone } = countTodos();
+    const { taskCount, taskCountDone } = countTasks();
     return (
         <div>
-            <p>hello</p>
-            <p>{todoCound / todoCounDone}</p>
+            <p>{ taskCountDone + '/' + taskCount}</p>
         </div>
     )
 

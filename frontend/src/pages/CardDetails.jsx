@@ -11,6 +11,7 @@ import { CardActivities } from '../cmp/CardActivities'
 import { DueDatePreview } from '../cmp/DueDatePreview';
 import { CardTitle } from '../cmp/CardTitle';
 import { CardDescription } from '../cmp/CardDescription.jsx';
+import { ChecklistListApp } from '../cmp/ChecklistListApp';
 
 class _CardDetails extends React.Component {
     state = {
@@ -20,7 +21,7 @@ class _CardDetails extends React.Component {
     }
 
     componentDidMount() {
-        // this.props.loadBoards()
+        this.props.loadBoards()
         const boardId = 'b101'; // IN THE FUTURE FROM PARAMS
         boardService.getBoardById(boardId)
             .then((board) => {
@@ -95,14 +96,14 @@ class _CardDetails extends React.Component {
                     OnUpdateBoard={this.OnUpdateBoard} />
 
                 {
-                    currCard.cardMembers && <div>
+                    currCard.cardMembers.length && <div>
                         <h3>Members</h3>
                         <MembersList members={currCard.cardMembers} />
                     </div>
                 }
 
                 {
-                    currCard.cardLabelIds &&
+                    currCard.cardLabelIds.length &&
                     <CardLabelsList cardLabelIds={currCard.cardLabelIds} boardLabels={board.labels} />
                 }
 
@@ -116,12 +117,16 @@ class _CardDetails extends React.Component {
                     currCardIdx={currCardIdx}
                     OnUpdateBoard={this.OnUpdateBoard} />
 
-                <CardActivities board={board}
+                <ChecklistListApp board={board}
                     currListIdx={currListIdx}
                     currCardIdx={currCardIdx}
                     OnUpdateBoard={this.OnUpdateBoard} />
 
                 <AddToCard board={board}
+                    currListIdx={currListIdx}
+                    currCardIdx={currCardIdx} />
+
+                <CardActivities board={board}
                     currListIdx={currListIdx}
                     currCardIdx={currCardIdx}
                     OnUpdateBoard={this.OnUpdateBoard} />
