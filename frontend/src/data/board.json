@@ -76,6 +76,7 @@
                                 "_id": "u101",
                                 "username": "Tal",
                                 "fullname": "Tal Tarablus",
+                                "isWatch": true,
                                 "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                             }
                         ],
@@ -90,7 +91,7 @@
                                     {
                                         "id": "t106",
                                         "txt": "write json",
-                                        "isDone": false
+                                        "isDone": true
                                     },
                                     {
                                         "id": "t10y7",

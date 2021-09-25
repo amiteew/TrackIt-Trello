@@ -5,7 +5,7 @@ export function CardList({ cards, list, onUpdateBoard, board, currListIdx }) {
     if (!cards) return <> </>
     return (
         <section className="cards-list">
-            <Droppable droppableId={list.listId}>
+            <Droppable droppableId="cards-list">
                 {provided => (
                     <div ref={provided.innerRef} {...provided.droppableProps}>
                         {cards.map((card, idx) => (

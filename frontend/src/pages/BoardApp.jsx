@@ -25,6 +25,11 @@ class _BoardApp extends React.Component {
         this.props.updateBoard(newBoard, action, card, txt);
     }
 
+    onDragEnd = (res) =>{
+        console.log('res', res);
+
+    }
+
     render() {
         const { board } = this.state;
         if (!board) return <> </>

@@ -16,7 +16,7 @@ export class DueDatePreview extends React.Component {
                     onChange={this.onToggleDone}
                 />
                 <p>{new Date(dueDate.date).toString().substring(0, 16)}</p>
-                {dueDate.isDone && <div className='clr1'>COMPLETE</div>}
+                {dueDate.isDone && <div className='done'>COMPLETE</div>}
 
                 {/* NEED TO ADD OVERDUE */}
 

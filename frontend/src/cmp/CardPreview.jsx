@@ -6,6 +6,8 @@ import { CardLabelsList } from './CardLabelsList.jsx';
 import { CardCheckPreview } from './CardCheckPreview.jsx';
 import { MoveCard } from './MoveCard.jsx';
 import { DynamicPopover } from './DynamicPopover.jsx';
+import { CardCommentPreview } from './CardCommentPreview.jsx';
+import { CardVisibilityPreview } from './CardVisibilityPreview.jsx';
 
 export class CardPreview extends React.Component {
 
@@ -48,9 +50,11 @@ export class CardPreview extends React.Component {
                                 <input type="text" value={cardTitle} autoFocus onChange={this.handleChange} />
                             </form>
                         }
+                        {card.cardMembers && <CardVisibilityPreview cardMembers={card.cardMembers}/>}
                         {card.cardMembers && <MembersList members={card.cardMembers} />}
                         {card.checklists && <CardCheckPreview checklists={card.checklists} />}
-                        <MoveCard />
+                        {card.comments && <CardCommentPreview cardComments={card.comments} />}
+                        {/* <MoveCard /> */}
                     </div>
                 )
                 }

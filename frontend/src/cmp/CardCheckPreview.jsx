@@ -1,3 +1,5 @@
+import { Checkbox } from '@mui/material';
+
 export function CardCheckPreview({ checklists }) {
 
     function countTasks() {
@@ -12,9 +14,11 @@ export function CardCheckPreview({ checklists }) {
     }
 
     const { taskCount, taskCountDone } = countTasks();
+    const isDoneLabel = taskCount === taskCountDone ? 'done' : '';
     return (
         <div>
-            <p>{ taskCountDone + '/' + taskCount}</p>
+            <Checkbox disabled checked /> 
+            <p className={isDoneLabel}> { taskCountDone + '/' + taskCount} </p>
         </div>
     )
 
