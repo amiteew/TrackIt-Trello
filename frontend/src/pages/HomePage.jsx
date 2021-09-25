@@ -1,13 +1,25 @@
 import React from 'react'
-// import { connect } from 'react-redux'
-import { boardService } from '../services/board.service'
+import { connect } from 'react-redux'
+import { onLogin } from '../store/user.actions'
 
-export class HomePage extends React.Component {
-    state = {}
+class _HomePage extends React.Component {
 
     componentDidMount() {
-        if (this.props.user) {
+        if (this.props.loggedInUser) {
             this.props.history.push('/boards')
+        }
+    }
+
+    onStartAsGuest = async () => {
+        const guestCreds = {
+            username: "guest123",
+            password: "1"
+        }
+        try {
+            await this.props.onLogin(guestCreds);
+            this.props.history.push('/b')
+        } catch (err) {
+            console.log('error login guest');
         }
     }
 
@@ -18,7 +30,7 @@ export class HomePage extends React.Component {
                     <div className="info flex direction-col justify-center align-center">
                         <h1>TrackIt helps teams to stay on track.</h1>
                         <p>Collaborate, manage projects, and reach new productivity peaks. From high rises to the home office, the way your team works is unique—accomplish it all with TrackIt.</p>
-                        <button className="start home-btn">Get Started!</button>
+                        <button onClick={this.onStartAsGuest} className="start home-btn">Get Started!</button>
                     </div>
                     <img src="https://d2k1ftgv7pobq7.cloudfront.net/meta/p/res/images/spirit/hero/6a3ccd8e5c9a0e8ebea4235d12da6b24/hero.png" alt="" />
                 </div>
@@ -27,9 +39,14 @@ export class HomePage extends React.Component {
     }
 }
 
-function mapStateToProps() {
+function mapStateToProps(state) {
     return {
+        loggedInUser: state.userReducer.loggedInUser
     }
 }
 
-// export const HomePage = connect(mapStateToProps)(_HomePage)
+const mapDispatchToProps = {
+    onLogin
+}
+
+export const HomePage = connect(mapStateToProps, mapDispatchToProps)(_HomePage)

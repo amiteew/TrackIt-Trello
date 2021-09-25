@@ -13,8 +13,13 @@ class _BoardApp extends React.Component {
     }
 
     componentDidMount() {
+        if (!this.props.loggedInUser) {
+            this.props.history.push('/')
+        }
+
+        const { boardId } = this.props.match.params
         this.props.loadBoards();
-        boardService.getBoardById('b101')
+        boardService.getBoardById(boardId)
             .then((board) => {
                 this.setState({ board })
             })
