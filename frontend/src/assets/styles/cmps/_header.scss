@@ -1,26 +1,83 @@
 .home-header {
-    // height: 68px;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    background-color: #edfffc; /*remove later*/
     .nav-bar {
         margin: 1rem;
         height: rem(36.25px);
         width: 100%;
         .logo-container {
-            gap: rem(6px);
-            .icon {
-                height: 25px;
+            gap: rem(7px);
+            .icon-span {
+                background-color: #45cbb2;
+                height: 2rem;
+                width: 2rem;
+                border-radius: rem(6px);
+                .icon {
+                    height: 1.4rem;
+                    width: 1.4rem;
+                }
+            }
+            .logo-name h1 {
+                font-size: rem(33px);
+            }
+        }
+        .login-signup {
+            font-family: SourceSansPro-Semi;
+            font-size: rem(18px);
+            gap: 5px;
+            & > a {
+                padding: 4px 8px;
+            }
+            .login {
+                color: #45cbb2;
+                &:hover {
+                    color: #1db79a;
+                }
             }
         }
     }
 }
 
 .main-header {
+    background-color: rgba($color: #000000, $alpha: 0.4);
+    color: white;
+    padding: 7px 1rem;
+    .nav-bar {
+        // margin: 0 1rem;
+        width: 100%;
+        .main-nav-links {
+            .logo-container {
+                gap: rem(7px);
+                .icon-span .icon {
+                    height: 1.4rem;
+                    width: 1.4rem;
+                }
+                .logo-name {
+                    font-family: SourceSansPro-Reg;
+                    letter-spacing: 2px;
+                    font-size: rem(22px);
+                    color: white;
+                    margin-inline-end: 6px;
+                }
+            }
+        }
+    }
 }
 
 .logo-name {
-    h1 {
-        font-family: SourceSansPro-Bold;
-        color: black;
-        margin: unset;
-        display: inline-block;
+    font-family: SourceSansPro-Bold;
+    color: black;
+    margin: 0;
+    display: inline-block;
+}
+
+.home-btn {
+    background-color: #45cbb2;
+    color: white;
+    border-radius: 5px;
+    &:hover {
+        background-color: #1db79a;
     }
 }

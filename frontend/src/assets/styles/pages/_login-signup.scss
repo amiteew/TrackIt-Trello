@@ -4,12 +4,27 @@
     bottom: 0;
     right: 0;
     left: 0;
-    background-color: #ece9ff;
-    .logo {
-        height: rem(43px);
-        margin-top: rem(40px);
-        margin-bottom: rem(40px);
-        cursor: pointer;
+    z-index: 2;
+    background-color: #edfffc;
+    // background-color: #ece9ff;
+    a .logo-container {
+        margin: rem(33px) auto;
+        justify-content: center;
+        gap: rem(10px);
+        .icon-span {
+            background-color: #45cbb2;
+            height: 2.5rem;
+            width: 2.5rem;
+            border-radius: rem(6px);
+            .icon {
+                height: 1.9rem;
+                width: 1.9rem;
+            }
+        }
+        .logo-name h1 {
+            color: #20332f;
+            font-size: rem(50px);
+        }
     }
     .form-container {
         text-align: center;
