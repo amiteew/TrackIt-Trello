@@ -3,7 +3,13 @@
         "_id": "u100",
         "fullname": "Guest123",
         "username": "guest123",
-        "password": "1"
+        "password": "1",
+        "memberInBoards": [
+            {
+                "boardId": "b101",
+                "isStarred": true
+            }
+        ]
     },
     {
         "_id": "u101",
@@ -11,6 +17,16 @@
         "username": "shany",
         "password": "shanypo",
         "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632417771/shanypo_nzjhlq.jpg",
+        "memberInBoards": [
+            {
+                "boardId": "b101",
+                "isStarred": true
+            },
+            {
+                "boardId": "b102",
+                "isStarred": false
+            }
+        ],
         "mentions": [
             {
                 "id": "m101",
