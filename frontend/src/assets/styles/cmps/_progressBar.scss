@@ -3,9 +3,14 @@
         background-color: $bgcColor;
         width: 100%;
         border-radius: 10px;
-        .progress-bar-done {
+        .progress-bar {
             height: 8px;
             background-color: #5ba4cf;
+            transition: width, 0.8s;
+            transition: background-color, 1.8s;
+            &.bar-done {
+                background-color: $clr1;
+            }
         }
     }
 }

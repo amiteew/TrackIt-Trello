@@ -14,7 +14,7 @@ class _ChecklistPopover extends React.Component {
 
     componentDidMount() {
         const { board, currListIdx, currCardIdx } = this.props
-        this.setState({ board, currListIdx, currCardIdx })
+        this.setState({ ...this.state, board, currListIdx, currCardIdx })
     }
 
     handleChange = ({ target }) => {
@@ -26,15 +26,14 @@ class _ChecklistPopover extends React.Component {
         ev.preventDefault();
         const { currListIdx, currCardIdx, title, board } = this.state
         const currCard = board.lists[currListIdx].cards[currCardIdx]
-        const action = `Added Checklist`
+        const action = `Added Checklist "${title}"`
         const boardToUpdate = { ...this.state.board }
         boardToUpdate.lists[currListIdx].cards[currCardIdx].checklists.push({
             checklistId: utilService.makeId(),
             title,
             tasks: []
         })
-        const txt = title
-        this.props.updateBoard(boardToUpdate, action, currCard, txt)
+        this.props.updateBoard(boardToUpdate, action, currCard)
         this.props.handleClose()
     }
 
