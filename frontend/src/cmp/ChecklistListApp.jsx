@@ -2,6 +2,7 @@ import React from 'react'
 import { ChecklistApp } from './ChecklistApp'
 export function ChecklistListApp({ board, currListIdx, currCardIdx }) {
     const checklists = board.lists[currListIdx].cards[currCardIdx].checklists
+    // if(checklists.id) return <> </>
     return (
         <>
             {checklists.map((checklist, checklistIdx) => <ChecklistApp key={checklist.checklistId} board={board}

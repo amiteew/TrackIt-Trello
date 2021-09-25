@@ -63,11 +63,6 @@ function _storeSaveActivity(txt, action, card) {
     txt,
     createdAt: Date.now(),
     byMember: userService.getLoggedinUser(),
-    byMember: {
-      "_id": "u101",
-      "fullname": "amit weiner",
-      "imgUrl": ""
-    },
     action,
     card: { cardId: cardCopy.cardId, cardTitle: cardCopy.cardTitle }
   }
