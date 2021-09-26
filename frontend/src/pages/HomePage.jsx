@@ -6,7 +6,7 @@ import { onLogin } from '../store/user.actions'
 class _HomePage extends React.Component {
     onStartAsGuest = async () => {
         const guestCreds = {
-            username: "guest123",
+            username: "pandaguest",
             password: "1"
         }
         try {
