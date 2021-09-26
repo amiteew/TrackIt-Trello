@@ -12,6 +12,7 @@ textarea {
         sans-serif;
     // line-height: 1.75;
     color: $fontColor;
+    resize: none;
 }
 
 body {
@@ -36,7 +37,6 @@ h6 {
 
 h2 {
     font-size: rem(20px);
-    line-height: 24px;
 }
 p {
     // margin: 0 0 2rem;

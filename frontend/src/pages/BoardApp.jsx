@@ -48,7 +48,7 @@ class _BoardApp extends React.Component {
     }
 
     onDragEnd = (res) => {
-        const { destination, source, draggableId } = res;
+        const { destination, source, draggableId, type } = res;
         const { board } = this.state;
         console.log('res', res);
         if (!destination) return;
@@ -57,9 +57,28 @@ class _BoardApp extends React.Component {
         const dndStartIdx = source.index;
         const dndEndIdx = destination.index;
         if (dndStart === dndEnd && dndEndIdx === dndStartIdx) return;
-        const list = board.lists.find(list => list.listId === dndStart)
+
+        if(type === 'list'){
+            const list = board.lists.splice(dndStartIdx, 1)
+            board.lists.splice(dndEndIdx, 0, ...list)
+            return
+        }
+        if(dndStart === dndEnd){
+            const list = board.lists.find(list => list.listId === dndStart)
+            const card = list.cards.splice(dndStartIdx, 1);
+            list.cards.splice(dndEndIdx, 0, ...card);
+            return
+        }
+        if(dndStart !== dndEnd){
+            const listStart = board.lists.find(list => list.listId === dndStart)
+            const card = listStart.cards.splice(dndStartIdx, 1);
+            const listEnd = board.lists.find(list => list.listId === dndEnd)
+            listEnd.cards.splice(dndEndIdx, 0, ...card);
+            return
+        }
+
+        this.onUpdateBoard();
         // const card = board.lists.cards.find(card => card.cardId === dndStart)
-        console.log('list dnd', list);
     }
 
     // onPopOver = (position, name, props) => {
