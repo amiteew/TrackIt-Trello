@@ -13,6 +13,7 @@ textarea {
         sans-serif;
     // line-height: 1.75;
     color: $fontColor;
+    resize: none;
 }
 body {
     background-image: url(https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/5470b505916b9719327bb1ee44cbb801/photo-1631539816626-9b5abd9acf9f.jpg);
@@ -35,7 +36,6 @@ h6 {
 
 h2 {
     font-size: rem(20px);
-    line-height: 24px;
 }
 p {
     font-size: rem(14px);

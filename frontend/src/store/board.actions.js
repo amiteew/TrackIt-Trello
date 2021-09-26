@@ -3,10 +3,10 @@ import { boardService } from '../services/board.service'
 import { userService } from '../services/user.service'
 import { utilService } from '../services/util.service.js'
 
-export function loadBoards() {
+export function loadBoards(userId) {
   return async dispatch => {
     try {
-      const boards = await boardService.query()
+      const boards = await boardService.query(userId)
       dispatch({ type: 'SET_BOARDS', boards })
       // socketService.on(SOCKET_EVENT_BOARD_ADDED, (board) =>{
       //   dispatch({ type: 'ADD_BOARD', board })
@@ -18,6 +18,20 @@ export function loadBoards() {
   }
 }
 
+export function loadBoard(boardId) {
+  return async dispatch => {
+    try {
+      const board = await boardService.getBoardById(boardId)
+      dispatch({ type: 'SET_BOARD', board })
+      // socketService.on(SOCKET_EVENT_BOARD_ADDED, (board) =>{
+      //   dispatch({ type: 'ADD_BOARD', board })
+      // })
+
+    } catch (err) {
+      console.log('BoardActions: err in loadBoards', err)
+    }
+  }
+}
 
 export function addBoard(board) {
   return async dispatch => {

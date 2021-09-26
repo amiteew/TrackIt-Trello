@@ -1,12 +1,14 @@
-import React from 'react'
+import { Link } from 'react-router-dom'
 
-export class BoardPreview extends React.Component {
-
-    render() {
-        return (
-            <div className="board-preview" onClick={this.loadBoard}>
-                <h3>{board.boardTitle}</h3>
+export function BoardPreview({ boardInfo }) {
+    console.log('isStarred:', boardInfo.isStarred)
+    return (
+        <Link to={`/boards/${boardInfo.boardId}`}>
+            <div className="board-preview">
+                <h3>{boardInfo.boardTitle}</h3>
+                {/* {boardInfo.isStarred ? 🌟 : ⭐} */}
             </div>
-        )
-    }
+        </Link>
+    )
+
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { onLogin } from '../store/user.actions'
+import { loadBoards } from '../store/board.actions'
 import { Loading } from '../cmp/Loading.jsx'
 import { LogoName } from '../cmp/Header/LogoName'
 
@@ -36,7 +37,8 @@ class _Login extends React.Component {
         try {
             this.setState({ isLoading: true })
             await this.props.onLogin(this.state.credentials);
-            this.props.history.push('/b')
+            // await this.props.loadBoards(this.props.loggedInUser._id)
+            this.props.history.push('/boards')
         } catch (err) {
             this.setState(prevState => ({ ...prevState, isLoading: false, isLoginFailed: true }))
             this.clearForm()
@@ -86,10 +88,13 @@ class _Login extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return {}
+    return {
+        loggedInUser: state.userReducer.loggedInUser
+    }
 }
 const mapDispatchToProps = {
-    onLogin
+    onLogin,
+    loadBoards
 }
 
 

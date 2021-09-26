@@ -4,8 +4,8 @@ import { Droppable } from 'react-beautiful-dnd';
 export function CardList({ cards, list, onUpdateBoard, board, currListIdx }) {
     if (!cards) return <> </>
     return (
-        <section className="cards-list">
-            <Droppable droppableId="card-list" type="card">
+        <section className="all-cards">
+            <Droppable droppableId={list.listId} type="card">
                 {provided => (
                     <div ref={provided.innerRef} {...provided.droppableProps}>
                         {cards.map((card, index) => (
