@@ -10,22 +10,32 @@ export class AddList extends React.Component {
     }
 
     handleChange = (ev) => {
+        if (ev.key === 'Enter') {
+            ev.preventDefault();
+            this.onAddList();
+            return;
+        }
         const value = ev.target.value;
         this.setState({ listTitle: value });
     }
 
-    onAddList = (ev) => {
-        ev.preventDefault();
+    onAddList = () => {
         const listTitle = this.state.listTitle;
+        if (!listTitle) {
+            this.onCloseAdding()
+            return
+        }
         const newList = {
             listId: utilService.makeId(),
-            listTitle
+            listTitle,
+            cards: []
         }
         const { board } = this.props;
         board.lists.push(newList);
         this.setState({ listTitle: "" });
-        const action = "added list"
-        this.props.onUpdateBoard(action, newList, listTitle);
+        const action = `Added list "${listTitle}"`
+        this.props.onUpdateBoard(action);
+        this.onCloseAdding();
     }
 
     toggleOnAdd = () => {
@@ -39,22 +49,25 @@ export class AddList extends React.Component {
     render() {
         const { listTitle, isAdding } = this.state;
         return (
-            <div>
+            <div className="add-list">
                 {isAdding && <form onSubmit={this.onAddList} >
                     <TextareaAutosize
                         value={listTitle}
                         aria-label="empty textarea"
                         placeholder="Enter list title"
-                        style={{ width: 200 }}
+                        style={{ width: 100 }}
                         onChange={this.handleChange}
+                        onKeyPress={this.handleChange}
+                        onBlur={this.onAddList}
+                        maxRows={1}
                         autoFocus
                     />
                     <button>Add List</button>
                     <button onClick={this.onCloseAdding}>X</button>
                 </form>}
-                {!isAdding && <h1 onClick={() => {
+                {!isAdding && <span onClick={() => {
                     this.toggleOnAdd()
-                }}>Add anouther list</h1>}
+                }}>Add another list</span>}
             </div>
         )
     }

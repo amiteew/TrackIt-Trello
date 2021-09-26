@@ -29,16 +29,22 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 0 0 1rem;
+    font-weight: 600;
+    margin: 0 0 rem(8px);
+
 }
 
+h2 {
+    font-size: rem(20px);
+    line-height: 24px;
+}
 p {
-    margin: 0 0 2rem;
+    // margin: 0 0 2rem;
 }
 
 a {
     text-decoration: none;
-    color:inherit;
+    color: inherit;
 }
 
 ::selection {

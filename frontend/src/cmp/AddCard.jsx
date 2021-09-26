@@ -11,39 +11,56 @@ export class _AddCard extends React.Component {
     }
 
     handleChange = (ev) => {
+        if (ev.key === 'Enter') {
+            ev.preventDefault();
+            this.onAddCard();
+            return;
+        }
         const value = ev.target.value;
         this.setState({ cardTitle: value });
     }
 
-    onAddCard = (ev) => {
-        ev.preventDefault();
-        const cardTitle = this.state.cardTitle;
+    onAddCard = () => {
+        let cardTitle = this.state.cardTitle;
+        if (!cardTitle) cardTitle = 'Untitled';
         const newCard = {
             cardId: utilService.makeId(),
-            cardTitle
+            cardTitle,
+            description: "",
+            comments: [],
+            cardMembers: [],
+            cardLabelIds: [],
+            checklists: [],
+            createdAt: new Date(),
+            dueDate: {},
+            attachment: [{
+                src: ''
+            }],
+            cardStyle: {}
         }
         const { list } = this.props;
         list.cards.push(newCard);
         this.setState({ cardTitle: "" })
-        const action = "added card";
+        const action = `Added card "${cardTitle}"`;
         this.props.onUpdateBoard(action, newCard, cardTitle);
+        this.props.onCloseAdding();
     }
 
     render() {
         const { cardTitle } = this.state;
         return (
             <div>
-                <form onSubmit={this.onAddCard} >
-                    <TextareaAutosize
-                        value={cardTitle}
-                        placeholder="Enter a title for this card..."
-                        aria-label="empty textarea"
-                        onChange={this.handleChange}
-                        autoFocus
-                    />
-                    <button>Add card</button>
-                    <button onClick={this.props.onCloseAdding}>X</button>
-                </form>
+                <TextareaAutosize
+                    value={cardTitle}
+                    placeholder="Enter a title for this card..."
+                    aria-label="empty textarea"
+                    onChange={this.handleChange}
+                    onKeyPress={this.handleChange}
+                    onBlur={this.onAddCard}
+                    autoFocus
+                />
+                <button>Add card</button>
+                <button onClick={this.props.onCloseAdding}>X</button>
             </div>
         )
     }

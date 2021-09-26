@@ -57,33 +57,17 @@ export function updateBoard(board, action, card, txt = "") {
 }
 
 function _storeSaveActivity(txt, action, card) {
+  const cardCopy = { ...card } // MAYBE WE DONT NEED IT
   const activity = {
     id: utilService.makeId(),
     txt,
     createdAt: Date.now(),
-    // byMember: userService.getLoggedinUser(),
-    byMember: {
-      "_id": "u101",
-      "fullname": "amit weiner",
-      "imgUrl": ""
-    },
+    byMember: userService.getLoggedinUser(),
     action,
-    card
+    card: { cardId: cardCopy.cardId, cardTitle: cardCopy.cardTitle }
   }
   return activity
 }
 
 
 
-// const activity = {
-  //   "id": makeId(),
-  //   "txt": "Changed Color",
-  //   "createdAt": Date.now(),
-  //   "byMember": userService.getLoggedinUser(),
-  //   "task": task
-  // }
-  // "card": {
-  //     "id": "c101",
-  //     "cardTitle": "Replace Logo"
-  // }
-// board = boardService.saveTask(boardId, payload.groupId, payload.task, activity)

@@ -10,8 +10,49 @@
         },
         "boardStyle": {
             "bgColor": "red"
-            // "background": "red"
         },
+        "covers": [
+            {
+                "id": "srt101",
+                "color": "clr1"
+            },
+            {
+                "id": "adf1s1",
+                "color": "clr2"
+            },
+            {
+                "id": "srtdfdf",
+                "color": "clr3"
+            },
+            {
+                "id": "sdfde",
+                "color": "clr4"
+            },
+            {
+                "id": "3434ff01",
+                "color": "clr5"
+            },
+            {
+                "id": "sr3434v",
+                "color": "clr6"
+            },
+            {
+                "id": "s34vd",
+                "color": "clr7"
+            },
+            {
+                "id": "sr12nb",
+                "color": "clr8"
+            },
+            {
+                "id": "srgty6",
+                "color": "clr9"
+            },
+            {
+                "id": "sr2311",
+                "color": "clr10"
+            }
+        ],
         "labels": [
             {
                 "id": "l101",
@@ -114,7 +155,9 @@
                             }
                         ],
                         "cardStyle": {
-                            "bgColor": "#26de81"
+                            "id": "srt101",
+                            "color": "clr1",
+                            "isCover": false
                         }
                     }
                 ]
@@ -126,7 +169,15 @@
                     {
                         "cardId": "c131",
                         "cardTitle": "create wheel",
-                        "cardLabelIds": []
+                        "description": "",
+                        "comments": [],
+                        "cardMembers": [],
+                        "cardLabelIds": [],
+                        "checklists": [],
+                        "createdAt": "",
+                        "dueDate": {},
+                        "attachment": [],
+                        "cardStyle": {}
                     }
                 ]
             }
@@ -292,7 +343,7 @@
                     "imgUrl": ""
                 },
                 "card": {
-                    "id": "c101",
+                    "cardId": "c101",
                     "cardTitle": "Replace Logo"
                 }
             }

@@ -12,10 +12,14 @@
 
 // Components
 @import "cmps/header";
-@import "cmps/listsList";
 @import "cmps/cardPreview";
 @import "cmps/progressBar";
+@import "cmps/boardApp";
+@import "cmps/boardList";
+@import "cmps/cardList";
+@import "cmps/coverPopover";
 
 // Views (pages)
 @import "pages/home-page";
 @import "pages/login-signup";
+@import "pages/cardDetails";

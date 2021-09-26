@@ -6,10 +6,14 @@ import { BoardList as BoardList } from '../cmp/BoardList.jsx';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { BoardHeader } from '../cmp/BoardHeader.jsx';
 import { AddList } from '../cmp/AddList.jsx';
+import { TemporaryDrawer } from '../cmp/DroweMenu.jsx';
+import { Route, Link } from 'react-router-dom';
+import { CardDetails } from '../pages/CardDetails.jsx';
 
 class _BoardApp extends React.Component {
     state = {
-        board: null
+        board: null,
+        isMenuOpen: false
     }
 
     componentDidMount() {
@@ -33,7 +37,7 @@ class _BoardApp extends React.Component {
 
     onDragEnd = (res) => {
         const { destination, source, draggableId } = res;
-        const {board} = this.state;
+        const { board } = this.state;
         console.log('res', res);
         if (!destination) return;
         const dndStart = source.droppableId;
@@ -48,17 +52,26 @@ class _BoardApp extends React.Component {
 
     }
 
+    toggleMenu = () => {
+        this.setState({ isMenuOpen: !this.state.isMenuOpen })
+    }
+
     render() {
-        const { board } = this.state;
+        const { board, isMenuOpen } = this.state;
         if (!board) return <> </>
         return (
-            <DragDropContext onDragEnd={this.onDragEnd}>
-                <section className="board-app">
-                    <BoardHeader board={board} onUpdateBoard={this.onUpdateBoard} />
-                    <BoardList board={board} lists={board.lists} onUpdateBoard={this.onUpdateBoard} />
-                    <AddList board={board} onUpdateBoard={this.onUpdateBoard} />
-                </section>
-            </DragDropContext>
+            <section className="board-app flex direction-col">
+                <BoardHeader board={board} onUpdateBoard={this.onUpdateBoard} />
+                <Route exact component={CardDetails} path="/boards/:boardId/:listId/:cardId" />
+                <DragDropContext onDragEnd={this.onDragEnd}>
+                    <div className="board-canvas flex">
+                        <BoardList board={board} lists={board.lists} onUpdateBoard={this.onUpdateBoard} className="board" />
+                        <AddList board={board} onUpdateBoard={this.onUpdateBoard} />
+                        {!isMenuOpen && <h1 onClick={this.toggleMenu}> Show menu</h1>}
+                        {isMenuOpen && <TemporaryDrawer toggleMenu={this.toggleMenu} board={board} />}
+                    </div>
+                </DragDropContext >
+            </section >
         )
 
     }
