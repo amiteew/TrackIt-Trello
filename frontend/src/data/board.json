@@ -73,9 +73,9 @@
         "boardMembers": [
             {
                 "_id": "u100",
-                "fullname": "Guest123",
-                "username": "guest123",
-                "imgUrl": "",
+                "fullname": "PandaGuest",
+                "username": "pandaguest",
+                "imgUrl": "https://res.cloudinary.com/dhxwkomwu/image/upload/v1632685060/WhatsApp_Image_2021-09-26_at_22.36.21_fktx98.jpg",
                 "isStarred": false
             },
             {
