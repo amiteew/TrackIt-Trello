@@ -6,36 +6,39 @@ export class QuickCardEditor extends React.Component {
 
     state = {
         cardTitle: "",
-        isEditTitle: false,
-        isModalOpen: false,
     }
 
+    componentDidMount () {
+        const {card} = this.props;
+        this.setState({...this.state, cardTitle: card.cardTitle});
+    }
     handleChange = (ev) => {
+        if (ev.key === 'Enter') {
+            ev.preventDefault();
+            this.props.onSaveCardTitle(this.state.cardTitle);
+            return;
+        }
         const value = ev.target.value;
-        this.setState({ cardTitle: value });
-    }
-
-    toggleModal = () => {
-        this.setState({ isModalOpen: !this.stata.isModalOpen })
+        this.setState({ ...this.state,cardTitle: value });
     }
 
     render() {
         const { cardTitle } = this.state;
+        const { handleClose, onSaveCardTitle } = this.props
         return (
             <div className="window-overlay">
                 <div className="quic-card-editor">
-                    <span onClick={this.toggleModal}>x</span>
+                    <span onClick={handleClose}>x</span>
                     <div quic-card-editor-card>
                         <TextareaAutosize
                             value={cardTitle}
-                            aria-label="empty textarea"
-                            placeholder="Enter list title"
-                            style={{ width: 200 }}
+                            aria-label="card title"
                             onChange={this.handleChange}
-                            maxRows={1}
+                            onKeyPress={this.handleChange}
                             autoFocus
                         />
                     </div>
+                    <button onClick={()=>{onSaveCardTitle(cardTitle)}}>Save</button>
                 </div>
             </div>
         )

@@ -11,10 +11,11 @@
         margin-inline-start: 10px;
         word-break: break-all;
         cursor: pointer;
-        font-size: 1rem;
         padding-top: 7px;
         font-weight: 600;
         flex: 1 1;
+        font-size: rem(14px);
+        color: #172b4d;
     }
 }
 
@@ -32,17 +33,13 @@
 .list-header {
     flex: 0 0 auto;
     min-height: 20px;
-    padding: 10px 8px;
+    padding: 4px 8px;
     position: relative;
 
     .list-header-menu-btn {
         color: #6b778c;
         float: left;
         padding: 6px;
-    }
-
-    button {
-        all: none;
     }
 }
 

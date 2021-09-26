@@ -4,9 +4,9 @@ import { Droppable } from 'react-beautiful-dnd';
 export function BoardList({ lists, onUpdateBoard, board }) {
 
     return (
-        <Droppable droppableId="list flex" type="list">
+        <Droppable droppableId="all-lists" direction="horizontal" type="list">
             {provided => (
-                <div className="list flex" {...provided.droppableProps} ref={provided.innerRef}>
+                <div className="all-lists flex" {...provided.droppableProps} ref={provided.innerRef}>
                     {lists.map((list, index) => (
                         <ListPreview key={list.listId} board={board} list={list} currListIdx={index} onUpdateBoard={onUpdateBoard} />))}
                     {provided.placeholder}

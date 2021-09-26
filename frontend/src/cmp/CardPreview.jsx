@@ -1,26 +1,23 @@
 import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import { MembersList } from './MembersList.jsx';
-import { DueDatePreview } from './DueDatePreview.jsx';
-import { CardLabelsList } from './CardLabelsList.jsx';
 import { CardCheckPreview } from './CardCheckPreview.jsx';
-import { MoveCard } from './MoveCard.jsx';
-import { DynamicPopover } from './DynamicPopover.jsx';
 import { CardCommentPreview } from './CardCommentPreview.jsx';
 import { CardVisibilityPreview } from './CardVisibilityPreview.jsx';
-import { Route, Link } from 'react-router-dom';
-import { CardDetails } from '../pages/CardDetails.jsx';
+import { Link } from 'react-router-dom';
 import { QuickCardEditor } from './QuickCardEditor.jsx';
-
+import { AddToCard } from './AddToCard.jsx';
+import { BsPencil } from "react-icons/bs";
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
 export class CardPreview extends React.Component {
 
     state = {
         cardTitle: "",
         isEditTitle: false,
-        isOpenDetails: false
     }
 
-    toggleEditTitle = () => {
+    toggleEditTitle = (ev) => {
         const { card } = this.props;
         this.setState({ isEditTitle: !this.state.isEditTitle, cardTitle: card.cardTitle })
     }
@@ -30,44 +27,49 @@ export class CardPreview extends React.Component {
         this.setState({ cardTitle: value });
     }
 
-    onSaveCardTitle = (ev) => {
-        ev.preventDefault();
-        this.toggleEditTitle();
-        const { cardTitle } = this.state;
-        if (!cardTitle) cardTitle = 'Untitled';
+    onSaveCardTitle = (cardTitle) => {
+        if (!cardTitle) return;
         const { list, onUpdateBoard, currCardIdx } = this.props;
         list.cards[currCardIdx].cardTitle = cardTitle;
         onUpdateBoard();
+        this.toggleEditTitle();
+    }
+
+    handleClose = (ev) => {
+        ev.stopPropagation();
+        this.setState({ ...this.state, isEditTitle: !this.state.isEditTitle })
     }
 
     render() {
-        const { card, board, currListIdx, currCardIdx, onUpdateBoard, list } = this.props
-        const { cardTitle, isEditTitle, isOpenDetails } = this.state;
+        const { card, board, currListIdx, currCardIdx, list, OnUpdateBoard } = this.props
+        const { isEditTitle } = this.state;
         return (
-            <div className="card-list-preview">
-                <Draggable draggableId={card.cardId} index={currCardIdx}>
-                    {(provided) => (
-                        <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-                            <Link to={`/boards/${board._id}/${list.listId}/${card.cardId}`}>
-                                {/* {card.cardLabelIds && <CardLabelsList cardLabelIds={card.cardLabelIds} boardLabels={board.labels} />} */}
-                                {!isEditTitle && <h1 className="card-preview-title" onClick={this.toggleEditTitle}>{card.cardTitle}</h1>}
-                                {/* {isEditTitle && <QuickCardEditor /> */}
-                                {/* <form onSubmit={this.onSaveCardTitle}>
-                                    <input type="text" value={cardTitle} autoFocus onChange={this.handleChange} />
-                                </form> */}
+            <Draggable draggableId={card.cardId} index={currCardIdx}>
+                {(provided) => (
+                    <div className="card-preview-contenet" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+                        <Link className="flex" to={`/boards/${board._id}/${list.listId}/${card.cardId}`}>
+                            <div>{!isEditTitle && <span className="card-preview-title">{card.cardTitle}</span>}
+                                {isEditTitle &&
+                                    <Modal open={true} onClose={this.handleClose}>
+                                        <Box className="quic-card-edit">
+                                            <QuickCardEditor card={card} onSaveCardTitle={this.onSaveCardTitle} handleClose={this.handleClose} />
+                                        </Box>
+                                        <AddToCard board={board} currListIdx={currListIdx} currCardIdx={currCardIdx} OnUpdateBoard={OnUpdateBoard} />
+                                    </Modal >
+                                }
                                 <div className="card-preview-icon flex">
                                     <span className="badge-icon">{card.cardMembers && <CardVisibilityPreview cardMembers={card.cardMembers} />} </span>
                                     {card.cardMembers && <MembersList members={card.cardMembers} />}
-                                    <span className="badge-icon" title="checklist">{card.checklists.length ? <CardCheckPreview checklists={card.checklists} /> : <> </>}</span>
+                                    <span className="badge-icon flex" title="checklist">{card.checklists.length ? <CardCheckPreview checklists={card.checklists} /> : <> </>}</span>
                                     {card.comments.length ? <CardCommentPreview cardComments={card.comments} /> : <> </>}
                                 </div>
-                            </Link>
-                            {/* <MoveCard /> */}
-                        </div>
-                    )
-                    }
-                </Draggable>
-            </div>
+                            </div>
+                            <button className="quick-card-edit-btn" onClick={this.toggleEditTitle}> <BsPencil /> </button>
+                        </Link>
+                    </div>
+                )
+                }
+            </Draggable>
 
         )
     }

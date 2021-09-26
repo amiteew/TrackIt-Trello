@@ -32,6 +32,18 @@ class _BoardApp extends React.Component {
         //     })
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        // if (JSON.stringify(prevState.board) !== JSON.stringify(this.state.board)) {
+        //     console.log('changed!!!!', prevState)
+        //     const { boardId } = this.props.match.params
+        //     boardService.getBoardById(boardId)
+        //         .then((board) => {
+        //             this.setState({ board })
+        //         })
+        // }
+    }
+
+
     onUpdateBoard = (action, card, txt) => {
         const newBoard = { ...this.state.board };
         this.props.updateBoard(newBoard, action, card, txt);
@@ -39,7 +51,7 @@ class _BoardApp extends React.Component {
     }
 
     onDragEnd = (res) => {
-        const { destination, source, draggableId } = res;
+        const { destination, source, draggableId, type } = res;
         const { board } = this.state;
         console.log('res', res);
         if (!destination) return;
@@ -48,12 +60,37 @@ class _BoardApp extends React.Component {
         const dndStartIdx = source.index;
         const dndEndIdx = destination.index;
         if (dndStart === dndEnd && dndEndIdx === dndStartIdx) return;
-        const list = board.lists.find(list => list.listId === dndStart)
+
+        if(type === 'list'){
+            const list = board.lists.splice(dndStartIdx, 1)
+            board.lists.splice(dndEndIdx, 0, ...list)
+            return
+        }
+        if(dndStart === dndEnd){
+            const list = board.lists.find(list => list.listId === dndStart)
+            const card = list.cards.splice(dndStartIdx, 1);
+            list.cards.splice(dndEndIdx, 0, ...card);
+            return
+        }
+        if(dndStart !== dndEnd){
+            const listStart = board.lists.find(list => list.listId === dndStart)
+            const card = listStart.cards.splice(dndStartIdx, 1);
+            const listEnd = board.lists.find(list => list.listId === dndEnd)
+            listEnd.cards.splice(dndEndIdx, 0, ...card);
+            return
+        }
+
+        this.onUpdateBoard();
         // const card = board.lists.cards.find(card => card.cardId === dndStart)
-        console.log('list dnd', list);
-
-
     }
+
+    // onPopOver = (position, name, props) => {
+    //     <DynamicPopover type={'labels'} title={'Labels'} titleModal={'Labels'}
+    //         board={board}
+    //         currListIdx={currListIdx}
+    //         currCardIdx={currCardIdx}
+    //     />
+    // }
 
     toggleMenu = () => {
         this.setState({ isMenuOpen: !this.state.isMenuOpen })
@@ -66,14 +103,14 @@ class _BoardApp extends React.Component {
             <section className="board-app flex direction-col">
                 <BoardHeader board={board} onUpdateBoard={this.onUpdateBoard} />
                 <Route exact component={CardDetails} path="/boards/:boardId/:listId/:cardId" />
-                <DragDropContext onDragEnd={this.onDragEnd}>
-                    <div className="board-canvas flex">
+                <div className="board-canvas flex">
+                    <DragDropContext onDragEnd={this.onDragEnd}>
                         <BoardList board={board} lists={board.lists} onUpdateBoard={this.onUpdateBoard} className="board" />
-                        <AddList board={board} onUpdateBoard={this.onUpdateBoard} />
                         {!isMenuOpen && <h1 onClick={this.toggleMenu}> Show menu</h1>}
                         {isMenuOpen && <TemporaryDrawer toggleMenu={this.toggleMenu} board={board} />}
-                    </div>
-                </DragDropContext >
+                    </DragDropContext >
+                    <AddList board={board} onUpdateBoard={this.onUpdateBoard} />
+                </div>
             </section >
         )
 
