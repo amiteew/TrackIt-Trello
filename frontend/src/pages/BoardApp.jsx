@@ -29,6 +29,18 @@ class _BoardApp extends React.Component {
             })
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        // if (JSON.stringify(prevState.board) !== JSON.stringify(this.state.board)) {
+        //     console.log('changed!!!!', prevState)
+        //     const { boardId } = this.props.match.params
+        //     boardService.getBoardById(boardId)
+        //         .then((board) => {
+        //             this.setState({ board })
+        //         })
+        // }
+    }
+
+
     onUpdateBoard = (action, card, txt) => {
         const newBoard = { ...this.state.board };
         this.props.updateBoard(newBoard, action, card, txt);
