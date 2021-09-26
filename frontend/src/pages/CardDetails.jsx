@@ -6,7 +6,7 @@ import { Loading } from '../cmp/Loading';
 import { AddToCard } from '../cmp/AddToCard';
 import { MembersList } from '../cmp/MembersList'
 import { CardLabelsList } from '../cmp/CardLabelsList';
-import { CardActivities } from '../cmp/CardActivities'
+import { CardActivities } from '../cmp/CardDetails/CardActivities'
 import { DueDatePreview } from '../cmp/DueDatePreview';
 import { CardTitle } from '../cmp/CardTitle';
 import { CardDescription } from '../cmp/CardDescription.jsx';
@@ -113,6 +113,11 @@ class _CardDetails extends React.Component {
                                 currCardIdx={currCardIdx}
                                 OnUpdateBoard={this.OnUpdateBoard} />
 
+                            <CardActivities board={board}
+                                currListIdx={currListIdx}
+                                currCardIdx={currCardIdx}
+                                OnUpdateBoard={this.OnUpdateBoard} />
+
                             <ChecklistListApp board={board}
                                 currListIdx={currListIdx}
                                 currCardIdx={currCardIdx}
@@ -122,10 +127,7 @@ class _CardDetails extends React.Component {
                                 currListIdx={currListIdx}
                                 currCardIdx={currCardIdx} />
 
-                            <CardActivities board={board}
-                                currListIdx={currListIdx}
-                                currCardIdx={currCardIdx}
-                                OnUpdateBoard={this.OnUpdateBoard} />
+
                         </div>
 
                     </div >

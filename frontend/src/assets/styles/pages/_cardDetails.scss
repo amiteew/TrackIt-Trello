@@ -1,13 +1,27 @@
 .card-details-container {
-    display: grid;
-    grid-template-columns:
-        1fr
-        780px
-        1fr;
-    grid-template-rows:
-        70px
-        1fr
-        50px;
+    // display: grid;
+    // grid-template-columns:
+    //     1fr
+    //     780px
+    //     1fr;
+    // grid-template-rows:
+    //     70px
+    //     1fr
+    //     50px;
+    //
+    margin: 0 auto;
+    position: absolute !important;
+    color: #42526e;
+    background-color: #f4f5f7;
+    border-radius: 3px;
+    max-width: 768px;
+    position: absolute;
+    z-index: 4;
+    top: 48px;
+    right: 0;
+    left: 0;
+    //
+
     .card-details {
         margin-top: 50px;
         margin-bottom: 50px;

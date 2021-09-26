@@ -52,13 +52,16 @@ export class CardDescription extends React.Component {
                             name='description'
                             className="text-area-auto desc-edit"
                             type='text'
-                            placeholder='Enter title'
+                            placeholder='Add a more detailed description...'
                             onChange={this.handleChange}
                             value={currCard.description}
                             onBlur={this.onSaveDescription}
                             autoFocus
                         />
-                        {isEditing && <button onClick={this.onSaveDescription}>Save</button>}
+                        <div >
+                            {isEditing && <button className="save-desc" onClick={this.onSaveDescription}>Save</button>}
+                            {isEditing && <button className="discard-desc" onClick={this.onToggleEditing}>X</button>}
+                        </div>
                     </form>
                 </div>
             }
