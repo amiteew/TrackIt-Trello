@@ -1,11 +1,16 @@
 const initialState = {
   boards: [],
+  board: null
 }
 
 export function boardReducer(state = initialState, action) {
   switch (action.type) {
     case 'SET_BOARDS':
       return { ...state, boards: action.boards }
+    // case 'SET_BOARD':
+    //   return { ...state, boards: action.boards }
+
+    // AAD  'SET BOARD'
     case 'ADD_BOARD':
       return { ...state, boards: [...state.boards, action.board] }
     case 'REMOVE_BOARD':
