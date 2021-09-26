@@ -72,7 +72,7 @@ class _CardDetails extends React.Component {
     }
 
     handleClose = () => {
-        const {board} = this.state;
+        const { board } = this.state;
         this.props.history.push(`/boards/${board._id}`)
     }
 
@@ -92,7 +92,7 @@ class _CardDetails extends React.Component {
                         {
                             currCard.cardMembers ? <div>
                                 <h3>Members</h3>
-                                <MembersList members={currCard.cardMembers} /> 
+                                <MembersList members={currCard.cardMembers} />
                             </div> : ''
                         }
 

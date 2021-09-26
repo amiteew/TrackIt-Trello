@@ -1,5 +1,5 @@
 import React from 'react';
-
+import TextareaAutosize from '@mui/material/TextareaAutosize';
 export class AddNewTask extends React.Component {
     state = {
         txt: ''
@@ -27,11 +27,12 @@ export class AddNewTask extends React.Component {
         const { txt } = this.state
         return (<>
             <div>
-                <textarea
+                <TextareaAutosize
                     type='text'
                     value={txt}
                     onChange={this.handleChange}
                     onKeyPress={this.handleChange}
+                    onBlur={this.onDiscardChanges}
                 />
                 <button onClick={this.onAddTask}>Add</button>
                 <button onClick={this.onDiscardChanges}>X</button>

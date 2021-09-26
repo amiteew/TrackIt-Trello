@@ -4,6 +4,7 @@ import { CommentsList } from './CommentsList';
 import { DebounceInput } from 'react-debounce-input';
 import { ActivityList } from '../cmp/ActivityList';
 import { utilService } from '../services/util.service';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
 export class CardActivities extends React.Component {
     state = {
         board: null,
@@ -73,7 +74,7 @@ export class CardActivities extends React.Component {
                 <h3>Activity</h3>
 
                 <div onClick={this.onToggleComment}>
-                    <textarea
+                    <TextareaAutosize
                         name='description'
                         type='text'
                         placeholder='Write a comment...'

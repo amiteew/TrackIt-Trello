@@ -7,6 +7,8 @@ import { MembersPopover } from './DynamicPopover/MembersPopover';
 import { LabelsPopover } from './DynamicPopover/LabelsPopover';
 import { DatesPopover } from './DynamicPopover/DatesPopover';
 import { ChecklistPopover } from './DynamicPopover/ChecklistPopover';
+import { CoverPopover } from './DynamicPopover/CoverPopover';
+
 export class DynamicPopover extends React.Component {
     state = {
         anchorEl: null,
@@ -36,6 +38,8 @@ export class DynamicPopover extends React.Component {
                     return <LabelsPopover {...props} />
                 case 'dates':
                     return <DatesPopover {...props} />
+                case 'cover':
+                    return <CoverPopover {...props} />
                 case 'checklist':
                     return <ChecklistPopover {...props} />
                 default:
@@ -46,7 +50,7 @@ export class DynamicPopover extends React.Component {
 
         return (
             <React.Fragment>
-                <button aria-describedby={id} variant="contained" onClick={this.handleClick}>
+                <button onClick={this.handleClick}>
                     {title}
                 </button>
                 <Popover
