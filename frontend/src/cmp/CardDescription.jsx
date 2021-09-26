@@ -1,6 +1,8 @@
 import React from 'react';
 import { Loading } from './Loading';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
+import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
+
 export class CardDescription extends React.Component {
     state = {
         board: null,
@@ -39,13 +41,16 @@ export class CardDescription extends React.Component {
         const { board, currListIdx, currCardIdx, isEditing } = this.state
         if (!board || currCardIdx === null || currListIdx === null) return <Loading />
         const currCard = board.lists[currListIdx].cards[currCardIdx]
-        return (<div >
-            <h3>Description</h3>
+        return (<div className="card-description" >
+            <div className="flex direction-row">
+                <FormatAlignLeftIcon className="card-details-icon" /> <h3>Description</h3>
+            </div>
             {isEditing &&
                 <div onClick={this.onToggleEditing}>
                     <form onSubmit={this.onSaveDescription} >
                         <TextareaAutosize
                             name='description'
+                            className="text-area-auto desc-edit"
                             type='text'
                             placeholder='Enter title'
                             onChange={this.handleChange}
@@ -57,7 +62,13 @@ export class CardDescription extends React.Component {
                     </form>
                 </div>
             }
-            {!isEditing && <p onClick={this.onToggleEditing}>{currCard.description}</p>}
+            {!isEditing && currCard.description && <div className="desc-txt pointer" onClick={this.onToggleEditing}>
+                <p >{currCard.description}</p>
+            </div>}
+            {!isEditing && !currCard.description
+                && <div className="desc-txt-placeholder hover" onClick={this.onToggleEditing}>
+                    <p>Add a more detailed description...</p>
+                </div>}
         </div>
         )
     }

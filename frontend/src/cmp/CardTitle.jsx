@@ -1,6 +1,7 @@
 import React from 'react';
 import { Loading } from './Loading';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
+import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
 export class CardTitle extends React.Component {
     state = {
         board: null,
@@ -45,17 +46,22 @@ export class CardTitle extends React.Component {
         if (!board || currCardIdx === null || currListIdx === null) return <Loading />
         const currCard = board.lists[currListIdx].cards[currCardIdx]
         return (<>
-            {isEdit && <TextareaAutosize
-                name='cardTitle'
-                type='text'
-                placeholder='Enter title'
-                onChange={this.handleChange}
-                onKeyPress={this.handleChange}
-                value={currCard.cardTitle}
-                onBlur={this.onSaveTitle}
-                autoFocus
-            />}
-            {!isEdit && <h2 onClick={this.onToggleEdit}>{currCard.cardTitle}</h2>}
+            <div className="card-details-title flex direction-row">
+
+                <CreditCardOutlinedIcon className="card-details-icon" />
+                {isEdit && <TextareaAutosize
+                    className="text-area-auto"
+                    name='cardTitle'
+                    type='text'
+                    placeholder='Enter title'
+                    onChange={this.handleChange}
+                    onKeyPress={this.handleChange}
+                    value={currCard.cardTitle}
+                    onBlur={this.onSaveTitle}
+                    autoFocus
+                />}
+                {!isEdit && <h2 onClick={this.onToggleEdit}>{currCard.cardTitle}</h2>}
+            </div>
         </>
         )
     }

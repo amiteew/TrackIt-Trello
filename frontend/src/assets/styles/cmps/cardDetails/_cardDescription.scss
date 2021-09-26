@@ -1,0 +1,23 @@
+.card-description {
+    .desc-txt-placeholder {
+        width: 500px;
+        background-color: $bgcColor;
+        height: 60px;
+        p {
+            padding: 1rem;
+        }
+    }
+    .desc-txt {
+        width: 500px;
+        height: 60px;
+        p {
+            padding: 1rem;
+        }
+    }
+    .desc-edit {
+        margin-top: 20px;
+        width: 500px;
+        padding-bottom: 70px;
+        font-size: rem(14px);
+    }
+}

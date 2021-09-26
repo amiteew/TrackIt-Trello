@@ -1,9 +1,30 @@
-.card-details {
-    background-color: $bgcColor;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400;
-    border: 2px solid #000;
+.card-details-container {
+    display: grid;
+    grid-template-columns:
+        1fr
+        780px
+        1fr;
+    grid-template-rows:
+        70px
+        1fr
+        50px;
+    .card-details {
+        margin-top: 50px;
+        margin-bottom: 50px;
+        background-color: $cardBgcColor;
+
+        .card-details-content {
+            padding: 25px;
+        }
+    }
+    .card-details-icon {
+        margin-right: 15px;
+    }
+    h3 {
+        font-size: 1rem;
+    }
+    .hover:hover {
+        background-color: $cardHoverColor;
+        cursor: pointer;
+    }
 }

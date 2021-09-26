@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import { loadBoards, removeBoard, addBoard, updateBoard } from '../../store/board.actions.js';
 import DoneIcon from '@mui/icons-material/Done';
 import TextField from '@mui/material/TextField';
-import StaticDatePicker from '@mui/lab/StaticDatePicker';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
-import DatePicker from '@mui/lab/DatePicker';
+// import StaticDatePicker from '@mui/lab/StaticDatePicker';
+// import LocalizationProvider from '@mui/lab/LocalizationProvider';
+// import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+// import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
+// import DatePicker from '@mui/lab/DatePicker';
 // import MomentUtils from '@date-io/moment';
 
 
@@ -52,7 +52,7 @@ class _DatesPopover extends React.Component {
         if (!board || currCardIdx === null || currListIdx === null) return <></>
         const currCard = board.lists[currListIdx].cards[currCardIdx]
         return (
-        
+
             // <LocalizationProvider dateAdapter={AdapterDateFns}>
             //     <section className="label-popover">
             //         <h3>Dates</h3>
