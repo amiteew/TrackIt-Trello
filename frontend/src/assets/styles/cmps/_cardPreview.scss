@@ -43,6 +43,18 @@
 
 }
 
+.card-list-preview {
+
+    .quick-card-edit-btn {
+        display: none;  
+    }
+    &:hover {
+        .quick-card-edit-btn {
+            display: block;        
+        }
+    }
+}
+
 .badge-icon {
     color: #5e6c84;
     display: inline-block;
@@ -56,9 +68,10 @@
     text-overflow: ellipsis;
 }
 
-.card-icon ::before{
-    vertical-align: top;    
+.card-icon ::before {
+    vertical-align: top;
 }
+
 .card-txt {
     font-size: rem(12px);
     padding: 0 rem(4px) 0 rem(2px);

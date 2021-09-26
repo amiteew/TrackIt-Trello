@@ -5,18 +5,6 @@ import { Login } from "./pages/Login";
 import { UserBoards } from "./pages/UserBoards";
 
 const routes = [
-    // {
-    //     path: '/b/cardDetails/:cardId/',
-    //     component: CardDetails,
-    // },
-    // {
-    //     path: '/boards/:boardId/:listId/:cardId/',
-    //     component: CardDetails,
-    // },
-    // {
-    //     path: '/b',
-    //     component: BoardApp,
-    // },
     {
         path: '/boards/:boardId',
         component: BoardApp,

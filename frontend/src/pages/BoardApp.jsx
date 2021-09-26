@@ -48,9 +48,15 @@ class _BoardApp extends React.Component {
         const list = board.lists.find(list => list.listId === dndStart)
         // const card = board.lists.cards.find(card => card.cardId === dndStart)
         console.log('list dnd', list);
-
-
     }
+
+    // onPopOver = (position, name, props) => {
+    //     <DynamicPopover type={'labels'} title={'Labels'} titleModal={'Labels'}
+    //         board={board}
+    //         currListIdx={currListIdx}
+    //         currCardIdx={currCardIdx}
+    //     />
+    // }
 
     toggleMenu = () => {
         this.setState({ isMenuOpen: !this.state.isMenuOpen })
@@ -63,14 +69,14 @@ class _BoardApp extends React.Component {
             <section className="board-app flex direction-col">
                 <BoardHeader board={board} onUpdateBoard={this.onUpdateBoard} />
                 <Route exact component={CardDetails} path="/boards/:boardId/:listId/:cardId" />
-                <DragDropContext onDragEnd={this.onDragEnd}>
-                    <div className="board-canvas flex">
+                <div className="board-canvas flex">
+                    <DragDropContext onDragEnd={this.onDragEnd}>
                         <BoardList board={board} lists={board.lists} onUpdateBoard={this.onUpdateBoard} className="board" />
-                        <AddList board={board} onUpdateBoard={this.onUpdateBoard} />
                         {!isMenuOpen && <h1 onClick={this.toggleMenu}> Show menu</h1>}
                         {isMenuOpen && <TemporaryDrawer toggleMenu={this.toggleMenu} board={board} />}
-                    </div>
-                </DragDropContext >
+                    </DragDropContext >
+                    <AddList board={board} onUpdateBoard={this.onUpdateBoard} />
+                </div>
             </section >
         )
 
