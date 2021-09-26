@@ -55,6 +55,15 @@
     list-style-type: none;
 }
 
+.card-details-icon {
+    width: 25px;
+    height: 25px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
 // COLORS:
 .done {
     background-color: $clr1;

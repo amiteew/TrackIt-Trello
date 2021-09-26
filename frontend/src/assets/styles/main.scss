@@ -18,6 +18,10 @@
 @import "cmps/boardList";
 @import "cmps/coverPopover";
 
+//CARD DETAILS:
+@import "cmps/cardDetails/cardTitle";
+@import "cmps/cardDetails/cardDescription";
+
 // Views (pages)
 @import "pages/home-page";
 @import "pages/login-signup";
