@@ -11,7 +11,7 @@ class _HomePage extends React.Component {
         }
         try {
             await this.props.onLogin(guestCreds);
-            this.props.history.push('/boards/b101')
+            this.props.history.push('/boards')
         } catch (err) {
             console.log('error login as guest');
         }

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 
-export function BoardPreview({ boardInfo, isStarred }) {
+export function BoardPreview({ boardInfo }) {
+    console.log('isStarred:', boardInfo.isStarred)
     return (
         <Link to={`/boards/${boardInfo.boardId}`}>
             <div className="board-preview">

@@ -13,7 +13,27 @@ export const boardService = {
   save
 }
 
-function query() {
+function query(userId) {
+  // this function saves the whole DB locally, but sends only the user boards to the store
+  // when we move to backend the server will filter and return only the user boards 
+  // the frontend query will simply return it to the store...
+  return storageService.query(BOARD_KEY)
+  .then((boards) => {
+    if (!boards.length) {
+      boards = require('../data/board.json');
+      storageService.save(BOARD_KEY, boards)
+    }
+    const userBoards = boards.filter(board =>
+      (!board.createdBy || board.boardMembers.some(member => member._id === userId)) //change in json to "id"?
+      )
+      // console.log('usrBrds:', userBoards);
+      return userBoards
+    })
+    // return httpService.get(`boards/${userId}`)
+    // return httpService.get(`board${queryStr}`)
+}
+
+function query2() {
   // return httpService.get(`board${queryStr}`)
   return storageService.query(BOARD_KEY)
     .then((boards) => {
@@ -21,7 +41,7 @@ function query() {
         boards = require('../data/board.json');
         storageService.save(BOARD_KEY, boards)
       }
-      return boards 
+      return boards
     })
 }
 
@@ -48,7 +68,7 @@ function getBoardById(boardId) {
 
 function save(board) {
   if (board._id) {
-    console.log('board in sae', board);
+    console.log('board in service.save', board);
     return storageService.put(BOARD_KEY, board)
   } else {
     // board.owner = userService.getLoggedinUser()

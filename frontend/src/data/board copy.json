@@ -9,7 +9,7 @@
             "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg"
         },
         "boardStyle": {
-            "bgImg": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/5470b505916b9719327bb1ee44cbb801/photo-1631539816626-9b5abd9acf9f.jpg"
+            "bgColor": "red"
         },
         "covers": [
             {
@@ -75,29 +75,25 @@
                 "_id": "u100",
                 "fullname": "Guest123",
                 "username": "guest123",
-                "imgUrl": "",
-                "isStarred": false
+                "imgUrl": ""
             },
             {
                 "_id": "u101",
                 "fullname": "Shany pollack",
                 "username": "looply@gmail.com",
-                "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632417771/shanypo_nzjhlq.jpg",
-                "isStarred": true
+                "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632417771/shanypo_nzjhlq.jpg"
             },
             {
                 "_id": "u102",
                 "fullname": "Amitee Weiner",
                 "username": "looply@gmail.com",
-                "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg",
-                "isStarred": true
+                "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg"
             },
             {
                 "_id": "u103",
                 "fullname": "Looply Uzan",
                 "username": "looply@gmail.com",
-                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
-                "isStarred": false
+                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
             }
         ],
         "isStarred": false,
@@ -220,7 +216,7 @@
             "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg"
         },
         "boardStyle": {
-            "bgColor": "#FF78CB"
+            "bgImg": "https://www.freecodecamp.org/news/content/images/size/w2000/2021/06/w-qjCHPZbeXCQ-unsplash.jpg"
         },
         "labels": [
             {
@@ -244,22 +240,19 @@
                 "_id": "u101",
                 "fullname": "Shany pollack",
                 "username": "looply@gmail.com",
-                "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632417771/shanypo_nzjhlq.jpg",
-                "isStarred": false
+                "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632417771/shanypo_nzjhlq.jpg"
             },
             {
                 "_id": "u102",
                 "fullname": "Amitee Weiner",
                 "username": "looply@gmail.com",
-                "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg",
-                "isStarred": false
+                "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg"
             },
             {
                 "_id": "u103",
                 "fullname": "Looply Uzan",
                 "username": "looply@gmail.com",
-                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
-                "isStarred": false
+                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
             }
         ],
         "isStarred": false,
@@ -361,84 +354,5 @@
                 }
             }
         ]
-    },
-    {
-        "_id": "b103",
-        "boardTitle": "Template1",
-        "createdAt": 1589983468418,
-        "createdBy": null,
-        "boardStyle": {
-            "bgImg": "https://www.freecodecamp.org/news/content/images/size/w2000/2021/06/w-qjCHPZbeXCQ-unsplash.jpg"
-        },
-        "labels": [
-            {
-                "id": "l101",
-                "title": "",
-                "color": "clr1"
-            },
-            {
-                "id": "l102",
-                "title": "",
-                "color": "clr2"
-            },
-            {
-                "id": "l103",
-                "title": "",
-                "color": "clr3"
-            },
-            {
-                "id": "l104",
-                "title": "",
-                "color": "clr4"
-            },
-            {
-                "id": "l105",
-                "title": "",
-                "color": "clr5"
-            }
-        ],
-        "boardMembers": [],
-        "isStarred": false,
-        "lists": [
-            {
-                "listId": "g101",
-                "listTitle": "Template List1",
-                "cards": [
-                    {
-                        "cardId": "c123",
-                        "cardTitle": "Template Card1",
-                        "description": "",
-                        "comments": [],
-                        "cardMembers": [],
-                        "cardLabelIds": [],
-                        "checklists": [],
-                        "createdAt": 1590999730348,
-                        "dueDate": null,
-                        "attachment": [],
-                        "cardStyle": null
-                    }
-                ]
-            },
-            {
-                "listId": "g102",
-                "listTitle": "Template List2",
-                "cards": [
-                    {
-                        "cardId": "c124",
-                        "cardTitle": "Template Card2",
-                        "description": "Some description",
-                        "comments": [],
-                        "cardMembers": [],
-                        "cardLabelIds": [],
-                        "checklists": [],
-                        "createdAt": 1590999730348,
-                        "dueDate": null,
-                        "attachment": [],
-                        "cardStyle": null
-                    }
-                ]
-            }
-        ],
-        "activities": []
     }
 ]

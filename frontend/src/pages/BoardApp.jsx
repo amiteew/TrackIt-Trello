@@ -1,14 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { loadBoards, removeBoard, addBoard, updateBoard, } from '../store/board.actions.js';
-import { boardService } from '../services/board.service.js';
-import { BoardList as BoardList } from '../cmp/BoardList.jsx';
+import { loadBoard, removeBoard, updateBoard, } from '../store/board.actions.js';
+// import { boardService } from '../services/board.service.js';
+import { BoardList } from '../cmp/BoardList.jsx';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { BoardHeader } from '../cmp/BoardHeader.jsx';
 import { AddList } from '../cmp/AddList.jsx';
 import { TemporaryDrawer } from '../cmp/DroweMenu.jsx';
 import { Route, Link } from 'react-router-dom';
 import { CardDetails } from '../pages/CardDetails.jsx';
+import { Loading } from '../cmp/Loading.jsx';
 
 class _BoardApp extends React.Component {
     state = {
@@ -16,23 +17,25 @@ class _BoardApp extends React.Component {
         isMenuOpen: false
     }
 
-    componentDidMount() {
-        if (!this.props.loggedInUser) {
+    async componentDidMount() {
+        const { loggedInUser } = this.props
+        if (!loggedInUser) {
             this.props.history.push('/')
         }
 
         const { boardId } = this.props.match.params
-        this.props.loadBoards();
-        boardService.getBoardById(boardId)
-            .then((board) => {
-                this.setState({ board })
-            })
+        await this.props.loadBoard(boardId);
+        this.setState({ board: this.props.board })
+        // boardService.getBoardById(boardId)
+        //     .then((board) => {
+        //         this.setState({ board })
+        //     })
     }
 
     onUpdateBoard = (action, card, txt) => {
         const newBoard = { ...this.state.board };
         this.props.updateBoard(newBoard, action, card, txt);
-        this.props.loadBoards()
+        // this.props.loadBoards()
     }
 
     onDragEnd = (res) => {
@@ -58,7 +61,7 @@ class _BoardApp extends React.Component {
 
     render() {
         const { board, isMenuOpen } = this.state;
-        if (!board) return <> </>
+        if (!board) return <Loading />
         return (
             <section className="board-app flex direction-col">
                 <BoardHeader board={board} onUpdateBoard={this.onUpdateBoard} />
@@ -80,14 +83,13 @@ class _BoardApp extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        boards: state.boardReducer.boards,
+        board: state.boardReducer.board,
         loggedInUser: state.userReducer.loggedInUser
     }
 }
 const mapDispatchToProps = {
     removeBoard,
-    addBoard,
-    loadBoards,
+    loadBoard,
     updateBoard
 }
 

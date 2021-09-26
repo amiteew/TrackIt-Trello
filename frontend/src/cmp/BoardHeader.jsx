@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from 'react-redux'
-import { updateUser } from "../store/user.actions"
+import { updateBoard } from "../store/board.actions"
 import { MembersListBoard } from "./MembersListBoard"
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
@@ -8,11 +8,11 @@ class _BoardHeader extends React.Component {
   state = {
     isEditTitle: false,
     title: '',
-    isStarred :null
+    isStarred: false
   }
 
   componentDidMount() {
-    const isStarred = this.props.loggedInUser.memberInBoards.find(board => this.props.board._id === board.boardId).isStarred
+    const isStarred = true
     this.setState({ title: this.props.board.boardTitle, isStarred })
   }
 
@@ -65,7 +65,7 @@ class _BoardHeader extends React.Component {
             </form>
           }
           <button onClick={this.onToggleStarBoard}>
-            {board.isStarred ? <AiFillStar /> : <AiOutlineStar />}
+            {isStarred ? <AiFillStar /> : <AiOutlineStar />}
           </button>
           <div className="board-members">
             <MembersListBoard members={board.boardMembers} />
@@ -81,12 +81,13 @@ class _BoardHeader extends React.Component {
 
 function mapStateToProps(state) {
   return {
+    boards: state.boardReducer.boards,
     loggedInUser: state.userReducer.loggedInUser
   }
 }
 
 const mapDispatchToProps = {
-  updateUser
+  updateBoard
 }
 
 export const BoardHeader = connect(mapStateToProps, mapDispatchToProps)(_BoardHeader)

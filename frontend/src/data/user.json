@@ -3,14 +3,7 @@
         "_id": "u100",
         "fullname": "Guest123",
         "username": "guest123",
-        "password": "1",
-        "memberInBoards": [
-            {
-                "boardId": "b101",
-                "boardTitle": "final project",
-                "isStarred": false
-            }
-        ]
+        "password": "1"
     },
     {
         "_id": "u101",
