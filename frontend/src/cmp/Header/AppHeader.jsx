@@ -11,25 +11,20 @@ import { LogoName } from './LogoName';
 class _AppHeader extends React.Component {
     render() {
         const user = this.props.loggedInUser;
+        if (!user) return (<></>)
         return (
-            <>
-                {user ?
-                    <header className="main-header">
-                        <nav className="nav-bar flex space-between" >
-                            <div className="main-nav-links flex align-center">
-                                <LogoName isLoggedIn={true} />
-                                <NavLink to="/boards">Boards ➤</NavLink>
-                                <NavLink to="/b">Create</NavLink>
-                            </div>
-                            <div className="user-section">
-                                <Avatar alt={user.initials} src={user.imgUrl} />
-                            </div>
-                        </nav >
-                    </header >
-                    :
-                    <HomeHeader />
-                }
-            </>
+            <header className="main-header">
+                <nav className="nav-bar flex space-between" >
+                    <div className="main-nav-links flex align-center">
+                        <LogoName isLoggedIn={true} />
+                        <NavLink to="/boards">Boards ➤</NavLink>
+                        <NavLink to="/b">Create</NavLink>
+                    </div>
+                    <div className="user-section">
+                        <Avatar alt={user.initials} src={user.imgUrl} style={{ height: '2rem', width: '2rem' }} />
+                    </div>
+                </nav >
+            </header >
         )
     }
 }

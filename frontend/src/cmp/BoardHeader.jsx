@@ -1,35 +1,36 @@
 import React from "react"
-import { MembersList } from "./MembersList"
+import { connect } from 'react-redux'
+import { updateUser } from "../store/user.actions"
+import { MembersListBoard } from "./MembersListBoard"
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
-export class BoardHeader extends React.Component {
+class _BoardHeader extends React.Component {
   state = {
     isEditTitle: false,
-    title: ''
+    title: '',
+    isStarred :null
   }
 
   componentDidMount() {
-    this.setState({ title: this.props.board.boardTitle })
-    // this.props.loadUsers();
-    // this.props.loadBoard();
+    const isStarred = this.props.loggedInUser.memberInBoards.find(board => this.props.board._id === board.boardId).isStarred
+    this.setState({ title: this.props.board.boardTitle, isStarred })
   }
 
   handleChange = (ev) => {
     const value = ev.target.value
     this.setState({ title: value })
-    // this.setState((prevState) => ({ ...prevState, title: value }))
   }
 
   toggleChangeTitle = () => {
     const { isEditTitle } = this.state
     this.setState({ isEditTitle: !isEditTitle })
-    // this.setState((prevState) => ({ ...prevState, isEditTitle: !isEditTitle }))
   }
 
   saveBoardTitle = (ev) => {
     ev.preventDefault()
     let { title } = this.state
     const { board, onUpdateBoard } = this.props
-    if (!title) title='Untitled'
+    if (!title) title = 'Untitled'
     board.boardTitle = title
     onUpdateBoard(board)
     this.toggleChangeTitle()
@@ -37,36 +38,55 @@ export class BoardHeader extends React.Component {
 
   onToggleStarBoard = () => {
     const { board, onUpdateBoard } = this.props
-    const isStarred = board.isStarred
-    board.isStarred = !isStarred
-    onUpdateBoard(board)
+    // const isStarred = this.state
+    // board.isStarred = !isStarred
+    // onUpdateBoard(board)
   }
 
   render() {
     const { board } = this.props
-    const { title, isEditTitle } = this.state
+    const { title, isEditTitle, isStarred } = this.state
 
     return (
-      <div className="board-header flex">
-        {!isEditTitle && <h1 onClick={this.toggleChangeTitle}>{board.boardTitle}</h1>}
-        {isEditTitle &&
-          <form onSubmit={this.saveBoardTitle}>
-            <input
-              autoFocus
-              name="boardTitle"
-              type="text"
-              placeholder="Enter Title"
-              value={title}
-              onChange={this.handleChange}
-              onBlur={this.saveBoardTitle}
-            />
-          </form>
-        }
-        <button onClick={this.onToggleStarBoard}>{board.isStarred ? '🌟' : '⭐'}</button>
-        <div className="board-members">
-          <MembersList members={board.boardMembers}/>
+      <div className="board-header flex space-between">
+        <div className="header-left flex">
+          {!isEditTitle && <h1 onClick={this.toggleChangeTitle}>{board.boardTitle}</h1>}
+          {isEditTitle &&
+            <form onSubmit={this.saveBoardTitle}>
+              <input
+                autoFocus
+                name="boardTitle"
+                type="text"
+                placeholder="Enter Title"
+                value={title}
+                onChange={this.handleChange}
+                onBlur={this.saveBoardTitle}
+              />
+            </form>
+          }
+          <button onClick={this.onToggleStarBoard}>
+            {board.isStarred ? <AiFillStar /> : <AiOutlineStar />}
+          </button>
+          <div className="board-members">
+            <MembersListBoard members={board.boardMembers} />
+          </div>
+        </div>
+        <div className="header-right">
+          <button>Show menu</button>
         </div>
       </div>
     )
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    loggedInUser: state.userReducer.loggedInUser
+  }
+}
+
+const mapDispatchToProps = {
+  updateUser
+}
+
+export const BoardHeader = connect(mapStateToProps, mapDispatchToProps)(_BoardHeader)

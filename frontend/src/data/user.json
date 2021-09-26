@@ -7,7 +7,8 @@
         "memberInBoards": [
             {
                 "boardId": "b101",
-                "isStarred": true
+                "boardTitle": "final project",
+                "isStarred": false
             }
         ]
     },
@@ -20,10 +21,12 @@
         "memberInBoards": [
             {
                 "boardId": "b101",
+                "boardTitle": "final project",
                 "isStarred": true
             },
             {
                 "boardId": "b102",
+                "boardTitle": "final project2",
                 "isStarred": false
             }
         ],
@@ -37,7 +40,7 @@
     },
     {
         "_id": "u102",
-        "fullname": "amit weinre",
+        "fullname": "amit weiner",
         "username": "amitee",
         "password": "1",
         "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg",

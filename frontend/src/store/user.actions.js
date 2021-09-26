@@ -16,6 +16,17 @@ export function loadUsers() {
     }
 }
 
+export function updateUser(user) {
+    return async dispatch => {
+      try {
+        await userService.update(user);
+        dispatch({ type: 'SET_USER', user });
+      } catch (err) {
+        console.log('err in updateUser:', err);
+      }
+    }
+  }
+
 export function removeUser(userId) {
     return async dispatch => {
         try {
