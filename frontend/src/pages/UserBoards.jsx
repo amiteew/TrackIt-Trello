@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { loadBoards } from '../store/board.actions.js';
+
+import { loadBoards, updateBoard } from '../store/board.actions.js';
+
 import { BoardPreview } from '../cmp/UserBoards/BoardPreview'
 import { Loading } from '../cmp/Loading';
 import { SideNav } from '../cmp/UserBoards/SideNav';
@@ -34,25 +36,14 @@ class _UserBoards extends React.Component {
             if (!board.boardMembers.length) return false
             return board.boardMembers.find(member => member._id === loggedInUser._id).isStarred
         })
-        // return this.props.boards.filter(board => {
-        //     if (!board.boardMembers.length) return false
-        //     return board.boardMembers.find(member => member._id === loggedInUser._id).isStarred
-        // })
     }
 
-    toggleStarBoard = (ev) => {
-        // ev.preventDefault()
-        // ev.stopPropagation()
-        console.log('toggle star');
-    }
-
-    getBasicBoardInfo = (board) => {
-        return {
-            boardId: board._id,
-            boardTitle: board.boardTitle,
-            createdBy: board.createdBy,
-            boardStyle: board.boardStyle
-        }
+    toggleStarBoard = (ev, board) => {
+        ev.preventDefault()
+        const { loggedInUser } = this.props
+        const boardMembersIdx = board.boardMembers.findIndex(member => member._id === loggedInUser._id)
+        board.boardMembers[boardMembersIdx].isStarred = !board.boardMembers[boardMembersIdx].isStarred
+        this.props.updateBoard(board)
     }
 
     render() {
@@ -75,21 +66,17 @@ class _UserBoards extends React.Component {
                                     <h3>Starred boards</h3>
                                 </div>
                                 <div className="boards-preview">
-                                    {starredBoards.map(board => {
-                                        const boardInfo = this.getBasicBoardInfo(board)
-                                        boardInfo.isStarred = true
-                                        return <BoardPreview key={board._id} boardInfo={boardInfo} loggedInUser={this.props.loggedInUser} toggleStarBoard={this.toggleStarBoard} isYellow={true} />
-                                    })}
+                                    {starredBoards.map(board =>
+                                        <BoardPreview key={board._id} board={board} loggedInUser={loggedInUser} toggleStarBoard={this.toggleStarBoard} isYellow={true} />
+                                    )}
                                 </div>
                             </section> : <></>}
                         <section className="user-boards">
-                            <h3>Boards</h3>
+                            <h3>All Boards</h3>
                             <div className="boards-preview">
                                 {userBoards.map(board => {
-                                    const boardInfo = this.getBasicBoardInfo(board)
-                                    boardInfo.isStarred = !board.boardMembers.length ? false :
-                                        board.boardMembers.find(member => member._id === loggedInUser._id).isStarred
-                                    return <BoardPreview key={board._id} boardInfo={boardInfo} loggedInUser={this.props.loggedInUser} toggleStarBoard={this.toggleStarBoard} isLarge={boardInfo.isStarred} />
+                                    board.isStarred = board.boardMembers.find(member => member._id === loggedInUser._id).isStarred
+                                    return <BoardPreview key={board._id} board={board} loggedInUser={loggedInUser} toggleStarBoard={this.toggleStarBoard} isLarge={board.isStarred} />
                                 })}
                             </div>
                         </section>
@@ -108,7 +95,8 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-    loadBoards
+    loadBoards,
+    updateBoard
 }
 
 export const UserBoards = connect(mapStateToProps, mapDispatchToProps)(_UserBoards)

@@ -63,7 +63,7 @@ export function updateBoard(board, action, card, txt = "") {
     try {
       const activity = _storeSaveActivity(txt, action, card);
       board.activities.unshift(activity);
-      console.log('board from action', board);
+      console.log('board in action.update', board);
       await boardService.save(board);
       dispatch({ type: 'UPDATE_BOARD', board });
     } catch (err) {

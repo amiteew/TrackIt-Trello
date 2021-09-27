@@ -24,19 +24,7 @@ class _TemplateBoards extends React.Component {
 
     getTemplateBoards = () => {
         const templateBoards = this.props.boards.filter(board => !board.createdBy)
-        // const userBoards = this.props.boards.filter(board => board.createdBy)
-        // console.log('templateBoards', templateBoards);
-        // console.log('userBoards', userBoards);
         this.setState({ templateBoards })
-    }
-
-    getBasicBoardInfo = (board) => {
-        return {
-            boardId: board._id,
-            boardTitle: board.boardTitle,
-            createdBy: board.createdBy,
-            boardStyle: board.boardStyle
-        }
     }
 
     render() {
@@ -52,9 +40,8 @@ class _TemplateBoards extends React.Component {
                             <h3>Templates</h3>
                             <div className="boards-preview">
                                 {templateBoards.map(board => {
-                                    const boardInfo = this.getBasicBoardInfo(board)
-                                    boardInfo.isStarred = false
-                                    return <BoardPreview key={board._id} boardInfo={boardInfo} />
+                                    board.isStarred = false
+                                    return <BoardPreview key={board._id} board={board} />
                                 })}
                             </div>
                         </section>

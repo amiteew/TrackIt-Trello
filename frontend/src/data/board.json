@@ -5,11 +5,11 @@
         "createdAt": 1589983468418,
         "createdBy": {
             "_id": "u101",
-            "fullname": "amitee weiner",
+            "fullname": "Shany Pollack",
             "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg"
         },
         "boardStyle": {
-            "bgImg": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/5470b505916b9719327bb1ee44cbb801/photo-1631539816626-9b5abd9acf9f.jpg"
+            "bgImgUrl": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/5470b505916b9719327bb1ee44cbb801/photo-1631539816626-9b5abd9acf9f.jpg"
         },
         "covers": [
             {
@@ -215,8 +215,8 @@
         "boardTitle": "final project2",
         "createdAt": 1589983468418,
         "createdBy": {
-            "_id": "u101",
-            "fullname": "amitee weiner",
+            "_id": "u102",
+            "fullname": "Amitee Long Name Weiner",
             "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg"
         },
         "boardStyle": {
@@ -368,7 +368,7 @@
         "createdAt": 1589983468418,
         "createdBy": null,
         "boardStyle": {
-            "bgImg": "https://www.freecodecamp.org/news/content/images/size/w2000/2021/06/w-qjCHPZbeXCQ-unsplash.jpg"
+            "bgImgUrl": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2286x1600/24baa6609b89fb8eb0cc0aceb70eaf36/photo-1557682250-33bd709cbe85.jpg"
         },
         "labels": [
             {

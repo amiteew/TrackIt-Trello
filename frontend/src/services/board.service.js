@@ -68,7 +68,7 @@ function getBoardById(boardId) {
 
 function save(board) {
   if (board._id) {
-    console.log('board in service.save', board);
+    // console.log('board in service.save', board);
     return storageService.put(BOARD_KEY, board)
   } else {
     // board.owner = userService.getLoggedinUser()
