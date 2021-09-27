@@ -1,0 +1,37 @@
+.board-menu-content {
+    box-sizing: border-box;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: rem(12px) rem(6px) rem(12px) rem(12px);
+    width: rem(339px);
+
+    .board-menu-content-header {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+
+        .title {
+            flex: 1;
+            line-height: 20px;
+            margin: 14px 32px;
+            overflow: hidden;
+            text-align: center;
+            text-overflow: ellipsis;
+            transition: margin .12s ease-in;
+            white-space: nowrap;
+        }
+
+        .exit-icon{
+            font-size: rem(20px);
+            position: absolute;
+            right: rem(23px);
+            top: rem(23px);
+
+            &:hover{
+                cursor: pointer;
+            }
+        }
+
+    }
+}

@@ -39,7 +39,7 @@ export class ListPreview extends React.Component {
 
     onSaveListTitle = () => {
         const { listTitle } = this.state;
-        // if (!listTitle) return;
+        if (!listTitle) return;
         const { onUpdateBoard, board, currListIdx } = this.props;
         board.lists[currListIdx].listTitle = listTitle;
         onUpdateBoard();
@@ -64,6 +64,9 @@ export class ListPreview extends React.Component {
                                         onChange={this.handleChange}
                                         onKeyPress={this.handleChange}
                                         onBlur={this.onSaveListTitle}
+                                        onFocus={(ev =>{
+                                            ev.target.select();
+                                        })}
                                         autoFocus
                                     />
                                 }

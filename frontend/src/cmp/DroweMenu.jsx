@@ -21,9 +21,9 @@ export function TemporaryDrawer({ board, toggleMenu }) {
             onClick={toggleDrawer(anchor, false)}
             onKeyDown={toggleDrawer(anchor, false)}
         >
-            <div className="pop-over-header-title flex">
-                <h3>Menu</h3>
-                <span onClick={toggleMenu}>X</span>
+            <div className="board-menu-content-header flex">
+                <div className="title"><h3>Menu</h3></div>
+                <span className="exit-icon" onClick={toggleMenu}>X</span>
             </div>
             <Divider />
             <div>

@@ -4,6 +4,7 @@ import { updateBoard } from "../store/board.actions"
 import { MembersListBoard } from "./MembersListBoard"
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { TemporaryDrawer } from '../cmp/DroweMenu.jsx';
+import { BsThreeDots } from "react-icons/bs";
 
 class _BoardHeader extends React.Component {
   state = {
@@ -56,7 +57,7 @@ class _BoardHeader extends React.Component {
     return (
       <div className="board-header flex space-between">
         <div className="header-left flex">
-          {!isEditTitle && <h1 onClick={this.toggleChangeTitle}>{board.boardTitle}</h1>}
+          {!isEditTitle && <h1 className="header-title" onClick={this.toggleChangeTitle}>{board.boardTitle}</h1>}
           {isEditTitle &&
             <form onSubmit={this.saveBoardTitle}>
               <input
@@ -70,17 +71,18 @@ class _BoardHeader extends React.Component {
               />
             </form>
           }
-          <button onClick={this.onToggleStarBoard}>
+          <button className="board-header-btn" onClick={this.onToggleStarBoard}>
             {isStarred ? <AiFillStar /> : <AiOutlineStar />}
           </button>
-          <div className="board-members">
+          <div className="board-header-btn board-members">
             <MembersListBoard members={board.boardMembers} />
           </div>
         </div>
-        <div className="header-right">
-          {!isMenuOpen && <button onClick={this.toggleMenu}> Show menu</button>}
+        {!isMenuOpen && <div className="board-header-btn show-menu" onClick={this.toggleMenu}>
+           <span className="icon"><BsThreeDots /> </span>
+           <span className="title">Show menu</span>
+        </div>}
           {isMenuOpen && <TemporaryDrawer toggleMenu={this.toggleMenu} board={board} />}
-        </div>
       </div>
     )
   }
