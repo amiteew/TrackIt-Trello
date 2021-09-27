@@ -60,23 +60,22 @@ class _BoardApp extends React.Component {
         const dndEndIdx = destination.index;
         if (dndStart === dndEnd && dndEndIdx === dndStartIdx) return;
 
-        if(type === 'list'){
+        if (type === 'list') {
             const list = board.lists.splice(dndStartIdx, 1)
             board.lists.splice(dndEndIdx, 0, ...list)
+            this.onUpdateBoard();
             return
         }
-        if(dndStart === dndEnd){
+        if (dndStart === dndEnd) {
             const list = board.lists.find(list => list.listId === dndStart)
             const card = list.cards.splice(dndStartIdx, 1);
             list.cards.splice(dndEndIdx, 0, ...card);
-            return
         }
-        if(dndStart !== dndEnd){
+        if (dndStart !== dndEnd) {
             const listStart = board.lists.find(list => list.listId === dndStart)
             const card = listStart.cards.splice(dndStartIdx, 1);
             const listEnd = board.lists.find(list => list.listId === dndEnd)
             listEnd.cards.splice(dndEndIdx, 0, ...card);
-            return
         }
 
         this.onUpdateBoard();
@@ -105,10 +104,10 @@ class _BoardApp extends React.Component {
                 <div className="board-canvas flex">
                     <DragDropContext onDragEnd={this.onDragEnd}>
                         <BoardList board={board} lists={board.lists} onUpdateBoard={this.onUpdateBoard} className="board" />
-                        {!isMenuOpen && <h1 onClick={this.toggleMenu}> Show menu</h1>}
-                        {isMenuOpen && <TemporaryDrawer toggleMenu={this.toggleMenu} board={board} />}
                     </DragDropContext >
                     <AddList board={board} onUpdateBoard={this.onUpdateBoard} />
+                    {!isMenuOpen && <h1 onClick={this.toggleMenu}> Show menu</h1>}
+                    {isMenuOpen && <TemporaryDrawer toggleMenu={this.toggleMenu} board={board} />}
                 </div>
             </section >
         )

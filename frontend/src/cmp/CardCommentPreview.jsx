@@ -9,10 +9,12 @@ export function CardCommentPreview({ cardComments }) {
         return countComment
     }
     return (
-        <span className="badge-icon">
-            <FaRegComment />
-            <p className="card-txt">{countComments()}</p>
-        </span>
+        <div className="badge flex align-center">
+            <span className="badge-icon flex align-center">
+                <FaRegComment />
+            </span>
+            <span className="card-txt">{countComments()}</span>
+        </div>
     )
 
 

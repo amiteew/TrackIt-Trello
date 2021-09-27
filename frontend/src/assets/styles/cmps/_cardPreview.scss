@@ -42,37 +42,54 @@
     margin-left: -2px;
     max-width: 100%;
     align-items: flex-end;
-
-
+    
     img {
-        height: rem(20px);
         width: unset;
+        border-radius: 50%;
+        height: rem(28px);
+        width: rem(28px);
+        align-items: flex-end;
     }
 
+    .is-watch svg {
+        height: rem(20px);
+        width: 1.25em;
+        display: flex;
+    }
 }
 
 .card-preview-contenet {
 
     .quick-card-edit-btn {
         position: absolute;
-        opacity: 0;
-        top: rem(2px);
-        right: rem(2px);
-        height: rem(28px);
-        width: rem(28px);
+        background-clip: padding-box;
+        background-color: #f4f5f7;
+        background-origin: initial;
         border-radius: rem(3px);
+        opacity: .8;
+        padding: rem(4px);
+        position: absolute;
+        right: rem(2px);
+        top: rem(2px);
+        visibility: hidden;
+        z-index: 40;
     }
 
     &:hover {
         .quick-card-edit-btn {
-            opacity: 1;
+            visibility: visible;
+
+            &:hover {
+                background-color: #ebecf0;
+                opacity: 1;
+                color: #172b4d;
+            }
         }
     }
 }
 
-.badge-icon {
+.badge {
     color: #5e6c84;
-    display: inline-block;
     margin: 0 4px 4px 0;
     max-width: 100%;
     min-height: 20px;
@@ -81,15 +98,26 @@
     position: relative;
     text-decoration: none;
     text-overflow: ellipsis;
-}
-
-.card-icon ::before {
-    vertical-align: top;
-}
-
-.card-txt {
     font-size: rem(12px);
-    padding: 0 rem(4px) 0 rem(2px);
-    vertical-align: top;
-    white-space: nowrap;
+
+    .badge-icon {
+        font-size: rem(12px);
+        height: rem(16px);
+        width: rem(16px);
+    }
+
+    &.is-watch{
+        padding: 0 rem(6px) 0 rem(2px);
+    }
+
+    .card-txt {
+        padding: 0 rem(4px) 0 rem(2px);
+        vertical-align: top;
+        white-space: nowrap;
+    }
+
 }
+
+// .card-icon ::before {
+//     vertical-align: top;
+// }

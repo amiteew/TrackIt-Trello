@@ -10,6 +10,10 @@ import { AddToCard } from './AddToCard.jsx';
 import { BsPencil } from "react-icons/bs";
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
+import { connect } from 'formik';
+import { updateBoard } from '../store/board.actions.js';
+import { TextareaAutosize } from '@mui/material';
+
 export class CardPreview extends React.Component {
 
     state = {
@@ -17,12 +21,24 @@ export class CardPreview extends React.Component {
         isEditTitle: false,
     }
 
+    componentDidMount() {
+
+        // this.props.updateBoard();
+    }
+
     toggleEditTitle = (ev) => {
+        ev.stopPropagation();
         const { card } = this.props;
         this.setState({ isEditTitle: !this.state.isEditTitle, cardTitle: card.cardTitle })
     }
 
     handleChange = (ev) => {
+        ev.stopPropagation();
+        if (ev.key === 'Enter') {
+            ev.preventDefault();
+            this.onSaveCardTitle(this.state.cardTitle);
+            return;
+        }
         const value = ev.target.value;
         this.setState({ cardTitle: value });
     }
@@ -42,7 +58,7 @@ export class CardPreview extends React.Component {
 
     render() {
         const { card, board, currListIdx, currCardIdx, list, OnUpdateBoard } = this.props
-        const { isEditTitle } = this.state;
+        const { isEditTitle, cardTitle } = this.state;
         return (
             <Draggable draggableId={card.cardId} index={currCardIdx}>
                 {(provided) => (
@@ -50,21 +66,25 @@ export class CardPreview extends React.Component {
                         <Link className="flex" to={`/boards/${board._id}/${list.listId}/${card.cardId}`}>
                             <div>{!isEditTitle && <span className="card-preview-title">{card.cardTitle}</span>}
                                 {isEditTitle &&
-                                    <Modal open={true} onClose={this.handleClose}>
-                                        <Box className="quic-card-edit">
-                                            <QuickCardEditor card={card} onSaveCardTitle={this.onSaveCardTitle} handleClose={this.handleClose} />
-                                        </Box>
+                                    <div>
+                                        <TextareaAutosize
+                                            value={cardTitle}
+                                            aria-label="card title"
+                                            onChange={this.handleChange}
+                                            onKeyPress={this.handleChange}
+                                            autoFocus
+                                        />
                                         <AddToCard board={board} currListIdx={currListIdx} currCardIdx={currCardIdx} OnUpdateBoard={OnUpdateBoard} />
-                                    </Modal >
+                                    </div>
                                 }
                                 <div className="card-preview-icon flex">
-                                    <span className="badge-icon">{card.cardMembers && <CardVisibilityPreview cardMembers={card.cardMembers} />} </span>
-                                    {card.cardMembers && <MembersList members={card.cardMembers} />}
-                                    <span className="badge-icon flex" title="checklist">{card.checklists.length ? <CardCheckPreview checklists={card.checklists} /> : <> </>}</span>
+                                    <span className="badge is-watch">{card.cardMembers && <CardVisibilityPreview cardMembers={card.cardMembers} />} </span>
                                     {card.comments.length ? <CardCommentPreview cardComments={card.comments} /> : <> </>}
+                                    <div title="checklist">{card.checklists.length ? <CardCheckPreview checklists={card.checklists} /> : <> </>}</div>
+                                    <div className="badge-icon">{card.cardMembers && <MembersList members={card.cardMembers} />}</div>
                                 </div>
+                                <button className="quick-card-edit-btn" onClick={this.toggleEditTitle}> <BsPencil /> </button>
                             </div>
-                            <button className="quick-card-edit-btn" onClick={this.toggleEditTitle}> <BsPencil /> </button>
                         </Link>
                     </div>
                 )
@@ -74,3 +94,15 @@ export class CardPreview extends React.Component {
         )
     }
 }
+
+// function mapStateToProps(state) {
+//     return {
+//         board: state.boardReducer.board,
+//         loggedInUser: state.userReducer.loggedInUser
+//     }
+// }
+// const mapDispatchToProps = {
+//     updateBoard
+// }
+
+// export const CardPreview = connect(mapStateToProps, mapDispatchToProps)(_CardPreview)
