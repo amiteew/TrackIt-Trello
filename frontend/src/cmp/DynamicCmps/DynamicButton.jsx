@@ -4,6 +4,8 @@ import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 import ScheduleOutlinedIcon from '@mui/icons-material/ScheduleOutlined';
 import CallToActionOutlinedIcon from '@mui/icons-material/CallToActionOutlined';
+
+import { BsThreeDots } from "react-icons/bs";
 export class DynamicButton extends React.Component {
     render() {
         const { type } = this.props
@@ -12,7 +14,7 @@ export class DynamicButton extends React.Component {
                 case 'members':
                     return <><PersonOutlineOutlinedIcon /> Members</>
                 case 'list actions':
-                    return <></>
+                    return <><BsThreeDots /></>
                 case 'labels':
                     return <>< LocalOfferOutlinedIcon /> Labels</>
                 case 'checklist':
