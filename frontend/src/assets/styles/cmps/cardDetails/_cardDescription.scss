@@ -1,7 +1,6 @@
 .card-description {
     .desc-txt-placeholder {
         margin-bottom: 40px;
-        width: 500px;
         background-color: $bgcColor;
         height: 60px;
         p {
@@ -9,16 +8,13 @@
         }
     }
     .desc-txt {
-        width: 500px;
+        width: 100%;
         height: 60px;
         margin-bottom: 10px;
-        // p {
-        //     padding: 1rem;
-        // }
     }
     .desc-edit {
         margin-top: 20px;
-        width: 500px;
+        width: 100%;
         padding-bottom: 70px;
         padding-top: rem(8px);
         font-size: rem(14px);

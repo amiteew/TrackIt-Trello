@@ -79,62 +79,60 @@ class _CardDetails extends React.Component {
         const { board, currListIdx, currCardIdx, isEditOpen } = this.state
         if (!board || currCardIdx === null || currListIdx === null) return <Loading />
         const currCard = board.lists[currListIdx].cards[currCardIdx]
-        return (
-            <Modal open={true} onClose={this.handleClose} className="card-details-container" >
+        return (<div >
+            <div className="screen-card-details" onClick={this.handleClose}></div>
+            <div className="card-details" >
 
-                <Box  >
-                    <div className="card-details" >
-                        <div className="card-details-content">
+                <CardTitle board={board}
+                    currListIdx={currListIdx}
+                    currCardIdx={currCardIdx}
+                    OnUpdateBoard={this.OnUpdateBoard} />
 
-                            <CardTitle board={board}
-                                currListIdx={currListIdx}
-                                currCardIdx={currCardIdx}
-                                OnUpdateBoard={this.OnUpdateBoard} />
+                <div className="card-details-content">
+                    <div className="card-details-main">
+                        {
+                            currCard.cardMembers.length ? <div>
+                                <h3>Members</h3>
+                                <MembersList members={currCard.cardMembers} />
+                            </div> : ''
+                        }
 
-                            {
-                                currCard.cardMembers.length ? <div>
-                                    <h3>Members</h3>
-                                    <MembersList members={currCard.cardMembers} />
-                                </div> : ''
-                            }
+                        {
+                            currCard.cardLabelIds.length ?
+                                <CardLabelsList cardLabelIds={currCard.cardLabelIds} boardLabels={board.labels} /> : ''
+                        }
 
-                            {
-                                currCard.cardLabelIds.length ?
-                                    <CardLabelsList cardLabelIds={currCard.cardLabelIds} boardLabels={board.labels} /> : ''
-                            }
+                        {
+                            currCard.dueDate.date &&
+                            <DueDatePreview dueDate={currCard.dueDate} onToggleDone={this.onToggleDone} />
+                        }
 
-                            {
-                                currCard.dueDate.date &&
-                                <DueDatePreview dueDate={currCard.dueDate} onToggleDone={this.onToggleDone} />
-                            }
+                        <CardDescription board={board}
+                            currListIdx={currListIdx}
+                            currCardIdx={currCardIdx}
+                            OnUpdateBoard={this.OnUpdateBoard} />
 
-                            <CardDescription board={board}
-                                currListIdx={currListIdx}
-                                currCardIdx={currCardIdx}
-                                OnUpdateBoard={this.OnUpdateBoard} />
+                        <CardActivities board={board}
+                            currListIdx={currListIdx}
+                            currCardIdx={currCardIdx}
+                            OnUpdateBoard={this.OnUpdateBoard} />
 
-                            <CardActivities board={board}
-                                currListIdx={currListIdx}
-                                currCardIdx={currCardIdx}
-                                OnUpdateBoard={this.OnUpdateBoard} />
-
-                            <ChecklistListApp board={board}
-                                currListIdx={currListIdx}
-                                currCardIdx={currCardIdx}
-                                OnUpdateBoard={this.OnUpdateBoard} />
-
-                            <AddToCard board={board}
-                                currListIdx={currListIdx}
-                                currCardIdx={currCardIdx} />
+                        <ChecklistListApp board={board}
+                            currListIdx={currListIdx}
+                            currCardIdx={currCardIdx}
+                            OnUpdateBoard={this.OnUpdateBoard} />
+                    </div>
+                    <div className="card-details-sidebar">
+                        <AddToCard board={board}
+                            currListIdx={currListIdx}
+                            currCardIdx={currCardIdx} />
+                    </div>
 
 
-                        </div>
+                </div>
 
-                    </div >
-                </Box>
-
-            </Modal >
-        )
+            </div >
+        </div>)
     }
 }
 

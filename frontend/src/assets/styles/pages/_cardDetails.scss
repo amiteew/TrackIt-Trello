@@ -1,44 +1,55 @@
-.card-details-container {
-    // display: grid;
-    // grid-template-columns:
-    //     1fr
-    //     780px
-    //     1fr;
-    // grid-template-rows:
-    //     70px
-    //     1fr
-    //     50px;
-    //
-    margin: 0 auto;
-    position: absolute !important;
+.screen-card-details {
+    position: fixed;
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.64);
+}
+
+.card-details {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 4;
+    margin: 0 8px;
     color: #42526e;
     background-color: #f4f5f7;
     border-radius: 3px;
     max-width: 768px;
-    position: absolute;
-    z-index: 4;
-    top: 48px;
-    right: 0;
-    left: 0;
-    //
+    padding: 25px;
 
-    .card-details {
-        margin-top: 50px;
-        margin-bottom: 50px;
-        background-color: $cardBgcColor;
-
-        .card-details-content {
-            padding: 25px;
-        }
-    }
     .card-details-icon {
         margin-right: 15px;
     }
-    h3 {
-        font-size: 1rem;
+    .card-details-content {
+        display: flex;
+        flex-direction: column;
+        .card-details-main {
+            max-width: 784px;
+        }
+        h3 {
+            font-size: 1rem;
+        }
+        .hover:hover {
+            background-color: $cardHoverColor;
+            cursor: pointer;
+        }
     }
-    .hover:hover {
-        background-color: $cardHoverColor;
-        cursor: pointer;
+}
+
+// RESPOVSIVE
+
+@media screen and (min-width: 784px) {
+    .card-details {
+        margin: 0 auto;
+        .card-details-content {
+            flex-direction: row;
+            .card-details-main {
+                width: 552px;
+            }
+        }
     }
 }

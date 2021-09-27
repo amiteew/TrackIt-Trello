@@ -34,7 +34,7 @@ export class CardActivities extends React.Component {
         this.setState({ ...this.state, isDetails: !this.state.isDetails })
     }
     onToggleComment = () => {
-        this.setState({ ...this.state, isEditing: true })
+        this.setState({ ...this.state, isEditing: !this.state.isEditing })
     }
     handleChange = ({ target }) => {
         this.setState({ ...this.state, newActivityTxt: target.value });
@@ -71,19 +71,21 @@ export class CardActivities extends React.Component {
         // if (!comments) return <Loading />
         return (
             <div className="card-activities">
-                <div className="flex direction-row space-between title-desc">
+                <div className="flex direction-row space-between ">
                     <div className="flex direction-row">
                         <FormatListBulletedIcon className="card-details-icon" /> <h3>Activity</h3>
                     </div>
-                    {!isDetails && <button className="show-hide" onClick={this.onToggleDetails}>Show details</button>}
-                    {isDetails && <button className="show-hide" onClick={this.onToggleDetails}>Hide details</button>}
+                    {!isDetails && <button className="show-hide hover" onClick={this.onToggleDetails}>Show details</button>}
+                    {isDetails && <button className="show-hide hover" onClick={this.onToggleDetails}>Hide details</button>}
                 </div>
-                <div onClick={this.onToggleComment}>
+                <div className="flex direction-col" onClick={this.onToggleComment}>
                     <TextareaAutosize
+                        className="input-comment"
                         name='description'
                         type='text'
                         placeholder='Write a comment...'
                         onChange={this.handleChange}
+                        onBlur={this.onToggleComment}
                         value={newActivityTxt}
                     />
                     {isEditing && <button onClick={this.onSaveActivity}>Save</button>}
