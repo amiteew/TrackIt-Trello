@@ -61,7 +61,7 @@ class _UserBoards extends React.Component {
         if (!templateBoards.length) return <Loading />
         const starredBoards = this.getStarredBoards()
         return (
-            <section className="boards-page">
+            <section className="boards-page main-container">
                 <div className="side-nav"></div>
                 {starredBoards.length ?
                     <section className="starred-boards">

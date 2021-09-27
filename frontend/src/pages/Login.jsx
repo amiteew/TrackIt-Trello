@@ -54,13 +54,13 @@ class _Login extends React.Component {
         const { username, password } = this.state.credentials;
         const { isLoginFailed, isLoading } = this.state
         return (
-            <div className="login-page">
+            <div className="login-signup-page">
                 <LogoName isLoggedIn={false} />
                 <div className="form-container">
                     {isLoading && <Loading />}
-                    {isLoginFailed && <p className="login-error">Login failed, please check your username and password</p>}
-                    <h3>Log in to Trello</h3>
-                    <form className="login-form flex direction-col align-center justify-center" onSubmit={this.onLogin}>
+                    {isLoginFailed && <p className="login-signup-error">Login failed, please check your username and password</p>}
+                    <h3>Log in to TrackIt</h3>
+                    <form className="login-signup-form flex direction-col align-center justify-center" onSubmit={this.onLogin}>
                         <input
                             type="text"
                             name="username"
@@ -80,7 +80,7 @@ class _Login extends React.Component {
                         />
                         <button>Log in</button>
                     </form>
-                    <Link className="to-signup" to="/signup">Sign up for an account</Link>
+                    <Link className="to-login-signup" to="/signup">Sign up for an account</Link>
                 </div>
             </div>
         )

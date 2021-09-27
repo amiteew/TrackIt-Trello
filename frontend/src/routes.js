@@ -1,7 +1,8 @@
 import { BoardApp } from "./pages/BoardApp";
 import { HomePage } from "./pages/HomePage";
-import { CardDetails } from "./pages/CardDetails";
+// import { CardDetails } from "./pages/CardDetails";
 import { Login } from "./pages/Login";
+import { Signup } from "./pages/Signup";
 import { UserBoards } from "./pages/UserBoards";
 
 const routes = [
@@ -18,13 +19,13 @@ const routes = [
         component: Login,
     },
     {
+        path: '/signup',
+        component: Signup,
+    },
+    {
         path: '/',
         component: HomePage,
-    },
-    // {
-    //     path: '/signup',
-    //     component: Signup,
-    // }
+    }
 ]
 
 export default routes;

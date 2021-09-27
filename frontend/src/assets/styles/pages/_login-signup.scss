@@ -1,4 +1,4 @@
-.login-page {
+.login-signup-page {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -32,7 +32,7 @@
         padding: rem(25px) rem(40px);
         max-width: rem(400px);
         background-color: #fff;
-        .login-error {
+        .login-signup-error {
             width: 100%;
             color: #fbedeb;
             background-color: #eb5a46;
@@ -45,7 +45,7 @@
             height: rem(50px);
             width: rem(50px);
         }
-        .login-form {
+        .login-signup-form {
             gap: rem(17px);
             * {
                 width: 100%;
