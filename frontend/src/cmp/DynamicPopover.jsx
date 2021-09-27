@@ -9,6 +9,7 @@ import { DatesPopover } from './DynamicPopover/DatesPopover';
 import { ChecklistPopover } from './DynamicPopover/ChecklistPopover';
 import { CoverPopover } from './DynamicPopover/CoverPopover';
 import { DynamicButton } from './DynamicCmps/DynamicButton';
+import { UserMenuPopover } from './DynamicPopover/UserMenuPopover';
 
 export class DynamicPopover extends React.Component {
     state = {
@@ -43,6 +44,8 @@ export class DynamicPopover extends React.Component {
                     return <CoverPopover {...props} />
                 case 'checklist':
                     return <ChecklistPopover {...props} />
+                case 'userMenu':
+                    return <UserMenuPopover {...props} />
                 default:
                     break;
             }

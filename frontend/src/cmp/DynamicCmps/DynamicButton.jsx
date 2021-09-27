@@ -1,12 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import Avatar from '@mui/material/Avatar';
+
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 import ScheduleOutlinedIcon from '@mui/icons-material/ScheduleOutlined';
 import CallToActionOutlinedIcon from '@mui/icons-material/CallToActionOutlined';
-export class DynamicButton extends React.Component {
+
+class _DynamicButton extends React.Component {
     render() {
-        const { type } = this.props
+        const { type, loggedInUser } = this.props
         const DynamicCmp = (props) => {
             switch (props.type) {
                 case 'members':
@@ -21,6 +25,13 @@ export class DynamicButton extends React.Component {
                     return <><ScheduleOutlinedIcon /> Date</>
                 case 'cover':
                     return <>< CallToActionOutlinedIcon /> Cover</>
+                case 'userMenu': {
+                    return <>
+                        <Avatar alt="" src={loggedInUser.imgUrl}>
+                            <p>{loggedInUser.initials}</p>
+                        </Avatar>
+                    </>
+                }
                 default:
                     return props.type
             }
@@ -30,3 +41,11 @@ export class DynamicButton extends React.Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        loggedInUser: state.userReducer.loggedInUser
+    }
+}
+
+export const DynamicButton = connect(mapStateToProps)(_DynamicButton)

@@ -1,29 +1,19 @@
 [
     {
         "_id": "u100",
-        "fullname": "PandaGuest",
+        "fullname": "Panda Guest",
         "username": "pandaguest",
-        "password": "1",
-        "imgUrl": "https://res.cloudinary.com/dhxwkomwu/image/upload/v1632685060/WhatsApp_Image_2021-09-26_at_22.36.21_fktx98.jpg"
+        "password": "123",
+        "imgUrl": "https://res.cloudinary.com/dhxwkomwu/image/upload/v1632685060/WhatsApp_Image_2021-09-26_at_22.36.21_fktx98.jpg",
+        "initials": "PG"
     },
     {
         "_id": "u101",
-        "fullname": "shany pollack",
+        "fullname": "Shany Pollack",
         "username": "shany",
         "password": "shanypo",
         "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632417771/shanypo_nzjhlq.jpg",
-        "memberInBoards": [
-            {
-                "boardId": "b101",
-                "boardTitle": "final project",
-                "isStarred": true
-            },
-            {
-                "boardId": "b102",
-                "boardTitle": "final project2",
-                "isStarred": false
-            }
-        ],
+        "initials": "SP",
         "mentions": [
             {
                 "id": "m101",
@@ -34,10 +24,11 @@
     },
     {
         "_id": "u102",
-        "fullname": "amit weiner",
+        "fullname": "Amitee Weiner",
         "username": "amitee",
         "password": "1",
         "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg",
+        "initials": "AW",
         "mentions": [
             {
                 "id": "m101",
@@ -48,10 +39,10 @@
     },
     {
         "_id": "u103",
-        "fullname": "michael uzan",
+        "fullname": "Michael Uzan",
         "username": "looply",
         "password": "looply",
-        "imgUrl": "http://some-img.jpg",
+        "initials": "MU",
         "mentions": [
             {
                 "id": "m101",

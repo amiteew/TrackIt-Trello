@@ -5,12 +5,13 @@ import Avatar from '@mui/material/Avatar';
 
 import { HomeHeader } from './HomeHeader';
 import { LogoName } from './LogoName';
+import { DynamicPopover } from '../DynamicPopover';
 // import { UserMsg } from './user-msg.jsx'
 // import { onLogout } from '../store/user.actions.js'
 
 class _AppHeader extends React.Component {
     // checkIfTemplate = () => {
-        
+
     // }
 
     render() {
@@ -25,7 +26,8 @@ class _AppHeader extends React.Component {
                         <NavLink to="/">Create</NavLink>
                     </div>
                     <div className="user-section">
-                        <Avatar alt={user.initials} src={user.imgUrl} style={{ height: '2rem', width: '2rem' }} />
+                        <DynamicPopover type={'userMenu'} titleModal={'Account'}/>
+                        {/* <Avatar alt={user.initials} src={user.imgUrl} style={{ height: '2rem', width: '2rem' }} /> */}
                     </div>
                 </nav >
             </header >

@@ -20,17 +20,12 @@ class _UserBoards extends React.Component {
             return
         }
         if (!boards.length) await this.props.loadBoards(loggedInUser._id);
-        this.removeTemplateBoards()
-        // this.setState({ boards: this.props.boards })
+        const userBoards = this.removeTemplateBoards(this.props.boards)
+        this.setState({ userBoards })
     }
 
-    removeTemplateBoards = () => {
-        console.log('all boards:');
-        // const templateBoards = this.props.boards.filter(board => !board.createdBy)
-        const userBoards = this.props.boards.filter(board => board.createdBy)
-        // console.log('templateBoards', templateBoards);
-        // console.log('userBoards', userBoards);
-        this.setState({ userBoards })
+    removeTemplateBoards = (boards) => {
+        return boards.filter(board => board.createdBy)
     }
 
     getStarredBoards = () => {
@@ -61,6 +56,7 @@ class _UserBoards extends React.Component {
     }
 
     render() {
+        const path = this.props.match.path.slice(1)
         const { userBoards } = this.state
         const { loggedInUser } = this.props
         if (!userBoards) return <Loading />
@@ -68,8 +64,8 @@ class _UserBoards extends React.Component {
         return (
             <section className="main-container boards">
                 <section className="boards-page flex">
-                    <SideNav />
-                    <section className="boards">
+                    <SideNav path={path} />
+                    <section className="boards-section">
                         {starredBoards.length ?
                             <section className="starred-boards">
                                 <div className="star-title flex">
@@ -87,7 +83,7 @@ class _UserBoards extends React.Component {
                                 </div>
                             </section> : <></>}
                         <section className="user-boards">
-                            <h3>All boards</h3>
+                            <h3>Boards</h3>
                             <div className="boards-preview">
                                 {userBoards.map(board => {
                                     const boardInfo = this.getBasicBoardInfo(board)

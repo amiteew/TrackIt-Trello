@@ -35,7 +35,7 @@
 }
 
 .main-container.boards {
-    background-color: $bgcColor;
+    background-color: $boardsBgcColor;
     @include for-wide-layout {
         grid-template-columns:
             1fr

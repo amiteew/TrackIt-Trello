@@ -5,24 +5,39 @@
         margin: 40px 0 0;
         padding: 0 16px;
         width: 200px;
-        background-color: chartreuse;
-        a {
-            font-weight: bold;
+        // background-color: rgb(250, 245, 237);
+        gap: 6px;
+        .nav-item {
+            border-radius: 4px;
+            padding: 6px 8px;
+            // background-color: yellow;
+            min-height: rem(20px);
+            gap: 10px;
+            h3 {
+                font-size: 1rem;
+                font-weight: bold;
+                margin: 0;
+            }
+            svg {
+                height: 16px;
+                width: 16px;
+            }
+            &.active {
+                background-color: #E4F0F6;
+            }
+            &:hover:not(.active) {
+                background-color: rgba(9, 30, 66, 0.08);
+            }
         }
-    }
-    @include for-normal-layout {
-        .side-nav {
-            display: block;
+        @include for-normal-layout {
+            display: flex;
+            width: 240px;
         }
-    }
-
-    @include for-wide-layout {
-        .side-nav {
+        @include for-wide-layout {
             width: 272px;
-            display: block;
         }
     }
-    .boards {
+    .boards-section {
         margin: 40px 16px;
         flex-grow: 1;
         .starred-boards {
@@ -42,13 +57,20 @@
                 }
             }
         }
-        // .user-boards {
-        // }
+        .user-boards > h3,
+        .template-boards > h3 {
+            text-transform: uppercase;
+            font-size: rem(16px);
+            font-weight: 700;
+            margin: 6px 0 11px;
+            color: #5e6c84;
+        }
         .boards-preview {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 9px;
             @include for-narrow-layout {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(128px, 184px));
-                gap: 9px;
+                grid-template-columns: repeat(auto-fit, minmax(128px, 194px));
             }
             @include for-normal-layout {
                 gap: 11px;

@@ -4,19 +4,27 @@ import { HiOutlineTemplate } from 'react-icons/hi';
 import { MdDeveloperBoard } from 'react-icons/md';
 import { AiOutlineHome } from 'react-icons/ai';
 
-export function SideNav() {
+export function SideNav({ path }) {
     return (
         <section className="side-nav flex direction-col">
-            <div className="nav-item">
-                <MdDeveloperBoard />
-                <NavLink to="/boards">Boards</NavLink>
-            </div>
-            <div className="nav-item">
+            <NavLink to="/boards">
+                <div className={`nav-item flex align-center${path === "boards" ? " active" : ""}`}>
+                    <MdDeveloperBoard />
+                    <h3>Boards</h3>
+                </div>
+            </NavLink>
+            <NavLink to="/templates">
+                <div className={`nav-item flex align-center${path === "templates" ? " active" : ""}`}>
                 <HiOutlineTemplate />
-                <NavLink to="/templates">Templates</NavLink>
-            </div>
-            <AiOutlineHome />
-            <NavLink to="/">Home</NavLink>
+                <h3>Templates</h3>
+                </div >
+            </NavLink>
+            <NavLink to="/">
+                <div className="nav-item flex align-center">
+                    <AiOutlineHome />
+                    <h3>Home</h3>
+                </div>
+            </NavLink>
         </section>
     )
 }

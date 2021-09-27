@@ -40,13 +40,14 @@ class _TemplateBoards extends React.Component {
     }
 
     render() {
+        const path = this.props.match.path.slice(1)
         const { templateBoards } = this.state
         if (!templateBoards.length) return <Loading />
         return (
-            <section className="main-container">
+            <section className="main-container boards">
                 <section className="boards-page flex">
-                    <SideNav />
-                    <section className="boards">
+                    <SideNav path={path} />
+                    <section className="boards-section">
                         <section className="template-boards">
                             <h3>Templates</h3>
                             <div className="boards-preview">
