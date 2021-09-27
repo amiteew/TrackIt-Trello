@@ -49,18 +49,21 @@ export class CardTitle extends React.Component {
             <div className="card-details-title flex direction-row">
 
                 <CreditCardOutlinedIcon className="card-details-icon" />
-                {isEdit && <TextareaAutosize
-                    className="text-area-auto"
-                    name='cardTitle'
-                    type='text'
-                    placeholder='Enter title'
-                    onChange={this.handleChange}
-                    onKeyPress={this.handleChange}
-                    value={currCard.cardTitle}
-                    onBlur={this.onSaveTitle}
-                    autoFocus
-                />}
-                {!isEdit && <h2 onClick={this.onToggleEdit}>{currCard.cardTitle}</h2>}
+                <div className="flex direction-col">
+                    {isEdit && <TextareaAutosize
+                        className="text-area-auto"
+                        name='cardTitle'
+                        type='text'
+                        placeholder='Enter title'
+                        onChange={this.handleChange}
+                        onKeyPress={this.handleChange}
+                        value={currCard.cardTitle}
+                        onBlur={this.onSaveTitle}
+                        autoFocus
+                    />}
+                    {!isEdit && <h2 onClick={this.onToggleEdit}>{currCard.cardTitle}</h2>}
+                    <small>in list <span>{board.lists[currListIdx].listTitle}</span></small>
+                </div>
             </div>
         </>
         )

@@ -42,11 +42,13 @@ export class CardDescription extends React.Component {
         if (!board || currCardIdx === null || currListIdx === null) return <Loading />
         const currCard = board.lists[currListIdx].cards[currCardIdx]
         return (<div className="card-description" >
-            <div className="flex direction-row">
+            <div className="flex direction-row align-center">
                 <FormatAlignLeftIcon className="card-details-icon" /> <h3>Description</h3>
+                {!isEditing && currCard.description
+                    && <button className="hover btn-edit" onClick={this.onToggleEditing}>Edit</button>}
             </div>
             {isEditing &&
-                <div onClick={this.onToggleEditing}>
+                <div className="edit-container" onClick={this.onToggleEditing}>
                     <form onSubmit={this.onSaveDescription} >
                         <TextareaAutosize
                             name='description'

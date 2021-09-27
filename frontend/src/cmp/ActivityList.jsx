@@ -5,8 +5,8 @@ export function ActivityList({ activities, currCard }) {
     activities = activities.filter(activity => activity.card.cardId === currCard.cardId)
     return (
         <div>
-            {activities.length && activities.map(activity => <ActivityPreview activity={activity}
-                key={activity.id} />)}
+            {activities.length ? activities.map(activity => <ActivityPreview activity={activity}
+                key={activity.id} />) : <></>}
         </div>
     )
 }

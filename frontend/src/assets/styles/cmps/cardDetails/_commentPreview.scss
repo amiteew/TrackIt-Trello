@@ -1,0 +1,22 @@
+.card-details-comment {
+    margin-bottom: 20px;
+    & > :first-child {
+        margin-inline-end: 10px;
+    }
+    small {
+        margin-top: 2px;
+        margin-left: 10px;
+    }
+    .comment-content {
+        width: 100%;
+    }
+    .comment-txt {
+        border-radius: 3px;
+        box-shadow: 0 0 2px 0px;
+        background-color: white;
+        p {
+            margin: 0;
+            padding: rem(10px);
+        }
+    }
+}

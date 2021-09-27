@@ -1,11 +1,20 @@
 .card-details-title {
     margin-bottom: 20px;
+    padding-top: 10px;
+    .card-details-icon {
+        margin-top: 5px;
+    }
     .text-area-auto {
         width: 660px;
         font-size: rem(20px);
         line-height: 24px;
     }
     h2 {
-        max-width: 660px;
+        width: 660px;
+        margin-bottom: 4px;
+    }
+    small span {
+        text-decoration: underline;
+        font-size: rem(14px);
     }
 }

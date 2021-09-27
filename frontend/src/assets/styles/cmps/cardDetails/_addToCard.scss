@@ -1,0 +1,39 @@
+.add-to-card {
+    .btn-container {
+        display: grid;
+        gap: 8px 8px;
+        grid-template-columns: 1fr 1fr;
+    }
+    h4 {
+        grid-column: 1/-1;
+        letter-spacing: 0.04em;
+        font-size: rem(12px);
+        margin-bottom: 0.5rem;
+    }
+    button {
+        padding: 6px 12px;
+        background-color: $cardBtnColor;
+        text-align: start;
+        display: flex;
+        & > :first-child {
+            margin-inline-end: 10px;
+        }
+    }
+    button:hover {
+        background-color: $cardHoverColor;
+    }
+}
+
+// RESPONVSIVE
+
+@media screen and (min-width: 784px) {
+    .add-to-card {
+        padding-left: 16px;
+        .btn-container {
+            // display: flex;
+            // flex-direction: column;
+            grid-template-columns: 168px;
+            // margin: 0 24px;
+        }
+    }
+}

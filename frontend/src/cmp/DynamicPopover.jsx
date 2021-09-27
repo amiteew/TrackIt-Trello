@@ -8,6 +8,7 @@ import { LabelsPopover } from './DynamicPopover/LabelsPopover';
 import { DatesPopover } from './DynamicPopover/DatesPopover';
 import { ChecklistPopover } from './DynamicPopover/ChecklistPopover';
 import { CoverPopover } from './DynamicPopover/CoverPopover';
+import { DynamicButton } from './DynamicCmps/DynamicButton';
 
 export class DynamicPopover extends React.Component {
     state = {
@@ -51,7 +52,7 @@ export class DynamicPopover extends React.Component {
         return (
             <React.Fragment>
                 <button onClick={this.handleClick}>
-                    {title}
+                    <DynamicButton type={type} />
                 </button>
                 <Popover
                     id={id}

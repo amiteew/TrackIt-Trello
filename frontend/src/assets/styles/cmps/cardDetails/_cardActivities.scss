@@ -2,9 +2,37 @@
     .show-hide {
         font-size: rem(14px);
         padding: 8px;
+        margin-bottom: 8px;
+        background-color: $cardBtnColor;
     }
-    .input-comment {
-        font-size: rem(14px);
-        border: 0;
+    .add-comment-container {
+        margin-bottom: 20px;
+        & > :first-child {
+            margin-inline-end: 10px;
+        }
+    }
+    .comment-container {
+        width: 100%;
+        border-radius: 3px;
+        box-shadow: 0 0 2px 0px;
+        background-color: white;
+
+        .input-comment {
+            margin-bottom: 5px;
+            font-size: rem(14px);
+            padding: rem(10px);
+            border: 0;
+            color: #272b33;
+            &:focus-visible {
+                outline: 0;
+            }
+        }
+        .comment-save {
+            background-color: $blueColor;
+            color: white;
+            padding: 6px 12px;
+            margin: 8px;
+            width: 50px;
+        }
     }
 }

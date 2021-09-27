@@ -1,0 +1,9 @@
+.activity-preview {
+    margin-bottom: 20px;
+    & > :first-child {
+        margin-inline-end: 10px;
+    }
+    h4 {
+        margin: 0;
+    }
+}

@@ -1,11 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import Avatar from '@mui/material/Avatar';
 import { Loading } from '../Loading';
 import { CommentsList } from '../CommentsList';
 import { ActivityList } from '../ActivityList';
 import { utilService } from '../../services/util.service';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
-export class CardActivities extends React.Component {
+class _CardActivities extends React.Component {
     state = {
         board: null,
         currListIdx: null,
@@ -18,6 +20,7 @@ export class CardActivities extends React.Component {
     componentDidMount() {
         const { board, currListIdx, currCardIdx } = this.props
         this.setState({ ...this.state, board, currListIdx, currCardIdx })
+        console.log('loggedin user: ', this.props.loggedInUser)
     }
 
     // state = {
@@ -34,7 +37,8 @@ export class CardActivities extends React.Component {
         this.setState({ ...this.state, isDetails: !this.state.isDetails })
     }
     onToggleComment = () => {
-        this.setState({ ...this.state, isEditing: !this.state.isEditing })
+        // ev.stopPropagation()
+        this.setState({ ...this.state, isEditing: true })
     }
     handleChange = ({ target }) => {
         this.setState({ ...this.state, newActivityTxt: target.value });
@@ -46,11 +50,7 @@ export class CardActivities extends React.Component {
         const newBoard = { ...this.state.board }
         newBoard.lists[currListIdx].cards[currCardIdx].comments.unshift({
             // byMember: userService.getLoggedinUser(),
-            byMember: {
-                _id: utilService.makeId(),
-                fullname: "amit weiner",
-                imgUrl: "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-            },
+            byMember: this.props.loggedInUser,
             createdAt: Date.now(),
             id: utilService.makeId(),
             txt: this.state.newActivityTxt
@@ -65,6 +65,7 @@ export class CardActivities extends React.Component {
 
     render() {
         let { isEditing, isDetails, newActivityTxt, board, currListIdx, currCardIdx } = this.state
+        const { loggedInUser } = this.props
         if (!board || currCardIdx === null || currListIdx === null) return <Loading />
         const comments = board.lists[currListIdx].cards[currCardIdx].comments
         const currCard = board.lists[currListIdx].cards[currCardIdx]
@@ -78,24 +79,42 @@ export class CardActivities extends React.Component {
                     {!isDetails && <button className="show-hide hover" onClick={this.onToggleDetails}>Show details</button>}
                     {isDetails && <button className="show-hide hover" onClick={this.onToggleDetails}>Hide details</button>}
                 </div>
-                <div className="flex direction-col" onClick={this.onToggleComment}>
-                    <TextareaAutosize
-                        className="input-comment"
-                        name='description'
-                        type='text'
-                        placeholder='Write a comment...'
-                        onChange={this.handleChange}
-                        onBlur={this.onToggleComment}
-                        value={newActivityTxt}
-                    />
-                    {isEditing && <button onClick={this.onSaveActivity}>Save</button>}
+                <div className="add-comment-container flex direction-row ">
+                    <Avatar className="card-details-avatar" alt={loggedInUser.username} src={loggedInUser.imgUrl} />
+                    <div className=" comment-container flex direction-col" onClick={this.onToggleComment}>
+                        <TextareaAutosize
+                            className="input-comment text-area-auto"
+                            name='description'
+                            type='text'
+                            placeholder='Write a comment...'
+                            onChange={this.handleChange}
+                            // onBlur={this.onToggleComment}
+
+                            value={newActivityTxt}
+                        />
+                        {isEditing && <button className="comment-save" onClick={(ev) => this.onSaveActivity(ev)}>Save</button>}
+                    </div>
                 </div>
 
 
-                {currCard.comments && <CommentsList comments={currCard.comments} />}
+                {currCard.comments.length ? <CommentsList comments={currCard.comments} /> : <></>}
                 {isDetails && <ActivityList currCard={currCard} activities={board.activities} />}
 
             </div>
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        board: state.boardReducer.board,
+        loggedInUser: state.userReducer.loggedInUser
+    }
+}
+const mapDispatchToProps = {
+    // removeBoard,
+    // loadBoard,
+    // updateBoard
+}
+
+export const CardActivities = connect(mapStateToProps, mapDispatchToProps)(_CardActivities)
