@@ -413,9 +413,9 @@
                         "cardLabelIds": [],
                         "checklists": [],
                         "createdAt": 1590999730348,
-                        "dueDate": null,
+                        "dueDate": {},
                         "attachment": [],
-                        "cardStyle": null
+                        "cardStyle": {}
                     }
                 ]
             },
@@ -432,9 +432,9 @@
                         "cardLabelIds": [],
                         "checklists": [],
                         "createdAt": 1590999730348,
-                        "dueDate": null,
+                        "dueDate": {},
                         "attachment": [],
-                        "cardStyle": null
+                        "cardStyle": {}
                     }
                 ]
             }

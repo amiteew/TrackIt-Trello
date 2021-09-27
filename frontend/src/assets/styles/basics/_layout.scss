@@ -33,3 +33,13 @@
             1fr;
     }
 }
+
+.main-container.boards {
+    background-color: $bgcColor;
+    @include for-wide-layout {
+        grid-template-columns:
+            1fr
+            minmax(auto, 1100px)
+            1fr;
+    }
+}
