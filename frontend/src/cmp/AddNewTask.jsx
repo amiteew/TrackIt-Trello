@@ -25,18 +25,22 @@ export class AddNewTask extends React.Component {
 
     render() {
         const { txt } = this.state
-        return (<>
-            <div>
+        return (
+            <div className="add-new-task">
                 <TextareaAutosize
                     type='text'
+                    className="text-area-auto task-edit"
                     value={txt}
                     onChange={this.handleChange}
                     onKeyPress={this.handleChange}
                     onBlur={this.onDiscardChanges}
+                    autoFocus
                 />
-                <button onClick={this.onAddTask}>Add</button>
-                <button onClick={this.onDiscardChanges}>X</button>
+                <div>
+                    <button className="save-desc" onClick={this.onAddTask}>Add</button>
+                    <button className="discard-desc" onClick={this.onDiscardChanges}>X</button>
+                </div>
             </div>
-        </>)
+        )
     }
 }

@@ -1,9 +1,16 @@
 .progress-bar {
+    margin-bottom: 10px;
+    p {
+        margin: 0;
+        margin-right: 20px;
+        font-size: rem(11px);
+    }
     .progress-bar-container {
-        background-color: $bgcColor;
+        background-color: $cardHoverColor;
         width: 100%;
         border-radius: 10px;
-        .progress-bar {
+        height: 8px;
+        .progressing {
             height: 8px;
             background-color: #5ba4cf;
             transition: width, 0.8s;

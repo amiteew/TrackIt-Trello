@@ -75,15 +75,20 @@ class _ChecklistApp extends React.Component {
         if (!currChecklist) return <></>
         return (
             <div className="checklist-app">
-                <CheckBoxOutlinedIcon /> <h3>{currChecklist.title}</h3>
-                <button onClick={this.onDeleteChecklist}>Delete</button>
+                <div className="flex direction-row space-between ">
+                    <div className="flex direction-row">
+                        <CheckBoxOutlinedIcon className="card-details-icon" /> <h3>{currChecklist.title}</h3>
+                    </div>
+                    <button className="delete-checklist hover" onClick={this.onDeleteChecklist}>Delete</button>
+                </div>
                 <ProgressBar currChecklist={currChecklist} />
                 {
-                    currChecklist.tasks.length && currChecklist.tasks.map((task, taskIdx) =>
+                    currChecklist.tasks.length ? currChecklist.tasks.map((task, taskIdx) =>
                     (<ChecklistTask key={task.id} task={task} taskIdx={taskIdx}
                         onEditTask={this.onEditTask} onDeleteTask={this.onDeleteTask} />))
+                        : <></>
                 }
-                {!isAddItem && <button onClick={this.onIsAddItem}>Add an item</button>}
+                {!isAddItem && <button className="add-item hover" onClick={this.onIsAddItem}>Add an item</button>}
                 {isAddItem && <AddNewTask onIsAddItem={this.onIsAddItem} onAddTask={this.onAddTask} />}
             </div >
         )

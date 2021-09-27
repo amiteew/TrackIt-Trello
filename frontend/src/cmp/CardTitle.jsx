@@ -59,6 +59,7 @@ export class CardTitle extends React.Component {
                         onKeyPress={this.handleChange}
                         value={currCard.cardTitle}
                         onBlur={this.onSaveTitle}
+                        onFocus={(ev) => ev.target.select()}
                         autoFocus
                     />}
                     {!isEdit && <h2 onClick={this.onToggleEdit}>{currCard.cardTitle}</h2>}

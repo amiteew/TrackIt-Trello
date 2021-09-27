@@ -112,15 +112,17 @@ class _CardDetails extends React.Component {
                             currCardIdx={currCardIdx}
                             OnUpdateBoard={this.OnUpdateBoard} />
 
+                        <ChecklistListApp board={board}
+                            currListIdx={currListIdx}
+                            currCardIdx={currCardIdx}
+                            OnUpdateBoard={this.OnUpdateBoard} />
+
                         <CardActivities board={board}
                             currListIdx={currListIdx}
                             currCardIdx={currCardIdx}
                             OnUpdateBoard={this.OnUpdateBoard} />
 
-                        <ChecklistListApp board={board}
-                            currListIdx={currListIdx}
-                            currCardIdx={currCardIdx}
-                            OnUpdateBoard={this.OnUpdateBoard} />
+
                     </div>
                     <div className="card-details-sidebar">
                         <AddToCard board={board}

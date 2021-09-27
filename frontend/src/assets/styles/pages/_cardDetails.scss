@@ -22,6 +22,8 @@
     padding-left: 25px;
     .card-details-icon {
         margin-right: 15px;
+        width: 22px;
+        height: 22px;
     }
     .card-details-avatar {
         width: 35px;
@@ -36,7 +38,8 @@
             max-width: 784px;
         }
         h3 {
-            font-size: 1rem;
+            font-size: rem(16px);
+            font-weight: 700;
         }
         .hover:hover {
             background-color: $cardHoverColor;

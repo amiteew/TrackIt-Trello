@@ -3,7 +3,7 @@ import React from 'react'
 export function ProgressBar({ currChecklist }) {
     const style = { width: getProgress() }
     const precent = getProgress()
-    const classNameBar = (precent === '100%') ? 'progress-bar bar-done' : 'progress-bar'
+    const classNameBar = (precent === '100%') ? 'progressing bar-done' : 'progressing'
 
     function getProgress() {
         if (!currChecklist.tasks.length) return '0%'
@@ -15,7 +15,7 @@ export function ProgressBar({ currChecklist }) {
     }
 
     return (
-        <div className="progress-bar">
+        <div className="progress-bar flex direction-row align-center">
             <p>{precent}</p>
             <div className="progress-bar-container">
                 <div className={classNameBar} style={style} ></div>
