@@ -6,7 +6,6 @@ import { BoardList } from '../cmp/BoardList.jsx';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { BoardHeader } from '../cmp/BoardHeader.jsx';
 import { AddList } from '../cmp/AddList.jsx';
-import { TemporaryDrawer } from '../cmp/DroweMenu.jsx';
 import { Route, Link } from 'react-router-dom';
 import { CardDetails } from '../pages/CardDetails.jsx';
 import { Loading } from '../cmp/Loading.jsx';
@@ -75,11 +74,15 @@ class _BoardApp extends React.Component {
             const listStart = board.lists.find(list => list.listId === dndStart)
             const card = listStart.cards.splice(dndStartIdx, 1);
             const listEnd = board.lists.find(list => list.listId === dndEnd)
+            if (!listEnd.cards) {
+                listEnd.push(card);
+                return;
+            }
+
             listEnd.cards.splice(dndEndIdx, 0, ...card);
         }
 
         this.onUpdateBoard();
-        // const card = board.lists.cards.find(card => card.cardId === dndStart)
     }
 
     // onPopOver = (position, name, props) => {
@@ -90,12 +93,8 @@ class _BoardApp extends React.Component {
     //     />
     // }
 
-    toggleMenu = () => {
-        this.setState({ isMenuOpen: !this.state.isMenuOpen })
-    }
-
     render() {
-        const { board, isMenuOpen } = this.state;
+        const { board, } = this.state;
         if (!board) return <Loading />
         return (
             <section className="board-app flex direction-col">
@@ -106,8 +105,7 @@ class _BoardApp extends React.Component {
                         <BoardList board={board} lists={board.lists} onUpdateBoard={this.onUpdateBoard} className="board" />
                     </DragDropContext >
                     <AddList board={board} onUpdateBoard={this.onUpdateBoard} />
-                    {!isMenuOpen && <h1 onClick={this.toggleMenu}> Show menu</h1>}
-                    {isMenuOpen && <TemporaryDrawer toggleMenu={this.toggleMenu} board={board} />}
+
                 </div>
             </section >
         )

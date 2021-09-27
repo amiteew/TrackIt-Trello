@@ -3,12 +3,14 @@ import { connect } from 'react-redux'
 import { updateBoard } from "../store/board.actions"
 import { MembersListBoard } from "./MembersListBoard"
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import { TemporaryDrawer } from '../cmp/DroweMenu.jsx';
 
 class _BoardHeader extends React.Component {
   state = {
     isEditTitle: false,
     title: '',
-    isStarred: false
+    isStarred: false,
+    isMenuOpen: false
   }
 
   componentDidMount() {
@@ -43,9 +45,13 @@ class _BoardHeader extends React.Component {
     // onUpdateBoard(board)
   }
 
+  toggleMenu = () => {
+    this.setState({ isMenuOpen: !this.state.isMenuOpen })
+  }
+
   render() {
     const { board } = this.props
-    const { title, isEditTitle, isStarred } = this.state
+    const { title, isEditTitle, isStarred, isMenuOpen } = this.state
 
     return (
       <div className="board-header flex space-between">
@@ -72,7 +78,8 @@ class _BoardHeader extends React.Component {
           </div>
         </div>
         <div className="header-right">
-          <button>Show menu</button>
+          {!isMenuOpen && <button onClick={this.toggleMenu}> Show menu</button>}
+          {isMenuOpen && <TemporaryDrawer toggleMenu={this.toggleMenu} board={board} />}
         </div>
       </div>
     )

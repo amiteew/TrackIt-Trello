@@ -8,10 +8,11 @@ import { Link } from 'react-router-dom';
 import { QuickCardEditor } from './QuickCardEditor.jsx';
 import { AddToCard } from './AddToCard.jsx';
 import { BsPencil } from "react-icons/bs";
+import { GrTextAlignFull } from "react-icons/gr";
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { connect } from 'formik';
-import { updateBoard } from '../store/board.actions.js';
+// import { updateBoard } from '../store/board.actions.js';
 import { TextareaAutosize } from '@mui/material';
 
 export class CardPreview extends React.Component {
@@ -22,7 +23,6 @@ export class CardPreview extends React.Component {
     }
 
     componentDidMount() {
-
         // this.props.updateBoard();
     }
 
@@ -78,6 +78,7 @@ export class CardPreview extends React.Component {
                                     </div>
                                 }
                                 <div className="card-preview-icon flex">
+                                    {card.description && <div className='badge flex align-center'><GrTextAlignFull /></div>}
                                     <span className="badge is-watch">{card.cardMembers && <CardVisibilityPreview cardMembers={card.cardMembers} />} </span>
                                     {card.comments.length ? <CardCommentPreview cardComments={card.comments} /> : <> </>}
                                     <div title="checklist">{card.checklists.length ? <CardCheckPreview checklists={card.checklists} /> : <> </>}</div>
