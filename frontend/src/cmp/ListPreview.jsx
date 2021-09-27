@@ -39,11 +39,11 @@ export class ListPreview extends React.Component {
 
     onSaveListTitle = () => {
         const { listTitle } = this.state;
-        if (!listTitle) return;
+        // if (!listTitle) return;
         const { onUpdateBoard, board, currListIdx } = this.props;
         board.lists[currListIdx].listTitle = listTitle;
-        this.toggleEditTitle();
         onUpdateBoard();
+        this.toggleEditTitle();
     }
 
 
