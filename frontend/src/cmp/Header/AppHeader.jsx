@@ -9,6 +9,10 @@ import { LogoName } from './LogoName';
 // import { onLogout } from '../store/user.actions.js'
 
 class _AppHeader extends React.Component {
+    // checkIfTemplate = () => {
+        
+    // }
+
     render() {
         const user = this.props.loggedInUser;
         if (!user) return (<></>)
@@ -18,7 +22,7 @@ class _AppHeader extends React.Component {
                     <div className="main-nav-links flex align-center">
                         <LogoName isLoggedIn={true} />
                         <NavLink to="/boards">Boards ➤</NavLink>
-                        <NavLink to="/b">Create</NavLink>
+                        <NavLink to="/">Create</NavLink>
                     </div>
                     <div className="user-section">
                         <Avatar alt={user.initials} src={user.imgUrl} style={{ height: '2rem', width: '2rem' }} />
