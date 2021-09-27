@@ -1,7 +1,10 @@
 .card-activities {
-    .title-desc {
-        width: 500px;
-        .show-hide {
-        }
+    .show-hide {
+        font-size: rem(14px);
+        padding: 8px;
+    }
+    .input-comment {
+        font-size: rem(14px);
+        border: 0;
     }
 }

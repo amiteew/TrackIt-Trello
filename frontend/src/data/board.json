@@ -161,7 +161,7 @@
                         "attachment": [
                             {
                                 "id": "a123",
-                                "src": "hello/byby.png"
+                                "imgUrl": "https://res.cloudinary.com/dhxwkomwu/image/upload/v1632685060/WhatsApp_Image_2021-09-26_at_22.36.21_fktx98.jpg"
                             }
                         ],
                         "cardStyle": {

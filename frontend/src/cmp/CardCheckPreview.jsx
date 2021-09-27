@@ -16,10 +16,10 @@ export function CardCheckPreview({ checklists }) {
     const { taskCount, taskCountDone } = countTasks();
     const isDoneLabel = taskCount === taskCountDone ? 'done' : '';
     return (
-        <span>
-            <BsCheckBox className="card-icon"/>
-            <p className={"card-txt "  + isDoneLabel}> {taskCountDone + '/' + taskCount} </p>
-        </span>
+        <div className="badge flex align-center">
+            <span className="badge-icon flex align-center" ><BsCheckBox className="card-icon"/></span>
+            <span className={"card-txt "  + isDoneLabel}> {taskCountDone + '/' + taskCount} </span>
+        </div>
     )
 
 }
