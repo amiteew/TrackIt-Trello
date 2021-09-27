@@ -1,5 +1,6 @@
 .card-description {
     .desc-txt-placeholder {
+        margin-bottom: 40px;
         width: 500px;
         background-color: $bgcColor;
         height: 60px;
@@ -10,9 +11,10 @@
     .desc-txt {
         width: 500px;
         height: 60px;
-        p {
-            padding: 1rem;
-        }
+        margin-bottom: 10px;
+        // p {
+        //     padding: 1rem;
+        // }
     }
     .desc-edit {
         margin-top: 20px;
@@ -20,5 +22,17 @@
         padding-bottom: 70px;
         padding-top: rem(8px);
         font-size: rem(14px);
+    }
+    .save-desc {
+        margin-bottom: 20px;
+        background-color: $blueColor;
+        color: white;
+        padding: 10px;
+        margin-right: 10px;
+        border-radius: 5px;
+    }
+    .discard-desc {
+        font-size: rem(20px);
+        color: #42526e;
     }
 }

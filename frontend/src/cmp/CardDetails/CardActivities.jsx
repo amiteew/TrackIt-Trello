@@ -1,10 +1,10 @@
 import React from 'react';
-import { Loading } from './Loading';
-import { CommentsList } from './CommentsList';
-import { DebounceInput } from 'react-debounce-input';
-import { ActivityList } from '../cmp/ActivityList';
-import { utilService } from '../services/util.service';
+import { Loading } from '../Loading';
+import { CommentsList } from '../CommentsList';
+import { ActivityList } from '../ActivityList';
+import { utilService } from '../../services/util.service';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 export class CardActivities extends React.Component {
     state = {
         board: null,
@@ -70,9 +70,14 @@ export class CardActivities extends React.Component {
         const currCard = board.lists[currListIdx].cards[currCardIdx]
         // if (!comments) return <Loading />
         return (
-            <div>
-                <h3>Activity</h3>
-
+            <div className="card-activities">
+                <div className="flex direction-row space-between title-desc">
+                    <div className="flex direction-row">
+                        <FormatListBulletedIcon className="card-details-icon" /> <h3>Activity</h3>
+                    </div>
+                    {!isDetails && <button className="show-hide" onClick={this.onToggleDetails}>Show details</button>}
+                    {isDetails && <button className="show-hide" onClick={this.onToggleDetails}>Hide details</button>}
+                </div>
                 <div onClick={this.onToggleComment}>
                     <TextareaAutosize
                         name='description'
@@ -84,8 +89,7 @@ export class CardActivities extends React.Component {
                     {isEditing && <button onClick={this.onSaveActivity}>Save</button>}
                 </div>
 
-                {!isDetails && <button onClick={this.onToggleDetails}>Show details</button>}
-                {isDetails && <button onClick={this.onToggleDetails}>Hide details</button>}
+
                 {currCard.comments && <CommentsList comments={currCard.comments} />}
                 {isDetails && <ActivityList currCard={currCard} activities={board.activities} />}
 
