@@ -1,0 +1,54 @@
+.board-header {
+    height: auto;
+    padding: 8px 4px 4px 8px;
+    position: relative;
+
+    .header-title {
+        font-size: rem(18px);
+        font-weight: 700;
+        line-height: rem(32px);
+        padding: 0 rem(12px);
+    }
+
+    .board-header-btn {
+        cursor: default;
+        float: left;
+        font-size: rem(14px);
+        height: rem(32px);
+        line-height: rem(32px);
+        margin: 0 rem(4px) rem(4px) 0;
+        max-width: rem(400px);
+        overflow: hidden;
+        padding-left: rem(32px);
+        position: relative;
+        text-decoration: none;
+        text-overflow: ellipsis;
+        border-radius: rem(3px);
+        background-color: #00000014;
+        color: #172b4d;
+
+        button {
+            background-color: unset;
+        }
+
+        &.show-menu .title {
+            padding-right: rem(12px);
+        }
+
+        &.show-menu .icon{
+            left: 0;
+            padding: rem(6px);
+            position: absolute;
+            top: -3px;
+            color: #42526e;
+        }
+
+    }
+}
+
+.board-header-btn-icon{
+    left: 0;
+    padding: rem(6px);
+    position: absolute;
+    top: 0;
+}

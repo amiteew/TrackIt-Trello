@@ -42,8 +42,8 @@ export class ListPreview extends React.Component {
         if (!listTitle) return;
         const { onUpdateBoard, board, currListIdx } = this.props;
         board.lists[currListIdx].listTitle = listTitle;
-        this.toggleEditTitle();
         onUpdateBoard();
+        this.toggleEditTitle();
     }
 
 
@@ -53,32 +53,35 @@ export class ListPreview extends React.Component {
         return (
             <Draggable draggableId={list.listId} index={currListIdx}>
                 {provided => (
-                <section className="list-wrapper" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-                    <div className="list-content flex direction-col">
-                        <div className="list-header flex">
-                            {!isEditTitle && <h2 onClick={this.toggleEditTitle}>{list.listTitle}</h2>}
-                            {isEditTitle &&
-                                <TextareaAutosize className="text-area-auto list-input"
-                                    value={listTitle}
-                                    aria-label="empty textarea"
-                                    onChange={this.handleChange}
-                                    onKeyPress={this.handleChange}
-                                    onBlur={this.onSaveListTitle}
-                                    autoFocus
-                                />                        
-                            }
-                            <div className="list-header-menu-btn">
-                                <DynamicPopover type={'list actions'} board={board} list={list} title={<BsThreeDots />} onUpdateBoard={onUpdateBoard} titleModal={'List actions'} />
+                    <section className="list-wrapper" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+                        <div className="list-content flex direction-col">
+                            <div className="list-header flex">
+                                {!isEditTitle && <h2 onClick={this.toggleEditTitle}>{list.listTitle}</h2>}
+                                {isEditTitle &&
+                                    <TextareaAutosize className="text-area-auto list-input"
+                                        value={listTitle}
+                                        aria-label="empty textarea"
+                                        onChange={this.handleChange}
+                                        onKeyPress={this.handleChange}
+                                        onBlur={this.onSaveListTitle}
+                                        onFocus={(ev =>{
+                                            ev.target.select();
+                                        })}
+                                        autoFocus
+                                    />
+                                }
+                                <div className="list-header-menu-btn">
+                                    <DynamicPopover type={'list actions'} board={board} list={list} onUpdateBoard={onUpdateBoard} titleModal={'List actions'} />
+                                </div>
                             </div>
+                            <CardList key={list.listId} cards={list.cards} board={board} currListIdx={currListIdx} list={list} onUpdateBoard={onUpdateBoard} />
+                            {!isAdding && <h1 className="add-card-container" onClick={() => {
+                                this.toggleOnAdd()
+                            }}><BsPlus /> Add another card</h1>}
+                            {isAdding && <AddCard list={list} onUpdateBoard={onUpdateBoard} onCloseAdding={this.onCloseAdding} />}
                         </div>
-                        <CardList key={list.listId} cards={list.cards} board={board} currListIdx={currListIdx} list={list} onUpdateBoard={onUpdateBoard} />
-                        {!isAdding && <h1 className="add-card-container" onClick={() => {
-                            this.toggleOnAdd()
-                        }}><BsPlus /> Add another card</h1>}
-                        {isAdding && <AddCard list={list} onUpdateBoard={onUpdateBoard} onCloseAdding={this.onCloseAdding} />}
-                    </div>
-                </section >
-                 )
+                    </section >
+                )
                 }
             </Draggable>
         )

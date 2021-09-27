@@ -8,6 +8,8 @@ import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 import ScheduleOutlinedIcon from '@mui/icons-material/ScheduleOutlined';
 import CallToActionOutlinedIcon from '@mui/icons-material/CallToActionOutlined';
 
+import { BsThreeDots } from "react-icons/bs";  //merge conflict- is this needed here? <AW>
+
 class _DynamicButton extends React.Component {
     render() {
         const { type, loggedInUser } = this.props
@@ -16,7 +18,7 @@ class _DynamicButton extends React.Component {
                 case 'members':
                     return <><PersonOutlineOutlinedIcon /> Members</>
                 case 'list actions':
-                    return <></>
+                    return <><BsThreeDots /></>
                 case 'labels':
                     return <>< LocalOfferOutlinedIcon /> Labels</>
                 case 'checklist':

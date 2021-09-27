@@ -10,12 +10,16 @@
 @import "basics/base.scss";
 @import "basics/buttons.scss";
 
-// Components
+//Headers 
 @import "cmps/header";
+@import "cmps/boardHeader";
+
+// Components
 @import "cmps/progressBar";
 @import "cmps/coverPopover";
 @import "cmps/popOverModal";
 @import "cmps/boardPreview";
+@import "cmps/popOverMenue";
 
 //CARD
 @import "cmps/cardPreview";
@@ -32,6 +36,8 @@
 @import "cmps/cardDetails/commentPreview";
 @import "cmps/cardDetails/activityPreview";
 @import "cmps/cardDetails/addToCard";
+@import "cmps/cardDetails/cardChecklistApp";
+@import "cmps/cardDetails/addNewTask";
 
 // Views (pages)
 @import "pages/home-page";
@@ -39,3 +45,6 @@
 @import "pages/login-signup";
 @import "pages/cardDetails";
 @import "pages/user-template-boards";
+
+
+

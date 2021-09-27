@@ -58,6 +58,7 @@ export class CardDescription extends React.Component {
                             onChange={this.handleChange}
                             value={currCard.description}
                             onBlur={this.onSaveDescription}
+                            onFocus={(ev) => ev.target.select()}
                             autoFocus
                         />
                         <div >
