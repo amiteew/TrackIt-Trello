@@ -1,0 +1,61 @@
+.boards-page {
+    min-height: calc(100vh - rem(44px));
+    .side-nav {
+        display: none;
+        margin: 40px 0 0;
+        padding: 0 16px;
+        width: 200px;
+        background-color: chartreuse;
+        a {
+            font-weight: bold;
+        }
+    }
+    @include for-normal-layout {
+        .side-nav {
+            display: block;
+        }
+    }
+
+    @include for-wide-layout {
+        .side-nav {
+            width: 272px;
+            display: block;
+        }
+    }
+    .boards {
+        margin: 40px 16px;
+        flex-grow: 1;
+        .starred-boards {
+            margin-bottom: 60px;
+            .star-title {
+                color: #172b4d;
+                margin-bottom: 1rem;
+                .star-icon {
+                    height: rem(23px);
+                    width: rem(23px);
+                    margin-inline-end: 0.9rem;
+                }
+                h3 {
+                    display: inline-block;
+                    font-weight: 700;
+                    margin: 0;
+                }
+            }
+        }
+        // .user-boards {
+        // }
+        .boards-preview {
+            @include for-narrow-layout {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(128px, 184px));
+                gap: 9px;
+            }
+            @include for-normal-layout {
+                gap: 11px;
+            }
+            @include for-wide-layout {
+                gap: 17px;
+            }
+        }
+    }
+}
