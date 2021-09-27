@@ -22,7 +22,10 @@ export class _AddCard extends React.Component {
 
     onAddCard = () => {
         let cardTitle = this.state.cardTitle;
-        if (!cardTitle) cardTitle = 'Untitled';
+        if (!cardTitle) {
+            this.props.onCloseAdding();
+            return;
+        }
         const newCard = {
             cardId: utilService.makeId(),
             cardTitle,
@@ -50,7 +53,7 @@ export class _AddCard extends React.Component {
         const { cardTitle } = this.state;
         return (
             <div>
-                <TextareaAutosize
+                <TextareaAutosize className="text-area-auto"
                     value={cardTitle}
                     placeholder="Enter a title for this card..."
                     aria-label="empty textarea"
