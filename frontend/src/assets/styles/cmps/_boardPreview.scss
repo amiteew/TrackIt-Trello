@@ -1,3 +1,59 @@
-.board-preview{
-    
+.board-preview {
+    background-color:teal;
+    height: 96px;
+    border-radius: 3px;
+    padding-inline-start: 7px;
+    .board-title {
+        font-size: rem(16px);
+        font-weight: 700;
+        line-height: rem(24px);
+        margin: 6px 0 0;
+        color: white;
+    }
+    .board-preview-bottom {
+        position: relative;
+        .star-btn {
+            background-color: transparent;
+            position: absolute;
+            right: -20px;
+            opacity: 0;
+            bottom: 3px;
+            transition: all 0.2s ease-in-out;
+            &.show {
+                right: 3px;
+                opacity: 1;
+            }
+            .star-icon {
+                height: 14px;
+                width: 14px;
+                color: #bfd6e3;
+                transition: all 0.15s;
+                &.yellow {
+                    color: #e6c60d;
+                }
+                &.large {
+                    color: white;
+                    height: 18px;
+                    width: 18px;
+                    font-weight: 500;
+                }
+            }
+            &:hover {
+                .star-icon {
+                    color: white;
+                    height: 18px;
+                    width: 18px;
+                    &.yellow {
+                        color: #e6c60d;
+                    }
+                }
+            }
+        }
+    }
+    &:hover {
+        .star-btn{
+            right: 3px;
+            opacity: 1;
+        }
+    }
 }
