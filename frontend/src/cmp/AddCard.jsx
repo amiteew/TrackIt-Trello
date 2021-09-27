@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { updateBoard } from '../store/board.actions.js';
 import { utilService } from '../services/util.service.js';
 import { TextareaAutosize } from '@mui/material';
-
+import { Button } from '@mui/material';
 
 export class _AddCard extends React.Component {
     state = {
@@ -53,7 +53,7 @@ export class _AddCard extends React.Component {
         const { cardTitle } = this.state;
         return (
             <div>
-                <TextareaAutosize className="text-area-auto"
+                <TextareaAutosize className="text-area-auto card-input"
                     value={cardTitle}
                     placeholder="Enter a title for this card..."
                     aria-label="empty textarea"
@@ -62,7 +62,7 @@ export class _AddCard extends React.Component {
                     onBlur={this.onAddCard}
                     autoFocus
                 />
-                <button>Add card</button>
+                <Button variant="contained" className="add-card-btn">Add card</Button>
                 <button onClick={this.props.onCloseAdding}>X</button>
             </div>
         )

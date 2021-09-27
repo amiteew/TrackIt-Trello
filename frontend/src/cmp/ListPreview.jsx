@@ -38,11 +38,11 @@ export class ListPreview extends React.Component {
     }
 
     onSaveListTitle = () => {
-        this.toggleEditTitle();
         const { listTitle } = this.state;
         if (!listTitle) return;
         const { onUpdateBoard, board, currListIdx } = this.props;
         board.lists[currListIdx].listTitle = listTitle;
+        this.toggleEditTitle();
         onUpdateBoard();
     }
 
@@ -58,7 +58,7 @@ export class ListPreview extends React.Component {
                         <div className="list-header flex">
                             {!isEditTitle && <h2 onClick={this.toggleEditTitle}>{list.listTitle}</h2>}
                             {isEditTitle &&
-                                <TextareaAutosize className="text-area-auto"
+                                <TextareaAutosize className="text-area-auto list-input"
                                     value={listTitle}
                                     aria-label="empty textarea"
                                     onChange={this.handleChange}

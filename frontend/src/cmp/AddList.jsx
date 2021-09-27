@@ -51,7 +51,7 @@ export class AddList extends React.Component {
         return (
             <div className="add-list">
                 {isAdding && <form onSubmit={this.onAddList} >
-                    <TextareaAutosize className="text-area-auto"
+                    <TextareaAutosize className="text-area-auto list-input"
                         value={listTitle}
                         aria-label="empty textarea"
                         placeholder="Enter list title"

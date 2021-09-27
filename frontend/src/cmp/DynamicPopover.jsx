@@ -65,12 +65,10 @@ export class DynamicPopover extends React.Component {
                     }}
                 >
                     {/* OPEN MODAL */}
-                    <div>
-                        <h3>{titleModal}</h3>
-                        <Button onClick={this.handleClose}>X</Button>
-                        <hr></hr>
+                    <div className="pop-over-header-title flex">
+                        <span>{titleModal}</span>
+                        <button onClick={this.handleClose}>X</button>
                     </div>
-
                     <DynamicCmp type={type} {...this.props} handleClose={this.handleClose} />
                 </Popover >
             </React.Fragment>

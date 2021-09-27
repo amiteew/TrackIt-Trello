@@ -42,13 +42,16 @@
     margin-left: -2px;
     max-width: 100%;
     align-items: flex-end;
-    
+
     img {
         width: unset;
         border-radius: 50%;
         height: rem(28px);
         width: rem(28px);
         align-items: flex-end;
+        position: absolute;
+        right: rem(2px);
+        bottom: rem(2px);
     }
 
     .is-watch svg {
@@ -106,7 +109,11 @@
         width: rem(16px);
     }
 
-    &.is-watch{
+    &.members {
+        position: inherit; 
+    }
+
+    &.is-watch {
         padding: 0 rem(6px) 0 rem(2px);
     }
 
@@ -115,7 +122,6 @@
         vertical-align: top;
         white-space: nowrap;
     }
-
 }
 
 // .card-icon ::before {

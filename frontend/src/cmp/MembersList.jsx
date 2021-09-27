@@ -3,7 +3,7 @@ import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
 export function MembersList({ members }) {
     return (
-        <div>
+        <div className="members">
             <AvatarGroup max={4}>
                 {members.map(member => <Avatar alt={member.username} src={member.imgUrl}
                     key={member._id} />)}

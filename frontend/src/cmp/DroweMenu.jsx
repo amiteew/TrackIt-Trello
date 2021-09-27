@@ -15,21 +15,21 @@ export function TemporaryDrawer({ board, toggleMenu }) {
     };
 
     const list = (anchor) => (
-        <Box
-            sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
-            role="presentation"
+        <div className="board-menu-content"
+            // sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+            // role="presentation"
             onClick={toggleDrawer(anchor, false)}
             onKeyDown={toggleDrawer(anchor, false)}
         >
-            <List>
+            <div className="pop-over-header-title flex">
+                <h3>Menu</h3>
                 <span onClick={toggleMenu}>X</span>
-                <h1>Menu</h1>
-            </List>
+            </div>
             <Divider />
-            <List>
+            <div>
                 <ShowMenu board={board} />
-            </List>
-        </Box>
+            </div>
+        </div>
     );
     const anchor = 'right';
 

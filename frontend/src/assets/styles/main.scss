@@ -12,12 +12,18 @@
 
 // Components
 @import "cmps/header";
-@import "cmps/cardPreview";
 @import "cmps/progressBar";
-@import "cmps/boardApp";
-@import "cmps/boardList";
 @import "cmps/coverPopover";
+@import "cmps/popOverModal";
 @import "cmps/boardPreview";
+
+//CARD
+@import "cmps/cardPreview";
+@import "cmps/addCard";
+
+//LIST
+@import "cmps/boardList";
+@import "cmps/addList";
 
 //CARD DETAILS:
 @import "cmps/cardDetails/cardTitle";
@@ -29,6 +35,7 @@
 
 // Views (pages)
 @import "pages/home-page";
+@import "pages/boardApp";
 @import "pages/login-signup";
 @import "pages/cardDetails";
 @import "pages/user-template-boards";
