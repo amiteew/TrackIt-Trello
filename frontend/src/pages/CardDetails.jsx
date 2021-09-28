@@ -23,24 +23,20 @@ class _CardDetails extends React.Component {
         currCardIdx: null,
     }
 
-    // componentDidMount() {
-    //     // this.props.loadBoards()   
-    //     const board = this.props; // IN THE FUTURE FROM PARAMS
-    //     boardService.getBoardById(boardId)
-    //         .then((board) => {
-    //             this.setState({ board })
-    //         })
-    //         .then(() => this.getCurrCard())
-    // }
+    componentDidMount() {
+        const { board } = this.props;
+        console.log('board', board)
+        // this.setState({ board })
+        this.getCurrCard(board)
+    }
 
-    // getCurrCard = () => {
-    //     const listId = this.props.match.params.listId; // IN THE FUTURE FROM PARAMS
-    //     const cardId = this.props.match.params.cardId
-    //     const currBoard = this.state.board
-    //     const currListIdx = currBoard.lists.findIndex(list => list.listId === listId)
-    //     const currCardIdx = currBoard.lists[currListIdx].cards.findIndex(card => card.cardId === cardId)
-    //     this.setState({ ...this.state, currListIdx, currCardIdx })
-    // }
+    getCurrCard = (board) => {
+        const listId = this.props.match.params.listId; // IN THE FUTURE FROM PARAMS
+        const cardId = this.props.match.params.cardId
+        const currListIdx = board.lists.findIndex(list => list.listId === listId)
+        const currCardIdx = board.lists[currListIdx].cards.findIndex(card => card.cardId === cardId)
+        this.setState({ ...this.state, currListIdx, currCardIdx })
+    }
 
     // handleChange = ({ target }) => {
     //     console.log('target', target.value)
@@ -58,26 +54,26 @@ class _CardDetails extends React.Component {
 
     onToggleDone = () => {
         const { currListIdx, currCardIdx } = this.state
-        const boardToUpdate = { ...this.state.board }
+        const boardToUpdate = this.props.board
         boardToUpdate.lists[currListIdx].cards[currCardIdx].dueDate.isDone =
             !boardToUpdate.lists[currListIdx].cards[currCardIdx].dueDate.isDone
-        this.setState({ ...this.state, board: boardToUpdate }, () => {
-            this.props.updateBoard({ ...this.state.board })
-        })
+        const action = 'changed Due Date'
+        this.props.updateBoard(boardToUpdate, action) // need to add card
+
     }
 
-    OnUpdateBoard = async (board, action, currCard, txt) => {
-        await this.props.updateBoard(board, action, currCard, txt)
+    OnUpdateBoard = (board, action, currCard, txt) => {
+        this.props.updateBoard(board, action, currCard, txt)
     }
 
     handleClose = () => {
-        const { board } = this.state;
+        const { board } = this.props;
         this.props.history.push(`/boards/${board._id}`)
     }
 
     render() {
-        const { board, currListIdx, currCardIdx, isEditOpen } = this.state
-        const {card} = this.props;
+        const { currListIdx, currCardIdx } = this.state
+        const { board } = this.props
         if (!board || currCardIdx === null || currListIdx === null) return <Loading />
         const currCard = board.lists[currListIdx].cards[currCardIdx]
         return (<div >
