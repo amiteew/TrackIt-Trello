@@ -3,14 +3,15 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { onLogout } from '../../store/user.actions'
 import Avatar from '@mui/material/Avatar';
+import { withRouter } from 'react-router-dom';
 
 class _UserMenuPopover extends React.Component {
     onLogout = async () => {
         try {
-            this.props.onLogout()
+          await this.props.onLogout()
             // console.log('userMenu props:', this.props);
             // this.context.router.push('/');
-            // this.props.history.push('/')
+            this.props.history.push('/')
         } catch (err) {
             console.log('userMenu catch err:', err);
         }
@@ -52,4 +53,5 @@ const mapDispatchToProps = {
     onLogout
 }
 
-export const UserMenuPopover = connect(mapStateToProps, mapDispatchToProps)(_UserMenuPopover)
+const _UserMenuPopoverWithRouter = withRouter(_UserMenuPopover);
+export const UserMenuPopover = connect(mapStateToProps, mapDispatchToProps)(_UserMenuPopoverWithRouter)
