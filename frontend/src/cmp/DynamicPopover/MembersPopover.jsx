@@ -53,8 +53,8 @@ class _MembersPopover extends React.Component {
                 />
                 <h3>Board Members</h3>
                 {board.boardMembers.length && board.boardMembers.map(member => (
-                    <div className="member-preview flex direction-row space-between" onClick={() => this.toggleMember(member)} >
-                        <div className="flex direction-row">
+                    <div className="member-preview flex direction-row space-between " onClick={() => this.toggleMember(member)} >
+                        <div className="flex direction-row ">
                             <Avatar className="card-details-avatar" alt={member.fullname} src={member.imgUrl}
                                 key={member._id} />
                             <div className="flex align-center">{member.fullname} ({member.username})</div>

@@ -11,6 +11,7 @@ import { DueDatePreview } from '../cmp/DueDatePreview';
 import { CardTitle } from '../cmp/CardTitle';
 import { CardDescription } from '../cmp/CardDescription.jsx';
 import { ChecklistListApp } from '../cmp/ChecklistListApp';
+import { DynamicPopover } from '../cmp/DynamicPopover'
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -92,13 +93,22 @@ class _CardDetails extends React.Component {
                             {
                                 currCard.cardMembers.length ? <div>
                                     <h3>Members</h3>
-                                    <MembersList members={currCard.cardMembers} />
+                                    <MembersList members={currCard.cardMembers} board={board}
+                                        currListIdx={currListIdx} currCardIdx={currCardIdx}
+                                        isCardOpen={true} />
                                 </div> : ''
                             }
 
                             {
                                 currCard.cardLabelIds.length ?
-                                    <CardLabelsList cardLabelIds={currCard.cardLabelIds} boardLabels={board.labels} /> : ''
+                                    <div className="flex direction-row">
+                                        <CardLabelsList cardLabelIds={currCard.cardLabelIds} boardLabels={board.labels}
+                                            board={board}
+                                            currListIdx={currListIdx}
+                                            currCardIdx={currCardIdx}
+                                        />
+                                    </div>
+                                    : ''
                             }
 
                             {

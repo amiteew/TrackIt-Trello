@@ -32,6 +32,10 @@
                 margin-right: 8px;
             }
         }
+        &:hover {
+            cursor: pointer;
+            background-color: #f5f6f8;
+        }
     }
 
     svg {

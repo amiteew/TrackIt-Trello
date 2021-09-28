@@ -1,11 +1,23 @@
 import React from 'react'
-import { LabelPreview } from './LabelPreview'
-export function CardLabelsList({ cardLabelIds, boardLabels }) {
+import { DynamicPopover } from './DynamicPopover'
+export function CardLabelsList({ cardLabelIds, boardLabels, board, currCardIdx, currListIdx }) {
     return (
         <div>
             <h3>Labels</h3>
-            <div className="flex wrap">
-                {cardLabelIds.map(labelId => <LabelPreview key={labelId} labelId={labelId} boardLabels={boardLabels} />)}
+            <div className="labels-list flex wrap">
+                {cardLabelIds.map(labelId =>
+                    <DynamicPopover key={labelId} labelId={labelId} boardLabels={boardLabels} type={'labels-preview'} titleModal={'Labels'}
+                        board={board}
+                        currListIdx={currListIdx}
+                        currCardIdx={currCardIdx}
+                    />)}
+                {/* <LabelPreview key={labelId} labelId={labelId} boardLabels={boardLabels} />)} */}
+
+                <DynamicPopover className="add-labels" type={'add-labels'} titleModal={'Labels'}
+                    board={board}
+                    currListIdx={currListIdx}
+                    currCardIdx={currCardIdx}
+                />
             </div>
         </div>
     )
