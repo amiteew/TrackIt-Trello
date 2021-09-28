@@ -1,5 +1,4 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom';
 import { onLogout } from '../../store/user.actions'
@@ -12,7 +11,6 @@ class _UserMenuPopover extends React.Component {
     }
 
     render() {
-        // console.log('usrmenu props:', this.props);
         const { loggedInUser } = this.props
         if (!loggedInUser) return (<></>)
         return (

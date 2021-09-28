@@ -5,16 +5,12 @@ import { withRouter } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 
 class _UserInfo extends React.Component {
-// function _UserInfo(props) {
-    // const { loggedInUser, user } = props
     closePopover = () => {
-        console.log('close');
         this.props.handleClose()
     }
     
     render() {
         const {user, loggedInUser} = this.props
-        // console.log('this props:', this.props);
         return (
             <div className="user-info flex">
                 <Avatar alt="" src={user.imgUrl} className="user-avatar">
