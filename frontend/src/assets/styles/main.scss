@@ -10,7 +10,7 @@
 @import "basics/base.scss";
 @import "basics/buttons.scss";
 
-//Headers 
+//Headers
 @import "cmps/header";
 @import "cmps/boardHeader";
 
@@ -22,6 +22,10 @@
 @import "cmps/popOverMenue";
 @import "cmps/popOverUserMenu";
 @import "cmps/loading";
+
+// DYNAMIC_POPOVER
+@import "cmps/dynamicPopover/membersPopover";
+@import "cmps/popOverLabels";
 
 //CARD
 @import "cmps/cardPreview";
@@ -40,6 +44,10 @@
 @import "cmps/cardDetails/addToCard";
 @import "cmps/cardDetails/cardChecklistApp";
 @import "cmps/cardDetails/addNewTask";
+@import "cmps/cardDetails/taskPreview";
+@import "cmps/cardDetails/membersList";
+@import "cmps/cardDetails/labelPreview";
+@import "cmps/cardDetails/dueDatePreview";
 
 // Views (pages)
 @import "pages/home-page";
@@ -47,6 +55,3 @@
 @import "pages/login-signup";
 @import "pages/cardDetails";
 @import "pages/user-template-boards";
-
-
-

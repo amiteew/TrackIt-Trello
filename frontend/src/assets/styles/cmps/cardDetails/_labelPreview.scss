@@ -1,0 +1,14 @@
+.label {
+    margin: 4px 4px 4px 0;
+    padding: 0 12px;
+    min-width: 40px;
+    width: auto;
+    height: 32px;
+    line-height: rem(32px);
+    border-radius: 3px;
+    color: white;
+    font-weight: 600;
+    &:hover {
+        opacity: 0.8;
+    }
+}

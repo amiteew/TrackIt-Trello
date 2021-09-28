@@ -47,6 +47,9 @@
     &.space-around {
         justify-content: space-around;
     }
+    &.items-flex-start {
+        align-items: flex-start;
+    }
     &.wrap {
         flex-wrap: wrap;
     }
@@ -63,7 +66,7 @@
     height: 25px;
 }
 
-.pointer {
+.pointer:hover {
     cursor: pointer;
 }
 

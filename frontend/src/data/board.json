@@ -68,6 +68,21 @@
                 "id": "l103",
                 "title": "Stuck",
                 "color": "clr3"
+            },
+            {
+                "id": "l104",
+                "title": "Ready for Review",
+                "color": "clr4"
+            },
+            {
+                "id": "l105",
+                "title": "Hold",
+                "color": "clr5"
+            },
+            {
+                "id": "l106",
+                "title": "Low Priority",
+                "color": "clr6"
             }
         ],
         "boardMembers": [
