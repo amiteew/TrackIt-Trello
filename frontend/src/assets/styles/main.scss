@@ -16,7 +16,6 @@
 
 // Components
 @import "cmps/progressBar";
-@import "cmps/coverPopover";
 @import "cmps/popOverModal";
 @import "cmps/boardPreview";
 @import "cmps/popOverMenue";
@@ -25,7 +24,9 @@
 
 // DYNAMIC_POPOVER
 @import "cmps/dynamicPopover/membersPopover";
-@import "cmps/popOverLabels";
+@import "cmps/dynamicPopover/popOverLabels";
+@import "cmps/dynamicPopover/popOverChecklist";
+@import "cmps/dynamicPopover/popOverCover";
 
 //CARD
 @import "cmps/cardPreview";

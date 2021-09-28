@@ -1,9 +1,11 @@
 import React from 'react';
 import Avatar from '@mui/material/Avatar';
 import { connect } from 'react-redux';
+import { utilService } from '../../services/util.service.js';
 import { loadBoards, removeBoard, addBoard, updateBoard } from '../../store/board.actions.js';
 import DoneIcon from '@mui/icons-material/Done';
-import { utilService } from '../../services/util.service.js';
+import { Button } from '@mui/material';
+
 class _ChecklistPopover extends React.Component {
     state = {
         board: null,
@@ -41,16 +43,16 @@ class _ChecklistPopover extends React.Component {
         const { board, currListIdx, currCardIdx, title } = this.state
         if (!board || currCardIdx === null || currListIdx === null) return <></>
         return (
-            <section className="members-popover">
-                <h5>Title</h5>
+            <section className="popover-checklist">
+                <label>Title</label>
                 <form onSubmit={this.onAddChecklist}>
-                    <input
+                    <input className="popover-checklist-input"
                         name='cardTitle'
                         type='text'
                         onChange={this.handleChange}
                         value={title}
                     />
-                    <button>Add</button>
+                    <Button variant="contained" className="add-btn">Add</Button>
                 </form>
             </section>
         )

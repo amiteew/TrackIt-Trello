@@ -2,6 +2,7 @@ import React from 'react';
 import { DynamicPopover } from './DynamicPopover';
 
 export function AddToCard({ board, currListIdx, currCardIdx, OnUpdateBoard }) {
+    const currCard = board.lists[currListIdx].cards[currCardIdx]
     return (
         <div className="add-to-card">
             <h4>ADD TO CARD</h4>
@@ -27,11 +28,11 @@ export function AddToCard({ board, currListIdx, currCardIdx, OnUpdateBoard }) {
                     currListIdx={currListIdx}
                     currCardIdx={currCardIdx}
                 />
-                <DynamicPopover type={'cover'} title={'Cover'} titleModal={'Cover'}
+               {!currCard.cardStyle.id && <DynamicPopover type={'cover'} title={'Cover'} titleModal={'Cover'}
                     board={board}
                     currListIdx={currListIdx}
                     currCardIdx={currCardIdx}
-                />
+                />}
 
             </div>
         </div>

@@ -1,0 +1,27 @@
+.popover-checklist {
+    margin-top: rem(12px);
+    font-size: rem(12px);
+    font-weight: 700;
+    color: #5e6c84;
+    
+    .popover-checklist-input {
+        margin: rem(8px) 0 rem(21px);
+        width: 100%;
+        outline: none;
+        border: none;
+        box-shadow: inset 0 0 0 2px #dfe1e6;
+        background-color: #fafbfc;
+        border-radius: rem(3px);
+        display: block;
+        padding: rem(8px) rem(12px);
+    }
+
+    .add-btn {
+        background-color: #0079bf;
+        box-shadow: none;
+        border: none;
+        color: #fff;
+        border-radius: 3px;
+        padding: rem(6px) rem(24px);
+    }
+}

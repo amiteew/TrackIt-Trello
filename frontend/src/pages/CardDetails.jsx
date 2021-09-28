@@ -15,6 +15,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { CardDetailsHeader } from '../cmp/CardDetailsHeader.jsx';
 
 class _CardDetails extends React.Component {
     state = {
@@ -77,62 +78,65 @@ class _CardDetails extends React.Component {
         if (!board || currCardIdx === null || currListIdx === null) return <Loading />
         const currCard = board.lists[currListIdx].cards[currCardIdx]
         return (<div >
-            <div className="screen-card-details" onClick={this.handleClose}></div>
+            <div className="screen-card-details"></div>
             <div className="card-details" >
-
-                <CardTitle board={board}
+                <CardDetailsHeader board={board}
                     currListIdx={currListIdx}
                     currCardIdx={currCardIdx}
-                    OnUpdateBoard={this.OnUpdateBoard} />
+                    handleClose={this.handleClose} />
+                <div className ="card-details-main-content">
 
-                <div className="card-details-content">
-                    <div className="card-details-main">
-                        <div className="card-details-items flex direction-row items-flex-start wrap">
+                    <CardTitle board={board}
+                        currListIdx={currListIdx}
+                        currCardIdx={currCardIdx}
+                        OnUpdateBoard={this.OnUpdateBoard} />
 
-                            {
-                                currCard.cardMembers.length ? <div>
-                                    <h3>Members</h3>
-                                    <MembersList members={currCard.cardMembers} />
-                                </div> : ''
-                            }
+                    <div className="card-details-content">
+                        <div className="card-details-main">
+                            <div className="card-details-items flex direction-row items-flex-start wrap">
 
-                            {
-                                currCard.cardLabelIds.length ?
-                                    <CardLabelsList cardLabelIds={currCard.cardLabelIds} boardLabels={board.labels} /> : ''
-                            }
+                                {
+                                    currCard.cardMembers.length ? <div>
+                                        <h3>Members</h3>
+                                        <MembersList members={currCard.cardMembers} />
+                                    </div> : ''
+                                }
 
-                            {
-                                currCard.dueDate.date &&
-                                <DueDatePreview dueDate={currCard.dueDate} onToggleDone={this.onToggleDone} />
-                            }
+                                {
+                                    currCard.cardLabelIds.length ?
+                                        <CardLabelsList cardLabelIds={currCard.cardLabelIds} boardLabels={board.labels} /> : ''
+                                }
+
+                                {
+                                    currCard.dueDate.date &&
+                                    <DueDatePreview dueDate={currCard.dueDate} onToggleDone={this.onToggleDone} />
+                                }
+                            </div>
+
+
+                            <CardDescription board={board}
+                                currListIdx={currListIdx}
+                                currCardIdx={currCardIdx}
+                                OnUpdateBoard={this.OnUpdateBoard} />
+
+                            <ChecklistListApp board={board}
+                                currListIdx={currListIdx}
+                                currCardIdx={currCardIdx}
+                                OnUpdateBoard={this.OnUpdateBoard} />
+
+                            <CardActivities board={board}
+                                currListIdx={currListIdx}
+                                currCardIdx={currCardIdx}
+                                OnUpdateBoard={this.OnUpdateBoard} />
                         </div>
-
-
-                        <CardDescription board={board}
-                            currListIdx={currListIdx}
-                            currCardIdx={currCardIdx}
-                            OnUpdateBoard={this.OnUpdateBoard} />
-
-                        <ChecklistListApp board={board}
-                            currListIdx={currListIdx}
-                            currCardIdx={currCardIdx}
-                            OnUpdateBoard={this.OnUpdateBoard} />
-
-                        <CardActivities board={board}
-                            currListIdx={currListIdx}
-                            currCardIdx={currCardIdx}
-                            OnUpdateBoard={this.OnUpdateBoard} />
+                        <div className="card-details-sidebar">
+                            <AddToCard board={board}
+                                currListIdx={currListIdx}
+                                currCardIdx={currCardIdx} />
+                        </div>
                     </div>
-                    <div className="card-details-sidebar">
-                        <AddToCard board={board}
-                            currListIdx={currListIdx}
-                            currCardIdx={currCardIdx} />
-                    </div>
-
-
-                </div>
-
-            </div >
+                </div >
+            </div>
         </div>)
     }
 }
