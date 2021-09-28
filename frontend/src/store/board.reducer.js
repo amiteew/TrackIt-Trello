@@ -15,11 +15,13 @@ export function boardReducer(state = initialState, action) {
       return { ...state, boards: [...state.boards, action.board] }
     case 'REMOVE_BOARD':
       return { ...state, boards: state.boards.filter(board => board._id !== action.boardId) }
-    case 'UPDATE_BOARD':
+    case 'UPDATE_BOARD': {
+      console.log('update board in store:', action.board);
       return {
         ...state, board: action.board, boards: state.boards.map(board =>
           board._id === action.board._id ? action.board : board)
       }
+    }
     case 'SET_LIST':
       return { ...state, currList: action.list }
     case 'SET_CARD':

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-
+import { userService } from '../services/user.service.js';
 import { loadBoards, updateBoard } from '../store/board.actions.js';
 
 import { BoardPreview } from '../cmp/UserBoards/BoardPreview'
@@ -35,16 +35,15 @@ class _UserBoards extends React.Component {
         const { loggedInUser } = this.props
         return this.state.userBoards.filter(board => {
             if (!board.boardMembers.length) return false
-            return board.boardMembers.find(member => member._id === loggedInUser._id).isStarred
+            return userService.isBoardStarred(board, loggedInUser._id)
         })
     }
 
     toggleStarBoard = (ev, board) => {
         ev.preventDefault()
-        const { loggedInUser } = this.props
-        const boardMembersIdx = board.boardMembers.findIndex(member => member._id === loggedInUser._id)
-        board.boardMembers[boardMembersIdx].isStarred = !board.boardMembers[boardMembersIdx].isStarred
-        this.props.updateBoard(board)
+        const { loggedInUser, updateBoard } = this.props
+        const updatedBoard = userService.toggleStarBoard(board, loggedInUser._id)
+        updateBoard(updatedBoard)
     }
 
     render() {
