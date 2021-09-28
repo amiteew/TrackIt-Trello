@@ -8,7 +8,7 @@ import { BsPencil } from "react-icons/bs";
 import { GrTextAlignFull } from "react-icons/gr";
 import { connect } from 'react-redux';
 import { TextareaAutosize } from '@mui/material';
-import { updateBoard, } from '../store/board.actions.js';
+import { updateBoard, loadListAndCard } from '../store/board.actions.js';
 
 class _QuickCardEditor extends React.Component {
 
@@ -22,42 +22,52 @@ class _QuickCardEditor extends React.Component {
     }
 
     toggleEditTitle = (ev) => {
-        // ev.stopPropagation();
-        ev.preventDefault();
-        const { card } = this.props;
+        if (ev) {
+            ev.stopPropagation();
+            ev.preventDefault();
+        }
+        const { card, isEditMode } = this.props;
+        isEditMode();
         this.setState({ isEditTitle: !this.state.isEditTitle, cardTitle: card.cardTitle })
     }
 
     handleChange = (ev) => {
-        ev.stopPropagation();
         if (ev.key === 'Enter') {
             ev.preventDefault();
             this.onSaveCardTitle(this.state.cardTitle);
             return;
         }
         const value = ev.target.value;
-        this.setState({ cardTitle: value });
+        this.setState({ ...this.state, cardTitle: value });
     }
 
-    onSaveCardTitle = (cardTitle) => {
+    onSaveCardTitle = () => {
+        const { cardTitle } = this.state
         if (!cardTitle) return;
-        const { list, updateBoard, currCardIdx } = this.props;
-        list.cards[currCardIdx].cardTitle = cardTitle;
-        updateBoard();
+        const { board, card, updateBoard } = this.props;
+        card.cardTitle = cardTitle;
+        const action = "Edit title";
+        updateBoard(board, action, card);
         this.toggleEditTitle();
+        this.props.isEditMode();
+    }
+
+    onSelectedCard = () => {
+        const { list } = this.props;
+        this.props.loadList(list);
     }
 
     handleClose = (ev) => {
         ev.stopPropagation();
         this.setState({ ...this.state, isEditTitle: !this.state.isEditTitle })
     }
-    onArchive = () => {
-        const { card, board, currListIdx, currCardIdx, updateBoard} = this.props;
-        board.archive.push(card);
-        console.log('card', card);
-        console.log('board archive',board.archive);
-        // board.lists[currListIdx].cards.splice(currCardIdx, 0);
-        // updateBoard();
+
+    onArchive = (ev) => {
+        ev.preventDefault();
+        const { card, board, list, currCardIdx, updateBoard } = this.props;
+        // board.archive.push(...board);
+        list.cards.splice(currCardIdx, 1);
+        updateBoard(board);
     }
 
     render() {
@@ -73,9 +83,12 @@ class _QuickCardEditor extends React.Component {
                             aria-label="card title"
                             onChange={this.handleChange}
                             onKeyPress={this.handleChange}
+                            // onBlur={this.onSaveCardTitle}
                             autoFocus
                         />
+                        <button onClick={this.onSaveCardTitle}>save</button>
                         <AddToCard board={board} currListIdx={currListIdx} currCardIdx={currCardIdx} OnUpdateBoard={OnUpdateBoard} />
+                        <div onClick={this.onArchive}>Archive</div>
                     </div>
                 }
                 <div className="card-preview-icon flex">
@@ -85,7 +98,7 @@ class _QuickCardEditor extends React.Component {
                     <div title="checklist">{card.checklists.length ? <CardCheckPreview checklists={card.checklists} /> : <> </>}</div>
                     <div className="badge-icon">{card.cardMembers && <MembersList members={card.cardMembers} />}</div>
                 </div>
-                <button className="quick-card-edit-btn" onClick={this.toggleEditTitle}> <BsPencil /> </button>
+                <button className="quick-card-edit-btn" onClick={this.toggleEditTitle}><BsPencil /></button>
             </div>
         )
     }
@@ -98,7 +111,8 @@ function mapStateToProps(state) {
     }
 }
 const mapDispatchToProps = {
-    updateBoard
+    updateBoard,
+    loadListAndCard
 }
 
 export const QuickCardEditor = connect(mapStateToProps, mapDispatchToProps)(_QuickCardEditor)

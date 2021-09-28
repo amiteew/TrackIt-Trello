@@ -1,6 +1,8 @@
 const initialState = {
   boards: [],
-  board: null
+  board: null,
+  currCard: null,
+  currList: null,
 }
 
 export function boardReducer(state = initialState, action) {
@@ -18,6 +20,10 @@ export function boardReducer(state = initialState, action) {
         ...state, board: action.board, boards: state.boards.map(board =>
           board._id === action.board._id ? action.board : board)
       }
+    case 'SET_LIST':
+      return { ...state, currList: action.list}
+    case 'SET_CARD':
+      return { ...state, currCard: action.card }
     // return {
     //   ...state, boards: state.boards.map(board => board._id === action.board._id ?
     //     action.board : board)

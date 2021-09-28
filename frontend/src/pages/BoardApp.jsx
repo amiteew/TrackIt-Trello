@@ -12,23 +12,16 @@ import { Loading } from '../cmp/Loading.jsx';
 
 class _BoardApp extends React.Component {
     state = {
-        board: null,
         isMenuOpen: false
     }
 
-    async componentDidMount() {
+    componentDidMount() {
         const { loggedInUser } = this.props
         if (!loggedInUser) {
             this.props.history.push('/')
         }
-
         const { boardId } = this.props.match.params
-        await this.props.loadBoard(boardId);
-        this.setState({ board: this.props.board })
-        // boardService.getBoardById(boardId)
-        //     .then((board) => {
-        //         this.setState({ board })
-        //     })
+        this.props.loadBoard(boardId);
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -42,16 +35,15 @@ class _BoardApp extends React.Component {
         // }
     }
 
-
     onUpdateBoard = (action, card, txt) => {
-        const newBoard = { ...this.state.board };
-        this.props.updateBoard(newBoard, action, card, txt);
+        // const newBoard = { ...this.state.board };
+        const {board} = this.props
+        this.props.updateBoard(board, action, card, txt);
     }
 
     onDragEnd = (res) => {
         const { destination, source, draggableId, type } = res;
-        const { board } = this.state;
-        console.log('res', res);
+        const { board } = this.props
         if (!destination) return;
         const dndStart = source.droppableId;
         const dndEnd = destination.droppableId;
@@ -62,7 +54,7 @@ class _BoardApp extends React.Component {
         if (type === 'list') {
             const list = board.lists.splice(dndStartIdx, 1)
             board.lists.splice(dndEndIdx, 0, ...list)
-            this.onUpdateBoard();
+            this.props.updateBoard(board);
             return
         }
         if (dndStart === dndEnd) {
@@ -82,7 +74,7 @@ class _BoardApp extends React.Component {
             listEnd.cards.splice(dndEndIdx, 0, ...card);
         }
 
-        this.onUpdateBoard();
+        this.props.updateBoard(board);
     }
 
     // onPopOver = (position, name, props) => {
@@ -94,7 +86,7 @@ class _BoardApp extends React.Component {
     // }
 
     render() {
-        const { board, } = this.state;
+        const {board} = this.props;
         if (!board) return <Loading />
         return (
             <section className="board-app flex direction-col">
@@ -105,7 +97,6 @@ class _BoardApp extends React.Component {
                         <BoardList board={board} lists={board.lists} onUpdateBoard={this.onUpdateBoard} className="board" />
                     </DragDropContext >
                     <AddList board={board} onUpdateBoard={this.onUpdateBoard} />
-
                 </div>
             </section >
         )

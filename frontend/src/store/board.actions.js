@@ -33,6 +33,21 @@ export function loadBoard(boardId) {
   }
 }
 
+export function loadListAndCard(list, card) {
+  return async dispatch => {
+    try {
+      dispatch({ type: 'SET_LIST', list })
+      dispatch({ type: 'SET_CARD', card })
+
+      // socketService.on(SOCKET_EVENT_BOARD_ADDED, (board) =>{
+      //   dispatch({ type: 'ADD_BOARD', board })
+      // })
+    } catch (err) {
+      console.log('BoardActions: err in loadList', err)
+    }
+  }
+}
+
 export function addBoard(board) {
   return async dispatch => {
     try {
