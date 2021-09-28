@@ -1,8 +1,7 @@
-.pop-over-header-title {
+.popover-header-title {
     border-bottom: 1px solid #091e4221;
     box-sizing: border-box;
     color: #5e6c84;
-    // display: block;
     line-height: 40px;
     margin: 0 12px;
     overflow: hidden;
@@ -11,8 +10,10 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     z-index: 1;
-
-    button {
+    span {
+        margin: 0 auto;
+    }
+    .close-popover {
         position: absolute;
         top: 50%;
         right: 0;
@@ -26,6 +27,13 @@
         transform: translateY(-50%);
         line-height: 16px;
         color: #6b778c;
+        &:after {
+            content: "\00D7";
+            font-size: rem(24px);
+        }
+        &:hover {
+            color: $clr10;
+        }
     }
 
     h3 {
@@ -34,5 +42,15 @@
         margin: rem(14px) rem(32px);
         font-size: rem(16px);
         color: #172b4d;
+    }
+}
+
+.popover-content {
+    > div {
+        margin: 0 12px;
+        padding: 12px 0;
+    }
+    > div:not(:last-child) {
+        border-bottom: 1px solid #091e4221;
     }
 }

@@ -29,7 +29,7 @@ class _DynamicButton extends React.Component {
                     return <>< CallToActionOutlinedIcon /> Cover</>
                 case 'userMenu': {
                     return <>
-                        <Avatar alt="" src={loggedInUser.imgUrl}>
+                        <Avatar alt="" src={loggedInUser.imgUrl} className="logged-in-avatar">
                             <p>{loggedInUser.initials}</p>
                         </Avatar>
                     </>

@@ -13,10 +13,10 @@ class _AppHeader extends React.Component {
     // checkIfTemplate = () => {
 
     // }
-    
+
     render() {
-        const user = this.props.loggedInUser;
-        if (!user) return (<></>)
+        const { loggedInUser } = this.props
+        if (!loggedInUser) return (<></>)
         return (
             <header className="main-header">
                 <nav className="nav-bar flex space-between" >
@@ -26,8 +26,7 @@ class _AppHeader extends React.Component {
                         <NavLink to="/">Create</NavLink>
                     </div>
                     <div className="user-section">
-                        <DynamicPopover type={'userMenu'} titleModal={'Account'}/>
-                        {/* <Avatar alt={user.initials} src={user.imgUrl} style={{ height: '2rem', width: '2rem' }} /> */}
+                        <DynamicPopover type={'userMenu'} titleModal={'Account'} loggedInUser={loggedInUser} />
                     </div>
                 </nav >
             </header >

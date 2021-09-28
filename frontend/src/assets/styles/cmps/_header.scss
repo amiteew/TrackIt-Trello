@@ -78,13 +78,6 @@
             .MuiAvatar-root {
                 height: 32px;
                 width: 32px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                background-color: #de350b;
-                p {
-                    font-size: rem(15px);
-                }
             }
         }
     }
@@ -103,5 +96,15 @@
     border-radius: 5px;
     &:hover {
         background-color: #1db79a;
+    }
+}
+
+.MuiAvatar-root.logged-in-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #de350b;
+    p {
+        font-size: rem(15px);
     }
 }
