@@ -2,8 +2,8 @@
     height: calc(100vh - rem(44px));
     margin-right: 0;
     position: relative;
-    transition: margin .1s ease-in;
-    overflow-y: hidden;
+    transition: margin 0.1s ease-in;
+    // overflow-y: hidden;
 }
 
 .board-canvas {
