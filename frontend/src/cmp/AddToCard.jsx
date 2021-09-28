@@ -32,6 +32,7 @@ export function AddToCard({ board, currListIdx, currCardIdx, OnUpdateBoard }) {
                     currListIdx={currListIdx}
                     currCardIdx={currCardIdx}
                 />
+
             </div>
         </div>
     )

@@ -1,20 +1,14 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom';
 import { onLogout } from '../../store/user.actions'
 import Avatar from '@mui/material/Avatar';
-import { withRouter } from 'react-router-dom';
 
 class _UserMenuPopover extends React.Component {
     onLogout = async () => {
-        try {
-          await this.props.onLogout()
-            // console.log('userMenu props:', this.props);
-            // this.context.router.push('/');
-            this.props.history.push('/')
-        } catch (err) {
-            console.log('userMenu catch err:', err);
-        }
+        await this.props.onLogout()
+        this.props.history.push('/')
     }
 
     render() {
@@ -38,10 +32,6 @@ class _UserMenuPopover extends React.Component {
         )
     }
 }
-
-// _UserMenuPopover.contextTypes = {
-//     router: PropTypes.object.isRequired
-//   }
 
 function mapStateToProps(state) {
     return {

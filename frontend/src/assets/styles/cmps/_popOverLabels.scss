@@ -1,0 +1,46 @@
+.label-popover {
+
+    h4 {
+        color: #5e6c84;
+        font-size: rem(12px);
+        font-weight: 500;
+        letter-spacing: .04em;
+        margin-top: rem(16px);
+        text-transform: uppercase;
+    }
+
+    .edit-label-popover {
+        padding-right: rem(36px);
+        position: relative;
+        align-items: center;
+
+        .edit-label-icon {
+            border-radius: rem(4px);
+            padding: rem(6px);
+            position: absolute;
+            right: 0;
+            top: 0;
+            color: #42526e;
+        }
+
+        .edit-label-color {
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+            font-weight: 700;
+            margin: 0 0 rem(4px);
+            min-height: 20px;
+            padding: rem(6px) rem(12px);
+            position: relative;
+            flex-grow: 1;
+
+            svg {
+                position: absolute;
+                right: rem(6px);
+                font-size: rem(16px);
+            }
+
+        }
+
+    }
+}
