@@ -28,13 +28,13 @@ class _CardPreview extends React.Component {
     }
  
     render() {
-        const { card, board, currCardIdx, currListIdx, list } = this.props
+        const { card, currCardIdx, currListIdx, list } = this.props
         return (
             <Draggable draggableId={card.cardId} index={currCardIdx}>
                 {(provided, snapshot) => (
                     <div onClick={this.onSelectedCard} className="card-preview-contenet" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} isdraggingover={snapshot.draggingOver}>
                         {/* <Link className="flex" to={`/boards/${board._id}/${list.listId}/${card.cardId}`}> */}
-                            <QuickCardEditor isEditMode={this.onEditMode} list={list} card={card} board={board} currListIdx={currListIdx} currCardIdx={currCardIdx} />
+                            <QuickCardEditor isEditMode={this.onEditMode} list={list} card={card} currListIdx={currListIdx} currCardIdx={currCardIdx} />
                         {/* </Link> */}
                     </div>
                 )

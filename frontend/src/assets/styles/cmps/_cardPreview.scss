@@ -80,6 +80,8 @@
     }
 
     &:hover {
+
+        cursor: pointer;
         .quick-card-edit-btn {
             visibility: visible;
 

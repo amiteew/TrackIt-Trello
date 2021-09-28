@@ -8,17 +8,17 @@ import { BsPencil } from "react-icons/bs";
 import { GrTextAlignFull } from "react-icons/gr";
 import { connect } from 'react-redux';
 import { TextareaAutosize } from '@mui/material';
-import { updateBoard, loadListAndCard } from '../store/board.actions.js';
+import { updateBoard, loadListAndCard, loadBoard } from '../store/board.actions.js';
 
 class _QuickCardEditor extends React.Component {
 
     state = {
         cardTitle: "",
-        isEditTitle: false,
+        isEditTitle: false
     }
 
     componentDidMount() {
-        // this.props.updateBoard();
+
     }
 
     toggleEditTitle = (ev) => {
@@ -52,11 +52,6 @@ class _QuickCardEditor extends React.Component {
         this.props.isEditMode();
     }
 
-    onSelectedCard = () => {
-        const { list } = this.props;
-        this.props.loadList(list);
-    }
-
     handleClose = (ev) => {
         ev.stopPropagation();
         this.setState({ ...this.state, isEditTitle: !this.state.isEditTitle })
@@ -67,12 +62,14 @@ class _QuickCardEditor extends React.Component {
         const { card, board, list, currCardIdx, updateBoard } = this.props;
         // board.archive.push(...board);
         list.cards.splice(currCardIdx, 1);
-        updateBoard(board);
+        const action = `Delete card `;
+        updateBoard({...board}, action, card);
+        this.toggleEditTitle();
     }
 
     render() {
         const { card, board, currListIdx, currCardIdx, OnUpdateBoard } = this.props
-        const { isEditTitle, cardTitle } = this.state;
+        const { isEditTitle, cardTitle, isModalOpen } = this.state;
         return (
             <div>
                 {!isEditTitle && <span className="card-preview-title">{card.cardTitle}</span>}
@@ -83,7 +80,6 @@ class _QuickCardEditor extends React.Component {
                             aria-label="card title"
                             onChange={this.handleChange}
                             onKeyPress={this.handleChange}
-                            // onBlur={this.onSaveCardTitle}
                             autoFocus
                         />
                         <button onClick={this.onSaveCardTitle}>save</button>
@@ -112,7 +108,8 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
     updateBoard,
-    loadListAndCard
+    loadListAndCard,
+    loadBoard
 }
 
 export const QuickCardEditor = connect(mapStateToProps, mapDispatchToProps)(_QuickCardEditor)

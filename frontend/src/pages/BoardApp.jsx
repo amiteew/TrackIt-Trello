@@ -37,7 +37,7 @@ class _BoardApp extends React.Component {
 
     onUpdateBoard = (action, card, txt) => {
         // const newBoard = { ...this.state.board };
-        const {board} = this.props
+        const { board } = this.props
         this.props.updateBoard(board, action, card, txt);
     }
 
@@ -86,7 +86,7 @@ class _BoardApp extends React.Component {
     // }
 
     render() {
-        const {board} = this.props;
+        const { board } = this.props;
         if (!board) return <Loading />
         return (
             <section className="board-app flex direction-col">
