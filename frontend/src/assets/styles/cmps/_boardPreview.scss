@@ -5,6 +5,13 @@
     background-repeat: no-repeat;
     height: 96px;
     border-radius: 3px;
+    &.create-board {
+        color: $clr10;
+        background-color: #f0f2f5;
+        &:hover {
+            background-color: #e7e9ed;
+        }
+    }
     .darken-image {
         position: absolute;
         top: 0;
@@ -30,6 +37,9 @@
         }
     }
     &:hover {
+        .preview-details {
+            background-color: rgba(0, 0, 0, 0.08);
+        }
         .star-btn {
             right: 3px;
             opacity: 1;

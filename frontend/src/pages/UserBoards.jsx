@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import { loadBoards, updateBoard } from '../store/board.actions.js';
 
@@ -78,6 +79,7 @@ class _UserBoards extends React.Component {
                                     board.isStarred = board.boardMembers.find(member => member._id === loggedInUser._id).isStarred
                                     return <BoardPreview key={board._id} board={board} loggedInUser={loggedInUser} toggleStarBoard={this.toggleStarBoard} isLarge={board.isStarred} />
                                 })}
+                                <div className="board-preview create-board flex align-center justify-center">Create new board</div>
                             </div>
                         </section>
                     </section>
