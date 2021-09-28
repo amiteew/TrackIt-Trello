@@ -59,7 +59,6 @@ export class AddList extends React.Component {
                         onChange={this.handleChange}
                         onKeyPress={this.handleChange}
                         onBlur={this.onAddList}
-                        maxRows={1}
                         autoFocus
                     />
                     <button>Add List</button>

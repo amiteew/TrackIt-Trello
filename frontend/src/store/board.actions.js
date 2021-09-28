@@ -33,6 +33,21 @@ export function loadBoard(boardId) {
   }
 }
 
+export function loadListAndCard(list, card) {
+  return async dispatch => {
+    try {
+      dispatch({ type: 'SET_LIST', list })
+      dispatch({ type: 'SET_CARD', card })
+
+      // socketService.on(SOCKET_EVENT_BOARD_ADDED, (board) =>{
+      //   dispatch({ type: 'ADD_BOARD', board })
+      // })
+    } catch (err) {
+      console.log('BoardActions: err in loadList', err)
+    }
+  }
+}
+
 export function addBoard(board) {
   return async dispatch => {
     try {
@@ -63,9 +78,8 @@ export function updateBoard(board, action, card, txt = "") {
     try {
       const activity = _storeSaveActivity(txt, action, card);
       board.activities.unshift(activity);
-      console.log('board in action.update', board);
       await boardService.save(board);
-      dispatch({ type: 'UPDATE_BOARD', board });
+      dispatch({ type: 'UPDATE_BOARD', board:{...board}});
     } catch (err) {
       console.log('BoardActions: err in updateBoard', err);
     }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { boardService } from '../services/board.service.js';
-import { loadBoards, removeBoard, addBoard, updateBoard } from '../store/board.actions.js';
+import { loadBoards, removeBoard, addBoard, updateBoard, loadListAndCard } from '../store/board.actions.js';
 import { Loading } from '../cmp/Loading';
 import { AddToCard } from '../cmp/AddToCard';
 import { MembersList } from '../cmp/MembersList'
@@ -18,43 +18,43 @@ import Modal from '@mui/material/Modal';
 
 class _CardDetails extends React.Component {
     state = {
-        board: null,
+        // board: null,
         currListIdx: null,
         currCardIdx: null,
     }
 
-    componentDidMount() {
-        // this.props.loadBoards()   
-        const boardId = this.props.match.params.boardId; // IN THE FUTURE FROM PARAMS
-        boardService.getBoardById(boardId)
-            .then((board) => {
-                this.setState({ board })
-            })
-            .then(() => this.getCurrCard())
-    }
+    // componentDidMount() {
+    //     // this.props.loadBoards()   
+    //     const board = this.props; // IN THE FUTURE FROM PARAMS
+    //     boardService.getBoardById(boardId)
+    //         .then((board) => {
+    //             this.setState({ board })
+    //         })
+    //         .then(() => this.getCurrCard())
+    // }
 
-    getCurrCard = () => {
-        const listId = this.props.match.params.listId; // IN THE FUTURE FROM PARAMS
-        const cardId = this.props.match.params.cardId
-        const currBoard = this.state.board
-        const currListIdx = currBoard.lists.findIndex(list => list.listId === listId)
-        const currCardIdx = currBoard.lists[currListIdx].cards.findIndex(card => card.cardId === cardId)
-        this.setState({ ...this.state, currListIdx, currCardIdx })
-    }
+    // getCurrCard = () => {
+    //     const listId = this.props.match.params.listId; // IN THE FUTURE FROM PARAMS
+    //     const cardId = this.props.match.params.cardId
+    //     const currBoard = this.state.board
+    //     const currListIdx = currBoard.lists.findIndex(list => list.listId === listId)
+    //     const currCardIdx = currBoard.lists[currListIdx].cards.findIndex(card => card.cardId === cardId)
+    //     this.setState({ ...this.state, currListIdx, currCardIdx })
+    // }
 
-    handleChange = ({ target }) => {
-        console.log('target', target.value)
-        const { currListIdx, currCardIdx } = this.state
-        const boardToUpdate = { ...this.state.board }
-        boardToUpdate.lists[currListIdx].cards[currCardIdx][target.name] = target.value
-        // CAN BE DIFFERNET FUNCTION:
-        var currCard = boardToUpdate.lists[currListIdx].cards[currCardIdx];
-        var action = `changed ${target.name}`
-        var txt = target.value
-        this.setState({ ...this.state, board: boardToUpdate }, () => {
-            this.props.updateBoard({ ...this.state.board }, action, currCard, txt)
-        })
-    }
+    // handleChange = ({ target }) => {
+    //     console.log('target', target.value)
+    //     const { currListIdx, currCardIdx } = this.state
+    //     const boardToUpdate = { ...this.state.board }
+    //     boardToUpdate.lists[currListIdx].cards[currCardIdx][target.name] = target.value
+    //     // CAN BE DIFFERNET FUNCTION:
+    //     var currCard = boardToUpdate.lists[currListIdx].cards[currCardIdx];
+    //     var action = `changed ${target.name}`
+    //     var txt = target.value
+    //     this.setState({ ...this.state, board: boardToUpdate }, () => {
+    //         this.props.updateBoard({ ...this.state.board }, action, currCard, txt)
+    //     })
+    // }
 
     onToggleDone = () => {
         const { currListIdx, currCardIdx } = this.state
@@ -77,6 +77,7 @@ class _CardDetails extends React.Component {
 
     render() {
         const { board, currListIdx, currCardIdx, isEditOpen } = this.state
+        const {card} = this.props;
         if (!board || currCardIdx === null || currListIdx === null) return <Loading />
         const currCard = board.lists[currListIdx].cards[currCardIdx]
         return (<div >
@@ -121,8 +122,6 @@ class _CardDetails extends React.Component {
                             currListIdx={currListIdx}
                             currCardIdx={currCardIdx}
                             OnUpdateBoard={this.OnUpdateBoard} />
-
-
                     </div>
                     <div className="card-details-sidebar">
                         <AddToCard board={board}
@@ -141,7 +140,8 @@ class _CardDetails extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        boards: state.boardReducer.boards
+        board: state.boardReducer.board,
+        currCard: state.boardReducer.currCard
     }
 }
 
@@ -149,7 +149,8 @@ const mapDispatchToProps = {
     loadBoards,
     removeBoard,
     addBoard,
-    updateBoard
+    updateBoard,
+    loadListAndCard
 }
 
 export const CardDetails = connect(mapStateToProps, mapDispatchToProps)(_CardDetails)
