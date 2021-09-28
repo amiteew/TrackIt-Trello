@@ -73,13 +73,13 @@ export function removeBoard(boardId) {
 
 // when we move to backend this function will check if the board has 'createBy'
 // if not- it's a template and it should only update the store, NOT the server!
-export function updateBoard(board, action, card, txt = "") {
+export function updateBoard(board, action, card = {}, txt = "") {
   return async dispatch => {
     try {
       const activity = _storeSaveActivity(txt, action, card);
       board.activities.unshift(activity);
       await boardService.save(board);
-      dispatch({ type: 'UPDATE_BOARD', board:{...board}});
+      dispatch({ type: 'UPDATE_BOARD', board: { ...board } });
     } catch (err) {
       console.log('BoardActions: err in updateBoard', err);
     }

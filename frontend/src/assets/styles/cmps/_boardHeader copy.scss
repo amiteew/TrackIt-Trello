@@ -1,0 +1,75 @@
+.board-header {
+    height: rem(52px);
+    padding: 8px 4px 4px 8px;
+    position: fixed;
+    top: rem(44px);
+    width: 100%;
+    > * {
+        line-height: rem(32px);
+    }
+    .header-item {
+    }
+    .header-title {
+        font-size: rem(18px);
+        font-weight: 700;
+        line-height: rem(32px);
+        padding: 0 rem(12px);
+        margin: 0;
+    }
+    .board-btn {
+        // font-size: rem(14px);
+        // height: rem(32px);
+
+        // float: left;
+        // width: rem(32px);
+        // line-height: rem(32px);
+        // margin: 0 rem(4px) rem(4px) 0;
+        // max-width: rem(400px);
+        // overflow: hidden;
+        // padding-left: rem(32px);
+        // position: relative;
+        // text-decoration: none;
+        // text-overflow: ellipsis;
+
+        // border-radius: rem(3px);
+        // background-color: #00000014;
+        // color: #172b4d;
+
+        // background-color: #ffffff3d;
+        // color: white;
+        // overflow: hidden;
+        &:hover {
+            background-color: #00000029;
+            // background-color: #ffffff52;
+        }
+        // button {
+        //     background-color: unset;
+        // }
+        &.star {
+            width: rem(32px);
+            font-size: rem(16px);
+            .star-icon.active {
+                color: #f2d600;
+            }
+        }
+        &.show-menu {
+            cursor: pointer;
+            padding-right: rem(12px);
+            .icon {
+                position: relative;
+                // left: 0;
+                // padding: rem(6px);
+                padding: 0 8px;
+                top: 1px;
+                color: #42526e;
+            }
+        }
+    }
+}
+
+.board-header-btn-icon {
+    // left: 0;
+    // padding: rem(6px);
+    // position: absolute;
+    // top: 0;
+}

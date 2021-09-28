@@ -1,0 +1,15 @@
+.user-info {
+    .user-avatar {
+        margin-right: 8px;
+    }
+    p {
+        margin: 0;
+    }
+    .fullname {
+        text-transform: capitalize;
+    }
+    .username {
+        font-size: rem(12px);
+        color: #b3bac5;
+    }
+}

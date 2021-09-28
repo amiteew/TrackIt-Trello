@@ -1,82 +1,86 @@
-.boards-page {
-    min-height: calc(100vh - rem(44px));
-    .side-nav {
-        display: none;
-        margin: 40px 0 0;
-        padding: 0 16px;
-        width: 200px;
-        // background-color: rgb(250, 245, 237);
-        gap: 6px;
-        .nav-item {
-            border-radius: 4px;
-            padding: 6px 8px;
-            // background-color: yellow;
-            min-height: rem(20px);
-            gap: 10px;
-            h3 {
-                font-size: 1rem;
-                font-weight: bold;
-                margin: 0;
-            }
-            svg {
-                height: 16px;
-                width: 16px;
-            }
-            &.active {
-                background-color: #E4F0F6;
-            }
-            &:hover:not(.active) {
-                background-color: rgba(9, 30, 66, 0.08);
-            }
-        }
-        @include for-normal-layout {
-            display: flex;
-            width: 240px;
-        }
-        @include for-wide-layout {
-            width: 272px;
-        }
-    }
-    .boards-section {
-        margin: 40px 16px;
-        flex-grow: 1;
-        .starred-boards {
-            margin-bottom: 60px;
-            .star-title {
-                color: #172b4d;
-                margin-bottom: 1rem;
-                .star-icon {
-                    height: rem(23px);
-                    width: rem(23px);
-                    margin-inline-end: 0.9rem;
-                }
+.main-container.boards {
+    position: relative;
+    top: rem(44px);
+    .boards-page {
+        min-height: calc(100vh - rem(44px));
+        .side-nav {
+            display: none;
+            margin: 40px 0 0;
+            padding: 0 16px;
+            width: 200px;
+            // background-color: rgb(250, 245, 237);
+            gap: 6px;
+            .nav-item {
+                border-radius: 4px;
+                padding: 6px 8px;
+                // background-color: yellow;
+                min-height: rem(20px);
+                gap: 10px;
                 h3 {
-                    display: inline-block;
-                    font-weight: 700;
+                    font-size: 1rem;
+                    font-weight: bold;
                     margin: 0;
                 }
-            }
-        }
-        .user-boards > h3,
-        .template-boards > h3 {
-            text-transform: uppercase;
-            font-size: rem(16px);
-            font-weight: 700;
-            margin: 6px 0 11px;
-            color: #5e6c84;
-        }
-        .boards-preview {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 9px;
-            @include for-narrow-layout {
-                grid-template-columns: repeat(auto-fit, minmax(128px, 194px));
+                svg {
+                    height: 16px;
+                    width: 16px;
+                }
+                &.active {
+                    background-color: #e4f0f6;
+                }
+                &:hover:not(.active) {
+                    background-color: rgba(9, 30, 66, 0.08);
+                }
             }
             @include for-normal-layout {
-                gap: 11px;
+                display: flex;
+                width: 240px;
             }
             @include for-wide-layout {
-                gap: 17px;
+                width: 272px;
+            }
+        }
+        .boards-section {
+            margin: 40px 16px;
+            flex-grow: 1;
+            .starred-boards {
+                margin-bottom: 60px;
+                .star-title {
+                    color: #172b4d;
+                    margin-bottom: 1rem;
+                    .star-icon {
+                        height: rem(23px);
+                        width: rem(23px);
+                        margin-inline-end: 0.9rem;
+                    }
+                    h3 {
+                        display: inline-block;
+                        font-weight: 700;
+                        margin: 0;
+                    }
+                }
+            }
+            .user-boards > h3,
+            .template-boards > h3 {
+                text-transform: uppercase;
+                font-size: rem(16px);
+                font-weight: 700;
+                margin: 6px 0 11px;
+                color: #5e6c84;
+            }
+            .boards-preview {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 9px;
+                @include for-narrow-layout {
+                    grid-template-columns: repeat(auto-fit, minmax(128px, 194px));
+                }
+                @include for-normal-layout {
+                    gap: 11px;
+                }
+                @include for-wide-layout {
+                    gap: 17px;
+                }
             }
         }
     }

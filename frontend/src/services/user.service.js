@@ -14,6 +14,8 @@ export const userService = {
     getById,
     remove,
     update,
+    isBoardStarred,
+    toggleStarBoard
 }
 getUsers()
 function getUsers() {
@@ -72,19 +74,30 @@ async function logout() {
     // return await httpService.post('auth/logout')
 }
 
+function getLoggedinUser() {
+    return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER) || 'null')
+}
+
+function isBoardStarred(board, userId) {
+    return board.boardMembers.find(member => member._id === userId).isStarred
+}
+
+function toggleStarBoard(board, userId) {
+    const boardMembersIdx = board.boardMembers.findIndex(member => member._id === userId)
+    board.boardMembers[boardMembersIdx].isStarred = !board.boardMembers[boardMembersIdx].isStarred
+    return board
+}
+
 function _saveLocalUser(user) {
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
-}
-
-function getLoggedinUser() {
-    return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER) || 'null')
 }
 
 function _getUserInitials(fullname) {
     const nameParts = fullname.split(' ')
     return nameParts.map(part => part.charAt(0).toUpperCase()).join('')
 }
+
 
 // This is relevant when backend is connected
 // (async () => {

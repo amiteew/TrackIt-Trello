@@ -1,14 +1,17 @@
 .board-app {
-    height: calc(100vh - rem(44px));
+    max-height: calc(100vh - rem(44px));
     margin-right: 0;
     position: relative;
     transition: margin 0.1s ease-in;
+    top: rem(44px);
     // overflow-y: hidden;
 }
 
 .board-canvas {
+    margin-left: 9px;
     flex-grow: 1;
     position: relative;
+    top: rem(52px);
 }
 
 .board {
@@ -23,4 +26,14 @@
     top: 0;
     user-select: none;
     white-space: nowrap;
+}
+
+.board-btn {
+    font-size: rem(14px);
+    border-radius: rem(3px);
+    background-color: #00000014;
+    color: #172b4d;
+    &:hover {
+        background-color: #00000029;
+    }
 }

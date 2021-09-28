@@ -40,8 +40,6 @@ class _DynamicButton extends React.Component {
                         </Avatar>
                     </>
                 }
-                case 'boardMenu':
-                    return <>< BsThreeDots /> show menu</>
                 default:
                     return props.type
             }
