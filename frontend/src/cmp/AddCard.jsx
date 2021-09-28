@@ -59,7 +59,7 @@ export class _AddCard extends React.Component {
                     aria-label="empty textarea"
                     onChange={this.handleChange}
                     onKeyPress={this.handleChange}
-                    onBlur={this.onAddCard}
+                    // onBlur={this.onAddCard}
                     autoFocus
                 />
                 <Button variant="contained" className="add-card-btn">Add card</Button>

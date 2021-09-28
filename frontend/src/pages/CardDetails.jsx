@@ -33,14 +33,14 @@ class _CardDetails extends React.Component {
     //         .then(() => this.getCurrCard())
     // }
 
-    // getCurrCard = () => {
-    //     const listId = this.props.match.params.listId; // IN THE FUTURE FROM PARAMS
-    //     const cardId = this.props.match.params.cardId
-    //     const currBoard = this.state.board
-    //     const currListIdx = currBoard.lists.findIndex(list => list.listId === listId)
-    //     const currCardIdx = currBoard.lists[currListIdx].cards.findIndex(card => card.cardId === cardId)
-    //     this.setState({ ...this.state, currListIdx, currCardIdx })
-    // }
+    getCurrCard = () => {
+        const listId = this.props.match.params.listId; // IN THE FUTURE FROM PARAMS
+        const cardId = this.props.match.params.cardId
+        const currBoard = this.state.board
+        const currListIdx = currBoard.lists.findIndex(list => list.listId === listId)
+        const currCardIdx = currBoard.lists[currListIdx].cards.findIndex(card => card.cardId === cardId)
+        this.setState({ ...this.state, currListIdx, currCardIdx })
+    }
 
     // handleChange = ({ target }) => {
     //     console.log('target', target.value)
@@ -76,9 +76,9 @@ class _CardDetails extends React.Component {
     }
 
     render() {
-        const { board, currListIdx, currCardIdx, isEditOpen } = this.state
-        const {card} = this.props;
-        if (!board || currCardIdx === null || currListIdx === null) return <Loading />
+        const { currListIdx, currCardIdx, isEditOpen } = this.state
+        const { board } = this.props;
+        // if (!board || currCardIdx === null || currListIdx === null) return <Loading />
         const currCard = board.lists[currListIdx].cards[currCardIdx]
         return (<div >
             <div className="screen-card-details" onClick={this.handleClose}></div>
