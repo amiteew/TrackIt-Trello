@@ -2,9 +2,23 @@
     margin-left: 35px;
     .task-edit {
         padding-left: 10px;
-        padding-bottom: 30px;
+        padding-bottom: 20px;
         padding-top: rem(8px);
         width: 100%;
         font-size: rem(14px);
+    }
+
+    .save-task {
+        margin-bottom: 20px;
+        background-color: $blueColor;
+        color: white;
+        padding: 10px;
+        // margin-right: 10px;
+        border-radius: 5px;
+    }
+    .discard-task {
+        font-size: rem(20px);
+        color: #42526e;
+        width: 32px;
     }
 }

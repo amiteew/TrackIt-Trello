@@ -37,8 +37,8 @@ export class AddNewTask extends React.Component {
                     autoFocus
                 />
                 <div>
-                    <button className="save-desc" onClick={this.onAddTask}>Add</button>
-                    <button className="discard-desc" onClick={this.onDiscardChanges}>X</button>
+                    <button className="save-task" onClick={this.onAddTask}>Add</button>
+                    <button className="discard-task" onClick={this.onDiscardChanges}>X</button>
                 </div>
             </div>
         )

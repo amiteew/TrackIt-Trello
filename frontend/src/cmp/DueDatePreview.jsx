@@ -1,6 +1,6 @@
 import React from 'react';
 import Checkbox from '@mui/material/Checkbox';
-
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 export class DueDatePreview extends React.Component {
 
     onToggleDone = () => {
@@ -10,13 +10,18 @@ export class DueDatePreview extends React.Component {
     render() {
         const { dueDate } = this.props
         return (
-            <div>
+            <div className="due-date-preview">
                 <h3>Due Date</h3>
-                <Checkbox checked={dueDate.isDone}
-                    onChange={this.onToggleDone}
-                />
-                <p>{new Date(dueDate.date).toString().substring(0, 16)}</p>
-                {dueDate.isDone && <div className='done'>COMPLETE</div>}
+                <div className="date-display flex direction-row">
+                    <Checkbox checked={dueDate.isDone}
+                        onChange={this.onToggleDone}
+                    />
+                    <button className="hover flex direction-row align-center">
+                        <div className="date">{new Date(dueDate.date).toString().substring(0, 16)}</div>
+                        {dueDate.isDone && <div className='status done'>COMPLETE</div>}
+                        <KeyboardArrowDownIcon />
+                    </button>
+                </div>
 
                 {/* NEED TO ADD OVERDUE */}
 
