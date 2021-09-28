@@ -10,6 +10,8 @@ import { ChecklistPopover } from './DynamicPopover/ChecklistPopover';
 import { CoverPopover } from './DynamicPopover/CoverPopover';
 import { DynamicButton } from './DynamicCmps/DynamicButton';
 import { UserMenuPopover } from './DynamicPopover/UserMenuPopover';
+import { TemporaryDrawer } from '../cmp/DroweMenu.jsx';
+
 
 export class DynamicPopover extends React.Component {
     state = {
@@ -17,6 +19,7 @@ export class DynamicPopover extends React.Component {
     }
 
     handleClick = (event) => {
+        event.preventDefault();
         this.setState({ anchorEl: event.currentTarget })
     };
 
@@ -46,6 +49,8 @@ export class DynamicPopover extends React.Component {
                     return <ChecklistPopover {...props} />
                 case 'userMenu':
                     return <UserMenuPopover {...props} />
+                case 'boardMenu':
+                    return <TemporaryDrawer {...props} />
                 default:
                     break;
             }

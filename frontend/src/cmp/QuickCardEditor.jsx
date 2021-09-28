@@ -1,35 +1,73 @@
 import React from 'react';
-import { Modal, Button, Box, Typography } from '@mui/material';
+import { MembersList } from './MembersList.jsx';
+import { CardCheckPreview } from './CardCheckPreview.jsx';
+import { CardCommentPreview } from './CardCommentPreview.jsx';
+import { CardVisibilityPreview } from './CardVisibilityPreview.jsx';
+import { AddToCard } from './AddToCard.jsx';
+import { BsPencil } from "react-icons/bs";
+import { GrTextAlignFull } from "react-icons/gr";
+import { connect } from 'react-redux';
 import { TextareaAutosize } from '@mui/material';
+import { updateBoard, } from '../store/board.actions.js';
 
-export class QuickCardEditor extends React.Component {
+class _QuickCardEditor extends React.Component {
 
     state = {
         cardTitle: "",
+        isEditTitle: false,
     }
 
-    componentDidMount () {
-        const {card} = this.props;
-        this.setState({...this.state, cardTitle: card.cardTitle});
+    componentDidMount() {
+        // this.props.updateBoard();
     }
+
+    toggleEditTitle = (ev) => {
+        // ev.stopPropagation();
+        ev.preventDefault();
+        const { card } = this.props;
+        this.setState({ isEditTitle: !this.state.isEditTitle, cardTitle: card.cardTitle })
+    }
+
     handleChange = (ev) => {
+        ev.stopPropagation();
         if (ev.key === 'Enter') {
             ev.preventDefault();
-            this.props.onSaveCardTitle(this.state.cardTitle);
+            this.onSaveCardTitle(this.state.cardTitle);
             return;
         }
         const value = ev.target.value;
-        this.setState({ ...this.state,cardTitle: value });
+        this.setState({ cardTitle: value });
+    }
+
+    onSaveCardTitle = (cardTitle) => {
+        if (!cardTitle) return;
+        const { list, updateBoard, currCardIdx } = this.props;
+        list.cards[currCardIdx].cardTitle = cardTitle;
+        updateBoard();
+        this.toggleEditTitle();
+    }
+
+    handleClose = (ev) => {
+        ev.stopPropagation();
+        this.setState({ ...this.state, isEditTitle: !this.state.isEditTitle })
+    }
+    onArchive = () => {
+        const { card, board, currListIdx, currCardIdx, updateBoard} = this.props;
+        board.archive.push(card);
+        console.log('card', card);
+        console.log('board archive',board.archive);
+        // board.lists[currListIdx].cards.splice(currCardIdx, 0);
+        // updateBoard();
     }
 
     render() {
-        const { cardTitle } = this.state;
-        const { handleClose, onSaveCardTitle } = this.props
+        const { card, board, currListIdx, currCardIdx, OnUpdateBoard } = this.props
+        const { isEditTitle, cardTitle } = this.state;
         return (
-            <div className="window-overlay">
-                <div className="quic-card-editor">
-                    <span onClick={handleClose}>x</span>
-                    <div quic-card-editor-card>
+            <div>
+                {!isEditTitle && <span className="card-preview-title">{card.cardTitle}</span>}
+                {isEditTitle &&
+                    <div className="quick-card-edit-preview">
                         <TextareaAutosize
                             value={cardTitle}
                             aria-label="card title"
@@ -37,10 +75,30 @@ export class QuickCardEditor extends React.Component {
                             onKeyPress={this.handleChange}
                             autoFocus
                         />
+                        <AddToCard board={board} currListIdx={currListIdx} currCardIdx={currCardIdx} OnUpdateBoard={OnUpdateBoard} />
                     </div>
-                    <button onClick={()=>{onSaveCardTitle(cardTitle)}}>Save</button>
+                }
+                <div className="card-preview-icon flex">
+                    {card.description && <div className='badge flex align-center'><GrTextAlignFull /></div>}
+                    <span className="badge is-watch">{card.cardMembers && <CardVisibilityPreview cardMembers={card.cardMembers} />} </span>
+                    {card.comments.length ? <CardCommentPreview cardComments={card.comments} /> : <> </>}
+                    <div title="checklist">{card.checklists.length ? <CardCheckPreview checklists={card.checklists} /> : <> </>}</div>
+                    <div className="badge-icon">{card.cardMembers && <MembersList members={card.cardMembers} />}</div>
                 </div>
+                <button className="quick-card-edit-btn" onClick={this.toggleEditTitle}> <BsPencil /> </button>
             </div>
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        board: state.boardReducer.board,
+        loggedInUser: state.userReducer.loggedInUser
+    }
+}
+const mapDispatchToProps = {
+    updateBoard
+}
+
+export const QuickCardEditor = connect(mapStateToProps, mapDispatchToProps)(_QuickCardEditor)

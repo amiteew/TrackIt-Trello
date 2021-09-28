@@ -5,6 +5,7 @@ import { MembersListBoard } from "./MembersListBoard"
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { TemporaryDrawer } from '../cmp/DroweMenu.jsx';
 import { BsThreeDots } from "react-icons/bs";
+import { DynamicPopover } from './DynamicPopover.jsx';
 
 class _BoardHeader extends React.Component {
   state = {
@@ -82,7 +83,8 @@ class _BoardHeader extends React.Component {
            <span className="icon"><BsThreeDots /> </span>
            <span className="title">Show menu</span>
         </div>}
-          {isMenuOpen && <TemporaryDrawer toggleMenu={this.toggleMenu} board={board} />}
+        {/* <TemporaryDrawer toggleMenu={this.toggleMenu} board={board} /> */}
+          {isMenuOpen &&  <DynamicPopover type={'boardMenu'} toggleMenu={this.toggleMenu} board={board} titleModal={'Menu'} />}
       </div>
     )
   }

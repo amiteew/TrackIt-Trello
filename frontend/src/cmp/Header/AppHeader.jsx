@@ -13,7 +13,7 @@ class _AppHeader extends React.Component {
     // checkIfTemplate = () => {
 
     // }
-
+    
     render() {
         const user = this.props.loggedInUser;
         if (!user) return (<></>)
