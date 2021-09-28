@@ -3,6 +3,8 @@ import Avatar from '@mui/material/Avatar';
 import { connect } from 'react-redux';
 import { loadBoards, removeBoard, addBoard, updateBoard } from '../../store/board.actions.js';
 import DoneIcon from '@mui/icons-material/Done';
+import { BsPencil } from "react-icons/bs";
+
 class _LabelsPopover extends React.Component {
     state = {
         board: null,
@@ -40,12 +42,15 @@ class _LabelsPopover extends React.Component {
         const currCard = board.lists[currListIdx].cards[currCardIdx]
         return (
             <section className="label-popover">
-                <h3>Labels</h3>
+                <h4>Labels</h4>
                 {board.labels.length && board.labels.map(label => (
-                    <div onClick={() => this.toggleLabel(label)} >
-                        <div className={label.color}>
+                    <div className="edit-label-popover flex" onClick={() => this.toggleLabel(label)} >
+                        <div className={'edit-label-color ' + label.color}>
                             {label.title}
                             {this.isLabelOnCard(currCard, label.id) && <DoneIcon />}
+                        </div>
+                        <div className="edit-label-icon">
+                            <BsPencil />
                         </div>
                     </div>
                 ))}

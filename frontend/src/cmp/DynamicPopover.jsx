@@ -11,7 +11,8 @@ import { CoverPopover } from './DynamicPopover/CoverPopover';
 import { DynamicButton } from './DynamicCmps/DynamicButton';
 import { UserMenuPopover } from './DynamicPopover/UserMenuPopover';
 import { TemporaryDrawer } from '../cmp/DroweMenu.jsx';
-
+import { MuiPickersUtilsProvider, DatePicker, TimePicker, DateTimePicker, } from '@material-ui/pickers';
+import DateFnsUtils from '@date-io/date-fns';
 
 export class DynamicPopover extends React.Component {
     state = {
@@ -26,6 +27,10 @@ export class DynamicPopover extends React.Component {
     handleClose = () => {
         this.setState({ anchorEl: null })
     };
+
+    handleDateChange = () => {
+        console.log('im here');
+    }
 
     render() {
         const { type, title, titleModal } = this.props
@@ -77,7 +82,9 @@ export class DynamicPopover extends React.Component {
                         <span>{titleModal}</span>
                         <button className="close-popover" onClick={this.handleClose}></button>
                     </div>
-                    <DynamicCmp type={type} {...this.props} handleClose={this.handleClose} />
+                    <div className="popover-content-container">
+                        <DynamicCmp type={type} {...this.props} handleClose={this.handleClose} />
+                     </div>
                 </Popover >
             </React.Fragment>
         );
