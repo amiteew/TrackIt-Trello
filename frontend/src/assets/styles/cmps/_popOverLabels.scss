@@ -33,6 +33,11 @@
             padding: rem(6px) rem(12px);
             position: relative;
             flex-grow: 1;
+            transition: margin 80ms;
+
+            &:hover {
+                margin-left: rem(5px);
+            }
 
             svg {
                 position: absolute;
