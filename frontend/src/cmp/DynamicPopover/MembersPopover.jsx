@@ -3,6 +3,7 @@ import Avatar from '@mui/material/Avatar';
 import { connect } from 'react-redux';
 import { loadBoards, removeBoard, addBoard, updateBoard } from '../../store/board.actions.js';
 import DoneIcon from '@mui/icons-material/Done';
+import { TextareaAutosize } from '@mui/material';
 class _MembersPopover extends React.Component {
     state = {
         board: null,
@@ -40,12 +41,24 @@ class _MembersPopover extends React.Component {
         const currCard = board.lists[currListIdx].cards[currCardIdx]
         return (
             <section className="members-popover">
+                <TextareaAutosize
+                    className="search-members text-area-auto"
+                    placeHolder="Search members"
+                    type='text'
+                // value={txt}
+                // onChange={this.handleChange}
+                // onKeyPress={this.handleChange}
+                // onBlur={this.onDiscardChanges}
+                // autoFocus
+                />
                 <h3>Board Members</h3>
                 {board.boardMembers.length && board.boardMembers.map(member => (
-                    <div onClick={() => this.toggleMember(member)} >
-                        <Avatar alt={member.fullname} src={member.imgUrl}
-                            key={member._id} />
-                        <h4>{member.fullname} ({member.username})</h4>
+                    <div className="member-preview flex direction-row space-between" onClick={() => this.toggleMember(member)} >
+                        <div className="flex direction-row">
+                            <Avatar className="card-details-avatar" alt={member.fullname} src={member.imgUrl}
+                                key={member._id} />
+                            <div className="flex align-center">{member.fullname} ({member.username})</div>
+                        </div>
                         {this.isMemberOnCard(currCard, member._id) && <DoneIcon />}
                     </div>
                 ))}
