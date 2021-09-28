@@ -87,22 +87,26 @@ class _CardDetails extends React.Component {
 
                 <div className="card-details-content">
                     <div className="card-details-main">
-                        {
-                            currCard.cardMembers.length ? <div>
-                                <h3>Members</h3>
-                                <MembersList members={currCard.cardMembers} />
-                            </div> : ''
-                        }
+                        <div className="card-details-items flex direction-row items-flex-start wrap">
 
-                        {
-                            currCard.cardLabelIds.length ?
-                                <CardLabelsList cardLabelIds={currCard.cardLabelIds} boardLabels={board.labels} /> : ''
-                        }
+                            {
+                                currCard.cardMembers.length ? <div>
+                                    <h3>Members</h3>
+                                    <MembersList members={currCard.cardMembers} />
+                                </div> : ''
+                            }
 
-                        {
-                            currCard.dueDate.date &&
-                            <DueDatePreview dueDate={currCard.dueDate} onToggleDone={this.onToggleDone} />
-                        }
+                            {
+                                currCard.cardLabelIds.length ?
+                                    <CardLabelsList cardLabelIds={currCard.cardLabelIds} boardLabels={board.labels} /> : ''
+                            }
+
+                            {
+                                currCard.dueDate.date &&
+                                <DueDatePreview dueDate={currCard.dueDate} onToggleDone={this.onToggleDone} />
+                            }
+                        </div>
+
 
                         <CardDescription board={board}
                             currListIdx={currListIdx}

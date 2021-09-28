@@ -2,8 +2,8 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 import { loadBoards, removeBoard, addBoard, updateBoard } from '../../store/board.actions.js';
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import DateFnsUtils from '@date-io/date-fns';
+// import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+// import DateFnsUtils from '@date-io/date-fns';
 
 class _DatesPopover extends React.Component {
     state = {
@@ -21,9 +21,9 @@ class _DatesPopover extends React.Component {
         const { board, currListIdx, currCardIdx } = this.state
         if (!board || currCardIdx === null || currListIdx === null) return <></>
         const currCard = board.lists[currListIdx].cards[currCardIdx]
-        return (
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            </MuiPickersUtilsProvider>
+        return (<></>
+            // <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            // </MuiPickersUtilsProvider>
         )
     }
 }

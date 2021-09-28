@@ -46,6 +46,20 @@
             cursor: pointer;
         }
     }
+
+    .card-details-items {
+        margin-inline-start: 40px;
+        margin-bottom: 20px;
+        h3 {
+            color: $fontColor;
+            font-size: rem(12px);
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            line-height: rem(20px);
+            margin: 0 8px 4px 0;
+            text-transform: uppercase;
+        }
+    }
 }
 
 // RESPONVSIVE

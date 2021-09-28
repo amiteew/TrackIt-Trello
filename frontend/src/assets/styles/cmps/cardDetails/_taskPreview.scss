@@ -1,0 +1,14 @@
+// RESPONVSIVE
+
+@media screen and (min-width: 784px) {
+    .task-preview {
+        .delete-task {
+            display: none;
+        }
+        &:hover {
+            .delete-task {
+                display: block;
+            }
+        }
+    }
+}
