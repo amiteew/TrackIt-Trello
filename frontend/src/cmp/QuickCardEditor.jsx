@@ -62,14 +62,14 @@ class _QuickCardEditor extends React.Component {
         const { card, board, list, currCardIdx, updateBoard } = this.props;
         // board.archive.push(...board);
         list.cards.splice(currCardIdx, 1);
-        const action = `Delete card `;
-        updateBoard({...board}, action, card);
+        const action = `Delete card`;
+        updateBoard({ ...board }, action, card);
         this.toggleEditTitle();
     }
 
     render() {
         const { card, board, currListIdx, currCardIdx, OnUpdateBoard } = this.props
-        const { isEditTitle, cardTitle, isModalOpen } = this.state;
+        const { isEditTitle, cardTitle } = this.state;
         return (
             <div>
                 {!isEditTitle && <span className="card-preview-title">{card.cardTitle}</span>}
