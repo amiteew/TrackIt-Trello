@@ -10,10 +10,11 @@ export function MembersList({ members, board, currListIdx, currCardIdx, isCardOp
             <AvatarGroup max={15} className="members-group">
                 {members.map(member =>
                     <div className="single-member-popover">
-                        <SingleMemberPopover user={member} key={member._id} />
-                    {/* <Avatar className="card-details-avatar hover" alt={member.username}
+                        <SingleMemberPopover key={member._id} member={member}
+                            currListIdx={currListIdx} currCardIdx={currCardIdx} />
+                        {/* <Avatar className="card-details-avatar hover" alt={member.username}
                         src={member.imgUrl} key={member._id} /> */}
-                        </div>
+                    </div>
 
                 )}
             </AvatarGroup>

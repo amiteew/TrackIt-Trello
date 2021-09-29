@@ -6,10 +6,19 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import DateFnsUtils from '@date-io/date-fns';
 import Avatar from '@mui/material/Avatar';
-import { UserInfo } from '../UserInfo';
+import { updateBoard } from '../../store/board.actions.js';
+import { containerClasses } from '@mui/material';
+
 class _SingleMemberPopover extends React.Component {
     state = {
         anchorEl: null,
+        currListIdx: null,
+        currCardIdx: null
+        // board: null,
+    }
+    componentDidMount() {
+        const { currListIdx, currCardIdx } = this.props
+        this.setState({ currListIdx, currCardIdx })
     }
 
     handleClick = (event) => {
@@ -23,16 +32,28 @@ class _SingleMemberPopover extends React.Component {
         event.stopPropagation()
     };
 
+    toggleMember = (member) => {
+        // console.log('ev:', ev)
+        // ev.stopPropagation()
+        const { currListIdx, currCardIdx } = this.state
+        const board = this.props.board
+        const currCard = board.lists[currListIdx].cards[currCardIdx]
+        const memberIdx = currCard.cardMembers.findIndex(cardMember => cardMember._id === member._id)
+        board.lists[currListIdx].cards[currCardIdx].cardMembers.splice(memberIdx, 1)
+        var action = 'Removed from '
+        this.props.updateBoard(board, action, currCard)
+    }
+
 
     render() {
-        const { type, title, titleModal, user, loggedInUser } = this.props
+        const { type, title, titleModal, member, loggedInUser } = this.props
         const { anchorEl } = this.state
         const open = Boolean(anchorEl);
         const id = open ? 'simple-popover' : undefined;
         return (
             <React.Fragment>
                 <span className="btn-photo-member" onClick={this.handleClick}>
-                    <Avatar className="card-details-avatar hover" alt={user.fullname} src={user.imgUrl} />
+                    <Avatar className="card-details-avatar hover" alt={member.fullname} src={member.imgUrl} />
                 </span>
                 <Popover
                     id={id}
@@ -47,19 +68,21 @@ class _SingleMemberPopover extends React.Component {
                     {/* OPEN MODAL */}
                     <div className="single-member-popover-header-title flex">
                         <div className="single-member-title flex direction-row">
-                            <Avatar src={user.imgUrl} className="avatar">
-                                <p>{user.initials}</p>
+                            <Avatar src={member.imgUrl} className="avatar">
+                                <p>{member.initials}</p>
                             </Avatar>
                             <div className="user-name-info">
-                                <p className="fullname">{user.fullname}</p>
-                                <p className="username">{user.username}</p>
-                                {(loggedInUser._id === user._id) && <Link className="edit-profile" to="/boards" onClick={this.handleClose}>Edit profile info</Link>}
+                                <p className="fullname">{member.fullname}</p>
+                                <p className="username">{member.username}</p>
+                                {(loggedInUser._id === member._id) &&
+                                    <Link className="edit-profile" to="/boards"
+                                        onClick={this.handleClose}>Edit profile info</Link>}
                             </div>
                         </div>
                         <button className="close-popover" onClick={this.handleClose}></button>
                     </div>
                     <div className="popover-content-container">
-                        <div>Remove from card</div>
+                        <div onClick={(member) => this.toggleMember(member)}>Remove from card</div>
                     </div>
                 </Popover >
             </React.Fragment>
@@ -70,8 +93,13 @@ class _SingleMemberPopover extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        loggedInUser: state.userReducer.loggedInUser
+        loggedInUser: state.userReducer.loggedInUser,
+        board: state.boardReducer.board
     }
 }
+const mapDispatchToProps = {
+    updateBoard
+}
 
-export const SingleMemberPopover = connect(mapStateToProps)(_SingleMemberPopover)
+
+export const SingleMemberPopover = connect(mapStateToProps, mapDispatchToProps)(_SingleMemberPopover)

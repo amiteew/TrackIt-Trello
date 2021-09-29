@@ -68,7 +68,7 @@ class _MembersPopover extends React.Component {
 }
 function mapStateToProps(state) {
     return {
-        boards: state.boardReducer.boards,
+        board: state.boardReducer.board,
         loggedInUser: state.userReducer.loggedInUser
     }
 }
