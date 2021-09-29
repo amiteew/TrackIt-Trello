@@ -4,9 +4,8 @@ import AvatarGroup from '@mui/material/AvatarGroup';
 export function MembersListBoard({ members }) {
     return (
         <>
-            <AvatarGroup max={4}>
-                {members.map(member => <Avatar alt={member.username} src={member.imgUrl} style={{ height: '1.75rem', width: '1.75rem' }}
-                    key={member._id} />)}
+            <AvatarGroup max={5} spacing="3">
+                {members.map(member => <Avatar alt={member.username} src={member.imgUrl} key={member._id} />)}
             </AvatarGroup>
         </>
     )
