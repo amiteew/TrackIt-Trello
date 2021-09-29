@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { userService } from '../services/user.service.js';
-import { loadBoards, updateBoard } from '../store/board.actions.js';
+import { loadBoards, loadBoard, updateBoard } from '../store/board.actions.js';
 
 import { BoardPreview } from '../cmp/UserBoards/BoardPreview'
 import { Loading } from '../cmp/Loading';
@@ -13,7 +13,7 @@ import { FiStar } from 'react-icons/fi';
 
 class _UserBoards extends React.Component {
     state = {
-        userBoards: null
+        userBoards: []
     }
 
     async componentDidMount() {
@@ -25,6 +25,7 @@ class _UserBoards extends React.Component {
         if (!boards.length) await this.props.loadBoards(loggedInUser._id);
         const userBoards = this.removeTemplateBoards(this.props.boards)
         this.setState({ userBoards })
+        this.props.loadBoard(null)
     }
 
     removeTemplateBoards = (boards) => {
@@ -50,8 +51,7 @@ class _UserBoards extends React.Component {
         const path = this.props.match.path.slice(1)
         const { userBoards } = this.state
         const { loggedInUser } = this.props
-        if (!loggedInUser) return <Loading />
-        if (!userBoards) return <Loading />
+        if (!loggedInUser || !userBoards.length) return <Loading />
         const starredBoards = this.getStarredBoards()
         return (
             <section className="main-container boards">
@@ -97,6 +97,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
+    loadBoard,
     loadBoards,
     updateBoard
 }

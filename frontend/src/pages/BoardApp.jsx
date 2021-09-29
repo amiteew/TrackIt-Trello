@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { loadBoard, removeBoard, updateBoard, } from '../store/board.actions.js';
+import { loadBoards, loadBoard, removeBoard, updateBoard, } from '../store/board.actions.js';
 // import { boardService } from '../services/board.service.js';
 import { BoardList } from '../cmp/BoardList.jsx';
 import { DragDropContext } from 'react-beautiful-dnd';
@@ -15,11 +15,12 @@ class _BoardApp extends React.Component {
         isMenuOpen: false
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         const { loggedInUser } = this.props
         if (!loggedInUser) {
             this.props.history.push('/')
         }
+        if (!this.props.boards.length) await this.props.loadBoards()
         const { boardId } = this.props.match.params
         this.props.loadBoard(boardId);
     }
@@ -107,12 +108,14 @@ class _BoardApp extends React.Component {
 
 function mapStateToProps(state) {
     return {
+        boards: state.boardReducer.boards,
         board: state.boardReducer.board,
         loggedInUser: state.userReducer.loggedInUser
     }
 }
 const mapDispatchToProps = {
     removeBoard,
+    loadBoards,
     loadBoard,
     updateBoard
 }

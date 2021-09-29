@@ -21,7 +21,7 @@ export function loadBoards(userId) {
 export function loadBoard(boardId) {
   return async dispatch => {
     try {
-      const board = await boardService.getBoardById(boardId)
+      const board = !boardId ? null : await boardService.getBoardById(boardId)
       dispatch({ type: 'SET_BOARD', board })
       // socketService.on(SOCKET_EVENT_BOARD_ADDED, (board) =>{
       //   dispatch({ type: 'ADD_BOARD', board })
