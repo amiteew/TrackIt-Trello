@@ -19,6 +19,7 @@ export class AddNewTask extends React.Component {
     }
     onAddTask = () => {
         const newTaskTxt = this.state.txt
+        if (!newTaskTxt) return
         this.props.onAddTask(newTaskTxt)
         this.setState({ txt: '' })
     }
@@ -33,7 +34,6 @@ export class AddNewTask extends React.Component {
                     value={txt}
                     onChange={this.handleChange}
                     onKeyPress={this.handleChange}
-                    onBlur={this.onDiscardChanges}
                     autoFocus
                 />
                 <div>
