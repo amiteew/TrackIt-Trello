@@ -31,9 +31,9 @@ class _SingleMemberPopover extends React.Component {
         const id = open ? 'simple-popover' : undefined;
         return (
             <React.Fragment>
-                <button className="btn-photo-member" onClick={this.handleClick}>
+                <span className="btn-photo-member" onClick={this.handleClick}>
                     <Avatar className="card-details-avatar hover" alt={user.fullname} src={user.imgUrl} />
-                </button>
+                </span>
                 <Popover
                     id={id}
                     open={open}
