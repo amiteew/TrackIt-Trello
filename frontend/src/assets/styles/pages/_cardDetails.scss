@@ -9,8 +9,8 @@
 }
 
 .card-details {
-    position: absolute;
-    top: 0;
+    position: fixed;
+    top: 48px;
     right: 0;
     left: 0;
     z-index: 4;
@@ -19,10 +19,10 @@
     background-color: #f4f5f7;
     border-radius: 3px;
     max-width: 768px;
+    min-height: 85vh;
 
     .card-details-main-content {
         padding-left: 25px;
-        min-height: 80vh;
     }
 
     .card-details-icon {
