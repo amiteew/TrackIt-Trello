@@ -11,6 +11,7 @@ import { TextareaAutosize } from '@mui/material';
 import { DynamicPopover } from '../cmp/DynamicPopover.jsx';
 import { updateBoard, loadListAndCard, loadBoard } from '../store/board.actions.js';
 import Popover from '@mui/material/Popover';
+import { CardLabelsPreview } from './CardLabelsPreview.jsx';
 
 class _QuickCardEditor extends React.Component {
 
@@ -18,11 +19,6 @@ class _QuickCardEditor extends React.Component {
         cardTitle: "",
         isEditTitle: false,
         anchorEl: null,
-
-    }
-
-    componentDidMount() {
-
     }
 
     toggleEditTitle = (ev) => {
@@ -81,17 +77,24 @@ class _QuickCardEditor extends React.Component {
         this.setState({ anchorEl: null })
     };
 
+    // toggleLabels = () => {
+    //     const { board } = this.props;
+
+    //     board.lists.cards.cardLabelIds.forEach((labelId)=>{})
+
+    // }
     render() {
         const { card, board, currListIdx, currCardIdx, OnUpdateBoard, loggedInUser } = this.props
         const { isEditTitle, cardTitle, anchorEl } = this.state;
         const open = Boolean(anchorEl);
         const id = open ? 'simple-popover' : undefined;
         const coverStyle = card.cardStyle.img ? `url(${card.cardStyle.img})` : card.cardStyle.color
-        const isCover = card.cardStyle.isCover ? {fullCover:'full ' + coverStyle, fullTitle: 'full'} : {fullTitle:'half'}
+        const isCover = card.cardStyle.isCover ? { fullCover: 'full ' + coverStyle, fullTitle: 'full' } : { fullTitle: 'half' }
         return (
             <div className={"card-preview-contenet pointer"}>
                 {card.cardStyle.id && <div className={'card-preview-header ' + coverStyle}></div>}
-                <div className={"card-preview-main-content " +  isCover.fullCover}>
+                <div className={"card-preview-main-content " + isCover.fullCover}>
+                    <div className="list-card-labels flex"> {card.cardLabelIds && card.cardLabelIds.map(labelId => <CardLabelsPreview key={labelId} labelId={labelId} boardLabels={board.labels} />)}</div>
                     {!isEditTitle && <span className={"card-preview-title " + isCover.fullCover}>{card.cardTitle}</span>}
                     {isEditTitle &&
                         // <Popover
@@ -108,19 +111,19 @@ class _QuickCardEditor extends React.Component {
                         //         horizontal: 'center',
                         //     }}
                         // >
-                            <div className="quick-card-edit-preview">
-                                <TextareaAutosize className="quick-card-input"
-                                    value={cardTitle}
-                                    aria-label="card title"
-                                    onChange={this.handleChange}
-                                    onKeyPress={this.handleChange}
-                                    autoFocus
-                                />
-                                <div onClick={this.onArchive}>Archive</div> 
+                        <div className="quick-card-edit-preview">
+                            <TextareaAutosize className="quick-card-input"
+                                value={cardTitle}
+                                aria-label="card title"
+                                onChange={this.handleChange}
+                                onKeyPress={this.handleChange}
+                                autoFocus
+                            />
+                            <div onClick={this.onArchive}>Archive</div>
 
-                                {/* <button onClick={this.onSaveCardTitle}>save</button>
+                            {/* <button onClick={this.onSaveCardTitle}>save</button>
                                 <AddToCard board={board} currListIdx={currListIdx} currCardIdx={currCardIdx} OnUpdateBoard={OnUpdateBoard} /> */}
-                            </div>
+                        </div>
                         // </Popover >
                     }
                     {isCover.fullTitle === 'half' && <span className="card-preview-icon flex">
@@ -128,7 +131,7 @@ class _QuickCardEditor extends React.Component {
                         <span className="badge is-watch">{card.cardMembers && <CardVisibilityPreview cardMembers={card.cardMembers} />} </span>
                         {card.comments.length ? <CardCommentPreview cardComments={card.comments} /> : <> </>}
                         <div title="checklist">{card.checklists.length ? <CardCheckPreview checklists={card.checklists} /> : <> </>}</div>
-                        <div className="badge-icon">{card.cardMembers && <MembersList members={card.cardMembers} isCardOpen={false} />}
+                        <div className="badge-icon members">{card.cardMembers && <MembersList members={card.cardMembers} isCardOpen={false} />}
                         </div>
                     </span>}
                     <button className="quick-card-edit-btn" onClick={this.toggleEditTitle}><BsPencil /></button>

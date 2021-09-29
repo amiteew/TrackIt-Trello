@@ -26,7 +26,7 @@
     .card-preview-header {
         height: 32px;
     }
-    
+
     .card-preview-main-content {
         padding: 0.375rem 0.625rem 0.125rem;
     }
@@ -41,7 +41,7 @@
     overflow: hidden;
     text-decoration: none;
 
-    &.full{
+    &.full {
         font-size: rem(16px);
         font-weight: 500;
         line-height: rem(20px);
@@ -127,11 +127,13 @@
         font-size: rem(12px);
         height: rem(16px);
         width: rem(16px);
+
+        &.members {
+            position: absolute;
+            right: 0;
+        }
     }
 
-    &.members {
-        position: inherit;
-    }
 
     &.is-watch {
         padding: 0 rem(6px) 0 rem(2px);
@@ -142,6 +144,7 @@
         vertical-align: top;
         white-space: nowrap;
     }
+
 }
 
 // .card-icon ::before {
