@@ -1,4 +1,4 @@
-.add-list{
+.add-list {
     min-width: 272px;
     // color: #172b4d;
     // height: auto;
@@ -7,6 +7,58 @@
     // border-radius: 3px;
     // background-color: hsla(0,0%,100%,.24);
     height: rem(40px);
-    padding: 10px 12px;
+    padding: rem(10px) rem(12px);
     transition: background-color 85ms ease-in;
+    // margin-right: 8px;
+    margin: 0px 4px;
+
+    &.add-mode {
+        background-color: $bgcColor;
+        height: fit-content;
+
+        &:hover {
+            background-color: $bgcColor
+        }
+    }
+
+    .text-area-auto.list-input {
+        width: rem(272px);
+        box-shadow: inset 0 0 0 1px #0079bf;
+        max-height: 256px;
+        min-height: 20px;
+        padding: 4px 8px;
+        border-radius: 3px;
+        margin-top: 2px;
+
+    }
+
+    .add-list-actions {
+        margin: 2px 2px 0 0;
+    }
+
+    .add-list-btn {
+        min-height: 32px;
+        padding-bottom: 4px;
+        padding-top: 4px;
+        background-color: $blueColor;
+        color: #fff;
+
+        &:hover {
+            background-color: #026aa7;
+        }
+    }
+
+    .close-add-list-btn {
+        color: #42526e;
+        font-size: 24px;
+    }
+
+    img {
+        color: #42526e;
+        font-size: rem(16px);
+    }
+
+    .add-list-txt {
+        margin-left: 3px;
+    }
 }

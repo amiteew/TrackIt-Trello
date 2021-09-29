@@ -8,13 +8,17 @@ import { BsPencil } from "react-icons/bs";
 import { GrTextAlignFull } from "react-icons/gr";
 import { connect } from 'react-redux';
 import { TextareaAutosize } from '@mui/material';
+import { DynamicPopover } from '../cmp/DynamicPopover.jsx';
 import { updateBoard, loadListAndCard, loadBoard } from '../store/board.actions.js';
+import Popover from '@mui/material/Popover';
 
 class _QuickCardEditor extends React.Component {
 
     state = {
         cardTitle: "",
-        isEditTitle: false
+        isEditTitle: false,
+        anchorEl: null,
+
     }
 
     componentDidMount() {
@@ -25,6 +29,7 @@ class _QuickCardEditor extends React.Component {
         if (ev) {
             ev.stopPropagation();
             ev.preventDefault();
+            this.setState({ anchorEl: ev.currentTarget })
         }
         const { card, isEditMode } = this.props;
         isEditMode();
@@ -67,34 +72,65 @@ class _QuickCardEditor extends React.Component {
         this.toggleEditTitle();
     }
 
+    handleClick = (event) => {
+        event.preventDefault();
+        this.setState({ anchorEl: event.currentTarget })
+    };
+
+    handleClosePop = () => {
+        this.setState({ anchorEl: null })
+    };
+
     render() {
-        const { card, board, currListIdx, currCardIdx, OnUpdateBoard } = this.props
-        const { isEditTitle, cardTitle } = this.state;
+        const { card, board, currListIdx, currCardIdx, OnUpdateBoard, loggedInUser } = this.props
+        const { isEditTitle, cardTitle, anchorEl } = this.state;
+        const open = Boolean(anchorEl);
+        const id = open ? 'simple-popover' : undefined;
+
         return (
             <div>
-                {!isEditTitle && <span className="card-preview-title">{card.cardTitle}</span>}
-                {isEditTitle &&
-                    <div className="quick-card-edit-preview">
-                        <TextareaAutosize
-                            value={cardTitle}
-                            aria-label="card title"
-                            onChange={this.handleChange}
-                            onKeyPress={this.handleChange}
-                            autoFocus
-                        />
-                        <button onClick={this.onSaveCardTitle}>save</button>
-                        <AddToCard board={board} currListIdx={currListIdx} currCardIdx={currCardIdx} OnUpdateBoard={OnUpdateBoard} />
-                        <div onClick={this.onArchive}>Archive</div>
+                {card.cardStyle.id && <div className={'card-preview-header ' + card.cardStyle.color}></div>}
+                <div className="card-preview-main-content">
+                    {!isEditTitle && <span className="card-preview-title">{card.cardTitle}</span>}
+                    {isEditTitle &&
+                        <Popover
+                            id={id}
+                            open={open}
+                            anchorEl={anchorEl}
+                            onClose={this.handleClosePop}
+                            anchorOrigin={{
+                                vertical: 'top',
+                                horizontal: 'top',
+                            }}
+                            transformOrigin={{
+                                vertical: 'center',
+                                horizontal: 'center',
+                            }}
+                        >
+                            <div className="quick-card-edit-preview">
+                                <TextareaAutosize className="quick-card-input"
+                                    value={cardTitle}
+                                    aria-label="card title"
+                                    onChange={this.handleChange}
+                                    onKeyPress={this.handleChange}
+                                    autoFocus
+                                />
+                                {/* <button onClick={this.onSaveCardTitle}>save</button>
+                                <AddToCard board={board} currListIdx={currListIdx} currCardIdx={currCardIdx} OnUpdateBoard={OnUpdateBoard} />
+                                <div onClick={this.onArchive}>Archive</div> */}
+                            </div>
+                        </Popover >
+                    }
+                    <div className="card-preview-icon flex">
+                        {card.description && <div className='badge flex align-center'><GrTextAlignFull /></div>}
+                        <span className="badge is-watch">{card.cardMembers && <CardVisibilityPreview cardMembers={card.cardMembers} />} </span>
+                        {card.comments.length ? <CardCommentPreview cardComments={card.comments} /> : <> </>}
+                        <div title="checklist">{card.checklists.length ? <CardCheckPreview checklists={card.checklists} /> : <> </>}</div>
+                        <div className="badge-icon">{card.cardMembers && <MembersList members={card.cardMembers} isCardOpen={false} />}
+                        </div>
                     </div>
-                }
-                <div className="card-preview-icon flex">
-                    {card.description && <div className='badge flex align-center'><GrTextAlignFull /></div>}
-                    <span className="badge is-watch">{card.cardMembers && <CardVisibilityPreview cardMembers={card.cardMembers} />} </span>
-                    {card.comments.length ? <CardCommentPreview cardComments={card.comments} /> : <> </>}
-                    <div title="checklist">{card.checklists.length ? <CardCheckPreview checklists={card.checklists} /> : <> </>}</div>
-                    <div className="badge-icon">{card.cardMembers && <MembersList members={card.cardMembers} isCardOpen={false} />}</div>
+                    <button className="quick-card-edit-btn" onClick={this.toggleEditTitle}><BsPencil /></button>
                 </div>
-                <button className="quick-card-edit-btn" onClick={this.toggleEditTitle}><BsPencil /></button>
             </div>
         )
     }

@@ -4,6 +4,7 @@ import { updateBoard } from '../store/board.actions.js';
 import { utilService } from '../services/util.service.js';
 import { TextareaAutosize } from '@mui/material';
 import { Button } from '@mui/material';
+import close from '../assets/imgs/close.svg';
 
 export class _AddCard extends React.Component {
     state = {
@@ -52,7 +53,7 @@ export class _AddCard extends React.Component {
     render() {
         const { cardTitle } = this.state;
         return (
-            <div>
+            <div className="all-cards card-previre-content">
                 <TextareaAutosize className="text-area-auto card-input"
                     value={cardTitle}
                     placeholder="Enter a title for this card..."
@@ -62,8 +63,10 @@ export class _AddCard extends React.Component {
                     // onBlur={this.onAddCard}
                     autoFocus
                 />
-                <Button variant="contained" className="add-card-btn">Add card</Button>
-                <button onClick={this.props.onCloseAdding}>X</button>
+                <div className="add-card-actions flex align-center">
+                    <Button variant="contained" className="add-card-btn">Add card</Button>
+                    <button onClick={this.props.onCloseAdding}><img src={close} alt="close" /></button>
+                </div>
             </div>
         )
     }

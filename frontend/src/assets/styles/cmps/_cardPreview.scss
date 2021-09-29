@@ -21,8 +21,15 @@
     text-decoration: none;
     z-index: 0;
     overflow: hidden;
-    padding: .375rem .625rem .125rem;
     box-shadow: 0 1px 0 #c0c6d0;
+
+    .card-preview-header {
+        height: 32px;
+    }
+
+    .card-preview-main-content {
+        padding: .375rem .625rem .125rem;
+    }
 }
 
 .card-preview-title {
@@ -63,7 +70,8 @@
 
 .card-preview-contenet {
     position: relative;
-
+    border-radius: 3px;
+    
     .quick-card-edit-btn {
         position: absolute;
         background-clip: padding-box;
@@ -104,6 +112,11 @@
     text-decoration: none;
     text-overflow: ellipsis;
     font-size: rem(12px);
+    border-radius: 3px;
+
+    &.done{
+        color: #fff;
+    }
 
     .badge-icon {
         font-size: rem(12px);
@@ -125,6 +138,7 @@
         white-space: nowrap;
     }
 }
+
 
 // .card-icon ::before {
 //     vertical-align: top;
