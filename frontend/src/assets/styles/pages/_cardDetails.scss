@@ -39,9 +39,12 @@
         margin-right: 16px;
         display: flex;
         flex-direction: column;
-
         .card-details-main {
             max-width: 784px;
+            .card-subtitle {
+                font-size: rem(16px);
+                font-weight: 600;
+            }
         }
 
         h3 {
@@ -109,7 +112,7 @@
 
         .card-details-content {
             flex-direction: row;
-
+            color: $clr10;
             .card-details-main {
                 // width: 552px;
                 width: 552px;

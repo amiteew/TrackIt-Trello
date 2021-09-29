@@ -79,7 +79,7 @@ class _ChecklistApp extends React.Component {
                 <div className="flex direction-row space-between ">
                     <div className="flex direction-row">
                         <CheckBoxOutlinedIcon className="card-details-icon" />
-                        <h3 className="checklist-title">{currChecklist.title}</h3>
+                        <h3 className="card-subtitle">{currChecklist.title}</h3>
                     </div>
                     <button className="delete-checklist hover" onClick={this.onDeleteChecklist}>Delete</button>
                 </div>
