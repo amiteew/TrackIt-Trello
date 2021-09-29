@@ -43,7 +43,7 @@ class _MembersPopover extends React.Component {
             <section className="members-popover">
                 <TextareaAutosize
                     className="search-members text-area-auto"
-                    placeHolder="Search members"
+                    placeholder="Search members"
                     type='text'
                 // value={txt}
                 // onChange={this.handleChange}

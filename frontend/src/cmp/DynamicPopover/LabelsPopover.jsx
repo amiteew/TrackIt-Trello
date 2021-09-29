@@ -45,7 +45,7 @@ class _LabelsPopover extends React.Component {
             <section className="label-popover">
                 <TextareaAutosize
                     className="search-labels text-area-auto"
-                    placeHolder="Search labels..."
+                    placeholder="Search labels..."
                     type='text'
                 // value={txt}
                 // onChange={this.handleChange}
