@@ -18,7 +18,7 @@ export function BoardPreview({ board, loggedInUser, toggleStarBoard, isYellow, i
                         {(board.createdBy) ?
                             <>
                                 {(board.createdBy._id !== loggedInUser._id) ?
-                                    <p className="board-owner">{board.createdBy.fullname}' board</p> : <></>}
+                                    <p className="board-owner">{board.createdBy.fullname}'s board</p> : <></>}
                                 {<button className={`star-btn ${board.isStarred ? "show" : ""}`} onClick={(ev) => toggleStarBoard(ev, board)}>
                                     <IconContext.Provider value={{ className: `star-icon ${isYellow ? "yellow" : ""} ${isLarge ? "large" : ""}` }}>
                                         <FiStar />
