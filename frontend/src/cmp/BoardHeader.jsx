@@ -79,7 +79,7 @@ class _BoardHeader extends React.Component {
               <FiStar />
             </IconContext.Provider>
           </button>
-          <div className="board-members">
+          <div className="board-members flex align-center">
           {/* <div className="board-header-btn board-members"> */}
             <MembersListBoard members={board.boardMembers} />
           </div>

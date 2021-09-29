@@ -1,12 +1,14 @@
 import React from 'react';
 import { utilService } from '../services/util.service.js';
 import { TextareaAutosize } from '@mui/material';
-
+import { Button } from '@mui/material';
+import close from '../assets/imgs/close.svg';
+import AddIcon from '@mui/icons-material/Add';
 
 export class AddList extends React.Component {
     state = {
         listTitle: "",
-        isAdding: false,
+        isAdding: false
     }
 
     handleChange = (ev) => {
@@ -48,25 +50,28 @@ export class AddList extends React.Component {
 
     render() {
         const { listTitle, isAdding } = this.state;
+        const addMode = isAdding ? 'add-mode' : '';
         return (
-            <div className="add-list board-btn flex align-center">
+            <div onClick={this.toggleOnAdd} className={'add-list board-btn flex align-center pointer ' + addMode}>
                 {isAdding && <form onSubmit={this.onAddList} >
                     <TextareaAutosize className="text-area-auto list-input"
                         value={listTitle}
                         aria-label="empty textarea"
                         placeholder="Enter list title"
-                        style={{ width: 100 }}
                         onChange={this.handleChange}
                         onKeyPress={this.handleChange}
                         onBlur={this.onAddList}
                         autoFocus
                     />
-                    <button>Add List</button>
-                    <button onClick={this.onCloseAdding}>X</button>
+                    <div className="add-list-actions flex align-center">
+                        <Button className="add-list-btn">Add List</Button>
+                        <span className="close-add-list-btn" onClick={this.onCloseAdding}><img src={close} alt="close" /></span>
+                    </div>
                 </form>}
-                {!isAdding && <span onClick={() => {
+                {!isAdding && <span className="flex align-center" onClick={() => {
                     this.toggleOnAdd()
-                }}>Add another list</span>}
+                }}> <AddIcon /> <span className="add-list-txt">Add another list</span></span>}
+               
             </div>
         )
     }

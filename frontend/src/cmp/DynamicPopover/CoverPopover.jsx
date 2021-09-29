@@ -43,18 +43,28 @@ class _CoverPopover extends React.Component {
         if (!board || currCardIdx === null || currListIdx === null) return <></>
         const currCard = board.lists[currListIdx].cards[currCardIdx]
         return (
-            <section className="cover-popover">
-                <h3>Colors</h3>
-                {board.covers.length && board.covers.map(cover => (
-                    <div >
-                        <div className="color-plate">
-                            <div onClick={() => this.onToggleCover(cover)}
-                                className={`color-sqr ${cover.color} 
-                             ${this.isCoverOnCard(currCard, cover.id) ? 'color-selected' : ''} `}>
-                            </div>
-                        </div>
+            <section className="popover-cover">
+                <h4>Size</h4>
+                <div className="header-cover">
+                    <div className="header-half-cover">
+                        <div className="paragraph"></div>
+                        <div className="row"></div>
+                        <div className="row second"></div>
                     </div>
-                ))}
+                    <div className="header-full-cover">
+                        <div className="row full"></div>
+                        <div className="row second full"></div>
+                    </div>
+                </div>
+                <h4>Colors</h4>
+                <div className="color-plate">
+                    {board.covers.length && board.covers.map(cover => (
+                        <div key={cover.id} onClick={() => this.onToggleCover(cover)}
+                            className={`color-sqr pointer ${cover.color} 
+                             ${this.isCoverOnCard(currCard, cover.id) ? 'color-selected' : ''} `}>
+                        </div>
+                    ))}
+                </div>
             </section>
         )
     }
