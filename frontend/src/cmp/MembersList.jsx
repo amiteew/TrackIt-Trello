@@ -15,7 +15,6 @@ export function MembersList({ members, board, currListIdx, currCardIdx, isCardOp
                         {/* <Avatar className="card-details-avatar hover" alt={member.username}
                         src={member.imgUrl} key={member._id} /> */}
                     </div>
-
                 )}
             </AvatarGroup>
             {isCardOpen &&

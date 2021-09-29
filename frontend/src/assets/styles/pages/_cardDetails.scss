@@ -39,8 +39,10 @@
         margin-right: 16px;
         display: flex;
         flex-direction: column;
+
         .card-details-main {
             max-width: 784px;
+
             .card-subtitle {
                 font-size: rem(16px);
                 font-weight: 600;
@@ -76,32 +78,54 @@
 
 .cover-mode {
     height: 116px;
+    color: #172b4d;
 
     .cover-menu {
         position: absolute;
         right: 8px;
         top: 72px;
         align-items: center;
-        color: #172b4d;
         border: none;
         border-radius: 3px;
-        padding: 6px 12px 6px 6px;
-
+        
         button {
-            background-color: rgba(0, 0, 0, 0.08);
+            background-color: #00000014;
+            display: flex;
+            align-items: center;
+            padding: rem(6px) rem(12px);
+            
+            span {
+                padding-left: rem(7px);
+            }
+
+            &:hover{
+                background-color: #00000029; 
+            }
         }
     }
 }
 
 .close-window-btn {
+    background-color: #00000014;
+    color: #42526e;
     border-radius: 50%;
     border: none;
     position: absolute;
     width: 40px;
+    height: 40px;
     top: 4px;
     right: 4px;
     text-align: center;
     transition: background-color 85ms, color 85ms;
+
+    img{
+        height: 20px;
+        width: 20px;
+    }
+
+    &:hover{
+        background-color: #00000029;
+    }
 }
 
 // RESPONVSIVE
@@ -113,6 +137,7 @@
         .card-details-content {
             flex-direction: row;
             color: $clr10;
+
             .card-details-main {
                 // width: 552px;
                 width: 552px;

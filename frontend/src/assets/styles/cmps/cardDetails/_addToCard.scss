@@ -18,6 +18,7 @@
         background-color: $cardBtnColor;
         text-align: start;
         display: flex;
+        align-items: center;
         & > :first-child {
             margin-inline-end: 10px;
         }

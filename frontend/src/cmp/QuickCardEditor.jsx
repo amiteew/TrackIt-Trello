@@ -83,6 +83,7 @@ class _QuickCardEditor extends React.Component {
     //     board.lists.cards.cardLabelIds.forEach((labelId)=>{})
 
     // }
+    
     render() {
         const { card, board, currListIdx, currCardIdx, OnUpdateBoard, loggedInUser } = this.props
         const { isEditTitle, cardTitle, anchorEl } = this.state;
@@ -94,7 +95,7 @@ class _QuickCardEditor extends React.Component {
             <div className={"card-preview-contenet pointer"}>
                 {card.cardStyle.id && <div className={'card-preview-header ' + coverStyle}></div>}
                 <div className={"card-preview-main-content " + isCover.fullCover}>
-                    <div className="list-card-labels flex"> {card.cardLabelIds && card.cardLabelIds.map(labelId => <CardLabelsPreview key={labelId} labelId={labelId} boardLabels={board.labels} />)}</div>
+                   {isCover.fullTitle === 'half' && <div className="list-card-labels flex"> {card.cardLabelIds && card.cardLabelIds.map(labelId => <CardLabelsPreview key={labelId} labelId={labelId} boardLabels={board.labels} />)}</div>}
                     {!isEditTitle && <span className={"card-preview-title " + isCover.fullCover}>{card.cardTitle}</span>}
                     {isEditTitle &&
                         // <Popover
@@ -127,11 +128,13 @@ class _QuickCardEditor extends React.Component {
                         // </Popover >
                     }
                     {isCover.fullTitle === 'half' && <span className="card-preview-icon flex">
-                        {card.description && <div className='badge flex align-center'><GrTextAlignFull /></div>}
-                        <span className="badge is-watch">{card.cardMembers && <CardVisibilityPreview cardMembers={card.cardMembers} />} </span>
-                        {card.comments.length ? <CardCommentPreview cardComments={card.comments} /> : <> </>}
-                        <div title="checklist">{card.checklists.length ? <CardCheckPreview checklists={card.checklists} /> : <> </>}</div>
-                        <div className="badge-icon members">{card.cardMembers && <MembersList members={card.cardMembers} currCard={card} isCardOpen={false} />}
+                        <div className="flex wrap">
+                            {card.description && <div className='badge flex align-center'><GrTextAlignFull /></div>}
+                            {/* <span className="badge is-watch">{card.cardMembers && <CardVisibilityPreview cardMembers={card.cardMembers} />} </span> */}
+                            {card.comments.length ? <CardCommentPreview cardComments={card.comments} /> : <> </>}
+                            <div title="checklist">{card.checklists.length ? <CardCheckPreview checklists={card.checklists} /> : <> </>}</div>
+                        </div>
+                        <div className="badge-icon members flex">{card.cardMembers && <MembersList members={card.cardMembers} currCard={card} isCardOpen={false} />}
                         </div>
                     </span>}
                     <button className="quick-card-edit-btn" onClick={this.toggleEditTitle}><BsPencil /></button>

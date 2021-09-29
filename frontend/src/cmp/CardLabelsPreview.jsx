@@ -20,7 +20,6 @@ export class CardLabelsPreview extends React.Component {
         return (
             <div onClick={this.toggleLabel} className={`${currLabel.color} label-card ${className}`}>
                 {isOpen && currLabel.title}
-
             </div>
         )
     }
