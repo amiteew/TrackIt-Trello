@@ -55,7 +55,7 @@ class _BoardHeader extends React.Component {
     const { title, isEditTitle, isMenuOpen } = this.state
     const isStarred = userService.isBoardStarred(board, loggedInUser._id)
     return (
-      <div className="board-header-btn board-header flex align-center space-between">
+      <div className="board-header flex align-center space-between">
         <div className="header-left flex">
           {!isEditTitle && <h1 className="header-title" onClick={this.toggleChangeTitle}>{board.boardTitle}</h1>}
           {isEditTitle &&
@@ -72,7 +72,7 @@ class _BoardHeader extends React.Component {
               />
             </form>
           }
-          <button className="board-header-btn star" onClick={this.onToggleStarBoard}>
+          <button className="board-btn star" onClick={this.onToggleStarBoard}>
             <IconContext.Provider value={{ className: `star-icon${isStarred ? " active" : ""}` }} >
               <FiStar />
             </IconContext.Provider>
@@ -82,7 +82,7 @@ class _BoardHeader extends React.Component {
             <MembersListBoard members={board.boardMembers} />
           </div>
         </div>
-        {!isMenuOpen && <div className="board-header-btn show-menu" onClick={this.toggleMenu}>
+        {!isMenuOpen && <div className="board-btn show-menu" onClick={this.toggleMenu}>
           <span className="icon"><BsThreeDots /> </span>
           <span className="title">Show menu</span>
         </div>}

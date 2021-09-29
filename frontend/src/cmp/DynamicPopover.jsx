@@ -41,10 +41,14 @@ export class DynamicPopover extends React.Component {
         const DynamicCmp = (props) => {
             switch (props.type) {
                 case 'members':
+                case 'add-members':
                     return <MembersPopover {...props} />
                 case 'list actions':
                     return <ActionList {...props} />
                 case 'labels':
+                case 'add-labels':
+                    return <LabelsPopover {...props} />
+                case 'labels-preview':
                     return <LabelsPopover {...props} />
                 case 'dates':
                     return <DatesPopover {...props} />
@@ -61,11 +65,10 @@ export class DynamicPopover extends React.Component {
             }
         }
 
-
         return (
             <React.Fragment>
                 <button onClick={this.handleClick}>
-                    <DynamicButton type={type} />
+                    <DynamicButton type={type} {...this.props} />
                 </button>
                 <Popover
                     id={id}
@@ -84,7 +87,7 @@ export class DynamicPopover extends React.Component {
                     </div>
                     <div className="popover-content-container">
                         <DynamicCmp type={type} {...this.props} handleClose={this.handleClose} />
-                     </div>
+                    </div>
                 </Popover >
             </React.Fragment>
         );

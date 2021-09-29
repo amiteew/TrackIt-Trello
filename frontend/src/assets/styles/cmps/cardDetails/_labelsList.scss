@@ -1,0 +1,13 @@
+.labels-list {
+    button {
+        padding: 0;
+    }
+    svg {
+        width: 22px;
+        height: 40px;
+        background-color: $cardBtnColor;
+    }
+    svg:hover {
+        background-color: $cardHoverColor;
+    }
+}

@@ -7,7 +7,8 @@ import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 import ScheduleOutlinedIcon from '@mui/icons-material/ScheduleOutlined';
 import CallToActionOutlinedIcon from '@mui/icons-material/CallToActionOutlined';
-
+import AddIcon from '@mui/icons-material/Add';
+import { LabelPreview } from '../LabelPreview';
 import { BsThreeDots } from "react-icons/bs";  //merge conflict- is this needed here? <AW>
 
 class _DynamicButton extends React.Component {
@@ -17,10 +18,15 @@ class _DynamicButton extends React.Component {
             switch (props.type) {
                 case 'members':
                     return <><PersonOutlineOutlinedIcon /> Members</>
+                case 'add-members':
+                case 'add-labels':
+                    return <><AddIcon /></>
                 case 'list actions':
                     return <><BsThreeDots /></>
                 case 'labels':
                     return <>< LocalOfferOutlinedIcon /> Labels</>
+                case 'labels-preview':
+                    return <LabelPreview {...props} />
                 case 'checklist':
                     return <><CheckBoxOutlinedIcon /> Checklist</>
                 case 'dates':
@@ -39,7 +45,7 @@ class _DynamicButton extends React.Component {
             }
         }
         return (
-            <DynamicCmp type={type} />
+            <DynamicCmp type={type} {...this.props} />
         )
     }
 }

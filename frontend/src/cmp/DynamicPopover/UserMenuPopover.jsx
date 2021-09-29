@@ -1,9 +1,8 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom';
 import { onLogout } from '../../store/user.actions'
-import Avatar from '@mui/material/Avatar';
+import { UserInfo } from '../UserInfo';
 
 class _UserMenuPopover extends React.Component {
     onLogout = async () => {
@@ -16,15 +15,7 @@ class _UserMenuPopover extends React.Component {
         if (!loggedInUser) return (<></>)
         return (
             <div className="user-menu popover-content">
-                <div className="user-info flex">
-                    <Avatar alt="" src={loggedInUser.imgUrl} className="logged-in-avatar">
-                        <p>{loggedInUser.initials}</p>
-                    </Avatar>
-                    <div className="user-name-info">
-                        <p className="fullname">{loggedInUser.fullname}</p>
-                        <p className="username">{loggedInUser.username}</p>
-                    </div>
-                </div>
+                <UserInfo user={loggedInUser} handleClose={this.props.handleClose} />
                 <div>
                     <button onClick={this.onLogout}>Logout</button>
                 </div>

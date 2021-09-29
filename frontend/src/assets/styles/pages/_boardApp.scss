@@ -8,6 +8,7 @@
 }
 
 .board-canvas {
+    margin-left: 9px;
     flex-grow: 1;
     position: relative;
     top: rem(52px);
@@ -25,4 +26,14 @@
     top: 0;
     user-select: none;
     white-space: nowrap;
+}
+
+.board-btn {
+    font-size: rem(14px);
+    border-radius: rem(3px);
+    background-color: #00000014;
+    color: #172b4d;
+    &:hover {
+        background-color: #00000029;
+    }
 }

@@ -49,7 +49,7 @@ export class AddList extends React.Component {
     render() {
         const { listTitle, isAdding } = this.state;
         return (
-            <div className="add-list">
+            <div className="add-list board-btn flex align-center">
                 {isAdding && <form onSubmit={this.onAddList} >
                     <TextareaAutosize className="text-area-auto list-input"
                         value={listTitle}

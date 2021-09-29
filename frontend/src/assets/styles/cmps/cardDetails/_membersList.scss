@@ -5,6 +5,25 @@
             .members-group {
                 justify-content: start;
             }
+            & > :last-child {
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+                background-color: $cardBtnColor;
+                display: flex;
+                align-items: center;
+            }
+            & > :last-child:hover {
+                background-color: $cardHoverColor;
+            }
+            button {
+                margin-top: 3px;
+                padding: 0px 7px;
+            }
         }
     }
+}
+
+.MuiAvatar-root {
+    border: none !important;
 }
