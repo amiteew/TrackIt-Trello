@@ -33,8 +33,6 @@ class _SingleMemberPopover extends React.Component {
     };
 
     toggleMember = (member) => {
-        // console.log('ev:', ev)
-        // ev.stopPropagation()
         const { currListIdx, currCardIdx } = this.state
         const board = this.props.board
         const currCard = board.lists[currListIdx].cards[currCardIdx]
