@@ -50,6 +50,7 @@ class _UserBoards extends React.Component {
         const path = this.props.match.path.slice(1)
         const { userBoards } = this.state
         const { loggedInUser } = this.props
+        if (!loggedInUser) return <Loading />
         if (!userBoards) return <Loading />
         const starredBoards = this.getStarredBoards()
         return (
