@@ -131,7 +131,7 @@ class _QuickCardEditor extends React.Component {
                         <span className="badge is-watch">{card.cardMembers && <CardVisibilityPreview cardMembers={card.cardMembers} />} </span>
                         {card.comments.length ? <CardCommentPreview cardComments={card.comments} /> : <> </>}
                         <div title="checklist">{card.checklists.length ? <CardCheckPreview checklists={card.checklists} /> : <> </>}</div>
-                        <div className="badge-icon members">{card.cardMembers && <MembersList members={card.cardMembers} isCardOpen={false} />}
+                        <div className="badge-icon members">{card.cardMembers && <MembersList members={card.cardMembers} currCard={card} isCardOpen={false} />}
                         </div>
                     </span>}
                     <button className="quick-card-edit-btn" onClick={this.toggleEditTitle}><BsPencil /></button>
