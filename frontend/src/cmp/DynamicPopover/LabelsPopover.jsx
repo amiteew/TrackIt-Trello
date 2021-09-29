@@ -72,7 +72,7 @@ class _LabelsPopover extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        boards: state.boardReducer.boards
+        board: state.boardReducer.board
     }
 }
 

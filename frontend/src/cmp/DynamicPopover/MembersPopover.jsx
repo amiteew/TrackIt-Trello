@@ -23,10 +23,10 @@ class _MembersPopover extends React.Component {
         if (this.isMemberOnCard(currCard, member._id)) {
             const memberIdx = currCard.cardMembers.findIndex(cardMember => cardMember._id === member._id)
             newBoard.lists[currListIdx].cards[currCardIdx].cardMembers.splice(memberIdx, 1)
-            var action = 'Removed from '
+            var action = `${member} Removed from `
         } else {
             newBoard.lists[currListIdx].cards[currCardIdx].cardMembers.push(member)
-            var action = 'Added to '
+            var action = `${member} Added to `
         }
         this.props.updateBoard(newBoard, action, currCard)
     }
@@ -68,7 +68,7 @@ class _MembersPopover extends React.Component {
 }
 function mapStateToProps(state) {
     return {
-        boards: state.boardReducer.boards,
+        board: state.boardReducer.board,
         loggedInUser: state.userReducer.loggedInUser
     }
 }
