@@ -29,7 +29,7 @@ export class DynamicPopover extends React.Component {
     };
 
     handleDateChange = () => {
-        console.log('im here');
+        console.log('im in DynamicPopover.handleDateChange');
     }
 
     render() {

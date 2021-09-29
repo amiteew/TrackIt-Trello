@@ -33,7 +33,6 @@
     .card-details-avatar {
         width: 35px;
         height: 35px;
-        // margin-right: 30px;
     }
 
     .card-details-content {
@@ -70,7 +69,6 @@
             text-transform: uppercase;
         }
     }
-
 }
 
 .cover-mode {
@@ -87,7 +85,7 @@
         padding: 6px 12px 6px 6px;
 
         button {
-            background-color: rgba(0, 0, 0, .08);
+            background-color: rgba(0, 0, 0, 0.08);
         }
     }
 }

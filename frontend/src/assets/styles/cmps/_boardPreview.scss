@@ -6,6 +6,7 @@
     height: 96px;
     border-radius: 3px;
     &.create-board {
+        cursor: pointer;
         color: $clr10;
         background-color: #f0f2f5;
         &:hover {

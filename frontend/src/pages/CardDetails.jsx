@@ -26,7 +26,7 @@ class _CardDetails extends React.Component {
 
     componentDidMount() {
         const { board } = this.props;
-        console.log('board', board)
+        // console.log('board', board)
         // this.setState({ board })
         this.getCurrCard(board)
     }
@@ -78,8 +78,8 @@ class _CardDetails extends React.Component {
         if (!board || currCardIdx === null || currListIdx === null) return <Loading />
         const currCard = board.lists[currListIdx].cards[currCardIdx]
         return (<div >
-            <div className="screen-card-details" onClick={this.handleClose}></div>
-            <div className="card-details">
+            <div className="screen-card-details" onClick={this.handleClose}></div>           
+            <div className="card-details" >
                 <CardDetailsHeader board={board}
                     currListIdx={currListIdx}
                     currCardIdx={currCardIdx}

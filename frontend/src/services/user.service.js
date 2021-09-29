@@ -22,7 +22,7 @@ function getUsers() {
     return storageService.query(USER_KEY)
         .then((users) => {
             if (!users.length) {
-                users = require('../data/user.json');
+                users = require('../data/users.json');
                 storageService.save(USER_KEY, users)
                 return users
             }
