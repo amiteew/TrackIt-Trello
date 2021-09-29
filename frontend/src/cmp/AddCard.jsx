@@ -64,7 +64,7 @@ export class _AddCard extends React.Component {
                     autoFocus
                 />
                 <div className="add-card-actions flex align-center">
-                    <Button variant="contained" className="add-card-btn">Add card</Button>
+                    <Button onClick={this.onAddCard} variant="contained" className="add-card-btn">Add card</Button>
                     <button onClick={this.props.onCloseAdding}><img src={close} alt="close" /></button>
                 </div>
             </div>

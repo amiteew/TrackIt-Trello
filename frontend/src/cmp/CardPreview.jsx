@@ -32,7 +32,7 @@ class _CardPreview extends React.Component {
         return (
             <Draggable draggableId={card.cardId} index={currCardIdx}>
                 {(provided, snapshot) => (
-                    <div onClick={this.onSelectedCard} className="card-preview-contenet pointer" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} isdraggingover={snapshot.draggingOver}>
+                    <div onClick={this.onSelectedCard} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} isdraggingover={snapshot.draggingOver}>
                         {/* <Link className="flex" to={`/boards/${board._id}/${list.listId}/${card.cardId}`}> */}
                             <QuickCardEditor isEditMode={this.onEditMode} list={list} card={card} currListIdx={currListIdx} currCardIdx={currCardIdx} />
                         {/* </Link> */}
