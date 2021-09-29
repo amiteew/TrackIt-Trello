@@ -99,7 +99,7 @@
                 "fullname": "Alexa Pierce",
                 "username": "alexapi",
                 "initials": "AP",
-                "imgUrl": "https://trello-members.s3.amazonaws.com/53cd82cd7ed746db278c4f32/f8c37feba518e1c7ca250ec70df41546/original.png",
+                "imgUrl": "https://randomuser.me/api/portraits/med/women/55.jpg",
                 "isStarred": false
             },
             {
@@ -131,7 +131,7 @@
                 "fullname": "Andre Vargas",
                 "username": "andreva",
                 "initials": "AV",
-                "imgUrl": "https://trello-members.s3.amazonaws.com/54aecd53e19fd7b10e0038b0/c77120dcb0f79af87db28e6a813b7673/original.png",
+                "imgUrl": "https://randomuser.me/api/portraits/med/men/22.jpg",
                 "isStarred": false
             },
             {
@@ -139,7 +139,7 @@
                 "fullname": "Samantha Pivlot",
                 "username": "samanthapi",
                 "initials": "SP",
-                "imgUrl": "https://trello-members.s3.amazonaws.com/54aecdd6790aa5150fd0bc60/410473f48311cfa0fe5161bf260530da/original.png",
+                "imgUrl": "https://randomuser.me/api/portraits/med/women/90.jpg",
                 "isStarred": false
             },
             {
@@ -147,7 +147,7 @@
                 "fullname": "Chris Closter",
                 "username": "chrisclo",
                 "initials": "CC",
-                "imgUrl": "https://trello-members.s3.amazonaws.com/54aece9c626d2ea8ec361850/cdaa052d95dbd87a222a71695cdf3c2b/original.png",
+                "imgUrl": "https://randomuser.me/api/portraits/med/men/58.jpg",
                 "isStarred": false
             }
         ],
@@ -284,7 +284,7 @@
                                     {
                                         "id": "AbmLdXOF",
                                         "txt": "List Competitors who have emoji reactions",
-                                        "isDone": true
+                                        "isDone": false
                                     },
                                     {
                                         "id": "Lhm2phUz",
@@ -2337,12 +2337,12 @@
                 "action": "Changed description",
                 "card": {
                     "cardId": "gHdmknjH",
-                    "cardTitle": "Build Emoji Reactions in out tool - Project Overview"
+                    "cardTitle": "Build Emoji Reactions in our tool - Project Overview"
                 }
             },
             {
                 "id": "sgnw1aY1",
-                "txt": "Build Emoji Reactions in out tool - Project Overview",
+                "txt": "Build Emoji Reactions in our tool - Project Overview",
                 "createdAt": 1632911121917,
                 "byMember": {
                     "_id": "u101",

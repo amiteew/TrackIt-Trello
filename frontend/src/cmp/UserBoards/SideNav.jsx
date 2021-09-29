@@ -19,12 +19,6 @@ export function SideNav({ path }) {
                 <h3>Templates</h3>
                 </div >
             </NavLink>
-            <NavLink to="/">
-                <div className="nav-item flex align-center">
-                    <AiOutlineHome />
-                    <h3>Home</h3>
-                </div>
-            </NavLink>
         </section>
     )
 }

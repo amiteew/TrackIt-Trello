@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { IconContext } from "react-icons";
 import { FiStar } from 'react-icons/fi';
 import { BsThreeDots } from "react-icons/bs";
+import AutosizeInput from 'react-input-autosize';
 
 import { userService } from "../services/user.service"
 import { updateBoard } from "../store/board.actions"
@@ -36,6 +37,10 @@ class _BoardHeader extends React.Component {
     let { title } = this.state
     const { board, updateBoard } = this.props
     if (!title) title = 'Untitled'
+    if (title === board.boardTitle) {
+      this.toggleChangeTitle()
+      return
+    }
     board.boardTitle = title
     updateBoard(board, "changed board title")
     this.toggleChangeTitle()
@@ -58,17 +63,18 @@ class _BoardHeader extends React.Component {
     const isStarred = userService.isBoardStarred(board, loggedInUser._id)
     return (
       <div className="board-header flex align-center space-between">
-        <div className="header-left flex">
+        <div className="header-left flex align-center">
           {!isEditTitle && <h1 className="header-title" onClick={this.toggleChangeTitle}>{board.boardTitle}</h1>}
           {isEditTitle &&
             <form onSubmit={this.saveBoardTitle}>
-              <input
+              <AutosizeInput
                 className="header-title-input"
                 autoFocus
                 name="boardTitle"
                 type="text"
                 placeholder="Enter Title"
                 value={title}
+                inputStyle={{ fontSize: 18, fontWeight: 700, color: "#172b4d" }}
                 onChange={this.handleChange}
                 onBlur={this.saveBoardTitle}
               />
@@ -80,7 +86,7 @@ class _BoardHeader extends React.Component {
             </IconContext.Provider>
           </button>
           <div className="board-members flex align-center">
-          {/* <div className="board-header-btn board-members"> */}
+            {/* <div className="board-header-btn board-members"> */}
             <MembersListBoard members={board.boardMembers} />
           </div>
         </div>

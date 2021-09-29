@@ -74,7 +74,8 @@ class _CardActivities extends React.Component {
             <div className="card-activities">
                 <div className="flex direction-row space-between ">
                     <div className="flex direction-row">
-                        <FormatListBulletedIcon className="card-details-icon" /> <h3>Activity</h3>
+                        <FormatListBulletedIcon className="card-details-icon" />
+                        <h3 className="card-subtitle">Activity</h3>
                     </div>
                     {!isDetails && <button className="show-hide hover" onClick={this.onToggleDetails}>Show details</button>}
                     {isDetails && <button className="show-hide hover" onClick={this.onToggleDetails}>Hide details</button>}
