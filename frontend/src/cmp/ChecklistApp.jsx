@@ -65,6 +65,7 @@ class _ChecklistApp extends React.Component {
     }
 
     onIsAddItem = () => {
+
         this.setState({ ...this.state, isAddItem: !this.state.isAddItem })
     }
 
@@ -77,7 +78,8 @@ class _ChecklistApp extends React.Component {
             <div className="checklist-app">
                 <div className="flex direction-row space-between ">
                     <div className="flex direction-row">
-                        <CheckBoxOutlinedIcon className="card-details-icon" /> <h3>{currChecklist.title}</h3>
+                        <CheckBoxOutlinedIcon className="card-details-icon" />
+                        <h3 className="checklist-title">{currChecklist.title}</h3>
                     </div>
                     <button className="delete-checklist hover" onClick={this.onDeleteChecklist}>Delete</button>
                 </div>

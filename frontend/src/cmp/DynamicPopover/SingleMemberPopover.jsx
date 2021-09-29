@@ -66,23 +66,23 @@ class _SingleMemberPopover extends React.Component {
                     }}
                 >
                     {/* OPEN MODAL */}
-                    <div className="single-member-popover-header-title flex">
+                    <div className="single-member-popover-header-title flex direction-row">
                         <div className="single-member-title flex direction-row">
                             <Avatar src={member.imgUrl} className="avatar">
                                 <p>{member.initials}</p>
                             </Avatar>
                             <div className="user-name-info">
-                                <p className="fullname">{member.fullname}</p>
-                                <p className="username">{member.username}</p>
+                                <h4 className="fullname">{member.fullname}</h4>
+                                <p className="username">@{member.username}</p>
                                 {(loggedInUser && loggedInUser._id === member._id) &&
                                     <Link className="edit-profile" to="/boards"
-                                        onClick={this.handleClose}>Edit profile info</Link>}
+                                        onClick={this.handleClose}><p>Edit profile info</p></Link>}
                             </div>
                         </div>
-                        <button className="close-popover" onClick={this.handleClose}></button>
+                        <button className="close-popover" onClick={this.handleClose}>X</button>
                     </div>
                     <div className="popover-content-container">
-                        <div onClick={(member) => this.toggleMember(member)}>Remove from card</div>
+                        <div className="remove-from-card pointer" onClick={(member) => this.toggleMember(member)}>Remove from card</div>
                     </div>
                 </Popover >
             </React.Fragment>

@@ -52,7 +52,7 @@ class _ChecklistPopover extends React.Component {
                         onChange={this.handleChange}
                         value={title}
                     />
-                    <Button variant="contained" className="add-btn">Add</Button>
+                    <Button onClick={this.onAddChecklist} variant="contained" className="add-btn">Add</Button>
                 </form>
             </section>
         )

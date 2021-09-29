@@ -1,16 +1,22 @@
-.checklist-app {
-    margin-bottom: 35px;
-    .delete-checklist {
-        font-size: rem(14px);
-        padding: 8px;
-        margin-bottom: 8px;
-        background-color: $cardBtnColor;
-    }
-    .add-item {
-        font-size: rem(14px);
-        padding: 8px;
-        margin-bottom: 8px;
-        margin-left: 35px;
-        background-color: $cardBtnColor;
+.card-details {
+    .checklist-app {
+        margin-bottom: 35px;
+
+        .delete-checklist {
+            font-size: rem(14px);
+            padding: 8px;
+            margin-bottom: 8px;
+            background-color: $cardBtnColor;
+        }
+        .add-item {
+            font-size: rem(14px);
+            padding: 8px;
+            margin-bottom: 8px;
+            margin-left: 35px;
+            background-color: $cardBtnColor;
+        }
+        .checklist-title {
+            font-weight: 500;
+        }
     }
 }
