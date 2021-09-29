@@ -6,11 +6,13 @@
     top: rem(44px);
     // overflow-y: hidden;
 }
-
+.board-container {
+    position: relative;
+}
 .board-canvas {
     margin-left: 9px;
     flex-grow: 1;
-    position: relative;
+    position: absolute;
     top: rem(52px);
 }
 

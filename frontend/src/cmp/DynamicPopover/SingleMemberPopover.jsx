@@ -74,7 +74,7 @@ class _SingleMemberPopover extends React.Component {
                             <div className="user-name-info">
                                 <p className="fullname">{member.fullname}</p>
                                 <p className="username">{member.username}</p>
-                                {(loggedInUser._id === member._id) &&
+                                {(loggedInUser && loggedInUser._id === member._id) &&
                                     <Link className="edit-profile" to="/boards"
                                         onClick={this.handleClose}>Edit profile info</Link>}
                             </div>
