@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom';
-import { loadBoards } from '../store/board.actions.js';
+import { loadBoards, loadBoard } from '../store/board.actions.js';
 import { BoardPreview } from '../cmp/UserBoards/BoardPreview'
 import { Loading } from '../cmp/Loading.jsx';
 import { SideNav } from '../cmp/UserBoards/SideNav.jsx';
@@ -18,19 +18,20 @@ class _TemplateBoards extends React.Component {
             return
         }
         if (!boards.length) await this.props.loadBoards(loggedInUser._id);
-        this.getTemplateBoards()
+        const templateBoards = this.getTemplateBoards()
+        this.setState({ templateBoards })
+        this.props.loadBoard(null)
         // this.setState({ boards: this.props.boards })
     }
 
     getTemplateBoards = () => {
-        const templateBoards = this.props.boards.filter(board => !board.createdBy)
-        this.setState({ templateBoards })
+        return this.props.boards.filter(board => !board.createdBy)
     }
 
     render() {
         const path = this.props.match.path.slice(1)
         const { templateBoards } = this.state
-        if (!templateBoards.length) return <Loading />
+        if (!this.props.loggedInUser || !templateBoards.length) return <Loading />
         return (
             <section className="main-container boards">
                 <section className="boards-page flex">
@@ -60,7 +61,8 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-    loadBoards
+    loadBoards,
+    loadBoard
 }
 
 export const TemplateBoards = connect(mapStateToProps, mapDispatchToProps)(_TemplateBoards)

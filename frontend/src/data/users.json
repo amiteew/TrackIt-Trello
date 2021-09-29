@@ -25,7 +25,7 @@
     {
         "_id": "u102",
         "fullname": "Amitee Weiner",
-        "username": "amitee",
+        "username": "amiteewe",
         "password": "1",
         "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg",
         "initials": "AW",
@@ -40,7 +40,7 @@
     {
         "_id": "u103",
         "fullname": "Michael Uzan",
-        "username": "looply",
+        "username": "looplyuz",
         "password": "looply",
         "initials": "MU",
         "mentions": [
@@ -50,5 +50,41 @@
                 "taskId": "t101"
             }
         ]
+    },
+    {
+        "_id": "u104",
+        "fullname": "Alexa Pierce",
+        "username": "alexapi",
+        "password": "1",
+        "initials": "AP",
+        "imgUrl": "https://trello-members.s3.amazonaws.com/53cd82cd7ed746db278c4f32/f8c37feba518e1c7ca250ec70df41546/original.png",
+        "mentions": []
+    },
+    {
+        "_id": "u105",
+        "fullname": "Andre Vargas",
+        "username": "andreva",
+        "password": "1",
+        "initials": "AV",
+        "imgUrl": "https://trello-members.s3.amazonaws.com/54aecd53e19fd7b10e0038b0/c77120dcb0f79af87db28e6a813b7673/original.png",
+        "mentions": []
+    },
+    {
+        "_id": "u106",
+        "fullname": "Samantha Pivlot",
+        "username": "samanthapi",
+        "password": "1",
+        "initials": "SP",
+        "imgUrl": "https://trello-members.s3.amazonaws.com/54aecdd6790aa5150fd0bc60/410473f48311cfa0fe5161bf260530da/original.png",
+        "mentions": []
+    },
+    {
+        "_id": "u106",
+        "fullname": "Chris Closter",
+        "username": "chrisclo",
+        "password": "1",
+        "initials": "CC",
+        "imgUrl": "https://trello-members.s3.amazonaws.com/54aece9c626d2ea8ec361850/cdaa052d95dbd87a222a71695cdf3c2b/original.png",
+        "mentions": []
     }
 ]

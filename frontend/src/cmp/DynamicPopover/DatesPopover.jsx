@@ -19,7 +19,7 @@ class _DatesPopover extends React.Component {
     }
 
     handleDateChange = () => {
-        console.log('im here');
+        console.log('im in DatesPopover.handleDateChange');
     }
 
     render() {

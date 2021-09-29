@@ -33,7 +33,7 @@ class _MoveCard extends React.Component {
 
     render() {
         const { boards } = this.props;
-        console.log(boards);
+        // console.log(boards);
         return (
             <div>
                 <FormControl fullWidth>

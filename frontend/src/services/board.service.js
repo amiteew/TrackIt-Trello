@@ -20,7 +20,7 @@ function query(userId) {
   return storageService.query(BOARD_KEY)
   .then((boards) => {
     if (!boards.length) {
-      boards = require('../data/board.json');
+      boards = require('../data/boards.json');
       storageService.save(BOARD_KEY, boards)
     }
     const userBoards = boards.filter(board =>

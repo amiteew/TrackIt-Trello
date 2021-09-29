@@ -60,7 +60,7 @@ class _Signup extends React.Component {
                 <div className="form-container">
                     {isLoading && <Loading />}
                     {isSignupFailed && <p className="login-signup-error">Username is already in use</p>}
-                    <h3>Sign up to TrackIt</h3>
+                    <h3>Sign up for your account</h3>
                     <form className="login-signup-form flex direction-col align-center justify-center" onSubmit={this.onSignup}>
                         <input
                             type="text"

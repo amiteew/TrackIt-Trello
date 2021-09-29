@@ -7,7 +7,7 @@ class _HomePage extends React.Component {
     onStartAsGuest = async () => {
         const guestCreds = {
             username: "pandaguest",
-            password: "1"
+            password: "123"
         }
         try {
             await this.props.onLogin(guestCreds);

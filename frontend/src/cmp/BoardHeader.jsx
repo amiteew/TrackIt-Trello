@@ -8,6 +8,7 @@ import { userService } from "../services/user.service"
 import { updateBoard } from "../store/board.actions"
 import { MembersListBoard } from "./MembersListBoard"
 import { TemporaryDrawer } from '../cmp/DroweMenu.jsx';
+import { Loading } from "./Loading";
 
 class _BoardHeader extends React.Component {
   state = {
@@ -52,6 +53,7 @@ class _BoardHeader extends React.Component {
 
   render() {
     const { board, loggedInUser } = this.props
+    if (!loggedInUser || !board) return <Loading />
     const { title, isEditTitle, isMenuOpen } = this.state
     const isStarred = userService.isBoardStarred(board, loggedInUser._id)
     return (

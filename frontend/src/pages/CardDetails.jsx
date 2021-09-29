@@ -26,7 +26,7 @@ class _CardDetails extends React.Component {
 
     componentDidMount() {
         const { board } = this.props;
-        console.log('board', board)
+        // console.log('board', board)
         // this.setState({ board })
         this.getCurrCard(board)
     }
