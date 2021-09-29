@@ -16,9 +16,9 @@
             & > :last-child:hover {
                 background-color: $cardHoverColor;
             }
-            button {
+            button.btn-photo-member {
                 margin-top: 3px;
-                padding: 0px 7px;
+                padding: 0 4px 0 0;
             }
         }
     }
