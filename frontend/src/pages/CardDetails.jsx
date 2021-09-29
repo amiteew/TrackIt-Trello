@@ -84,7 +84,7 @@ class _CardDetails extends React.Component {
                     currListIdx={currListIdx}
                     currCardIdx={currCardIdx}
                     handleClose={this.handleClose} />
-                <div className ="card-details-main-content">
+                <div className="card-details-main-content">
 
                     <CardTitle board={board}
                         currListIdx={currListIdx}
@@ -98,13 +98,18 @@ class _CardDetails extends React.Component {
                                 {
                                     currCard.cardMembers.length ? <div>
                                         <h3>Members</h3>
-                                        <MembersList members={currCard.cardMembers} />
+                                        <MembersList members={currCard.cardMembers} board={board}
+                                            currListIdx={currListIdx}
+                                            currCardIdx={currCardIdx} isCardOpen={true} />
                                     </div> : ''
                                 }
 
                                 {
                                     currCard.cardLabelIds.length ?
-                                        <CardLabelsList cardLabelIds={currCard.cardLabelIds} boardLabels={board.labels} /> : ''
+                                        <CardLabelsList cardLabelIds={currCard.cardLabelIds} boardLabels={board.labels}
+                                            board={board}
+                                            currListIdx={currListIdx}
+                                            currCardIdx={currCardIdx} isCardOpen={true} /> : ''
                                 }
 
                                 {
