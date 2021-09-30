@@ -50,6 +50,7 @@
     color: white;
     font-size: rem(14px);
     padding: 7px 1rem;
+    z-index: 1;
     .nav-bar {
         width: 100%;
         .main-nav-links {
@@ -70,7 +71,7 @@
                 .logo-name {
                     font-family: SourceSansPro-Reg;
                     letter-spacing: 1px;
-                    font-size: rem(22px);
+                    font-size: rem(18px);
                     color: #cffff6;
                     margin-inline-end: 6px;
                 }

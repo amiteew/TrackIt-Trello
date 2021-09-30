@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { loadBoards, loadBoard, removeBoard, updateBoard, toggleLabels} from '../store/board.actions.js';
+import { loadBoards, loadBoard, removeBoard, updateBoard, toggleLabels } from '../store/board.actions.js';
 // import { boardService } from '../services/board.service.js';
 import { BoardList } from '../cmp/BoardList.jsx';
 import { DragDropContext } from 'react-beautiful-dnd';
@@ -95,15 +95,19 @@ class _BoardApp extends React.Component {
     render() {
         const { board } = this.props;
         if (!board) return <Loading />
+        const bgStyle = (board.boardStyle.bgImgUrl) ?
+            { backgroundImage: `url(${board.boardStyle.bgImgUrl})` } :
+            { backgroundColor: board.boardStyle.bgColor }
         return (
             <section className="board-app flex direction-col">
                 <BoardHeader board={board} onUpdateBoard={this.onUpdateBoard} />
                 <Route exact component={CardDetails} path="/boards/:boardId/:listId/:cardId" />
+                <div className="board-background" style={bgStyle}></div>
                 <div className="board-canvas flex">
                     <DragDropContext onDragEnd={this.onDragEnd}>
                         <BoardList board={board} lists={board.lists} onUpdateBoard={this.onUpdateBoard} className="board" />
                     </DragDropContext >
-                    <AddList board={board} onUpdateBoard={this.onUpdateBoard}/>
+                    <AddList board={board} onUpdateBoard={this.onUpdateBoard} />
                 </div>
             </section >
         )
