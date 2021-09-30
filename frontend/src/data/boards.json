@@ -165,17 +165,13 @@
                         "cardMembers": [],
                         "cardLabelIds": [],
                         "checklists": [],
-                        "createdAt": 1590999730348,
+                        "createdAt": 1633010590,
                         "dueDate": {
                             "date": 1632993490,
                             "isDone": false
                         },
                         "attachment": [],
-                        "cardStyle": {
-                            "id": "i103",
-                            "isCover":false,
-                            "img": "https://res.cloudinary.com/dhxwkomwu/image/upload/v1632684701/36515358_491219441335193_6639032000864845824_n_1_mwdst0.jpg"
-                        }
+                        "cardStyle": {}
                     },
                     {
                         "cardId": "gHdmknjH",
@@ -192,14 +188,68 @@
                                 "src": ""
                             }
                         ],
-                        "cardStyle": {}
+                        "cardStyle": {
+                            "id": "i103",
+                            "isCover":false,
+                            "img": "https://trello.com/1/cards/5bab82a3a3d2f253f1c2b24f/attachments/5bab85e76871700c222f1185/download/Trellotines_2018_NoOneShipsLikeYou_v01.png"
+                        }
                     },
                     {
                         "cardId": "MMQNc2BH",
                         "cardTitle": "Team Members Responsibilities",
                         "description": "Project manager:\nAlexa,\n\nDev team:\nShany, Michael, and Amitee,\n\nDesign:\nAndre,\n\nMarketing:\nSamantha,\n\nSupport:\nChris",
                         "comments": [],
-                        "cardMembers": [],
+                        "cardMembers": [
+                            {
+                                "_id": "u104",
+                                "fullname": "Alexa Pierce",
+                                "username": "alexapi",
+                                "initials": "AP",
+                                "imgUrl": "https://randomuser.me/api/portraits/med/women/55.jpg"
+                            },
+                            {
+                                "_id": "u101",
+                                "fullname": "Shany pollack",
+                                "username": "shanypo",
+                                "initials": "SP",
+                                "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632417771/shanypo_nzjhlq.jpg"
+                            },
+                            {
+                                "_id": "u102",
+                                "fullname": "Amitee Weiner",
+                                "username": "amiteewe",
+                                "initials": "AW",
+                                "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg"
+                            },
+                            {
+                                "_id": "u103",
+                                "fullname": "Looply Uzan",
+                                "username": "looplyuz",
+                                "initials": "LU",
+                                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                            },
+                            {
+                                "_id": "u105",
+                                "fullname": "Andre Vargas",
+                                "username": "andreva",
+                                "initials": "AV",
+                                "imgUrl": "https://randomuser.me/api/portraits/med/men/22.jpg"
+                            },
+                            {
+                                "_id": "u106",
+                                "fullname": "Samantha Pivlot",
+                                "username": "samanthapi",
+                                "initials": "SP",
+                                "imgUrl": "https://randomuser.me/api/portraits/med/women/90.jpg"
+                            },
+                            {
+                                "_id": "u106",
+                                "fullname": "Chris Closter",
+                                "username": "chrisclo",
+                                "initials": "CC",
+                                "imgUrl": "https://randomuser.me/api/portraits/med/men/58.jpg"
+                            }
+                        ],
                         "cardLabelIds": [],
                         "checklists": [],
                         "createdAt": "2021-09-29T10:39:45.795Z",
@@ -247,7 +297,25 @@
                         "dueDate": {},
                         "attachment": [
                             {
-                                "src": ""
+                                "src": "https://www.klipfolio.com/sites/default/files/kpi-example-categories/kpi-category-directory_1.png"
+                            }
+                        ],
+                        "cardStyle": {}
+                    },
+                    {
+                        "cardId": "tdsDjDry",
+                        "cardTitle": "Company roadmap",
+                        "description": "",
+                        "comments": [],
+                        "cardMembers": [
+                          ],
+                        "cardLabelIds": [],
+                        "checklists": [],
+                        "createdAt": "2021-09-29T10:31:51.108Z",
+                        "dueDate": {},
+                        "attachment": [
+                            {
+                                "src": "https://s3.amazonaws.com/thumbnails.venngage.com/template/044a3516-2798-45b9-a010-996e327895c3.png"
                             }
                         ],
                         "cardStyle": {}
@@ -2462,21 +2530,24 @@
             {
                 "_id": "u101",
                 "fullname": "Shany pollack",
-                "username": "looply@gmail.com",
+                "username": "shanypo",
+                "initials": "SP",
                 "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632417771/shanypo_nzjhlq.jpg",
-                "isStarred": false
+                "isStarred": true
             },
             {
                 "_id": "u102",
                 "fullname": "Amitee Weiner",
-                "username": "looply@gmail.com",
+                "username": "amiteewe",
+                "initials": "AW",
                 "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg",
-                "isStarred": false
+                "isStarred": true
             },
             {
                 "_id": "u103",
                 "fullname": "Looply Uzan",
-                "username": "looply@gmail.com",
+                "username": "looplyuz",
+                "initials": "LU",
                 "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
                 "isStarred": false
             }

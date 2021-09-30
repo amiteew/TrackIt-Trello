@@ -33,17 +33,17 @@ function query(userId) {
     // return httpService.get(`board${queryStr}`)
 }
 
-function query2() {
-  // return httpService.get(`board${queryStr}`)
-  return storageService.query(BOARD_KEY)
-    .then((boards) => {
-      if (!boards.length) {
-        boards = require('../data/board.json');
-        storageService.save(BOARD_KEY, boards)
-      }
-      return boards
-    })
-}
+// function query2() {
+//   // return httpService.get(`board${queryStr}`)
+//   return storageService.query(BOARD_KEY)
+//     .then((boards) => {
+//       if (!boards.length) {
+//         boards = require('../data/board.json');
+//         storageService.save(BOARD_KEY, boards)
+//       }
+//       return boards
+//     })
+// }
 
 
 function remove(boardId) {

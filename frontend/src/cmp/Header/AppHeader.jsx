@@ -8,7 +8,7 @@ function _AppHeader(props) {
     const { loggedInUser } = props
     if (!loggedInUser) return (<></>)
     return (
-        <header className={`main-header${props.board ? "" : " main-container"}`}>
+        <header className="main-header">
             <nav className="nav-bar flex space-between" >
                 <div className="main-nav-links flex align-center">
                     <LogoName isLoggedIn={true} />
@@ -16,7 +16,7 @@ function _AppHeader(props) {
                         <span>Boards</span>
                         <img src="" alt="" />
                     </NavLink>
-                    <NavLink className="header-btn" to="/boards">Create</NavLink>
+                    <NavLink className="header-btn create" to="/boards">Create</NavLink>
                 </div>
                 <div className="user-section">
                     <DynamicPopover type={'userMenu'} titleModal={'Account'} loggedInUser={loggedInUser} />
