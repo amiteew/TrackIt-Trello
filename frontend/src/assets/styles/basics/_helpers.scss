@@ -32,7 +32,7 @@
 .flex {
     display: flex;
 
-    >*.full {
+    > *.full {
         flex: 1;
     }
 
@@ -68,7 +68,9 @@
         flex-wrap: wrap;
     }
 }
-
+.width-100 {
+    width: 100%;
+}
 .clean-list {
     padding-inline-start: 0px;
     margin: 0;

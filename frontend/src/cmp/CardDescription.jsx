@@ -62,7 +62,7 @@ export class CardDescription extends React.Component {
                             onFocus={(ev) => ev.target.select()}
                             autoFocus
                         />
-                        <div >
+                        <div className="flex direction-row align-center" >
                             {isEditing && <button className="save-desc" onClick={this.onSaveDescription}>Save</button>}
                             {isEditing && <button className="discard-desc" onClick={this.onToggleEditing}>X</button>}
                         </div>
