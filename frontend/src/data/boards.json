@@ -167,7 +167,7 @@
                         "checklists": [],
                         "createdAt": 1590999730348,
                         "dueDate": {
-                            "date": 1641025800,
+                            "date": 1632993490,
                             "isDone": false
                         },
                         "attachment": [],
@@ -411,7 +411,7 @@
                     },
                     {
                         "cardId": "CRqeXfgC",
-                        "cardTitle": "Fhinish cooking class",
+                        "cardTitle": "Finish cooking class",
                         "description": "",
                         "comments": [],
                         "cardMembers": [
@@ -2535,7 +2535,7 @@
                         ],
                         "createdAt": 1590999730348,
                         "dueDate": {
-                            "date": 16156215211,
+                            "date": 1632993490,
                             "isDone": false
                         },
                         "attachment": [

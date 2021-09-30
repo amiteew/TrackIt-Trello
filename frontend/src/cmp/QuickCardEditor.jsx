@@ -12,6 +12,7 @@ import { DynamicPopover } from '../cmp/DynamicPopover.jsx';
 import { updateBoard, loadListAndCard, loadBoard } from '../store/board.actions.js';
 import Popover from '@mui/material/Popover';
 import { CardLabelsPreview } from './CardLabelsPreview.jsx';
+import { CardDuDatePreview } from './CardDuDatePreview.jsx';
 
 class _QuickCardEditor extends React.Component {
 
@@ -126,6 +127,7 @@ class _QuickCardEditor extends React.Component {
                             {card.description && <div className='badge flex align-center'><GrTextAlignFull /></div>}
                             {/* <span className="badge is-watch">{card.cardMembers && <CardVisibilityPreview cardMembers={card.cardMembers} />} </span> */}
                             {card.comments.length ? <CardCommentPreview cardComments={card.comments} /> : <> </>}
+                            {/* {card.dueDate.date && <CardDuDatePreview dueDate={card.dueDate}/>} */}
                             <div title="checklist">{card.checklists.length ? <CardCheckPreview checklists={card.checklists} /> : <> </>}</div>
                         </div>
                         <div className="badge-icon members flex">{card.cardMembers && <MembersList members={card.cardMembers} currCard={card} isCardOpen={false} />}
