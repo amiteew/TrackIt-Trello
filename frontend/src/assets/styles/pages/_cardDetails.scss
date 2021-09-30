@@ -1,25 +1,27 @@
 .screen-card-details {
     position: fixed;
-    height: 100%;
+    right: 0;
     left: 0;
     top: 0;
-    width: 100%;
+    bottom: 0;
     z-index: 2;
     background-color: rgba(0, 0, 0, 0.64);
 }
 
 .card-details {
-    position: fixed;
-    top: 48px;
-    right: 0;
-    left: 0;
+    position: relative;
+    top: 5px;
+    // position: fixed;
+    // top: 48px;
+    // right: 0;
+    // left: 0;
     z-index: 4;
     margin: 0 8px;
+    padding-bottom: 85px;
     color: #42526e;
     background-color: #f4f5f7;
     border-radius: 3px;
     max-width: 768px;
-    min-height: 85vh;
 
     .card-details-main-content {
         padding-left: 25px;
