@@ -1,5 +1,6 @@
 import React from 'react'
 import { DynamicPopover } from './DynamicPopover'
+
 export function CardLabelsList({ cardLabelIds, boardLabels, board, currCardIdx, currListIdx }) {
     return (
         <div>

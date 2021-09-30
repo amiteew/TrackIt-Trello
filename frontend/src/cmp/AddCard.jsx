@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { TextareaAutosize } from '@mui/material';
 import { updateBoard } from '../store/board.actions.js';
 import { utilService } from '../services/util.service.js';
-import { TextareaAutosize } from '@mui/material';
-import { Button } from '@mui/material';
 import close from '../assets/imgs/close.svg';
+// import { Button } from '@mui/material';
 
 export class _AddCard extends React.Component {
     state = {
@@ -75,9 +75,10 @@ export class _AddCard extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        boards: state.boardReducer.boards
+        board: state.boardReducer.board
     }
 }
+
 const mapDispatchToProps = {
     updateBoard
 }

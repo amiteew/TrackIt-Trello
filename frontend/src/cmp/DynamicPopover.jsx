@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Popover from '@mui/material/Popover';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+
 import { ActionList } from './DynamicPopover/ActionListPopOver';
 import { MembersPopover } from './DynamicPopover/MembersPopover';
 import { LabelsPopover } from './DynamicPopover/LabelsPopover';
@@ -11,8 +10,10 @@ import { CoverPopover } from './DynamicPopover/CoverPopover';
 import { DynamicButton } from './DynamicCmps/DynamicButton';
 import { UserMenuPopover } from './DynamicPopover/UserMenuPopover';
 import { TemporaryDrawer } from '../cmp/DroweMenu.jsx';
-import { MuiPickersUtilsProvider, DatePicker, TimePicker, DateTimePicker, } from '@material-ui/pickers';
-import DateFnsUtils from '@date-io/date-fns';
+// import Typography from '@mui/material/Typography';
+// import Button from '@mui/material/Button';
+// import { MuiPickersUtilsProvider, DatePicker, TimePicker, DateTimePicker, } from '@material-ui/pickers';
+// import DateFnsUtils from '@date-io/date-fns';
 
 export class DynamicPopover extends React.Component {
     state = {
@@ -33,7 +34,8 @@ export class DynamicPopover extends React.Component {
     }
 
     render() {
-        const { type, title, titleModal } = this.props
+        // const { type, title, titleModal } = this.props
+        const { type, titleModal } = this.props
         const { anchorEl } = this.state
         const open = Boolean(anchorEl);
         const id = open ? 'simple-popover' : undefined;
@@ -92,5 +94,4 @@ export class DynamicPopover extends React.Component {
             </React.Fragment>
         );
     }
-
 }

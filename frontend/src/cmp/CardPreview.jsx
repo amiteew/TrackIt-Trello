@@ -1,14 +1,13 @@
 import React from 'react';
-import { Draggable } from 'react-beautiful-dnd';
-import { Link } from 'react-router-dom';
-import { QuickCardEditor } from './QuickCardEditor.jsx';
-import { connect } from 'react-redux';
-import { updateBoard, loadListAndCard } from '../store/board.actions.js';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Draggable } from 'react-beautiful-dnd';
+
+import { updateBoard, loadListAndCard } from '../store/board.actions.js';
+import { QuickCardEditor } from './QuickCardEditor.jsx';
 
 class _CardPreview extends React.Component {
-
-    state ={
+    state = {
         isEditMode: false
     }
 
@@ -16,17 +15,17 @@ class _CardPreview extends React.Component {
         console.log('is dragging', this.props.draggingOver);
     }
 
-    onEditMode = () =>{
-        this.setState({isEditMode: !this.state.isEditMode})
+    onEditMode = () => {
+        this.setState({ isEditMode: !this.state.isEditMode })
     }
 
     onSelectedCard = () => {
         const { list, board, card } = this.props;
         this.props.loadListAndCard(list, card);
-        if(this.state.isEditMode) return;
+        if (this.state.isEditMode) return;
         this.props.history.push(`/boards/${board._id}/${list.listId}/${card.cardId}`);
     }
- 
+
     render() {
         const { card, currCardIdx, currListIdx, list } = this.props
         return (
@@ -34,13 +33,12 @@ class _CardPreview extends React.Component {
                 {(provided, snapshot) => (
                     <div onClick={this.onSelectedCard} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} isdraggingover={snapshot.draggingOver}>
                         {/* <Link className="flex" to={`/boards/${board._id}/${list.listId}/${card.cardId}`}> */}
-                            <QuickCardEditor isEditMode={this.onEditMode} list={list} card={card} currListIdx={currListIdx} currCardIdx={currCardIdx} />
+                        <QuickCardEditor isEditMode={this.onEditMode} list={list} card={card} currListIdx={currListIdx} currCardIdx={currCardIdx} />
                         {/* </Link> */}
                     </div>
                 )
                 }
             </Draggable>
-
         )
     }
 }

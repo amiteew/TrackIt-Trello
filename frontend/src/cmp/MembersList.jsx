@@ -1,20 +1,19 @@
 import React from 'react'
-import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
-import AddIcon from '@mui/icons-material/Add';
 import { DynamicPopover } from './DynamicPopover';
 import { SingleMemberPopover } from './DynamicPopover/SingleMemberPopover'
-export function MembersList({ members, board, currListIdx, currCardIdx, isCardOpen, currCard}) {
+// import Avatar from '@mui/material/Avatar';
+// import AddIcon from '@mui/icons-material/Add';
+
+export function MembersList({ members, board, currListIdx, currCardIdx, isCardOpen, currCard }) {
     return (
         <div className="members-list flex direction-row">
             <AvatarGroup max={15} className="members-group">
                 {members.map(member =>
-                    <div className="single-member-popover">
-                        <SingleMemberPopover key={member._id} member={member}
-                            currListIdx={currListIdx} currCardIdx={currCardIdx} currCard={currCard} />
-                        {/* <Avatar className="card-details-avatar hover" alt={member.username}
-                        src={member.imgUrl} key={member._id} /> */}
-                    </div>
+                    <SingleMemberPopover key={member._id} member={member}
+                        currListIdx={currListIdx} currCardIdx={currCardIdx} currCard={currCard} />
+                //         <Avatar className="card-details-avatar hover" alt={member.username}
+                // src={member.imgUrl} key={member._id} />
                 )}
             </AvatarGroup>
             {isCardOpen &&

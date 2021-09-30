@@ -1,8 +1,7 @@
-import { ListPreview } from './ListPreview.jsx';
 import { Droppable } from 'react-beautiful-dnd';
+import { ListPreview } from './ListPreview.jsx';
 
 export function BoardList({ lists, onUpdateBoard, board }) {
-
     return (
         <Droppable droppableId="all-lists" direction="horizontal" type="list">
             {provided => (

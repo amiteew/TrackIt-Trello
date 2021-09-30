@@ -1,8 +1,7 @@
 import React from 'react';
 import { AiOutlineEye } from "react-icons/ai";
+
 export class CardVisibilityPreview extends React.Component {
-
-
     render() {
         const { cardMembers } = this.props;
         return (
@@ -10,7 +9,5 @@ export class CardVisibilityPreview extends React.Component {
                 {cardMembers.map(member => <span key={member._id}> {member.isWatch && <AiOutlineEye />}</span>)}
             </span>
         )
-
     }
-
 }

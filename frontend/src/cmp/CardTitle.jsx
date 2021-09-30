@@ -1,7 +1,8 @@
 import React from 'react';
-import { Loading } from './Loading';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
+import { Loading } from './Loading';
+
 export class CardTitle extends React.Component {
     state = {
         board: null,
@@ -69,5 +70,4 @@ export class CardTitle extends React.Component {
         </>
         )
     }
-
 }

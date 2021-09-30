@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {toggleLabels} from '../store/board.actions'
+import { toggleLabels } from '../store/board.actions'
 
 class _CardLabelsPreview extends React.Component {
     onToggleLabel = (ev) => {

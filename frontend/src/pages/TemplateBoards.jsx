@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { NavLink } from 'react-router-dom';
+
 import { loadBoards, loadBoard } from '../store/board.actions.js';
-import { BoardPreview } from '../cmp/UserBoards/BoardPreview'
 import { Loading } from '../cmp/Loading.jsx';
 import { SideNav } from '../cmp/UserBoards/SideNav.jsx';
+import { BoardPreview } from '../cmp/UserBoards/BoardPreview'
 
 class _TemplateBoards extends React.Component {
     state = {

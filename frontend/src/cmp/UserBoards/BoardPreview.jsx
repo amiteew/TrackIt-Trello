@@ -1,6 +1,4 @@
-// import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-
 import { IconContext } from "react-icons";
 import { FiStar } from 'react-icons/fi';
 
@@ -8,6 +6,7 @@ export function BoardPreview({ board, loggedInUser, toggleStarBoard, isYellow, i
     const bgStyle = (board.boardStyle.bgImgUrl) ?
         { backgroundImage: `url(${board.boardStyle.bgImgUrl})` } :
         { backgroundColor: board.boardStyle.bgColor }
+
     return (
         <Link to={`/boards/${board._id}`}>
             <div className="board-preview" style={bgStyle}>

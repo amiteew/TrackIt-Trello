@@ -1,15 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { userService } from '../services/user.service.js';
-import { loadBoards, loadBoard, updateBoard } from '../store/board.actions.js';
-
-import { BoardPreview } from '../cmp/UserBoards/BoardPreview'
-import { Loading } from '../cmp/Loading';
-import { SideNav } from '../cmp/UserBoards/SideNav';
-
 import { IconContext } from "react-icons";
 import { FiStar } from 'react-icons/fi';
+
+import { userService } from '../services/user.service.js';
+import { loadBoards, loadBoard, updateBoard } from '../store/board.actions.js';
+import { Loading } from '../cmp/Loading';
+import { SideNav } from '../cmp/UserBoards/SideNav';
+import { BoardPreview } from '../cmp/UserBoards/BoardPreview'
+
 
 class _UserBoards extends React.Component {
     state = {

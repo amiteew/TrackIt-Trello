@@ -1,10 +1,11 @@
 import React from 'react';
-import Avatar from '@mui/material/Avatar';
 import { connect } from 'react-redux';
-import { utilService } from '../../services/util.service.js';
-import { loadBoards, removeBoard, addBoard, updateBoard } from '../../store/board.actions.js';
-import DoneIcon from '@mui/icons-material/Done';
 import { Button } from '@mui/material';
+
+import { utilService } from '../../services/util.service.js';
+import { updateBoard } from '../../store/board.actions.js';
+// import Avatar from '@mui/material/Avatar';
+// import DoneIcon from '@mui/icons-material/Done';
 
 class _ChecklistPopover extends React.Component {
     state = {
@@ -60,7 +61,7 @@ class _ChecklistPopover extends React.Component {
 }
 function mapStateToProps(state) {
     return {
-        boards: state.boardReducer.boards,
+        board: state.boardReducer.board,
         loggedInUser: state.userReducer.loggedInUser
     }
 }

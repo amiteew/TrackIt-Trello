@@ -1,7 +1,7 @@
 import React from 'react';
-import { Loading } from './Loading';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
+import { Loading } from './Loading';
 
 export class CardDescription extends React.Component {
     state = {
@@ -79,5 +79,4 @@ export class CardDescription extends React.Component {
         </div>
         )
     }
-
 }
