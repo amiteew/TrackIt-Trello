@@ -2,8 +2,6 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 import { loadBoards, removeBoard, addBoard, updateBoard } from '../../store/board.actions.js';
-// import { MuiPickersUtilsProvider, DatePicker, TimePicker, DateTimePicker, } from '@material-ui/pickers';
-import DateFnsUtils from '@date-io/date-fns';
 import DatePicker from "react-datepicker";
 
 class _DatesPopover extends React.Component {
