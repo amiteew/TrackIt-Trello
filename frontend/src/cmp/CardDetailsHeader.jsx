@@ -7,7 +7,7 @@ export function CardDetailsHeader({ board, currListIdx, currCardIdx, handleClose
 
     return (
         <div className={coverStyle} style={{backgroundImage: `url(${currCard.cardStyle.img})`}}>
-            <div className="close-window-btn pointer flex align-center justify-center " onClick={handleClose}><img src={close} alt="close" /> </div>
+            <div className="close-window-btn pointer flex align-center justify-center" onClick={handleClose}><img src={close} alt="close" /></div>
         {coverMode && <div className={`cover-menu pointer`} >
                 <DynamicPopover type={'cover'} title={'Cover'} titleModal={'Cover'}
                     board={board}
