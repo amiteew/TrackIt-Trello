@@ -1,4 +1,6 @@
 .card-description {
+    margin-bottom: 20px;
+
     h3 {
         margin: 0;
         margin-right: 10px;
@@ -8,7 +10,7 @@
     }
     .desc-txt-placeholder {
         margin-bottom: 40px;
-        margin-left: 20px;
+        margin-left: 40px;
         background-color: $bgcColor;
         height: 60px;
         p {
@@ -35,7 +37,7 @@
         font-size: rem(14px);
     }
     .save-desc {
-        margin-bottom: 20px;
+        // margin-bottom: 20px;
         background-color: $blueColor;
         color: white;
         padding: 10px;

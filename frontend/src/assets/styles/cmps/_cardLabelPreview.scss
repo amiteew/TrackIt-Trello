@@ -1,7 +1,7 @@
 .list-card-labels {
     flex-wrap: wrap;
     margin: 5px 0;
-    color:white;
+    color: white;
 }
 
 .label-card {
@@ -15,10 +15,28 @@
     padding: 0;
     border-radius: 3px;
     transition: all 0.4s ease-in-out;
+
     &.label-preview-open {
         height: rem(16px);
         line-height: rem(16px);
         max-width: 198px;
         padding: 0 8px;
+        animation: txt-open;
+
+        &:hover {
+            filter: brightness(85%);
+        }
+    }
+
+    @keyframes txt-open {
+        from {
+            margin-left: 100%;
+            width: 300%;
+        }
+
+        to {
+            margin-left: 0%;
+            width: 100%;
+        }
     }
 }

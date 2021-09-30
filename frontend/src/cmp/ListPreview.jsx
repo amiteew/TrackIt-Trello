@@ -4,9 +4,9 @@ import { AddCard } from './AddCard';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
 import { boardService } from '../services/board.service.js';
 import { DynamicPopover } from './DynamicPopover.jsx';
-import { BsPlus } from 'react-icons/bs';
 import { TextareaAutosize } from '@mui/material';
 import { BsThreeDots } from "react-icons/bs";
+import plus from '../assets/imgs/plus.svg';
 
 export class ListPreview extends React.Component {
 
@@ -75,9 +75,9 @@ export class ListPreview extends React.Component {
                                 </div>
                             </div>
                             <CardList key={list.listId} cards={list.cards} board={board} currListIdx={currListIdx} list={list} onUpdateBoard={onUpdateBoard} />
-                            {!isAdding && <h1 className="add-card-container" onClick={() => {
+                            {!isAdding && <span className="add-card-container" onClick={() => {
                                 this.toggleOnAdd()
-                            }}><BsPlus /> Add another card</h1>}
+                            }}> <img src={plus} alt="" /> Add a card</span>}
                             {isAdding && <AddCard list={list} onUpdateBoard={onUpdateBoard} onCloseAdding={this.onCloseAdding} />}
                         </div>
                     </section >

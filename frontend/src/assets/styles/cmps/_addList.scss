@@ -11,6 +11,7 @@
     transition: background-color 85ms ease-in;
     // margin-right: 8px;
     margin: 0px 4px;
+    
 
     &.add-mode {
         background-color: $bgcColor;
@@ -22,14 +23,13 @@
     }
 
     .text-area-auto.list-input {
-        width: rem(272px);
+        width: rem(264px);
         box-shadow: inset 0 0 0 1px #0079bf;
         max-height: 256px;
         min-height: 20px;
         padding: 4px 8px;
         border-radius: 3px;
         margin-top: 2px;
-
     }
 
     .add-list-actions {
@@ -48,15 +48,22 @@
         }
     }
 
-    .close-add-list-btn {
-        color: #42526e;
-        font-size: 24px;
+    .plus {
+
+        img {
+            color: #42526e;
+            width: rem(16px);
+            height: rem(16px);
+        }
     }
 
-    img {
+    .close-add-list-btn {
         color: #42526e;
-        font-size: rem(16px);
+        height: 24px;
+        width: 24px;
+        margin-left: 5px;
     }
+
 
     .add-list-txt {
         margin-left: 3px;

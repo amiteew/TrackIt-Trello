@@ -31,7 +31,7 @@ class _SingleMemberPopover extends React.Component {
         this.setState({ anchorEl: null })
         event.stopPropagation()
     };
-    
+
     toggleMember = (member) => (event) => {
         event.stopPropagation();
         const board = this.props.board
