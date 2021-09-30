@@ -1,3 +1,10 @@
+.task-preview {
+    align-items: center;
+    .checkbox.edit {
+        align-self: flex-start;
+    }
+}
+
 // RESPONVSIVE
 
 @media screen and (min-width: 784px) {
