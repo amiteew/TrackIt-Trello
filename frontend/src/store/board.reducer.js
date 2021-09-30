@@ -1,11 +1,12 @@
 const initialState = {
   boards: [],
   board: null,
+  isLabelOpen: false,
   currCard: null,
   currList: null,
 }
 
-export function boardReducer(state = initialState, action) {
+export function boardReducer(state = initialState, action = null) {
   switch (action.type) {
     case 'SET_BOARDS':
       return { ...state, boards: action.boards }
@@ -21,6 +22,10 @@ export function boardReducer(state = initialState, action) {
         ...state, board: action.board, boards: state.boards.map(board =>
           board._id === action.board._id ? action.board : board)
       }
+    }
+    case 'TOGGLE_LABELS': {
+      const isLabelOpen = state.isLabelOpen
+      return { ...state, isLabelOpen: !isLabelOpen }
     }
     case 'SET_LIST':
       return { ...state, currList: action.list }

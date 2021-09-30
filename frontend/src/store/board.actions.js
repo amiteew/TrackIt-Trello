@@ -71,6 +71,12 @@ export function removeBoard(boardId) {
   }
 }
 
+export function toggleLabels() {
+  return dispatch => {
+      dispatch({ type: 'TOGGLE_LABELS' })
+  }
+}
+
 // when we move to backend this function will check if the board has 'createBy'
 // if not- it's a template and it should only update the store, NOT the server!
 export function updateBoard(board, action, card = {}, txt = "") {

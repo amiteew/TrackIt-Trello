@@ -14,7 +14,7 @@
     min-width: 40px;
     padding: 0;
     border-radius: 3px;
-
+    transition: all 0.4s ease-in-out;
     &.label-preview-open {
         height: rem(16px);
         line-height: rem(16px);
