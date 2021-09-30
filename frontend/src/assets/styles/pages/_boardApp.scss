@@ -6,11 +6,22 @@
     top: rem(44px);
     // overflow-y: hidden;
 }
+.board-background {
+    position: fixed;
+    top:0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 .board-container {
     position: relative;
 }
 .board-canvas {
-    margin-left: 9px;
+    margin-left: 10px;
     flex-grow: 1;
     position: absolute;
     top: rem(52px);
