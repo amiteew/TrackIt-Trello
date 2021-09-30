@@ -43,9 +43,7 @@ class _CoverPopover extends React.Component {
 
     handelSize = (currCard, isCover) => {
         const { board } = this.props
-        const { isCoverSelected } = this.state;
         currCard.cardStyle.isCover = isCover;
-       this.setState({...this.state, isCoverSelected: 'selected'})
         this.props.updateBoard(board);
     }
 
@@ -54,18 +52,18 @@ class _CoverPopover extends React.Component {
         const { board, currListIdx, currCardIdx } = this.state
         if (!board || currCardIdx === null || currListIdx === null) return <></>
         const currCard = board.lists[currListIdx].cards[currCardIdx];
-        const isCoverSelected = !currCard.cardStyle.isCover || !currCard.cardStyle.id ? '' : 'selected'
-
+        const halfCover = !currCard.cardStyle.isCover ? 'selected' : '';
+        const fullCover = currCard.cardStyle.isCover ? 'selected' : '';
         return (
             <section className="popover-cover">
                 <h4>Size</h4>
                 <div className="header-cover">
-                    <div onClick={() => { this.handelSize(currCard, false) }} className={"header-half-cover " + isCoverSelected}>
+                    <div onClick={() => { this.handelSize(currCard, false) }} className={`header-half-cover pointer  ${halfCover}`}>
                         <div className="paragraph"></div>
                         <div className="row"></div>
                         <div className="row second"></div>
                     </div>
-                    <div onClick={() => { this.handelSize(currCard, true) }} className={"header-full-cover " + isCoverSelected}>
+                    <div onClick={() => { this.handelSize(currCard, true) }} className={`header-full-cover pointer ${fullCover}`}>
                         <div className="row full"></div>
                         <div className="row second full"></div>
                     </div>

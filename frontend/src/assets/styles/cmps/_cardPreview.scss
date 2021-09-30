@@ -25,6 +25,14 @@
 
     .card-preview-header {
         height: 32px;
+
+        &.img-cover {
+            background-position: 50%;
+            background-size: contain;
+            height: 260px;
+            background-repeat: no-repeat;
+            background-color: rgb(232, 227, 224);
+        }
     }
 
     .card-preview-main-content {

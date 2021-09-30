@@ -171,7 +171,11 @@
                             "isDone": false
                         },
                         "attachment": [],
-                        "cardStyle": {}
+                        "cardStyle": {
+                            "id": "i103",
+                            "isCover":false,
+                            "img": "https://res.cloudinary.com/dhxwkomwu/image/upload/v1632684701/36515358_491219441335193_6639032000864845824_n_1_mwdst0.jpg"
+                        }
                     },
                     {
                         "cardId": "gHdmknjH",
@@ -401,7 +405,40 @@
                                 "src": ""
                             }
                         ],
-                        "cardStyle": {}
+                        "cardStyle": {
+                           
+                        }
+                    },
+                    {
+                        "cardId": "CRqeXfgC",
+                        "cardTitle": "Fhinish cooking class",
+                        "description": "",
+                        "comments": [],
+                        "cardMembers": [
+                            {
+                                "_id": "u102",
+                                "fullname": "Shany pollack",
+                                "username": "shanypo",
+                                "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632417771/shanypo_nzjhlq.jpg",
+                                "isStarred": true
+                            }
+                        ],
+                        "cardLabelIds": [
+                            "l105"
+                        ],
+                        "checklists": [],
+                        "createdAt": "2021-09-29T10:47:18.142Z",
+                        "dueDate": {},
+                        "attachment": [
+                            {
+                                "src": ""
+                            }
+                        ],
+                        "cardStyle": {
+                            "id": "i107",
+                            "isCover": true,
+                            "img": "https://res.cloudinary.com/dhxwkomwu/image/upload/v1632985491/WhatsApp_Image_2021-03-24_at_22.14.42_xawjlv.jpg"
+                        }
                     }
                 ]
             },

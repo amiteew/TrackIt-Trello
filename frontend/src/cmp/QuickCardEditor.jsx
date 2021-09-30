@@ -77,23 +77,17 @@ class _QuickCardEditor extends React.Component {
         this.setState({ anchorEl: null })
     };
 
-    // toggleLabels = () => {
-    //     const { board } = this.props;
-
-    //     board.lists.cards.cardLabelIds.forEach((labelId)=>{})
-
-    // }
-    
     render() {
         const { card, board, currListIdx, currCardIdx, OnUpdateBoard, loggedInUser } = this.props
         const { isEditTitle, cardTitle, anchorEl } = this.state;
         const open = Boolean(anchorEl);
         const id = open ? 'simple-popover' : undefined;
-        const coverStyle = card.cardStyle.img ? `url(${card.cardStyle.img})` : card.cardStyle.color
+        const coverStyle = card.cardStyle.img ? 'img-cover' : card.cardStyle.color
         const isCover = card.cardStyle.isCover ? { fullCover: 'full ' + coverStyle, fullTitle: 'full' } : { fullTitle: 'half' }
+        console.log('coverstyle', coverStyle);
         return (
             <div className={"card-preview-contenet pointer"}>
-                {card.cardStyle.id && <div className={'card-preview-header ' + coverStyle}></div>}
+                {card.cardStyle.id && <div className={'card-preview-header ' + coverStyle} style={{backgroundImage: `url(${card.cardStyle.img})`}}></div>}
                 <div className={"card-preview-main-content " + isCover.fullCover}>
                    {isCover.fullTitle === 'half' && <div className="list-card-labels flex"> {card.cardLabelIds && card.cardLabelIds.map(labelId => <CardLabelsPreview key={labelId} labelId={labelId} boardLabels={board.labels} />)}</div>}
                     {!isEditTitle && <span className={"card-preview-title " + isCover.fullCover}>{card.cardTitle}</span>}
