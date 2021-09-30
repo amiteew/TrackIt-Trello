@@ -3,34 +3,36 @@
     top:0;
     width: 100%;
     z-index: 1;
+    padding: 16px;
     background-color: #fafffe; /*remove later*/
     .nav-bar {
-        margin: 1rem;
-        margin-left: 0;
         height: rem(36.25px);
         width: 100%;
         .logo-container {
             gap: rem(7px);
+            font-size: rem(25px);
             .icon-span {
                 background-color: #45cbb2;
-                height: 2rem;
-                width: 2rem;
+                height: rem(25px);
+                width: rem(25px);
                 border-radius: rem(6px);
                 .icon {
                     height: 1.4rem;
                     width: 1.4rem;
                 }
             }
-            .logo-name h1 {
-                font-size: rem(33px);
+            .logo-name {
+                font-size: 33px;
+                color: #083e34;
+                margin: 0;
             }
         }
         .login-signup {
             font-family: SourceSansPro-Semi;
-            font-size: rem(18px);
+            font-size: rem(20px);
             gap: 5px;
             & > a {
-                padding: 4px 8px;
+                padding: 5px 10px 7px;
             }
             .login {
                 color: #1db79a;
