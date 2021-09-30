@@ -3,9 +3,10 @@
     top:0;
     width: 100%;
     z-index: 1;
-    background-color: #edfffc; /*remove later*/
+    background-color: #fafffe; /*remove later*/
     .nav-bar {
         margin: 1rem;
+        margin-left: 0;
         height: rem(36.25px);
         width: 100%;
         .logo-container {
@@ -32,9 +33,9 @@
                 padding: 4px 8px;
             }
             .login {
-                color: #45cbb2;
+                color: #1db79a;
                 &:hover {
-                    color: #1db79a;
+                    color: #82dfce;
                 }
             }
         }
@@ -57,8 +58,9 @@
                 margin-right: 12px;
                 .icon-span {
                     height: 1.5rem;
-                    width: 1.5rem;
-                    border: 2px solid white;
+                    width: 1.5rem; 
+                    border: 2px solid #cffff6;
+                    // border: 2px solid white;
                     border-radius: rem(5px);
                     .icon {
                         height: 1rem;
@@ -69,7 +71,7 @@
                     font-family: SourceSansPro-Reg;
                     letter-spacing: 1px;
                     font-size: rem(22px);
-                    color: white;
+                    color: #cffff6;
                     margin-inline-end: 6px;
                 }
             }
@@ -99,15 +101,6 @@
     color: black;
     margin: 0;
     display: inline-block;
-}
-
-.home-btn {
-    background-color: #45cbb2;
-    color: white;
-    border-radius: 5px;
-    &:hover {
-        background-color: #1db79a;
-    }
 }
 
 .MuiAvatar-root.logged-in-avatar {

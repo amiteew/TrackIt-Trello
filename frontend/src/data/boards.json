@@ -4,9 +4,10 @@
         "boardTitle": "Emoji Maker Project",
         "createdAt": 1589983468418,
         "createdBy": {
-            "_id": "u101",
-            "fullname": "Shany Pollack",
-            "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg"
+                "_id": "u104",
+                "fullname": "Alexa Pierce",
+                "initials": "AP",
+                "imgUrl": "https://randomuser.me/api/portraits/med/women/55.jpg"
         },
         "boardStyle": {
             "bgImgUrl": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/5470b505916b9719327bb1ee44cbb801/photo-1631539816626-9b5abd9acf9f.jpg"
@@ -66,7 +67,7 @@
             },
             {
                 "id": "l103",
-                "title": "",
+                "title": "Label with long long name",
                 "color": "clr3"
             },
             {
@@ -215,6 +216,7 @@
                         "cardLabelIds": [
                             "l101",
                             "l102",
+                            "l103",
                             "l104",
                             "l105",
                             "l106"

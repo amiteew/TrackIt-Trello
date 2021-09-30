@@ -22,7 +22,11 @@ class _UserBoards extends React.Component {
             this.props.history.push('/')
             return
         }
-        if (!boards.length) await this.props.loadBoards(loggedInUser._id);
+        if (!boards.length) {
+            console.log('loading boards...');
+            await this.props.loadBoards(loggedInUser._id);
+            console.log('boards loaded');
+        }
         const userBoards = this.removeTemplateBoards(this.props.boards)
         this.setState({ userBoards })
         this.props.loadBoard(null)

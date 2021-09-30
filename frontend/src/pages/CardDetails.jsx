@@ -100,7 +100,7 @@ class _CardDetails extends React.Component {
                                         <h3>Members</h3>
                                         <MembersList members={currCard.cardMembers} board={board}
                                             currListIdx={currListIdx}
-                                            currCardIdx={currCardIdx} isCardOpen={true} />
+                                            currCardIdx={currCardIdx} currCard={currCard} isCardOpen={true} />
                                     </div> : ''
                                 }
 

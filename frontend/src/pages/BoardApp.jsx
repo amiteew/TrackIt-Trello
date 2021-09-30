@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { loadBoards, loadBoard, removeBoard, updateBoard, } from '../store/board.actions.js';
+import { loadBoards, loadBoard, removeBoard, updateBoard, toggleLabels} from '../store/board.actions.js';
 // import { boardService } from '../services/board.service.js';
 import { BoardList } from '../cmp/BoardList.jsx';
 import { DragDropContext } from 'react-beautiful-dnd';
@@ -23,9 +23,11 @@ class _BoardApp extends React.Component {
         if (!this.props.boards.length) await this.props.loadBoards()
         const { boardId } = this.props.match.params
         this.props.loadBoard(boardId);
+        console.log('board component did mount');
     }
 
     componentDidUpdate(prevProps, prevState) {
+        console.log('board component did update');
         // if (JSON.stringify(prevState.board) !== JSON.stringify(this.state.board)) {
         //     console.log('changed!!!!', prevState)
         //     const { boardId } = this.props.match.params
@@ -86,6 +88,10 @@ class _BoardApp extends React.Component {
     //     />
     // }
 
+    onToggleLabels = () => {
+        this.props.toggleLabels()
+    }
+
     render() {
         const { board } = this.props;
         if (!board) return <Loading />
@@ -97,7 +103,7 @@ class _BoardApp extends React.Component {
                     <DragDropContext onDragEnd={this.onDragEnd}>
                         <BoardList board={board} lists={board.lists} onUpdateBoard={this.onUpdateBoard} className="board" />
                     </DragDropContext >
-                    <AddList board={board} onUpdateBoard={this.onUpdateBoard} />
+                    <AddList board={board} onUpdateBoard={this.onUpdateBoard}/>
                 </div>
             </section >
         )
@@ -110,6 +116,7 @@ function mapStateToProps(state) {
     return {
         boards: state.boardReducer.boards,
         board: state.boardReducer.board,
+        isLabelOpen: state.boardReducer.isLabelOpen,
         loggedInUser: state.userReducer.loggedInUser
     }
 }
@@ -117,7 +124,8 @@ const mapDispatchToProps = {
     removeBoard,
     loadBoards,
     loadBoard,
-    updateBoard
+    updateBoard,
+    toggleLabels
 }
 
 export const BoardApp = connect(mapStateToProps, mapDispatchToProps)(_BoardApp)

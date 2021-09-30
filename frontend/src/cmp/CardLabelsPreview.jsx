@@ -1,28 +1,33 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import {toggleLabels} from '../store/board.actions'
 
-export class CardLabelsPreview extends React.Component {
-    state = {
-        isOpen: false
-    }
-
-    toggleLabel = (ev, labelId) => {
+class _CardLabelsPreview extends React.Component {
+    onToggleLabel = (ev) => {
         ev.preventDefault();
         ev.stopPropagation();
-        this.setState({ isOpen: !this.state.isOpen });
+        this.props.toggleLabels()
     }
 
-
     render() {
-        const { isOpen } = this.state;
         const { labelId, boardLabels } = this.props
-        const className = isOpen ? 'label-preview-open' : '';
+        const isOpen = this.props.isLabelOpen ? ' label-preview-open' : '';
         const currLabel = boardLabels.find(label => label.id === labelId)
         return (
-            <div onClick={this.toggleLabel} className={`${currLabel.color} label-card ${className}`}>
+            <div onClick={this.onToggleLabel} className={`${currLabel.color} label-card${isOpen}`}>
                 {isOpen && currLabel.title}
-
             </div>
         )
     }
-
 }
+
+function mapStateToProps(state) {
+    return {
+        isLabelOpen: state.boardReducer.isLabelOpen,
+    }
+}
+const mapDispatchToProps = {
+    toggleLabels
+}
+
+export const CardLabelsPreview = connect(mapStateToProps, mapDispatchToProps)(_CardLabelsPreview)

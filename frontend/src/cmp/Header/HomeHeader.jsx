@@ -3,7 +3,7 @@ import { LogoName } from './LogoName'
 
 export function HomeHeader() {
     return (
-        <header className="home-header full flex">
+        <header className="home-header main-container flex">
             <nav className="nav-bar flex space-between align-center">
                <LogoName isLoggedIn={false} />
                 <div className="login-signup flex">

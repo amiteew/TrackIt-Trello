@@ -32,12 +32,12 @@ class _SingleMemberPopover extends React.Component {
         event.stopPropagation()
     };
 
-    toggleMember = (member) => {
-        const { currListIdx, currCardIdx } = this.state
+    toggleMember = (member) => (event) => {
+        event.stopPropagation();
         const board = this.props.board
-        const currCard = board.lists[currListIdx].cards[currCardIdx]
+        const { currCard } = this.props
         const memberIdx = currCard.cardMembers.findIndex(cardMember => cardMember._id === member._id)
-        board.lists[currListIdx].cards[currCardIdx].cardMembers.splice(memberIdx, 1)
+        currCard.cardMembers.splice(memberIdx, 1);
         var action = 'Removed from '
         this.props.updateBoard(board, action, currCard)
     }
@@ -80,7 +80,7 @@ class _SingleMemberPopover extends React.Component {
                         <button className="close-popover" onClick={this.handleClose}>X</button>
                     </div>
                     <div className="popover-content-container">
-                        <div className="remove-from-card pointer" onClick={(member) => this.toggleMember(member)}>Remove from card</div>
+                        <div className="remove-from-card pointer" onClick={this.toggleMember(member)} >Remove from card</div>
                     </div>
                 </Popover >
             </React.Fragment>

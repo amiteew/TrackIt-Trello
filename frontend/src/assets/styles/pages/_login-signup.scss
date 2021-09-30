@@ -56,6 +56,13 @@
                 border: none;
                 border-radius: rem(5px);
             }
+            margin-bottom: 20px;
+        }
+    }
+    .to-login-signup {
+        color: #0052cc;
+        &:hover {
+            text-decoration: underline;
         }
     }
 }

@@ -1,6 +1,6 @@
 .home-page {
-    background-color: $homeBgcColor;
-    // background-color: #edfffc;
+    // background-color: $homeBgcColor;
+    background-color: #fafffe;
     // background-color: #ece9ff;
     min-height: 100vh;
     .hero {
@@ -13,9 +13,11 @@
                 font-size: rem(20px);
             }
             button {
-                width: 100%;
+                // width: 100%;
+                width: 245px;
                 font-size: rem(20px);
-                padding: rem(6px) rem(24px);
+                font-weight: 500;
+                padding: rem(10px) rem(24px);
             }
         }
         img {
@@ -32,9 +34,6 @@
                 h1 {
                     font-size: rem(44px);
                 }
-                button {
-                    
-                }
             }
             img {
                 display: inline-block;
@@ -46,9 +45,14 @@
             .info h1 {
                 font-size: rem(48px);
             }
-            img {
-                height: 80vh;
-            }
+        }
+    }
+    .home-btn {
+        color: white;
+        border-radius: 5px;
+        background-color: #1db79a;
+        &:hover {
+            background-color: #45cbb2;
         }
     }
 }

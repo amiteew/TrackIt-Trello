@@ -5,34 +5,30 @@ import { LogoName } from './LogoName';
 import { DynamicPopover } from '../DynamicPopover';
 
 function _AppHeader(props) {
-// class _AppHeader extends React.Component {
-
-    // render() {
-        // const { loggedInUser } = this.props
-        const { loggedInUser } = props
-        if (!loggedInUser) return (<></>)
-        return (
-            <header className="main-header">
-                <nav className="nav-bar flex space-between" >
-                    <div className="main-nav-links flex align-center">
-                        <LogoName isLoggedIn={true} />
-                        <NavLink className="header-btn" to="/boards">
-                            <span>Boards</span>
-                            <img src="" alt="" />
-                        </NavLink>
-                        <NavLink className="header-btn" to="/boards">Create</NavLink>
-                    </div>
-                    <div className="user-section">
-                        <DynamicPopover type={'userMenu'} titleModal={'Account'} loggedInUser={loggedInUser} />
-                    </div>
-                </nav >
-            </header >
-        )
-    // }
+    const { loggedInUser } = props
+    if (!loggedInUser) return (<></>)
+    return (
+        <header className={`main-header${props.board ? "" : " main-container"}`}>
+            <nav className="nav-bar flex space-between" >
+                <div className="main-nav-links flex align-center">
+                    <LogoName isLoggedIn={true} />
+                    <NavLink className="header-btn" to="/boards">
+                        <span>Boards</span>
+                        <img src="" alt="" />
+                    </NavLink>
+                    <NavLink className="header-btn" to="/boards">Create</NavLink>
+                </div>
+                <div className="user-section">
+                    <DynamicPopover type={'userMenu'} titleModal={'Account'} loggedInUser={loggedInUser} />
+                </div>
+            </nav >
+        </header >
+    )
 }
 
 function mapStateToProps(state) {
     return {
+        board: state.boardReducer.board,
         loggedInUser: state.userReducer.loggedInUser
     }
 }

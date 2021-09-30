@@ -24,7 +24,7 @@ class _DynamicButton extends React.Component {
                 case 'list actions':
                     return <><BsThreeDots /></>
                 case 'labels':
-                    return <>< LocalOfferOutlinedIcon /> Labels</>
+                    return <><LocalOfferOutlinedIcon /> Labels</>
                 case 'labels-preview':
                     return <LabelPreview {...props} />
                 case 'checklist':
@@ -32,7 +32,7 @@ class _DynamicButton extends React.Component {
                 case 'dates':
                     return <><ScheduleOutlinedIcon /> Date</>
                 case 'cover':
-                    return <>< CallToActionOutlinedIcon /> Cover</>
+                    return <><CallToActionOutlinedIcon /> <span>Cover</span></>
                 case 'userMenu': {
                     return <>
                         <Avatar alt="" src={loggedInUser.imgUrl} className="logged-in-avatar">
