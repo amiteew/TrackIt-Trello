@@ -1,7 +1,8 @@
-// import { components } from "react-select";
-// import { AddCard } from '../AddCard.jsx';
+import { components } from "react-select";
+import { AddCard } from '../AddCard.jsx';
 
 export function ActionList({ list, board, onUpdateBoard }) {
+
     function onDeleteList() {
         const listIdx = board.lists.findIndex(listToFind => listToFind.listId === list.listId)
         board.lists.splice(listIdx, 1);
@@ -15,4 +16,5 @@ export function ActionList({ list, board, onUpdateBoard }) {
             <p onClick={onDeleteList}>Delete</p>
         </div>
     )
+
 }

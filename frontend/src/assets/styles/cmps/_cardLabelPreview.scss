@@ -1,40 +1,30 @@
 .list-card-labels {
     flex-wrap: wrap;
+    margin: 5px 0;
     color: white;
-    &:hover {
-        .label-card {
-            &:not(.label-preview-open) {
-                filter: brightness(80%);
-            }
-            &.label-preview-open .dark-bg {
-                background-color: rgba(0, 0, 0, 0.2);
-            }
-        }
-    }
 }
 
 .label-card {
+    font-size: rem(12px);
+    font-weight: 700;
     height: 8px;
     line-height: rem(100px);
-    margin: 0 4px 4px 0;
+    margin: 0 rem(4px) rem(4px) 0;
     max-width: 40px;
     min-width: 40px;
     padding: 0;
-    border-radius: 4px;
-    transition: all 0.7s ease-in-out;
-    transition: filter 0s;
+    border-radius: 3px;
+    transition: all 0.4s ease-in-out;
+
     &.label-preview-open {
-        transition: all 0.7s ease-in-out;
-        font-size: rem(12px);
-        font-weight: 700;
         height: rem(16px);
         line-height: rem(16px);
         max-width: 198px;
+        padding: 0 8px;
         animation: txt-open;
-        .dark-bg {
-            padding: 0 8px;
-            height: 100%;
-            width: 100%;
+
+        &:hover {
+            filter: brightness(85%);
         }
     }
 

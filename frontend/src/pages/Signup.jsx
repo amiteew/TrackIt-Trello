@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-
 import { onSignup } from '../store/user.actions'
 import { Loading } from '../cmp/Loading.jsx'
 import { LogoName } from '../cmp/Header/LogoName'

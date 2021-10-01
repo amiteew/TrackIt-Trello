@@ -1,14 +1,14 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { DragDropContext } from 'react-beautiful-dnd';
-
 import { loadBoards, loadBoard, removeBoard, updateBoard, toggleLabels } from '../store/board.actions.js';
-import { Loading } from '../cmp/Loading.jsx';
-import { BoardHeader } from '../cmp/BoardHeader.jsx';
+// import { boardService } from '../services/board.service.js';
 import { BoardList } from '../cmp/BoardList.jsx';
+import { DragDropContext } from 'react-beautiful-dnd';
+import { BoardHeader } from '../cmp/BoardHeader.jsx';
 import { AddList } from '../cmp/AddList.jsx';
+import { Route, Link } from 'react-router-dom';
 import { CardDetails } from '../pages/CardDetails.jsx';
+import { Loading } from '../cmp/Loading.jsx';
 
 class _BoardApp extends React.Component {
     state = {
@@ -45,8 +45,7 @@ class _BoardApp extends React.Component {
     }
 
     onDragEnd = (res) => {
-        // const { destination, source, draggableId, type } = res;
-        const { destination, source, type } = res;
+        const { destination, source, draggableId, type } = res;
         const { board } = this.props
         if (!destination) return;
         const dndStart = source.droppableId;

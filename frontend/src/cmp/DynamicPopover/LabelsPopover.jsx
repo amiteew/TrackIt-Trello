@@ -1,10 +1,10 @@
 import React from 'react';
+import Avatar from '@mui/material/Avatar';
 import { connect } from 'react-redux';
-import { TextareaAutosize } from '@mui/material';
+import { loadBoards, removeBoard, addBoard, updateBoard } from '../../store/board.actions.js';
 import DoneIcon from '@mui/icons-material/Done';
 import { BsPencil } from "react-icons/bs";
-import { updateBoard } from '../../store/board.actions.js';
-// import Avatar from '@mui/material/Avatar';
+import { TextareaAutosize } from '@mui/material';
 
 class _LabelsPopover extends React.Component {
     state = {
@@ -22,17 +22,14 @@ class _LabelsPopover extends React.Component {
         const { currListIdx, currCardIdx } = this.state
         const newBoard = { ...this.state.board }
         const currCard = newBoard.lists[currListIdx].cards[currCardIdx]
-        let action = ''
-
         if (this.isLabelOnCard(currCard, label.id)) {
             const labelIdx = currCard.cardLabelIds.findIndex(cardLabelId => cardLabelId === label.id)
             newBoard.lists[currListIdx].cards[currCardIdx].cardLabelIds.splice(labelIdx, 1)
-            action = `Removed label "${label.title}" from `
+            var action = `Removed label "${label.title}" from `
         } else {
             newBoard.lists[currListIdx].cards[currCardIdx].cardLabelIds.push(label.id)
-            action = `Added label "${label.title}"  to `
+            var action = `Added label "${label.title}"  to `
         }
-        
         this.props.updateBoard(newBoard, action, currCard)
     }
 
@@ -80,6 +77,9 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
+    loadBoards,
+    removeBoard,
+    addBoard,
     updateBoard
 }
 

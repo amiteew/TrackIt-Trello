@@ -1,6 +1,5 @@
 import React from 'react'
 import { ActivityPreview } from './ActivityPreview'
-
 export function ActivityList({ activities, currCard }) {
     if (!activities) return <></>
     activities = activities.filter(activity => activity.card.cardId === currCard.cardId)

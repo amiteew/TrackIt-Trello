@@ -1,7 +1,7 @@
 import React from 'react';
 import Avatar from '@mui/material/Avatar';
-
 export class ActivityPreview extends React.Component {
+
     render() {
         const { activity } = this.props
         return (
@@ -14,6 +14,7 @@ export class ActivityPreview extends React.Component {
                     <small> {new Date(activity.createdAt).toString().substring(0, 16)}</small>
                 </div>
             </div>
+
         )
     }
 }

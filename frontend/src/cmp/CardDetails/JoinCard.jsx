@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import { updateBoard } from '../../store/board.actions.js';
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 
 class _JoinCard extends React.Component {
+
     onJoinCard = (member) => {
         const { board, currListIdx, currCardIdx } = this.props
         const currCard = board.lists[currListIdx].cards[currCardIdx]
@@ -31,7 +32,6 @@ class _JoinCard extends React.Component {
         )
     }
 }
-
 function mapStateToProps(state) {
     return {
         board: state.boardReducer.board,

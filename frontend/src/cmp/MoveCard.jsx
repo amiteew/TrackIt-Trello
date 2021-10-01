@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { MenuItem, NativeSelect, FormControl, InputLabel } from '@mui/material';
-
 import { loadBoards } from '../store/board.actions.js'
+import { boardService } from '../services/board.service.js'
+import { NativeSelect, FormControl, InputLabel } from '@mui/material';
+import { MenuItem } from '@mui/material';
+
 
 class _MoveCard extends React.Component {
     state = {
@@ -45,21 +47,20 @@ class _MoveCard extends React.Component {
                             id: 'uncontrolled-native',
                         }}
                     >
-                        <MenuItem value={'hello'}>{'hello'}</MenuItem>
+                         <MenuItem value={'hello'}>{'hello'}</MenuItem>                        
                     </NativeSelect>
                 </FormControl>
                 <p onClick={this.countOptions}>hello</p>
             </div>
         )
     }
-}
 
+}
 function mapStateToProps(state) {
     return {
         boards: state.boardReducer.boards
     }
 }
-
 const mapDispatchToProps = {
     loadBoards
 }

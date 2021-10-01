@@ -1,5 +1,5 @@
-import { Droppable } from 'react-beautiful-dnd';
 import { CardPreview } from './CardPreview.jsx'
+import { Droppable } from 'react-beautiful-dnd';
 
 export function CardList({ cards, list, onUpdateBoard, board, currListIdx }) {
     if (!cards) return <> </>

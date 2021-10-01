@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateBoard, loadListAndCard } from '../store/board.actions.js';
+import { boardService } from '../services/board.service.js';
+import { loadBoards, removeBoard, addBoard, updateBoard, loadListAndCard } from '../store/board.actions.js';
 import { Loading } from '../cmp/Loading';
 import { AddToCard } from '../cmp/AddToCard';
 import { MembersList } from '../cmp/MembersList'
@@ -10,11 +11,11 @@ import { DueDatePreview } from '../cmp/DueDatePreview';
 import { CardTitle } from '../cmp/CardTitle';
 import { CardDescription } from '../cmp/CardDescription.jsx';
 import { ChecklistListApp } from '../cmp/ChecklistListApp';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
 import { CardDetailsHeader } from '../cmp/CardDetailsHeader.jsx';
-// import Box from '@mui/material/Box';
-// import Button from '@mui/material/Button';
-// import Typography from '@mui/material/Typography';
-// import Modal from '@mui/material/Modal';
 
 class _CardDetails extends React.Component {
     state = {
@@ -71,37 +72,13 @@ class _CardDetails extends React.Component {
         this.props.history.push(`/boards/${board._id}`)
     }
 
-    uploadImg = (ev) => {
-        const CLOUD_NAME = 'looply'
-        const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
-
-        const formData = new FormData();
-        console.log('target', ev.target)
-        formData.append('file', ev.target.files[0])
-        console.log('ev.target.files[0]):', ev.target.files[0])
-        formData.append('upload_preset', 'oxageyls');
-        console.log('formData:', formData)
-
-        return fetch(UPLOAD_URL, {
-            method: 'POST',
-            body: formData
-        })
-            .then(res => res.json())
-            .then(res => {
-                const elImg = document.createElement('img');
-                elImg.src = res.url;
-                document.body.append(elImg);
-            })
-            .catch(err => console.error(err))
-    }
-
     render() {
         const { currListIdx, currCardIdx } = this.state
         const { board } = this.props
         if (!board || currCardIdx === null || currListIdx === null) return <Loading />
         const currCard = board.lists[currListIdx].cards[currCardIdx]
         return (<div >
-            <div className="screen-card-details" onClick={this.handleClose}></div>
+            <div className="screen-card-details" onClick={this.handleClose}></div>           
             <div className="card-details" >
                 <CardDetailsHeader board={board}
                     currListIdx={currListIdx}
@@ -141,10 +118,6 @@ class _CardDetails extends React.Component {
                                 }
                             </div>
 
-                            <label> Upload your image to cloudinary!
-                                <input onChange={this.uploadImg} type="file" />
-                            </label>
-
 
                             <CardDescription board={board}
                                 currListIdx={currListIdx}
@@ -182,6 +155,9 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
+    loadBoards,
+    removeBoard,
+    addBoard,
     updateBoard,
     loadListAndCard
 }

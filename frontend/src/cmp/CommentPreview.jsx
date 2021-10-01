@@ -1,7 +1,7 @@
 import React from 'react';
 import Avatar from '@mui/material/Avatar';
-
 export class CommentPreview extends React.Component {
+
     render() {
         const { comment } = this.props
         return (

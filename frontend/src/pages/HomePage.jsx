@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { onLogin } from '../store/user.actions'
 import { HomeHeader } from '../cmp/Header/HomeHeader'
+import { onLogin } from '../store/user.actions'
 
 class _HomePage extends React.Component {
     onStartAsGuest = async () => {

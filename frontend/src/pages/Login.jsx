@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-
 import { onLogin } from '../store/user.actions'
 import { loadBoards } from '../store/board.actions'
 import { Loading } from '../cmp/Loading.jsx'

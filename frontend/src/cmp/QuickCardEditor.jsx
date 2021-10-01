@@ -2,18 +2,17 @@ import React from 'react';
 import { MembersList } from './MembersList.jsx';
 import { CardCheckPreview } from './CardCheckPreview.jsx';
 import { CardCommentPreview } from './CardCommentPreview.jsx';
+import { CardVisibilityPreview } from './CardVisibilityPreview.jsx';
+import { AddToCard } from './AddToCard.jsx';
 import { BsPencil } from "react-icons/bs";
 import { GrTextAlignFull } from "react-icons/gr";
 import { connect } from 'react-redux';
 import { TextareaAutosize } from '@mui/material';
-
-import { updateBoard, loadListAndCard } from '../store/board.actions.js';
+import { DynamicPopover } from '../cmp/DynamicPopover.jsx';
+import { updateBoard, loadListAndCard, loadBoard } from '../store/board.actions.js';
+import Popover from '@mui/material/Popover';
 import { CardLabelsPreview } from './CardLabelsPreview.jsx';
-// import Popover from '@mui/material/Popover';
-// import { DynamicPopover } from '../cmp/DynamicPopover.jsx';
-// import { CardVisibilityPreview } from './CardVisibilityPreview.jsx';
-// import { AddToCard } from './AddToCard.jsx';
-// import { CardDuDatePreview } from './CardDuDatePreview.jsx';
+import { CardDuDatePreview } from './CardDuDatePreview.jsx';
 
 class _QuickCardEditor extends React.Component {
 
@@ -80,8 +79,7 @@ class _QuickCardEditor extends React.Component {
     };
 
     render() {
-        // const { card, board, currListIdx, currCardIdx, OnUpdateBoard, loggedInUser } = this.props
-        const { card, board } = this.props
+        const { card, board, currListIdx, currCardIdx, OnUpdateBoard, loggedInUser } = this.props
         const { isEditTitle, cardTitle, anchorEl } = this.state;
         const open = Boolean(anchorEl);
         const id = open ? 'simple-popover' : undefined;
@@ -89,10 +87,10 @@ class _QuickCardEditor extends React.Component {
         const isCover = card.cardStyle.isCover ? { fullCover: 'full ' + coverStyle, fullTitle: 'full' } : { fullTitle: 'half' }
         console.log('coverstyle', coverStyle);
         return (
-            <div className={"card-preview-content pointer"}>
-                {card.cardStyle.id && <div className={'card-preview-header ' + coverStyle} style={{ backgroundImage: `url(${card.cardStyle.img})` }}></div>}
+            <div className={"card-preview-contenet pointer"}>
+                {card.cardStyle.id && <div className={'card-preview-header ' + coverStyle} style={{backgroundImage: `url(${card.cardStyle.img})`}}></div>}
                 <div className={"card-preview-main-content " + isCover.fullCover}>
-                    {isCover.fullTitle === 'half' && <div className="list-card-labels flex"> {card.cardLabelIds && card.cardLabelIds.map(labelId => <CardLabelsPreview key={labelId} labelId={labelId} boardLabels={board.labels} />)}</div>}
+                   {isCover.fullTitle === 'half' && <div className="list-card-labels flex"> {card.cardLabelIds && card.cardLabelIds.map(labelId => <CardLabelsPreview key={labelId} labelId={labelId} boardLabels={board.labels} />)}</div>}
                     {!isEditTitle && <span className={"card-preview-title " + isCover.fullCover}>{card.cardTitle}</span>}
                     {isEditTitle &&
                         // <Popover
@@ -124,8 +122,8 @@ class _QuickCardEditor extends React.Component {
                         </div>
                         // </Popover >
                     }
-                    {isCover.fullTitle === 'half' && <span className="card-preview-icon flex align-center">
-                        <div className="badge-wrapper flex wrap align-center">
+                    {isCover.fullTitle === 'half' && <span className="card-preview-icon flex">
+                        <div className="flex wrap">
                             {card.description && <div className='badge flex align-center'><GrTextAlignFull /></div>}
                             {/* <span className="badge is-watch">{card.cardMembers && <CardVisibilityPreview cardMembers={card.cardMembers} />} </span> */}
                             {card.comments.length ? <CardCommentPreview cardComments={card.comments} /> : <> </>}
@@ -144,13 +142,14 @@ class _QuickCardEditor extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        board: state.boardReducer.board
-        // loggedInUser: state.userReducer.loggedInUser
+        board: state.boardReducer.board,
+        loggedInUser: state.userReducer.loggedInUser
     }
 }
 const mapDispatchToProps = {
     updateBoard,
-    loadListAndCard
+    loadListAndCard,
+    loadBoard
 }
 
 export const QuickCardEditor = connect(mapStateToProps, mapDispatchToProps)(_QuickCardEditor)

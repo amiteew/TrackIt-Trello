@@ -1,8 +1,8 @@
 import React from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-
 export class DueDatePreview extends React.Component {
+
     onToggleDone = () => {
         this.props.onToggleDone()
     }
@@ -26,6 +26,7 @@ export class DueDatePreview extends React.Component {
                 {/* NEED TO ADD OVERDUE */}
 
             </div>
+
         )
     }
 }

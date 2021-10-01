@@ -8,7 +8,6 @@ export function CardCommentPreview({ cardComments }) {
         }, 0)
         return countComment
     }
-    
     return (
         <div className="badge flex align-center">
             <span className="badge-icon flex align-center">
@@ -17,4 +16,6 @@ export function CardCommentPreview({ cardComments }) {
             <span className="card-txt">{countComments()}</span>
         </div>
     )
+
+
 }

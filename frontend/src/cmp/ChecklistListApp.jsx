@@ -1,5 +1,5 @@
+import React from 'react'
 import { ChecklistApp } from './ChecklistApp'
-
 export function ChecklistListApp({ board, currListIdx, currCardIdx }) {
     const checklists = board.lists[currListIdx].cards[currCardIdx].checklists
     // if(checklists.id) return <> </>

@@ -1,16 +1,13 @@
 import React from 'react';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
-
 export class AddNewTask extends React.Component {
     state = {
         txt: ''
     }
-
     onDiscardChanges = () => {
         this.setState({ txt: '' })
         this.props.onIsAddItem()
     }
-
     handleChange = (ev) => {
         if (ev.key === 'Enter') {
             ev.preventDefault()
@@ -18,10 +15,8 @@ export class AddNewTask extends React.Component {
         }
         else this.setState({ txt: ev.target.value })
     }
-
     handleKeyPress = (ev) => {
     }
-
     onAddTask = () => {
         const newTaskTxt = this.state.txt
         if (!newTaskTxt) return

@@ -85,7 +85,7 @@ class _BoardHeader extends React.Component {
               <FiStar />
             </IconContext.Provider>
           </button>
-          <span className="board-header-divider"></span>
+          <span class="board-header-divider"></span>
           <div className="board-members">
             {/* <div className="board-header-btn board-members"> */}
             <MembersListBoard members={board.boardMembers} />

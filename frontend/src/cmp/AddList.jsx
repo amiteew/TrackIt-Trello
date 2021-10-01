@@ -1,12 +1,10 @@
 import React from 'react';
+import { utilService } from '../services/util.service.js';
 import { TextareaAutosize } from '@mui/material';
 import { Button } from '@mui/material';
-
-import { utilService } from '../services/util.service.js';
 import close from '../assets/imgs/close.svg';
+import AddIcon from '@mui/icons-material/Add';
 import plus from '../assets/imgs/plus.svg';
-// import AddIcon from '@mui/icons-material/Add';
-
 export class AddList extends React.Component {
     state = {
         listTitle: "",
@@ -55,7 +53,7 @@ export class AddList extends React.Component {
         const addMode = isAdding ? 'add-mode' : '';
         return (
             <div onClick={this.toggleOnAdd} className={'add-list board-btn flex align-center pointer ' + addMode}>
-                {isAdding && <form onSubmit={this.onAddList} >
+               {isAdding &&  <form onSubmit={this.onAddList} >
                     <TextareaAutosize className="text-area-auto list-input"
                         value={listTitle}
                         aria-label="empty textarea"
@@ -73,6 +71,7 @@ export class AddList extends React.Component {
                 {!isAdding && <span className="plus flex align-center" onClick={() => {
                     this.toggleOnAdd()
                 }}> <img src={plus} alt="plus" /><span className="add-list-txt">Add another list</span></span>}
+               
             </div>
         )
     }

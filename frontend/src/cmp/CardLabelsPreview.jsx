@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { toggleLabels } from '../store/board.actions'
+import {toggleLabels} from '../store/board.actions'
 
 class _CardLabelsPreview extends React.Component {
     onToggleLabel = (ev) => {
@@ -15,9 +15,7 @@ class _CardLabelsPreview extends React.Component {
         const currLabel = boardLabels.find(label => label.id === labelId)
         return (
             <div onClick={this.onToggleLabel} className={`${currLabel.color} label-card${isOpen}`}>
-                <div className="dark-bg">
-                    {isOpen && currLabel.title}
-                </div>
+                {isOpen && currLabel.title}
             </div>
         )
     }
