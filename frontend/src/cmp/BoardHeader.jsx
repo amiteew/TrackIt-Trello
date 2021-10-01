@@ -62,7 +62,7 @@ class _BoardHeader extends React.Component {
     const { title, isEditTitle, isMenuOpen } = this.state
     const isStarred = userService.isBoardStarred(board, loggedInUser._id)
     return (
-      <div className="board-header flex align-center space-between">
+      <div className="board-header flex align-center space-between wrap">
         <div className="header-left flex align-center">
           {!isEditTitle && <h1 className="header-title" onClick={this.toggleChangeTitle}>{board.boardTitle}</h1>}
           {isEditTitle &&
