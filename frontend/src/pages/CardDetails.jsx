@@ -72,13 +72,37 @@ class _CardDetails extends React.Component {
         this.props.history.push(`/boards/${board._id}`)
     }
 
+    uploadImg = (ev) => {
+        const CLOUD_NAME = 'looply'
+        const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
+
+        const formData = new FormData();
+        console.log('target', ev.target)
+        formData.append('file', ev.target.files[0])
+        console.log('ev.target.files[0]):', ev.target.files[0])
+        formData.append('upload_preset', 'oxageyls');
+        console.log('formData:', formData)
+
+        return fetch(UPLOAD_URL, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(res => {
+                const elImg = document.createElement('img');
+                elImg.src = res.url;
+                document.body.append(elImg);
+            })
+            .catch(err => console.error(err))
+    }
+
     render() {
         const { currListIdx, currCardIdx } = this.state
         const { board } = this.props
         if (!board || currCardIdx === null || currListIdx === null) return <Loading />
         const currCard = board.lists[currListIdx].cards[currCardIdx]
         return (<div >
-            <div className="screen-card-details" onClick={this.handleClose}></div>           
+            <div className="screen-card-details" onClick={this.handleClose}></div>
             <div className="card-details" >
                 <CardDetailsHeader board={board}
                     currListIdx={currListIdx}
@@ -117,6 +141,10 @@ class _CardDetails extends React.Component {
                                     <DueDatePreview dueDate={currCard.dueDate} onToggleDone={this.onToggleDone} />
                                 }
                             </div>
+
+                            <label> Upload your image to cloudinary!
+                                <input onChange={this.uploadImg} type="file" />
+                            </label>
 
 
                             <CardDescription board={board}
