@@ -1,15 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import Avatar from '@mui/material/Avatar';
-
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 import ScheduleOutlinedIcon from '@mui/icons-material/ScheduleOutlined';
 import CallToActionOutlinedIcon from '@mui/icons-material/CallToActionOutlined';
 import AddIcon from '@mui/icons-material/Add';
+import { BsThreeDots } from "react-icons/bs";
 import { LabelPreview } from '../LabelPreview';
-import { BsThreeDots } from "react-icons/bs";  //merge conflict- is this needed here? <AW>
 
 class _DynamicButton extends React.Component {
     render() {
@@ -44,6 +43,7 @@ class _DynamicButton extends React.Component {
                     return props.type
             }
         }
+
         return (
             <DynamicCmp type={type} {...this.props} />
         )

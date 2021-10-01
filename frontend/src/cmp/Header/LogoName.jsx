@@ -5,6 +5,7 @@ import WhiteLogo from '../../assets/imgs/trackit-logo-white.svg'
 export function LogoName({ isLoggedIn }) {
     const linkUrl = isLoggedIn ? "/boards" : "/"
     const logoUrl = isLoggedIn ? WhiteLogo : ColorLogo
+
     return (
         <NavLink to={linkUrl} >
             <div className="logo-container flex align-center">

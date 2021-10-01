@@ -1,13 +1,14 @@
-import * as React from 'react';
+import React from 'react';
+// import * as React from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 import Popover from '@mui/material/Popover';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import DateFnsUtils from '@date-io/date-fns';
 import Avatar from '@mui/material/Avatar';
 import { updateBoard } from '../../store/board.actions.js';
-import { containerClasses } from '@mui/material';
+// import Typography from '@mui/material/Typography';
+// import Button from '@mui/material/Button';
+// import DateFnsUtils from '@date-io/date-fns';
+// import { containerClasses } from '@mui/material';
 
 class _SingleMemberPopover extends React.Component {
     state = {
@@ -16,6 +17,7 @@ class _SingleMemberPopover extends React.Component {
         currCardIdx: null
         // board: null,
     }
+
     componentDidMount() {
         const { currListIdx, currCardIdx } = this.props
         this.setState({ currListIdx, currCardIdx })
@@ -25,12 +27,12 @@ class _SingleMemberPopover extends React.Component {
         event.preventDefault();
         event.stopPropagation()
         this.setState({ anchorEl: event.currentTarget })
-    };
+    }
 
     handleClose = (event) => {
         this.setState({ anchorEl: null })
         event.stopPropagation()
-    };
+    }
 
     toggleMember = (member) => (event) => {
         event.stopPropagation();
@@ -42,14 +44,14 @@ class _SingleMemberPopover extends React.Component {
         this.props.updateBoard(board, action, currCard)
     }
 
-
     render() {
-        const { type, title, titleModal, member, loggedInUser } = this.props
+        // const { type, title, titleModal, member, loggedInUser } = this.props
+        const { member, loggedInUser } = this.props
         const { anchorEl } = this.state
         const open = Boolean(anchorEl);
         const id = open ? 'simple-popover' : undefined;
         return (
-            <React.Fragment>
+            <div className="single-member-popover">
                 <span className="btn-photo-member" onClick={this.handleClick}>
                     <Avatar className="card-details-avatar hover" alt={member.fullname} src={member.imgUrl} />
                 </span>
@@ -83,21 +85,19 @@ class _SingleMemberPopover extends React.Component {
                         <div className="remove-from-card pointer" onClick={this.toggleMember(member)} >Remove from card</div>
                     </div>
                 </Popover >
-            </React.Fragment>
-        );
+            </div>
+        )
     }
-
 }
 
 function mapStateToProps(state) {
     return {
-        loggedInUser: state.userReducer.loggedInUser,
-        board: state.boardReducer.board
+        board: state.boardReducer.board,
+        loggedInUser: state.userReducer.loggedInUser
     }
 }
 const mapDispatchToProps = {
     updateBoard
 }
-
 
 export const SingleMemberPopover = connect(mapStateToProps, mapDispatchToProps)(_SingleMemberPopover)

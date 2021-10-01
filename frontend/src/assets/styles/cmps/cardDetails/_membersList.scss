@@ -27,4 +27,7 @@
 
 .MuiAvatar-root {
     border: none !important;
+    &:hover {
+        opacity: 0.8;
+    }
 }

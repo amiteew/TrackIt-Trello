@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Avatar from '@mui/material/Avatar';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+
 import { Loading } from '../Loading';
 import { CommentsList } from '../CommentsList';
 import { ActivityList } from '../ActivityList';
 import { utilService } from '../../services/util.service';
-import TextareaAutosize from '@mui/material/TextareaAutosize';
-import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+
 class _CardActivities extends React.Component {
     state = {
         board: null,
@@ -36,13 +38,16 @@ class _CardActivities extends React.Component {
     onToggleDetails = () => {
         this.setState({ ...this.state, isDetails: !this.state.isDetails })
     }
+
     onToggleComment = () => {
         // ev.stopPropagation()
         this.setState({ ...this.state, isEditing: true })
     }
+
     handleChange = ({ target }) => {
         this.setState({ ...this.state, newActivityTxt: target.value });
     }
+
     onSaveActivity = (ev) => {
         ev.stopPropagation()
         if (!this.state.newActivityTxt) return
@@ -67,7 +72,7 @@ class _CardActivities extends React.Component {
         let { isEditing, isDetails, newActivityTxt, board, currListIdx, currCardIdx } = this.state
         const { loggedInUser } = this.props
         if (!board || currCardIdx === null || currListIdx === null) return <Loading />
-        const comments = board.lists[currListIdx].cards[currCardIdx].comments
+        // const comments = board.lists[currListIdx].cards[currCardIdx].comments
         const currCard = board.lists[currListIdx].cards[currCardIdx]
         // if (!comments) return <Loading />
         return (
@@ -97,7 +102,6 @@ class _CardActivities extends React.Component {
                     </div>
                 </div>
 
-
                 {currCard.comments.length ? <CommentsList comments={currCard.comments} /> : <></>}
                 {isDetails && <ActivityList currCard={currCard} activities={board.activities} />}
 
@@ -112,10 +116,5 @@ function mapStateToProps(state) {
         loggedInUser: state.userReducer.loggedInUser
     }
 }
-const mapDispatchToProps = {
-    // removeBoard,
-    // loadBoard,
-    // updateBoard
-}
 
-export const CardActivities = connect(mapStateToProps, mapDispatchToProps)(_CardActivities)
+export const CardActivities = connect(mapStateToProps)(_CardActivities)

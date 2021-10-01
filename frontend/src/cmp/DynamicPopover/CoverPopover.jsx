@@ -1,9 +1,10 @@
 import React from 'react';
-import Avatar from '@mui/material/Avatar';
 import { connect } from 'react-redux';
-import { loadBoards, removeBoard, addBoard, updateBoard } from '../../store/board.actions.js';
-import DoneIcon from '@mui/icons-material/Done';
-import { color } from '@mui/system';
+import { updateBoard } from '../../store/board.actions.js';
+// import Avatar from '@mui/material/Avatar';
+// import DoneIcon from '@mui/icons-material/Done';
+// import { color } from '@mui/system';
+
 class _CoverPopover extends React.Component {
     state = {
         board: null,
@@ -17,21 +18,24 @@ class _CoverPopover extends React.Component {
         this.setState({ board, currListIdx, currCardIdx })
     }
 
+    // does this really need to have async-await??
     onToggleCover = async (cover) => {
         const { currListIdx, currCardIdx } = this.state
         const newBoard = { ...this.state.board }
         console.log('card style', cover);
         const currCard = newBoard.lists[currListIdx].cards[currCardIdx]
+        let action = ''
+
         if (this.isCoverOnCard(currCard, cover.id)) {
             newBoard.lists[currListIdx].cards[currCardIdx].cardStyle = {}
-            var action = `Removed Cover from `
+            action = `Removed Cover from `
         } else {
             newBoard.lists[currListIdx].cards[currCardIdx].cardStyle = {
                 id: cover.id,
                 color: cover.color,
                 isCover: false
             }
-            var action = `Added Cover to `
+            action = `Added Cover to `
         }
         await this.props.updateBoard(newBoard, action, currCard)
         console.log('board', newBoard);
@@ -46,7 +50,6 @@ class _CoverPopover extends React.Component {
         currCard.cardStyle.isCover = isCover;
         this.props.updateBoard(board);
     }
-
 
     render() {
         const { board, currListIdx, currCardIdx } = this.state
@@ -84,14 +87,11 @@ class _CoverPopover extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        boards: state.boardReducer.boards
+        board: state.boardReducer.board
     }
 }
 
 const mapDispatchToProps = {
-    loadBoards,
-    removeBoard,
-    addBoard,
     updateBoard
 }
 

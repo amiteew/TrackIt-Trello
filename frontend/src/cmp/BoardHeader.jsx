@@ -80,21 +80,21 @@ class _BoardHeader extends React.Component {
               />
             </form>
           }
-          <button className="board-btn star" onClick={this.onToggleStarBoard}>
-            <IconContext.Provider value={{ className: `star-icon${isStarred ? " active" : ""}` }} >
+          <button className={`board-btn star ${isStarred ? " active" : ""}`} onClick={this.onToggleStarBoard}>
+            <IconContext.Provider value={{ className: "star-icon" }} >
               <FiStar />
             </IconContext.Provider>
           </button>
-          <span class="board-header-divider"></span>
+          <span className="board-header-divider"></span>
           <div className="board-members">
             {/* <div className="board-header-btn board-members"> */}
             <MembersListBoard members={board.boardMembers} />
           </div>
         </div>
-        {!isMenuOpen && <div className="board-btn show-menu" onClick={this.toggleMenu}>
-          <span className="icon"><BsThreeDots /> </span>
+        {!isMenuOpen && <button className="board-btn show-menu flex align-center" onClick={this.toggleMenu}>
+          <span className="icon flex justify-center align-center"><BsThreeDots /> </span>
           <span className="title">Show menu</span>
-        </div>}
+        </button>}
         {isMenuOpen && <TemporaryDrawer toggleMenu={this.toggleMenu} board={board} />}
       </div>
     )

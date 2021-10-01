@@ -1,15 +1,15 @@
 import React from 'react';
+import { TextareaAutosize } from '@mui/material';
+import { Draggable } from 'react-beautiful-dnd';
+
 import { CardList } from './CardList.jsx';
 import { AddCard } from './AddCard';
-import { Draggable, Droppable } from 'react-beautiful-dnd';
-import { boardService } from '../services/board.service.js';
 import { DynamicPopover } from './DynamicPopover.jsx';
-import { TextareaAutosize } from '@mui/material';
-import { BsThreeDots } from "react-icons/bs";
 import plus from '../assets/imgs/plus.svg';
+// import { BsThreeDots } from "react-icons/bs";
+// import { Droppable } from 'react-beautiful-dnd';
 
 export class ListPreview extends React.Component {
-
     state = {
         isAdding: false,
         listTitle: "",
@@ -46,7 +46,6 @@ export class ListPreview extends React.Component {
         this.toggleEditTitle();
     }
 
-
     render() {
         const { list, onUpdateBoard, currListIdx, board } = this.props
         const { isAdding, isEditTitle, listTitle } = this.state
@@ -64,7 +63,7 @@ export class ListPreview extends React.Component {
                                         onChange={this.handleChange}
                                         onKeyPress={this.handleChange}
                                         onBlur={this.onSaveListTitle}
-                                        onFocus={(ev =>{
+                                        onFocus={(ev => {
                                             ev.target.select();
                                         })}
                                         autoFocus
@@ -74,11 +73,15 @@ export class ListPreview extends React.Component {
                                     <DynamicPopover type={'list actions'} board={board} list={list} onUpdateBoard={onUpdateBoard} titleModal={'List actions'} />
                                 </div>
                             </div>
-                            <CardList key={list.listId} cards={list.cards} board={board} currListIdx={currListIdx} list={list} onUpdateBoard={onUpdateBoard} />
-                            {!isAdding && <span className="add-card-container" onClick={() => {
-                                this.toggleOnAdd()
-                            }}> <img src={plus} alt="" /> Add a card</span>}
-                            {isAdding && <AddCard list={list} onUpdateBoard={onUpdateBoard} onCloseAdding={this.onCloseAdding} />}
+                            <div className="list-cards">
+                                <CardList key={list.listId} cards={list.cards} board={board} currListIdx={currListIdx} list={list} onUpdateBoard={onUpdateBoard} />
+                                {isAdding && <AddCard list={list} onUpdateBoard={onUpdateBoard} onCloseAdding={this.onCloseAdding} />}
+                            </div>
+                            {!isAdding &&
+                                <span className="add-card-container" onClick={() => { this.toggleOnAdd() }}>
+                                    <img src={plus} alt="" />
+                                    Add a card
+                                </span>}
                         </div>
                     </section >
                 )

@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
-import { loadBoards, removeBoard, addBoard, updateBoard } from '../store/board.actions.js';
+
 import { utilService } from '../services/util.service';
+import { updateBoard } from '../store/board.actions.js';
 import { ProgressBar } from './ProgressBar'
 import { ChecklistTask } from './ChecklistTask'
 import { AddNewTask } from './AddNewTask';
+
 class _ChecklistApp extends React.Component {
     state = {
         board: null,

@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { boardService } from '../services/board.service.js';
-import { loadBoards, removeBoard, addBoard, updateBoard, loadListAndCard } from '../store/board.actions.js';
+import { updateBoard, loadListAndCard } from '../store/board.actions.js';
 import { Loading } from '../cmp/Loading';
 import { AddToCard } from '../cmp/AddToCard';
 import { MembersList } from '../cmp/MembersList'
@@ -11,11 +10,11 @@ import { DueDatePreview } from '../cmp/DueDatePreview';
 import { CardTitle } from '../cmp/CardTitle';
 import { CardDescription } from '../cmp/CardDescription.jsx';
 import { ChecklistListApp } from '../cmp/ChecklistListApp';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
 import { CardDetailsHeader } from '../cmp/CardDetailsHeader.jsx';
+// import Box from '@mui/material/Box';
+// import Button from '@mui/material/Button';
+// import Typography from '@mui/material/Typography';
+// import Modal from '@mui/material/Modal';
 
 class _CardDetails extends React.Component {
     state = {
@@ -183,9 +182,6 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-    loadBoards,
-    removeBoard,
-    addBoard,
     updateBoard,
     loadListAndCard
 }

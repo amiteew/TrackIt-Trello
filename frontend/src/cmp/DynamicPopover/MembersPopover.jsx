@@ -1,9 +1,10 @@
 import React from 'react';
-import Avatar from '@mui/material/Avatar';
 import { connect } from 'react-redux';
-import { loadBoards, removeBoard, addBoard, updateBoard } from '../../store/board.actions.js';
-import DoneIcon from '@mui/icons-material/Done';
 import { TextareaAutosize } from '@mui/material';
+import Avatar from '@mui/material/Avatar';
+import DoneIcon from '@mui/icons-material/Done';
+import { updateBoard } from '../../store/board.actions.js';
+
 class _MembersPopover extends React.Component {
     state = {
         board: null,
@@ -20,14 +21,17 @@ class _MembersPopover extends React.Component {
         const { currListIdx, currCardIdx } = this.state
         const newBoard = { ...this.state.board }
         const currCard = newBoard.lists[currListIdx].cards[currCardIdx]
+        let action = ''
+
         if (this.isMemberOnCard(currCard, member._id)) {
             const memberIdx = currCard.cardMembers.findIndex(cardMember => cardMember._id === member._id)
             newBoard.lists[currListIdx].cards[currCardIdx].cardMembers.splice(memberIdx, 1)
-            var action = `${member} Removed from `
+            action = `${member} Removed from `
         } else {
             newBoard.lists[currListIdx].cards[currCardIdx].cardMembers.push(member)
-            var action = `${member} Added to `
+            action = `${member} Added to `
         }
+        
         this.props.updateBoard(newBoard, action, currCard)
     }
 

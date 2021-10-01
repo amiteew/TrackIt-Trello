@@ -48,19 +48,28 @@
             height: rem(32px);
             font-size: rem(16px);
             margin-right: 3px;
-            .star-icon.active {
-                color: #f2d600;
+            &.active{
+                background-color: #00000029;
+                &:hover{
+                    background-color: #0000003d;
+                }
+                .star-icon {
+                    color: #f2d600;
+                }
             }
         }
         &.show-menu {
             cursor: pointer;
+            padding: 0;
             padding-right: rem(12px);
             margin-right: 5px;
             .icon {
-                position: relative;
-                padding: 0 8px;
-                top: 1px;
+                // position: relative;
+                padding: 8px;
+                // top: 1px;
                 color: #42526e;
+
+                font-size: rem(16px);
             }
         }
     }
@@ -71,9 +80,6 @@
         background-color: #00000014;
         font-size: rem(12px);
         color: $clr10;
-        &:hover {
-            opacity: 0.8;
-        }
     }
 }
 
