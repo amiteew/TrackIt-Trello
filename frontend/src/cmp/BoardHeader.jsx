@@ -85,7 +85,7 @@ class _BoardHeader extends React.Component {
               <FiStar />
             </IconContext.Provider>
           </button>
-          <span class="board-header-divider"></span>
+          <span className="board-header-divider"></span>
           <div className="board-members">
             {/* <div className="board-header-btn board-members"> */}
             <MembersListBoard members={board.boardMembers} />
@@ -95,7 +95,7 @@ class _BoardHeader extends React.Component {
           <span className="icon flex justify-center align-center"><BsThreeDots /> </span>
           <span className="title">Show menu</span>
         </button>}
-        {isMenuOpen && <TemporaryDrawer toggleMenu={this.toggleMenu} board={board} />}
+        {isMenuOpen && <TemporaryDrawer board={board} toggleMenu={this.toggleMenu} isMenuOpen={isMenuOpen} />}
       </div>
     )
   }
