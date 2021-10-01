@@ -15,7 +15,9 @@ class _CardLabelsPreview extends React.Component {
         const currLabel = boardLabels.find(label => label.id === labelId)
         return (
             <div onClick={this.onToggleLabel} className={`${currLabel.color} label-card${isOpen}`}>
-                {isOpen && currLabel.title}
+                <div className="dark-bg">
+                    {isOpen && currLabel.title}
+                </div>
             </div>
         )
     }

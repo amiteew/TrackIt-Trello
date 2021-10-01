@@ -8,7 +8,7 @@
     z-index: 1;
 }
 
-.card-preview-contenet {
+.card-preview-content {
     background-color: #fff;
     background-size: cover;
     background-repeat: no-repeat;
@@ -18,17 +18,27 @@
     max-width: rem(300px);
     min-height: rem(25px);
     position: relative;
+    border-radius: 3px;
     text-decoration: none;
     z-index: 0;
     overflow: hidden;
     box-shadow: 0 1px 0 #c0c6d0;
+    padding: 8px;
+    padding-bottom: 4px;
     &:hover {
         background-color: #f4f5f7;
+        .quick-card-edit-btn {
+            visibility: visible;
+            &:hover {
+                background-color: #ebecf0;
+                opacity: 1;
+                color: #172b4d;
+            }
+        }
     }
 
     .card-preview-header {
         height: 32px;
-
         &.img-cover {
             background-position: 50%;
             background-size: contain;
@@ -37,9 +47,19 @@
             background-color: rgb(232, 227, 224);
         }
     }
-
-    .card-preview-main-content {
-        padding: 0.125rem 0.625rem;
+    .quick-card-edit-btn {
+        position: absolute;
+        background-clip: padding-box;
+        background-color: #f4f5f7;
+        background-origin: initial;
+        border-radius: rem(3px);
+        opacity: 0.8;
+        padding: rem(4px);
+        position: absolute;
+        right: rem(2px);
+        top: rem(2px);
+        visibility: hidden;
+        z-index: 40;
     }
 }
 
@@ -48,10 +68,10 @@
     clear: both;
     color: #172b4d;
     display: block;
-    margin: 0 0 7px;
+    margin-bottom: 4px;
     overflow: hidden;
     text-decoration: none;
-
+    line-height: rem(20px);
     &.full {
         font-size: rem(16px);
         font-weight: 500;
@@ -64,9 +84,10 @@
 .card-preview-icon {
     float: left;
     width: 100%;
-    align-items: flex-end;
     flex-wrap: wrap;
-
+    .badge-wrapper {
+        gap: 8px;
+    }
     img {
         width: unset;
         border-radius: 50%;
@@ -92,11 +113,13 @@
         &.members {
             flex-grow: 1;
             justify-content: flex-end;
-
+            .members-list {
+                margin: 0 -4px -1px 0;
+            }
             .btn-photo-member div {
-                height: 28px;
-                width: 28px;
-                margin: 5px 1px;
+                height: 29px;
+                width: 29px;
+                margin-left: 5px;
             }
         }
     }
@@ -106,41 +129,10 @@
     }
 }
 
-.card-preview-contenet {
-    position: relative;
-    border-radius: 3px;
-
-    .quick-card-edit-btn {
-        position: absolute;
-        background-clip: padding-box;
-        background-color: #f4f5f7;
-        background-origin: initial;
-        border-radius: rem(3px);
-        opacity: 0.8;
-        padding: rem(4px);
-        position: absolute;
-        right: rem(2px);
-        top: rem(2px);
-        visibility: hidden;
-        z-index: 40;
-    }
-
-    &:hover {
-        .quick-card-edit-btn {
-            visibility: visible;
-
-            &:hover {
-                background-color: #ebecf0;
-                opacity: 1;
-                color: #172b4d;
-            }
-        }
-    }
-}
-
 .badge {
     color: #5e6c84;
-    margin: 0 4px 4px 0;
+    margin-bottom: 4px;
+    // margin: 0 4px 4px 0;
     max-width: 100%;
     min-height: 20px;
     overflow: hidden;
@@ -150,7 +142,7 @@
     text-overflow: ellipsis;
     font-size: rem(12px);
     border-radius: 3px;
-
+    min-height: 24px;
     &.done {
         color: #fff;
     }
@@ -171,7 +163,3 @@
         white-space: nowrap;
     }
 }
-
-// .card-icon ::before {
-//     vertical-align: top;
-// }

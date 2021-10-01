@@ -89,7 +89,7 @@ class _QuickCardEditor extends React.Component {
         const isCover = card.cardStyle.isCover ? { fullCover: 'full ' + coverStyle, fullTitle: 'full' } : { fullTitle: 'half' }
         console.log('coverstyle', coverStyle);
         return (
-            <div className={"card-preview-contenet pointer"}>
+            <div className={"card-preview-content pointer"}>
                 {card.cardStyle.id && <div className={'card-preview-header ' + coverStyle} style={{ backgroundImage: `url(${card.cardStyle.img})` }}></div>}
                 <div className={"card-preview-main-content " + isCover.fullCover}>
                     {isCover.fullTitle === 'half' && <div className="list-card-labels flex"> {card.cardLabelIds && card.cardLabelIds.map(labelId => <CardLabelsPreview key={labelId} labelId={labelId} boardLabels={board.labels} />)}</div>}
@@ -124,8 +124,8 @@ class _QuickCardEditor extends React.Component {
                         </div>
                         // </Popover >
                     }
-                    {isCover.fullTitle === 'half' && <span className="card-preview-icon flex">
-                        <div className="flex wrap">
+                    {isCover.fullTitle === 'half' && <span className="card-preview-icon flex align-center">
+                        <div className="badge-wrapper flex wrap align-center">
                             {card.description && <div className='badge flex align-center'><GrTextAlignFull /></div>}
                             {/* <span className="badge is-watch">{card.cardMembers && <CardVisibilityPreview cardMembers={card.cardMembers} />} </span> */}
                             {card.comments.length ? <CardCommentPreview cardComments={card.comments} /> : <> </>}
