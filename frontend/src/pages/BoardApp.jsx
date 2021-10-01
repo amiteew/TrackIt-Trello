@@ -100,8 +100,8 @@ class _BoardApp extends React.Component {
             { backgroundColor: board.boardStyle.bgColor }
         return (
             <section className="board-app flex direction-col">
-                <BoardHeader board={board} onUpdateBoard={this.onUpdateBoard} />
                 <Route exact component={CardDetails} path="/boards/:boardId/:listId/:cardId" />
+                <BoardHeader board={board} onUpdateBoard={this.onUpdateBoard} />
                 <div className="board-background" style={bgStyle}></div>
                 <div className="board-canvas flex">
                     <DragDropContext onDragEnd={this.onDragEnd}>
