@@ -49,7 +49,7 @@ class _SingleMemberPopover extends React.Component {
         const open = Boolean(anchorEl);
         const id = open ? 'simple-popover' : undefined;
         return (
-            <React.Fragment>
+            <div className="single-member-popover">
                 <span className="btn-photo-member" onClick={this.handleClick}>
                     <Avatar className="card-details-avatar hover" alt={member.fullname} src={member.imgUrl} />
                 </span>
@@ -83,7 +83,7 @@ class _SingleMemberPopover extends React.Component {
                         <div className="remove-from-card pointer" onClick={this.toggleMember(member)} >Remove from card</div>
                     </div>
                 </Popover >
-            </React.Fragment>
+            </div>
         );
     }
 

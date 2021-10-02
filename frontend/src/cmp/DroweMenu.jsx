@@ -6,7 +6,7 @@ import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import { ShowMenu } from '../cmp/ShowMenu.jsx';
 
-export function TemporaryDrawer({ board, toggleMenu }) {
+export function TemporaryDrawer({ board, toggleMenu, isMenuOpen }) {
 
     const toggleDrawer = (anchor, open) => (event) => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -39,7 +39,7 @@ export function TemporaryDrawer({ board, toggleMenu }) {
                 <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
                 <Drawer
                     anchor={anchor}
-                    open={anchor}
+                    open={isMenuOpen}
                     onClose={toggleDrawer(anchor, false)}
                     hideBackdrop={true}
                 >

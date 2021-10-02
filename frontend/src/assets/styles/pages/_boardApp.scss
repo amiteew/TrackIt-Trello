@@ -1,9 +1,11 @@
 .board-app {
-    max-height: calc(100vh - rem(44px));
-    margin-right: 0;
+    // max-height: calc(100vh - rem(44px));
+    height: calc(100vh - rem(44px));
     position: relative;
-    transition: margin 0.1s ease-in;
-    top: rem(44px);
+    // margin-right: 0;
+    // position: relative;
+    // transition: margin 0.1s ease-in;
+    // top: rem(44px);
     // overflow-y: hidden;
 }
 .board-background {
@@ -12,34 +14,51 @@
     bottom: 0;
     right: 0;
     left: 0;
+    z-index: -1;
     background-size:cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-.board-container {
-    position: relative;
-}
 .board-canvas {
-    margin-left: 10px;
-    flex-grow: 1;
-    position: absolute;
-    top: rem(52px);
-}
-
-.board {
-    bottom: 0;
-    left: 0;
+    padding-left: 10px;
+    padding-bottom: 8px;
     margin-bottom: 8px;
+    width: 100%;
+    flex-grow: 1;
     overflow-x: auto;
     overflow-y: hidden;
-    padding-bottom: 8px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    user-select: none;
-    white-space: nowrap;
+    &::-webkit-scrollbar {
+        height: 12px;
+    }
+    &::-webkit-scrollbar-track {
+        margin: 0 4px 0 14px;
+        background: #091e4214;
+    }
+    &::-webkit-scrollbar-track-piece {
+        border-radius: 5px;
+        background: #00000034;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background: #bfc3ce88;
+    }
 }
+
+// do we need this class? AW
+// .board {
+//     bottom: 0;
+//     left: 0;
+//     margin-bottom: 8px;
+//     overflow-x: auto;
+//     overflow-y: hidden;
+//     padding-bottom: 8px;
+//     position: absolute;
+//     right: 0;
+//     top: 0;
+//     user-select: none;
+//     white-space: nowrap;
+// }
 
 .board-btn {
     font-size: rem(14px);

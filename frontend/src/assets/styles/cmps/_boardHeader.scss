@@ -1,15 +1,12 @@
 .board-header {
-    height: rem(52px);
-    padding: 8px 4px 4px 14px;
-    position: fixed;
-    top: rem(44px);
+    // height: rem(52px);
+    padding: 8px 4px 8px 14px;
+    // position: fixed;
+    // top: rem(44px);
     width: 100%;
     line-height: rem(32px);
     color: $clr10;
-    z-index: 1;
-    // > * {
-    //     line-height: rem(32px);
-    // }
+    // z-index: 1;
     .header-left {
         gap: 4px;
         .header-title {
