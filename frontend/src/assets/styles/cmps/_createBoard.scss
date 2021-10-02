@@ -1,7 +1,4 @@
 .create-board-wrapper {
-    position: absolute;
-    top: 2px;
-    width: 100%;
     .screen {
         position: fixed;
         right: 0;
@@ -12,10 +9,10 @@
         background: rgba(0, 0, 0, 0.75);
     }
     .create-board {
-        position: relative;
-        top: 47px;
-        // right: 0;
-        // left: 0;
+        position: absolute;
+        top: 48px;
+        left: 50%;
+        transform: translate(-50%, 0);
         z-index: 2;
     }
 }

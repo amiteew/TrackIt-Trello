@@ -7,12 +7,12 @@ import { CreateBoard } from '../CreateBoard';
 
 class _AppHeader extends React.Component {
     state = {
-        isAddBoard: false
+        isCreateBoard: false
     }
 
     onToggleCreateBoard = () => {
-        const { isAddBoard } = this.state
-        this.setState({ isAddBoard: !isAddBoard })
+        const { isCreateBoard } = this.state
+        this.setState({ isCreateBoard: !isCreateBoard })
     }
 
     render() {
@@ -35,7 +35,7 @@ class _AppHeader extends React.Component {
                         </div>
                     </nav >
                 </header >
-                {this.state.isAddBoard && <CreateBoard fullname={loggedInUser.fullname} onToggleCreateBoard={this.onToggleCreateBoard}/>}
+                {this.state.isCreateBoard && <CreateBoard onToggleCreateBoard={this.onToggleCreateBoard} isFromHeader={true}/>}
             </>
         )
     }

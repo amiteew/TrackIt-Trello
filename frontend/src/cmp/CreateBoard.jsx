@@ -1,11 +1,15 @@
 import React from 'react';
-import CloseIcon from '../assets/imgs/icons/close-icon.svg'
-import CheckedIcon from '../assets/imgs/icons/checked-icon.svg'
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { utilService } from '../services/util.service';
+import { addBoard, loadBoard } from '../store/board.actions';
+import CloseIcon from '../assets/imgs/icons/close-icon.svg';
+import CheckedIcon from '../assets/imgs/icons/checked-icon.svg';
 
-export class CreateBoard extends React.Component {
+class _CreateBoard extends React.Component {
     state = {
         title: '',
-        bgStyle: null
+        bgStyle: {bgImgUrl: "https://images.unsplash.com/photo-1632918425510-c02e76616549?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1527&q=80"}
     }
 
     handleChange = (ev) => {
@@ -13,10 +17,45 @@ export class CreateBoard extends React.Component {
         this.setState({ title: value })
     }
 
-    createBoard = () => {
+    createBoard = async (ev) => {
+        ev.preventDefault()
         const { title, bgStyle } = this.state
         if (!title) return
-        console.log('create board:', title, bgStyle);
+        const { loggedInUser, isFromHeader } = this.props
+        const boardMember = { ...loggedInUser }
+        boardMember.isStarred = false
+
+        const newBoard = {
+            "boardTitle": title,
+            "createdAt": Date.now(),
+            "createdBy": loggedInUser,
+            "boardStyle": bgStyle,
+            "covers": [],
+            "labels": this.getLabels(),
+            "boardMembers": [boardMember],
+            "lists": [],
+            "activities": [],
+            "archive": []
+        }
+
+        await this.props.addBoard(newBoard)
+        const {board, onToggleCreateBoard} = this.props
+        if (isFromHeader) onToggleCreateBoard()
+        // console.log('board:', board);
+        this.props.history.push(`/boards/${board._id}`)
+    }
+
+    getLabels = () => {
+        let labels = []
+        for (let id = 1; id <= 10; id++) {
+            const label = {
+                "id": utilService.makeId(),
+                "title": "",
+                "color": `clr${id}`
+            }
+            labels.push(label)
+        }
+        return labels
     }
 
     render() {
@@ -47,3 +86,17 @@ export class CreateBoard extends React.Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        board: state.boardReducer.board,
+        loggedInUser: state.userReducer.loggedInUser
+    }
+}
+const mapDispatchToProps = {
+    addBoard,
+    loadBoard
+}
+
+const _CreateBoardWithRouter = withRouter(_CreateBoard);
+export const CreateBoard = connect(mapStateToProps, mapDispatchToProps)(_CreateBoardWithRouter)

@@ -10,10 +10,12 @@ import { SideNav } from '../cmp/UserBoards/SideNav';
 
 import { IconContext } from "react-icons";
 import { FiStar } from 'react-icons/fi';
+import { CreateBoard } from '../cmp/CreateBoard.jsx';
 
 class _UserBoards extends React.Component {
     state = {
-        userBoards: []
+        userBoards: [],
+        isCreateBoard: false
     }
 
     async componentDidMount() {
@@ -51,6 +53,11 @@ class _UserBoards extends React.Component {
         updateBoard(updatedBoard)
     }
 
+    onToggleCreateBoard = () => {
+        const { isCreateBoard } = this.state
+        this.setState({ isCreateBoard: !isCreateBoard })
+    }
+
     render() {
         const path = this.props.match.path.slice(1)
         const { userBoards } = this.state
@@ -83,11 +90,12 @@ class _UserBoards extends React.Component {
                                     board.isStarred = board.boardMembers.find(member => member._id === loggedInUser._id).isStarred
                                     return <BoardPreview key={board._id} board={board} loggedInUser={loggedInUser} toggleStarBoard={this.toggleStarBoard} isLarge={board.isStarred} />
                                 })}
-                                <div className="board-preview create-board flex align-center justify-center">Create new board</div>
+                                <div className="board-preview create-board flex align-center justify-center" onClick={this.onToggleCreateBoard}>Create new board</div>
                             </div>
                         </section>
                     </section>
                 </section>
+                {this.state.isCreateBoard && <CreateBoard onToggleCreateBoard={this.onToggleCreateBoard} isFromHeader={false}/>}
             </section>
         )
     }
