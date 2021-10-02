@@ -37,9 +37,7 @@ export class _AddCard extends React.Component {
             checklists: [],
             createdAt: new Date(),
             dueDate: {},
-            attachment: [{
-                src: ''
-            }],
+            attachments: [],
             cardStyle: {}
         }
         const { list } = this.props;

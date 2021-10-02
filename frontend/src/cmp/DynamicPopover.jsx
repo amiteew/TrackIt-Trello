@@ -11,6 +11,7 @@ import { CoverPopover } from './DynamicPopover/CoverPopover';
 import { DynamicButton } from './DynamicCmps/DynamicButton';
 import { UserMenuPopover } from './DynamicPopover/UserMenuPopover';
 import { TemporaryDrawer } from '../cmp/DroweMenu.jsx';
+import { AttachmentsPopover } from './DynamicPopover/AttachmentsPopover';
 import { MuiPickersUtilsProvider, DatePicker, TimePicker, DateTimePicker, } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 
@@ -52,6 +53,9 @@ export class DynamicPopover extends React.Component {
                     return <LabelsPopover {...props} />
                 case 'dates':
                     return <DatesPopover {...props} />
+                case 'attachments':
+                case 'add-attachments':
+                    return <AttachmentsPopover {...props} />
                 case 'cover':
                     return <CoverPopover {...props} />
                 case 'checklist':

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { boardService } from '../services/board.service.js';
+// import { boardService } from '../services/board.service.js';
 import { loadBoards, removeBoard, addBoard, updateBoard, loadListAndCard } from '../store/board.actions.js';
 import { Loading } from '../cmp/Loading';
 import { AddToCard } from '../cmp/AddToCard';
@@ -11,11 +11,12 @@ import { DueDatePreview } from '../cmp/DueDatePreview';
 import { CardTitle } from '../cmp/CardTitle';
 import { CardDescription } from '../cmp/CardDescription.jsx';
 import { ChecklistListApp } from '../cmp/ChecklistListApp';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
+// import Box from '@mui/material/Box';
+// import Button from '@mui/material/Button';
+// import Typography from '@mui/material/Typography';
+// import Modal from '@mui/material/Modal';
 import { CardDetailsHeader } from '../cmp/CardDetailsHeader.jsx';
+import { CardAttachmentsList } from '../cmp/CardDetails/CardAttachmentsList';
 
 class _CardDetails extends React.Component {
     state = {
@@ -78,7 +79,7 @@ class _CardDetails extends React.Component {
         if (!board || currCardIdx === null || currListIdx === null) return <Loading />
         const currCard = board.lists[currListIdx].cards[currCardIdx]
         return (<div >
-            <div className="screen-card-details" onClick={this.handleClose}></div>           
+            <div className="screen-card-details" onClick={this.handleClose}></div>
             <div className="card-details" >
                 <CardDetailsHeader board={board}
                     currListIdx={currListIdx}
@@ -120,6 +121,11 @@ class _CardDetails extends React.Component {
 
 
                             <CardDescription board={board}
+                                currListIdx={currListIdx}
+                                currCardIdx={currCardIdx}
+                                OnUpdateBoard={this.OnUpdateBoard} />
+
+                            <CardAttachmentsList board={board}
                                 currListIdx={currListIdx}
                                 currCardIdx={currCardIdx}
                                 OnUpdateBoard={this.OnUpdateBoard} />

@@ -1,0 +1,23 @@
+.card-attachments {
+    .title {
+        margin-bottom: 12px;
+    }
+    h3 {
+        margin: 0;
+        margin-right: 10px;
+    }
+    svg {
+        transform: rotate(45deg);
+    }
+    button {
+        font-size: rem(14px);
+        padding: 8px;
+        margin-top: 8px;
+        margin-bottom: 32px;
+        margin-left: 38px;
+        background-color: $cardBtnColor;
+        &:hover {
+            background-color: $cardHoverColor;
+        }
+    }
+}
