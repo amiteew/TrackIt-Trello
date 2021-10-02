@@ -1,0 +1,18 @@
+.popover-attachment {
+    input {
+        opacity: 0;
+        height: 0;
+        width: 0;
+        position: absolute;
+    }
+    label {
+        width: 100%;
+        padding: 6px 2px;
+        margin-bottom: 8px;
+        margin-top: 8px;
+        cursor: pointer;
+        &:hover {
+            background-color: #f5f6f8;
+        }
+    }
+}

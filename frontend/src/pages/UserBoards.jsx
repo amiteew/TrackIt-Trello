@@ -62,8 +62,8 @@ class _UserBoards extends React.Component {
         const path = this.props.match.path.slice(1)
         const { userBoards } = this.state
         const { loggedInUser } = this.props
-        if (!loggedInUser || !userBoards.length) return <Loading />
-        const starredBoards = this.getStarredBoards()
+        if (!loggedInUser) return <Loading />
+        const starredBoards = userBoards.length ? this.getStarredBoards() : []
         return (
             <section className="main-container boards">
                 <section className="boards-page flex">
@@ -95,7 +95,7 @@ class _UserBoards extends React.Component {
                         </section>
                     </section>
                 </section>
-                {this.state.isCreateBoard && <CreateBoard onToggleCreateBoard={this.onToggleCreateBoard} isFromHeader={false}/>}
+                {this.state.isCreateBoard && <CreateBoard onToggleCreateBoard={this.onToggleCreateBoard} />}
             </section>
         )
     }

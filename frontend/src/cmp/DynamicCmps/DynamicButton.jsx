@@ -8,6 +8,7 @@ import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 import ScheduleOutlinedIcon from '@mui/icons-material/ScheduleOutlined';
 import CallToActionOutlinedIcon from '@mui/icons-material/CallToActionOutlined';
 import AddIcon from '@mui/icons-material/Add';
+import AttachFileOutlinedIcon from '@mui/icons-material/AttachFileOutlined';
 import { LabelPreview } from '../LabelPreview';
 import { BsThreeDots } from "react-icons/bs";  //merge conflict- is this needed here? <AW>
 
@@ -31,6 +32,10 @@ class _DynamicButton extends React.Component {
                     return <><CheckBoxOutlinedIcon /> Checklist</>
                 case 'dates':
                     return <><ScheduleOutlinedIcon /> Date</>
+                case 'attachments':
+                    return <><AttachFileOutlinedIcon className="attachment-icon" /> Attachments</>
+                case 'add-attachments':
+                    return <>Add an attachment</>
                 case 'cover':
                     return <><CallToActionOutlinedIcon /> <span>Cover</span></>
                 case 'userMenu': {

@@ -4,10 +4,10 @@
         "boardTitle": "Emoji Maker Project",
         "createdAt": 1589983468418,
         "createdBy": {
-                "_id": "u104",
-                "fullname": "Alexa Pierce",
-                "initials": "AP",
-                "imgUrl": "https://randomuser.me/api/portraits/med/women/55.jpg"
+            "_id": "u104",
+            "fullname": "Alexa Pierce",
+            "initials": "AP",
+            "imgUrl": "https://randomuser.me/api/portraits/med/women/55.jpg"
         },
         "boardStyle": {
             "bgImgUrl": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/5470b505916b9719327bb1ee44cbb801/photo-1631539816626-9b5abd9acf9f.jpg"
@@ -170,7 +170,14 @@
                             "date": 1632993490,
                             "isDone": false
                         },
-                        "attachment": [],
+                        "attachments": [
+                            {
+                                "id": "2vL67Y",
+                                "fileName": "JGLuxcGDY4Vn.jpg",
+                                "url": "https://res.cloudinary.com/plcrased/image/upload/v1622911720/ic1sjiamd5pjgsvaix4i.jpg",
+                                "createdAt": 1622911721267
+                            }
+                        ],
                         "cardStyle": {}
                     },
                     {
@@ -183,14 +190,10 @@
                         "checklists": [],
                         "createdAt": "2021-09-29T10:25:21.917Z",
                         "dueDate": {},
-                        "attachment": [
-                            {
-                                "src": ""
-                            }
-                        ],
+                        "attachments": [],
                         "cardStyle": {
                             "id": "i103",
-                            "isCover":false,
+                            "isCover": false,
                             "img": "https://trello.com/1/cards/5bab82a3a3d2f253f1c2b24f/attachments/5bab85e76871700c222f1185/download/Trellotines_2018_NoOneShipsLikeYou_v01.png"
                         }
                     },
@@ -254,11 +257,7 @@
                         "checklists": [],
                         "createdAt": "2021-09-29T10:39:45.795Z",
                         "dueDate": {},
-                        "attachment": [
-                            {
-                                "src": ""
-                            }
-                        ],
+                        "attachments": [],
                         "cardStyle": {}
                     },
                     {
@@ -278,11 +277,7 @@
                         "checklists": [],
                         "createdAt": "2021-09-29T10:41:15.278Z",
                         "dueDate": {},
-                        "attachment": [
-                            {
-                                "src": ""
-                            }
-                        ],
+                        "attachments": [],
                         "cardStyle": {}
                     },
                     {
@@ -295,11 +290,7 @@
                         "checklists": [],
                         "createdAt": "2021-09-29T10:31:51.108Z",
                         "dueDate": {},
-                        "attachment": [
-                            {
-                                "src": "https://www.klipfolio.com/sites/default/files/kpi-example-categories/kpi-category-directory_1.png"
-                            }
-                        ],
+                        "attachments": [],
                         "cardStyle": {}
                     },
                     {
@@ -307,17 +298,12 @@
                         "cardTitle": "Company roadmap",
                         "description": "",
                         "comments": [],
-                        "cardMembers": [
-                          ],
+                        "cardMembers": [],
                         "cardLabelIds": [],
                         "checklists": [],
                         "createdAt": "2021-09-29T10:31:51.108Z",
                         "dueDate": {},
-                        "attachment": [
-                            {
-                                "src": "https://s3.amazonaws.com/thumbnails.venngage.com/template/044a3516-2798-45b9-a010-996e327895c3.png"
-                            }
-                        ],
+                        "attachments": [],
                         "cardStyle": {}
                     }
                 ]
@@ -336,11 +322,7 @@
                         "checklists": [],
                         "createdAt": "2021-09-29T10:43:05.533Z",
                         "dueDate": {},
-                        "attachment": [
-                            {
-                                "src": ""
-                            }
-                        ],
+                        "attachments": [],
                         "cardStyle": {}
                     },
                     {
@@ -370,11 +352,7 @@
                         ],
                         "createdAt": "2021-09-29T10:43:33.347Z",
                         "dueDate": {},
-                        "attachment": [
-                            {
-                                "src": ""
-                            }
-                        ],
+                        "attachments": [],
                         "cardStyle": {}
                     }
                 ]
@@ -393,11 +371,7 @@
                         "checklists": [],
                         "createdAt": "2021-09-29T10:44:55.877Z",
                         "dueDate": {},
-                        "attachment": [
-                            {
-                                "src": ""
-                            }
-                        ],
+                        "attachments": [],
                         "cardStyle": {}
                     },
                     {
@@ -441,11 +415,7 @@
                         "checklists": [],
                         "createdAt": "2021-09-29T10:45:09.933Z",
                         "dueDate": {},
-                        "attachment": [
-                            {
-                                "src": ""
-                            }
-                        ],
+                        "attachments": [],
                         "cardStyle": {}
                     },
                     {
@@ -468,14 +438,8 @@
                         "checklists": [],
                         "createdAt": "2021-09-29T10:47:18.142Z",
                         "dueDate": {},
-                        "attachment": [
-                            {
-                                "src": ""
-                            }
-                        ],
-                        "cardStyle": {
-                           
-                        }
+                        "attachments": [],
+                        "cardStyle": {}
                     },
                     {
                         "cardId": "CRqeXfgC",
@@ -497,11 +461,7 @@
                         "checklists": [],
                         "createdAt": "2021-09-29T10:47:18.142Z",
                         "dueDate": {},
-                        "attachment": [
-                            {
-                                "src": ""
-                            }
-                        ],
+                        "attachments": [],
                         "cardStyle": {
                             "id": "i107",
                             "isCover": true,
@@ -535,11 +495,7 @@
                         "checklists": [],
                         "createdAt": "2021-09-29T10:49:04.509Z",
                         "dueDate": {},
-                        "attachment": [
-                            {
-                                "src": ""
-                            }
-                        ],
+                        "attachments": [],
                         "cardStyle": {}
                     },
                     {
@@ -562,11 +518,7 @@
                         "checklists": [],
                         "createdAt": "2021-09-29T10:50:14.925Z",
                         "dueDate": {},
-                        "attachment": [
-                            {
-                                "src": ""
-                            }
-                        ],
+                        "attachments": [],
                         "cardStyle": {}
                     },
                     {
@@ -582,11 +534,7 @@
                         "checklists": [],
                         "createdAt": "2021-09-29T10:51:04.469Z",
                         "dueDate": {},
-                        "attachment": [
-                            {
-                                "src": ""
-                            }
-                        ],
+                        "attachments": [],
                         "cardStyle": {}
                     }
                 ]
@@ -642,11 +590,7 @@
                         ],
                         "createdAt": "2021-09-29T10:52:16.517Z",
                         "dueDate": {},
-                        "attachment": [
-                            {
-                                "src": ""
-                            }
-                        ],
+                        "attachments": [],
                         "cardStyle": {}
                     },
                     {
@@ -662,11 +606,7 @@
                         "checklists": [],
                         "createdAt": "2021-09-29T10:54:31.838Z",
                         "dueDate": {},
-                        "attachment": [
-                            {
-                                "src": ""
-                            }
-                        ],
+                        "attachments": [],
                         "cardStyle": {}
                     },
                     {
@@ -679,11 +619,7 @@
                         "checklists": [],
                         "createdAt": "2021-09-29T10:55:37.870Z",
                         "dueDate": {},
-                        "attachment": [
-                            {
-                                "src": ""
-                            }
-                        ],
+                        "attachments": [],
                         "cardStyle": {}
                     }
                 ]
@@ -2609,12 +2545,7 @@
                             "date": 1632993490,
                             "isDone": false
                         },
-                        "attachment": [
-                            {
-                                "id": "a123",
-                                "src": "hello/byby.png"
-                            }
-                        ],
+                        "attachments": [],
                         "cardStyle": {
                             "bgColor": "#26de81"
                         }
@@ -2702,7 +2633,7 @@
                         "checklists": [],
                         "createdAt": 1590999730348,
                         "dueDate": {},
-                        "attachment": [],
+                        "attachments": [],
                         "cardStyle": {}
                     }
                 ]
@@ -2721,7 +2652,7 @@
                         "checklists": [],
                         "createdAt": 1590999730348,
                         "dueDate": {},
-                        "attachment": [],
+                        "attachments": [],
                         "cardStyle": {}
                     }
                 ]

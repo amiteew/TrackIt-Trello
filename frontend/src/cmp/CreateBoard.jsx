@@ -9,12 +9,28 @@ import CheckedIcon from '../assets/imgs/icons/checked-icon.svg';
 class _CreateBoard extends React.Component {
     state = {
         title: '',
-        bgStyle: {bgImgUrl: "https://images.unsplash.com/photo-1632918425510-c02e76616549?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1527&q=80"}
+        bgStyle: { bgImgUrl: "https://images.unsplash.com/photo-1632918425510-c02e76616549?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1527&q=80" },
+        // backgrounds: [
+        //     { background gImgUrl: "https://images.unsplash.com/photo-1632813101579-7e7d4dd2c69a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80" },
+        //     { bgImgUrl: "https://images.unsplash.com/photo-1632714394526-1e87d08d56c4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80" },
+        //     { bgImgUrl: "https://images.unsplash.com/photo-1632829754530-d94a588e2dde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" },
+        //     { bgImgUrl: "https://images.unsplash.com/photo-1632918425510-c02e76616549?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1527&q=80" },
+        //     { },
+        //     {},
+        //     {},
+        //     {},
+        //     {}
+        // ],
+        selectedBgIdx: 0
     }
 
     handleChange = (ev) => {
         const value = ev.target.value
         this.setState({ title: value })
+    }
+
+    onSelectBg = () => {
+        // const backgrounds
     }
 
     createBoard = async (ev) => {
@@ -39,23 +55,9 @@ class _CreateBoard extends React.Component {
         }
 
         await this.props.addBoard(newBoard)
-        const {board, onToggleCreateBoard} = this.props
-        if (isFromHeader) onToggleCreateBoard()
-        // console.log('board:', board);
+        const { board, onToggleCreateBoard } = this.props
+        onToggleCreateBoard()
         this.props.history.push(`/boards/${board._id}`)
-    }
-
-    getLabels = () => {
-        let labels = []
-        for (let id = 1; id <= 10; id++) {
-            const label = {
-                "id": utilService.makeId(),
-                "title": "",
-                "color": `clr${id}`
-            }
-            labels.push(label)
-        }
-        return labels
     }
 
     render() {
@@ -77,7 +79,7 @@ class _CreateBoard extends React.Component {
                             </form>
                         </div>
                         <div className="choose-bg">
-
+                            { }
                         </div>
                     </div>
                     <button className={`create-btn${!title ? " disabled" : ""}`} onClick={this.createBoard}>Create board</button>

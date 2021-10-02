@@ -26,10 +26,11 @@
 
 // DYNAMIC_POPOVER
 @import "cmps/dynamicPopover/membersPopover";
-@import "cmps/dynamicPopover/popOverLabels";
-@import "cmps/dynamicPopover/popOverChecklist";
-@import "cmps/dynamicPopover/popOverCover";
-@import "cmps/dynamicPopover/userInfo";
+@import "cmps/dynamicPopover/labelsPopover";
+@import "cmps/dynamicPopover/checklistPopover";
+@import "cmps/dynamicPopover/coversPopover";
+@import "cmps/dynamicPopover/attachmentPopover";
+@import "cmps/dynamicPopover/userInfoPopover";
 
 //CARD
 @import "cmps/cardPreview";
@@ -55,6 +56,8 @@
 @import "cmps/cardDetails/dueDatePreview";
 @import "cmps/cardDetails/labelsList";
 @import "cmps/cardDetails/taskInput";
+@import "cmps/cardDetails/attachments";
+@import "cmps/cardDetails/attachmentsPreview";
 
 // Views (pages)
 @import "pages/home-page";
