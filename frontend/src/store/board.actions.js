@@ -52,7 +52,7 @@ export function loadListAndCard(list, card) {
 export function addBoard(board) {
   return async dispatch => {
     try {
-      const addedBoard = await boardService.add(board)
+      const addedBoard = await boardService.save(board)
       dispatch({ type: 'ADD_BOARD', board: addedBoard })
 
     } catch (err) {
