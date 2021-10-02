@@ -5,8 +5,9 @@
     // top: rem(44px);
     width: 100%;
     line-height: rem(32px);
-    color: $clr10;
+    // color: $clr10;
     // z-index: 1;
+    color: white;
     .header-left {
         gap: 4px;
         .header-title {
@@ -16,10 +17,7 @@
             padding: 0 rem(10px);
             margin: 0;
             border-radius: 3px;
-            &:hover {
-                background-color: #00000029;
-                cursor: pointer;
-            }
+            cursor: pointer;
         }
         .header-title-input input {
             border: none;
@@ -37,26 +35,23 @@
         }
     }
     .board-btn {
-        &:hover {
-            background-color: #00000029;
-        }
         &.star {
             width: rem(32px);
             height: rem(32px);
             font-size: rem(16px);
             margin-right: 3px;
-            &.active{
-                background-color: #00000029;
-                &:hover{
-                    background-color: #0000003d;
-                }
+            &.active {
+                // background-color: #00000029;
+                // &:hover {
+                //     background-color: #0000003d;
+                // }
                 .star-icon {
                     color: #f2d600;
                 }
             }
         }
         &.show-menu {
-            cursor: pointer;
+            // cursor: pointer;
             padding: 0;
             padding-right: rem(12px);
             margin-right: 5px;
@@ -64,8 +59,8 @@
                 // position: relative;
                 padding: 8px;
                 // top: 1px;
-                color: #42526e;
-
+                // color: #42526e;
+                color: white;
                 font-size: rem(16px);
             }
         }
@@ -85,4 +80,33 @@
 
 .menu-content {
     padding: 20px 6px 12px 12px;
+}
+
+.board-btn {
+    border-radius: rem(3px);
+    color: white;
+    background-color: #ffffff3d;
+    &:hover {
+        // background-color: #00000029;
+        background-color: #ffffff52;
+    }
+}
+
+.light-bg {
+    .header-title:hover {
+        background-color: #00000029;
+    }
+    .board-btn {
+        &:hover {
+            background-color: #00000029;
+        }
+        &.star {
+            &.active {
+                background-color: #00000029;
+                &:hover {
+                    background-color: #0000003d;
+                }
+            }
+        }
+    }
 }

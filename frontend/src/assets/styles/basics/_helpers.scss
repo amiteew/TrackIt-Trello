@@ -130,3 +130,18 @@
 .clr10 {
     background-color: $clr10;
 }
+.fancy-scrollbar {
+    &::-webkit-scrollbar {
+        width: 9px;
+        padding-bottom: 4px;
+    }
+    &::-webkit-scrollbar-track {
+        margin-bottom: 4px;
+        border-radius: 1rem;
+        background: #091e4214;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 1rem;
+        background: #bfc3ce;
+    }
+}

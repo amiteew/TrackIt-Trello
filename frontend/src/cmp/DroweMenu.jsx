@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import { ShowMenu } from '../cmp/ShowMenu.jsx';
+import close from '../assets/imgs/close.svg';
 
 export function TemporaryDrawer({ board, toggleMenu, isMenuOpen }) {
 
@@ -23,7 +24,9 @@ export function TemporaryDrawer({ board, toggleMenu, isMenuOpen }) {
         >
             <div className="board-menu-content-header flex">
                 <div className="title"><h3>Menu</h3></div>
-                <span className="exit-icon" onClick={toggleMenu}>X</span>
+                <span className="exit-icon" onClick={toggleMenu}>
+                    <img src={close} alt="Close" />
+                </span>
             </div>
             <Divider />
             <div>

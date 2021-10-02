@@ -68,7 +68,7 @@ class _BoardHeader extends React.Component {
     return (
       <div className="board-header flex align-center space-between wrap">
         <div className="header-left flex align-center">
-          {!isEditTitle && <h1 className="header-title" onClick={this.toggleChangeTitle}>{board.boardTitle}</h1>}
+          {!isEditTitle && <h1 className="board-btn header-title" onClick={this.toggleChangeTitle}>{board.boardTitle}</h1>}
           {isEditTitle &&
             <form onSubmit={this.saveBoardTitle}>
               <AutosizeInput
