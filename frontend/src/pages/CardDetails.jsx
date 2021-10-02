@@ -78,7 +78,7 @@ class _CardDetails extends React.Component {
         const { board } = this.props
         if (!board || currCardIdx === null || currListIdx === null) return <Loading />
         const currCard = board.lists[currListIdx].cards[currCardIdx]
-        return (<div >
+        return (<div className="card-details-wrapper" >
             <div className="screen-card-details" onClick={this.handleClose}></div>
             <div className="card-details" >
                 <CardDetailsHeader board={board}

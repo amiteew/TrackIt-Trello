@@ -9,12 +9,10 @@ export function MembersList({ members, board, currListIdx, currCardIdx, isCardOp
         <div className="members-list flex direction-row">
             <AvatarGroup max={15} className="members-group">
                 {members.map(member =>
-                    <div className="single-member-popover">
                         <SingleMemberPopover key={member._id} member={member}
                             currListIdx={currListIdx} currCardIdx={currCardIdx} currCard={currCard} />
-                        {/* <Avatar className="card-details-avatar hover" alt={member.username}
-                        src={member.imgUrl} key={member._id} /> */}
-                    </div>
+                        /* <Avatar className="card-details-avatar hover" alt={member.username}
+                        src={member.imgUrl} key={member._id} /> */
                 )}
             </AvatarGroup>
             {isCardOpen &&

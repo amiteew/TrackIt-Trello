@@ -87,7 +87,7 @@ class _QuickCardEditor extends React.Component {
         const isCover = card.cardStyle.isCover ? { fullCover: 'full ' + coverStyle, fullTitle: 'full' } : { fullTitle: 'half' }
         console.log('coverstyle', coverStyle);
         return (
-            <div className={"card-preview-contenet pointer"}>
+            <div className={"card-preview-content pointer"}>
                 {card.cardStyle.id && <div className={'card-preview-header ' + coverStyle} style={{backgroundImage: `url(${card.cardStyle.img})`}}></div>}
                 <div className={"card-preview-main-content " + isCover.fullCover}>
                    {isCover.fullTitle === 'half' && <div className="list-card-labels flex"> {card.cardLabelIds && card.cardLabelIds.map(labelId => <CardLabelsPreview key={labelId} labelId={labelId} boardLabels={board.labels} />)}</div>}
