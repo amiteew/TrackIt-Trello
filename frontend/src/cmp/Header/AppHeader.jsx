@@ -35,7 +35,7 @@ class _AppHeader extends React.Component {
                         </div>
                     </nav >
                 </header >
-                {this.state.isCreateBoard && <CreateBoard onToggleCreateBoard={this.onToggleCreateBoard} isFromHeader={true}/>}
+                {this.state.isCreateBoard && <CreateBoard onToggleCreateBoard={this.onToggleCreateBoard} />}
             </>
         )
     }
