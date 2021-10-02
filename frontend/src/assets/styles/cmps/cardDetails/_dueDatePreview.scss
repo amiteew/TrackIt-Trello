@@ -1,10 +1,36 @@
-.due-date-preview {
-    .date {
-        margin-right: rem(6px);
+// .card-details {
+//     .card-details-items {
+#due-date-preview-card {
+    button {
+        background-color: $cardBgcColor;
+        // display: flex;
+        align-items: unset;
+        padding: unset;
+        // padding: rem(6px) rem(12px);
     }
-    .status {
-        padding: 0 4px;
-        color: white;
-        margin: auto 0 auto 8px;
+    .due-date-preview {
+        .gray {
+            background-color: $cardBtnColor;
+            &:hover {
+                background-color: $cardHoverColor;
+            }
+        }
+        h3 {
+            text-align: start;
+        }
+        .date {
+            margin-right: rem(6px);
+        }
+        .status {
+            padding: 0 4px;
+            color: white;
+            margin: auto 0 auto 8px;
+        }
+
+        .overdue {
+            background-color: #ec9488;
+        }
     }
 }
+//     }
+// }

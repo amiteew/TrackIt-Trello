@@ -17,7 +17,7 @@ import { ChecklistListApp } from '../cmp/ChecklistListApp';
 // import Modal from '@mui/material/Modal';
 import { CardDetailsHeader } from '../cmp/CardDetailsHeader.jsx';
 import { CardAttachmentsList } from '../cmp/CardDetails/CardAttachmentsList';
-
+import { DynamicPopover } from '../cmp/DynamicPopover'
 class _CardDetails extends React.Component {
     state = {
         // board: null,
@@ -115,7 +115,23 @@ class _CardDetails extends React.Component {
 
                                 {
                                     currCard.dueDate.date &&
-                                    <DueDatePreview dueDate={currCard.dueDate} onToggleDone={this.onToggleDone} />
+                                    <div id="due-date-preview-card">
+                                        <DynamicPopover type={'dates-edit'} title={'Dates'} titleModal={'Dates'}
+                                            board={board}
+                                            currListIdx={currListIdx}
+                                            currCardIdx={currCardIdx}
+                                            dueDate={currCard.dueDate}
+                                            onToggleDone={this.onToggleDone}
+                                        />
+                                    </div>
+
+
+
+
+                                    // <DueDatePreview dueDate={currCard.dueDate} onToggleDone={this.onToggleDone}
+                                    //     board={board}
+                                    //     currListIdx={currListIdx}
+                                    //     currCardIdx={currCardIdx} />
                                 }
                             </div>
 
