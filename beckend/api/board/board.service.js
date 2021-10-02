@@ -88,7 +88,7 @@ async function save(board) {
 
 function _buildCriteria(userId) {
     let criteria = {}
-    criteria.$or = [{'boardMembers._id':  ObjectId(userId.userId)}, {'createdBy': null}] 
+    criteria.$or = [{'boardMembers._id':  userId.userId}, {'createdBy': null}] 
 
     return criteria;
 }
