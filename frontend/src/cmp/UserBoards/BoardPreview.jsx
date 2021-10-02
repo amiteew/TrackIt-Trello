@@ -5,12 +5,9 @@ import { IconContext } from "react-icons";
 import { FiStar } from 'react-icons/fi';
 
 export function BoardPreview({ board, loggedInUser, toggleStarBoard, isYellow, isLarge }) {
-    const bgStyle = (board.boardStyle.bgImgUrl) ?
-        { backgroundImage: `url(${board.boardStyle.bgImgUrl})` } :
-        { backgroundColor: board.boardStyle.bgColor }
     return (
         <Link to={`/boards/${board._id}`}>
-            <div className="board-preview" style={bgStyle}>
+            <div className="board-preview" style={board.boardStyle}>
                 {(board.boardStyle.bgImgUrl) ? <div className="darken-image"></div> : <></>}
                 <div className="preview-details flex direction-col space-between">
                     <h3 className="board-title">{board.boardTitle}</h3>
