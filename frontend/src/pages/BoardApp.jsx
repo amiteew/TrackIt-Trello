@@ -9,6 +9,7 @@ import { AddList } from '../cmp/AddList.jsx';
 import { Route, Link } from 'react-router-dom';
 import { CardDetails } from '../pages/CardDetails.jsx';
 import { Loading } from '../cmp/Loading.jsx';
+import { socketService } from '../services/socket.service';
 
 class _BoardApp extends React.Component {
     state = {
@@ -23,7 +24,17 @@ class _BoardApp extends React.Component {
         if (!this.props.boards.length) await this.props.loadBoards()
         const { boardId } = this.props.match.params
         this.props.loadBoard(boardId);
-        console.log('board component did mount');
+        socketService.emit('boardId', boardId);
+        socketService.on('board updated', board => {
+            this.props.loadBoard(board._id)
+        })
+        // console.log('board component did mount');
+    }
+
+    componentWillUnmount() {
+        socketService.off('board updated', this.updateSocket)
+        // socketService.off('sending notification', this.resiveNotifi)
+        socketService.terminate()
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -39,7 +50,6 @@ class _BoardApp extends React.Component {
     }
 
     onUpdateBoard = (action, card, txt) => {
-        // const newBoard = { ...this.state.board };
         const { board } = this.props
         this.props.updateBoard(board, action, card, txt);
     }

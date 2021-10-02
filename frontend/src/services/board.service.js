@@ -1,4 +1,4 @@
-// import { httpService } from './http.service'
+import { httpService } from './http.service'
 import { storageService } from './async-storage.service'
 // import { userService } from './user.service'
 // import { socketService, SOCKET_EVENT_REVIEW_ADDED } from './socket.service'
@@ -17,19 +17,20 @@ function query(userId) {
   // this function saves the whole DB locally, but sends only the user boards to the store
   // when we move to backend the server will filter and return only the user boards 
   // the frontend query will simply return it to the store...
-  return storageService.query(BOARD_KEY)
-  .then((boards) => {
-    if (!boards.length) {
-      boards = require('../data/boards.json');
-      storageService.save(BOARD_KEY, boards)
-    }
-    const userBoards = boards.filter(board =>
-      (!board.createdBy || board.boardMembers.some(member => member._id === userId)) //change in json to "id"?
-      )
-      // console.log('usrBrds:', userBoards);
-      return userBoards
-    })
-    // return httpService.get(`boards/${userId}`)
+  // return storageService.query(BOARD_KEY)
+  // .then((boards) => {
+  //   if (!boards.length) {
+  //     boards = require('../data/boards.json');
+  //     storageService.save(BOARD_KEY, boards)
+  //   }
+  //   const userBoards = boards.filter(board =>
+  //     (!board.createdBy || board.boardMembers.some(member => member._id === userId)) //change in json to "id"?
+  //     )
+  //     // console.log('usrBrds:', userBoards);
+  //     return userBoards
+  //   })
+
+    return httpService.get(`boards`, { params: userId })
     // return httpService.get(`board${queryStr}`)
 }
 
@@ -61,18 +62,20 @@ async function add(board) {
 }
 
 function getBoardById(boardId) {
-  return storageService.get(BOARD_KEY, boardId)
+  return httpService.get(`boards/${boardId}`)
+  // return storageService.get(BOARD_KEY, boardId)
 }
 
-
-
 function save(board) {
+  console.log('board', board);
+  
   if (board._id) {
+    return httpService.put(`boards/${board._id}`, board)
     // console.log('board in service.save', board);
-    return storageService.put(BOARD_KEY, board)
+    // return storageService.put(BOARD_KEY, board)
   } else {
     // board.owner = userService.getLoggedinUser()
-    return storageService.post(BOARD_KEY, board)
+    // return storageService.post(BOARD_KEY, board)
   }
 }
 

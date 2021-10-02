@@ -1,4 +1,5 @@
 import { boardService } from '../services/board.service'
+import { socketService } from '../services/socket.service'
 // import { socketService, SOCKET_EVENT_BOARD_ADDED } from '../services/socket.service'
 import { userService } from '../services/user.service'
 import { utilService } from '../services/util.service.js'
@@ -85,6 +86,8 @@ export function updateBoard(board, action, card = {}, txt = "") {
       const activity = _storeSaveActivity(txt, action, card);
       board.activities.unshift(activity);
       await boardService.save(board);
+      socketService.emit('update-board', board);
+      socketService.emit('resieve notification', action);
       dispatch({ type: 'UPDATE_BOARD', board: { ...board } });
     } catch (err) {
       console.log('BoardActions: err in updateBoard', err);

@@ -10,16 +10,20 @@ import { updateBoard } from "../store/board.actions"
 import { MembersListBoard } from "./MembersListBoard"
 import { TemporaryDrawer } from '../cmp/DroweMenu.jsx';
 import { Loading } from "./Loading";
+import { socketService } from "../services/socket.service";
 
 class _BoardHeader extends React.Component {
   state = {
     isEditTitle: false,
     title: '',
-    isMenuOpen: false
+    isMenuOpen: false,
   }
 
   componentDidMount() {
     this.setState({ title: this.props.board.boardTitle })
+    socketService.on('sending notification', notif => {
+      console.log('notifi', notif);
+    })
   }
 
   handleChange = (ev) => {
@@ -59,7 +63,7 @@ class _BoardHeader extends React.Component {
   render() {
     const { board, loggedInUser } = this.props
     if (!loggedInUser || !board) return <Loading />
-    const { title, isEditTitle, isMenuOpen } = this.state
+    const { title, isEditTitle, isMenuOpen, notification } = this.state
     const isStarred = userService.isBoardStarred(board, loggedInUser._id)
     return (
       <div className="board-header flex align-center space-between wrap">
