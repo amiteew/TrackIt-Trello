@@ -24,10 +24,6 @@ class _BoardApp extends React.Component {
         if (!this.props.boards.length) await this.props.loadBoards()
         const { boardId } = this.props.match.params
         this.props.loadBoard(boardId);
-        socketService.emit('boardId', boardId);
-        socketService.on('board updated', board => {
-            this.props.loadBoard(board._id)
-        })
         // console.log('board component did mount');
     }
 
@@ -38,7 +34,11 @@ class _BoardApp extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log('board component did update');
+        const { boardId } = this.props.match.params
+        socketService.emit('boardId', boardId);
+        socketService.on('board updated', board => {
+            this.props.loadBoard(board._id)
+        })
         // if (JSON.stringify(prevState.board) !== JSON.stringify(this.state.board)) {
         //     console.log('changed!!!!', prevState)
         //     const { boardId } = this.props.match.params

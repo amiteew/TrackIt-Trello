@@ -97,5 +97,4 @@ const mapDispatchToProps = {
     loadBoards
 }
 
-
 export const Login = connect(mapStateToProps, mapDispatchToProps)(_Login)

@@ -23,14 +23,14 @@ function query(userId) {
   //     boards = require('../data/boards.json');
   //     storageService.save(BOARD_KEY, boards)
   //   }
-  //   const userBoards = boards.filter(board =>
-  //     (!board.createdBy || board.boardMembers.some(member => member._id === userId)) //change in json to "id"?
-  //     )
+    // const userBoards = boards.filter(board =>
+    //   (!board.createdBy || board.boardMembers.some(member => member._id === userId)) //change in json to "id"?
+    //   )
   //     // console.log('usrBrds:', userBoards);
   //     return userBoards
   //   })
 
-    return httpService.get(`boards`, { params: userId })
+    return httpService.get(`boards`, { userId: userId })
     // return httpService.get(`board${queryStr}`)
 }
 
@@ -70,10 +70,11 @@ function save(board) {
   console.log('board', board);
   
   if (board._id) {
-    return httpService.put(`boards/${board._id}`, board)
+    return httpService.put(`boards/${board._id}`, board);
     // console.log('board in service.save', board);
     // return storageService.put(BOARD_KEY, board)
   } else {
+    return httpService.post(`boards`, board);
     // board.owner = userService.getLoggedinUser()
     // return storageService.post(BOARD_KEY, board)
   }

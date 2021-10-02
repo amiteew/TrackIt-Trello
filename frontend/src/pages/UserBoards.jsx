@@ -26,8 +26,8 @@ class _UserBoards extends React.Component {
         }
         if (!boards.length) {
             console.log('loading boards...');
-            await this.props.loadBoards(loggedInUser._id);
-            console.log('boards loaded');
+            await this.props.loadBoards(loggedInUser._id)
+            console.log('boards loaded',this.props.boards);
         }
         const userBoards = this.removeTemplateBoards(this.props.boards)
         this.setState({ userBoards })

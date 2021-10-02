@@ -4,10 +4,11 @@ const ObjectId = require('mongodb').ObjectId
 
 async function query(userId) {
     try {
-        // const criteria = _buildCriteria(filterBy)        
-        // criteria = {boardMembers}
+        const criteria = _buildCriteria(userId)        
         const collection = await dbService.getCollection('board')
-        var boards = await collection.find({ "boardMembers._id" :"u103"}).toArray()
+
+        let boards = await collection.find(criteria).toArray()
+        // var boards = await collection.find(criteria).toArray()
         return boards
     } catch (err) {
         logger.error('cannot find boards', err)
@@ -83,6 +84,13 @@ async function save(board) {
         }
     }
 
+}
+
+function _buildCriteria(userId) {
+    let criteria = {}
+    criteria.$or = [{'boardMembers._id':  ObjectId(userId.userId)}, {'createdBy': null}] 
+
+    return criteria;
 }
 
 module.exports = {
