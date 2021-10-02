@@ -1,0 +1,86 @@
+.dates-popover {
+    .react-datepicker {
+        margin-top: 10px;
+        border: none;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+            "Helvetica Neue", sans-serif;
+        width: 100%;
+
+        .react-datepicker__day-names {
+            padding: rem(8px) 0;
+            margin-bottom: 10px;
+
+            .react-datepicker__day-name {
+                color: rgb(107, 119, 140);
+                font-size: rem(11px);
+                font-weight: 400;
+                text-transform: uppercase;
+                text-align: center;
+                white-space: nowrap;
+            }
+        }
+
+        .react-datepicker__day-names {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        }
+
+        .react-datepicker__month-container {
+            margin-bottom: 20px;
+            .react-datepicker__week {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            }
+        }
+
+        .react-datepicker__current-month {
+            text-align: center;
+            cursor: default;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 8px 0 8px;
+            color: $blueColor;
+        }
+
+        button.react-datepicker__navigation.react-datepicker__navigation--next {
+            margin-left: 105px;
+        }
+
+        button.react-datepicker__navigation.react-datepicker__navigation--previous,
+        button.react-datepicker__navigation.react-datepicker__navigation--next {
+            background-color: white;
+            border-radius: 4px;
+            &:hover {
+                background-color: $cardHoverColor;
+            }
+        }
+        .react-datepicker__day {
+            padding: 8px;
+            text-align: center;
+            cursor: pointer;
+            &:hover {
+                background-color: $cardHoverColor;
+                border-radius: 8px;
+            }
+            &.react-datepicker__day--keyboard-selected {
+                border-radius: 8px;
+                background-color: $blueColor;
+                color: white;
+            }
+        }
+    }
+    .btn-date-save,
+    .btn-date-remove {
+        cursor: pointer;
+        padding: 6px 12px;
+        margin-bottom: 10px;
+        border-radius: 3px;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+    .btn-date-save {
+        background: $blueColor;
+        color: white;
+    }
+}

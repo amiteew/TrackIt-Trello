@@ -11,6 +11,7 @@ import AddIcon from '@mui/icons-material/Add';
 import AttachFileOutlinedIcon from '@mui/icons-material/AttachFileOutlined';
 import { LabelPreview } from '../LabelPreview';
 import { BsThreeDots } from "react-icons/bs";  //merge conflict- is this needed here? <AW>
+import { DueDatePreview } from '../DueDatePreview';
 
 class _DynamicButton extends React.Component {
     render() {
@@ -32,6 +33,8 @@ class _DynamicButton extends React.Component {
                     return <><CheckBoxOutlinedIcon /> Checklist</>
                 case 'dates':
                     return <><ScheduleOutlinedIcon /> Date</>
+                case 'dates-edit':
+                    return <><DueDatePreview  {...props} /> </>
                 case 'attachments':
                     return <><AttachFileOutlinedIcon className="attachment-icon" /> Attachments</>
                 case 'add-attachments':
