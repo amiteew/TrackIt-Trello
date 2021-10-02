@@ -6,8 +6,7 @@ async function query(userId) {
     try {
         const criteria = _buildCriteria(userId)        
         const collection = await dbService.getCollection('board')
-
-        let boards = await collection.find(criteria).toArray()
+        const boards = await collection.find(criteria).toArray()
         // var boards = await collection.find(criteria).toArray()
         return boards
     } catch (err) {

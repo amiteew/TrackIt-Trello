@@ -4,9 +4,7 @@ const logger = require('../../services/logger.service');
 // GET Boards
 async function getBoards(req, res) {
     try {
-        var userId = req.query; 
-        console.log('req query', userId);
-               
+        var userId = req.query;                
         const boards = await boardService.query(userId)
         res.json(boards);
     } catch (err) {

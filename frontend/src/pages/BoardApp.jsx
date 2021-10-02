@@ -24,29 +24,31 @@ class _BoardApp extends React.Component {
         if (!this.props.boards.length) await this.props.loadBoards()
         const { boardId } = this.props.match.params
         this.props.loadBoard(boardId);
+        console.log('boardid', boardId);
+        socketService.setup();
+        socketService.emit('boardId', boardId);
+        socketService.on('board updated', board => {
+            this.props.loadBoard(board._id)
+        })
         // console.log('board component did mount');
     }
 
     componentWillUnmount() {
-        socketService.off('board updated', this.updateSocket)
+        socketService.off('board updated', this.updateSocket);
+        socketService.off('boardId');
         // socketService.off('sending notification', this.resiveNotifi)
         socketService.terminate()
     }
 
     componentDidUpdate(prevProps, prevState) {
         const { boardId } = this.props.match.params
-        socketService.emit('boardId', boardId);
-        socketService.on('board updated', board => {
-            this.props.loadBoard(board._id)
-        })
-        // if (JSON.stringify(prevState.board) !== JSON.stringify(this.state.board)) {
-        //     console.log('changed!!!!', prevState)
-        //     const { boardId } = this.props.match.params
-        //     boardService.getBoardById(boardId)
-        //         .then((board) => {
-        //             this.setState({ board })
-        //         })
-        // }
+        console.log('prevprops', prevProps);
+        if(prevProps.board && boardId !== prevProps.board._id){
+            this.props.loadBoard(boardId)
+        }
+        // socketService.on('board updated', board => {
+        //     this.props.loadBoard(board._id)
+        // })
     }
 
     onUpdateBoard = (action, card, txt) => {
