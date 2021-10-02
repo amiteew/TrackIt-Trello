@@ -1,5 +1,5 @@
 import { storageService } from './async-storage.service'
-// import { httpService } from './http.service'
+import { httpService } from './http.service'
 // import { socketService, SOCKET_EVENT_USER_UPDATED } from './socket.service'
 
 const USER_KEY = 'usersDB'
@@ -19,20 +19,20 @@ export const userService = {
 }
 getUsers()
 function getUsers() {
-    return storageService.query(USER_KEY)
-        .then((users) => {
-            if (!users.length) {
-                users = require('../data/users.json');
-                storageService.save(USER_KEY, users)
-                return users
-            }
-        })
-    // return httpService.get(`user`)
+    // return storageService.query(USER_KEY)
+    //     .then((users) => {
+    //         if (!users.length) {
+    //             users = require('../data/users.json');
+    //             storageService.save(USER_KEY, users)
+    //             return users
+    //         }
+    //     })
+    return httpService.get(`user`);
 }
 
 async function getById(userId) {
-    const user = await storageService.get(USER_KEY, userId)
-    // const user = await httpService.get(`user/${userId}`)
+    // const user = await storageService.get(USER_KEY, userId)
+    const user = await httpService.get(`user/${userId}`)
     // gWatchedUser = user;
     return user;
 }
@@ -50,28 +50,32 @@ async function update(user) {
 }
 
 async function login(userCred) {
-    const users = await storageService.query(USER_KEY)
-    const user = users.find(user => user.username === userCred.username)
+    // console.log('usercred',userCred);
+    
+    // const users = await storageService.query(USER_KEY)
+    console.log('userCred', userCred);
+    
+    const user = await httpService.post('auth/login', userCred)
+    // const user = users.find(user => user.username === userCred.username)
     if (!user) {
         throw new Error('login service error')
     }
     return _saveLocalUser(user)
 
-    // const user = await httpService.post('auth/login', userCred)
     // socketService.emit('set-user-socket', user._id);
     // if (user) return _saveLocalUser(user)
 }
 async function signup(userCred) {
     userCred.initials = _getUserInitials(userCred.fullname)
-    const user = await storageService.post(USER_KEY, userCred)
-    // const user = await httpService.post('auth/signup', userCred)
+    // const user = await storageService.post(USER_KEY, userCred)
+    const user = await httpService.post('auth/signup', userCred)
     // socketService.emit('set-user-socket', user._id);
     return _saveLocalUser(user)
 }
 async function logout() {
-    sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+    // sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
     // socketService.emit('unset-user-socket');
-    // return await httpService.post('auth/logout')
+    return await httpService.post('auth/logout')
 }
 
 function getLoggedinUser() {

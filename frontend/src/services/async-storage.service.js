@@ -9,10 +9,6 @@ export const storageService = {
     save
 }
 
-
-// CHANGES TEST
-
-
 function query(entityType, delay = 0) {
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
     // console.log('entities', entities);

@@ -9,7 +9,8 @@ import CheckedIcon from '../assets/imgs/icons/checked-icon.svg';
 class _CreateBoard extends React.Component {
     state = {
         title: '',
-        bgStyle: {bgImgUrl: "https://images.unsplash.com/photo-1632918425510-c02e76616549?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1527&q=80"}
+        bgStyle: {bgImgUrl: "https://images.unsplash.com/photo-1632918425510-c02e76616549?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1527&q=80"},
+
     }
 
     handleChange = (ev) => {
@@ -40,14 +41,13 @@ class _CreateBoard extends React.Component {
 
         await this.props.addBoard(newBoard)
         const {board, onToggleCreateBoard} = this.props
-        if (isFromHeader) onToggleCreateBoard()
-        // console.log('board:', board);
+        onToggleCreateBoard()
         this.props.history.push(`/boards/${board._id}`)
     }
 
     getLabels = () => {
         let labels = []
-        for (let id = 1; id <= 10; id++) {
+        for (let id = 1; id <= 6; id++) {
             const label = {
                 "id": utilService.makeId(),
                 "title": "",
@@ -77,7 +77,7 @@ class _CreateBoard extends React.Component {
                             </form>
                         </div>
                         <div className="choose-bg">
-
+                            {}
                         </div>
                     </div>
                     <button className={`create-btn${!title ? " disabled" : ""}`} onClick={this.createBoard}>Create board</button>

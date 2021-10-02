@@ -85,7 +85,6 @@ class _QuickCardEditor extends React.Component {
         const id = open ? 'simple-popover' : undefined;
         const coverStyle = card.cardStyle.img ? 'img-cover' : card.cardStyle.color
         const isCover = card.cardStyle.isCover ? { fullCover: 'full ' + coverStyle, fullTitle: 'full' } : { fullTitle: 'half' }
-        console.log('coverstyle', coverStyle);
         return (
             <div className={"card-preview-content pointer"}>
                 {card.cardStyle.id && <div className={'card-preview-header ' + coverStyle} style={{backgroundImage: `url(${card.cardStyle.img})`}}></div>}
