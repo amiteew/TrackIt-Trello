@@ -156,7 +156,8 @@ class _CardDetails extends React.Component {
                         <div className="card-details-sidebar">
                             <AddToCard board={board}
                                 currListIdx={currListIdx}
-                                currCardIdx={currCardIdx} />
+                                currCardIdx={currCardIdx}
+                                handleClose={this.handleClose} />
                         </div>
                     </div>
                 </div >

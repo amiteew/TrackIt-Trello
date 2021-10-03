@@ -41,6 +41,10 @@ class _DynamicButton extends React.Component {
                     return <>Add an attachment</>
                 case 'cover':
                     return <><CallToActionOutlinedIcon /> <span>Cover</span></>
+                case 'delete-card':
+                    return <div className="btn-delete-card"> - Delete</div>
+                case 'move-card':
+                    return <> Move</>
                 case 'userMenu': {
                     return <>
                         <Avatar alt="" src={loggedInUser.imgUrl} className="logged-in-avatar">

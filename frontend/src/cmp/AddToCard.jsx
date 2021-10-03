@@ -1,9 +1,10 @@
 import React from 'react';
 import { DynamicPopover } from './DynamicPopover';
 import { JoinCard } from './CardDetails/JoinCard';
+import { ArchiveButtoms } from './CardDetails/ArchiveButtoms';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 
-export function AddToCard({ board, currListIdx, currCardIdx, OnUpdateBoard }) {
+export function AddToCard({ board, currListIdx, currCardIdx, OnUpdateBoard, handleClose }) {
     const currCard = board.lists[currListIdx].cards[currCardIdx]
     return (
         <div className="add-to-card">
@@ -48,6 +49,19 @@ export function AddToCard({ board, currListIdx, currCardIdx, OnUpdateBoard }) {
                     currCardIdx={currCardIdx}
                 />}
 
+
+                <h4>ACTIONS</h4>
+
+                <DynamicPopover type={'move-card'} titleModal={'Move Card'}
+                    board={board}
+                    currListIdx={currListIdx}
+                    currCardIdx={currCardIdx}
+                />
+
+                <ArchiveButtoms currCard={currCard}
+                    currListIdx={currListIdx} currCardIdx={currCardIdx}
+                    handleClose={handleClose}
+                />
             </div>
         </div>
     )
