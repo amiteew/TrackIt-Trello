@@ -23,7 +23,7 @@ export function loadBoard(boardId) {
   return async dispatch => {
     try {
       const board = !boardId ? null : await boardService.getBoardById(boardId)
-      dispatch({ type: 'SET_BOARD', board })
+      dispatch({ type: 'SET_BOARD', board: { ...board } })
       // socketService.on(SOCKET_EVENT_BOARD_ADDED, (board) =>{
       //   dispatch({ type: 'ADD_BOARD', board })
       // })
@@ -74,7 +74,7 @@ export function removeBoard(boardId) {
 
 export function toggleLabels() {
   return dispatch => {
-      dispatch({ type: 'TOGGLE_LABELS' })
+    dispatch({ type: 'TOGGLE_LABELS' })
   }
 }
 
@@ -86,11 +86,15 @@ export function updateBoard(board, action, card = {}, txt = "") {
       const activity = _storeSaveActivity(txt, action, card);
       board.activities.unshift(activity);
       await boardService.save(board);
+      dispatch({ type: 'UPDATE_BOARD', board: { ...board } });
       socketService.emit('update-board', board);
       // socketService.emit('resieve notification', action);
-      dispatch({ type: 'UPDATE_BOARD', board: { ...board } });
     } catch (err) {
+      // console.log('board id: ', board._id)
+      // loadBoard(board._id)
+      // dispatch({ type: 'UPDATE_BOARD', board: { ...board } });
       console.log('BoardActions: err in updateBoard', err);
+      // console.log('after loadboard')
     }
   }
 }
