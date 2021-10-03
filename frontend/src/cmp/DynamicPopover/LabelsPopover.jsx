@@ -5,12 +5,16 @@ import { loadBoards, removeBoard, addBoard, updateBoard } from '../../store/boar
 import DoneIcon from '@mui/icons-material/Done';
 import { BsPencil } from "react-icons/bs";
 import { TextareaAutosize } from '@mui/material';
+import { EditLabel } from './EditLabel.jsx';
+import { DynamicPopover } from '../DynamicPopover.jsx';
 
 class _LabelsPopover extends React.Component {
     state = {
         board: null,
         currListIdx: null,
-        currCardIdx: null
+        currCardIdx: null,
+        isCreate: false,
+        currLabel:''
     }
 
     componentDidMount() {
@@ -37,12 +41,22 @@ class _LabelsPopover extends React.Component {
         return (currCard.cardLabelIds.some(cardLabelId => cardLabelId === labelId))
     }
 
+    editLabel = (label) => (ev) => {
+        ev.stopPropagation();
+        this.setState({ ...this.state, isCreate: !this.state.isCreate, currLabel: label })
+    }
+
+    toggleEditLabel = () =>{
+        this.setState({ ...this.state, isCreate: !this.state.isCreate })
+    }
+
     render() {
-        const { board, currListIdx, currCardIdx } = this.state
+        const { board, currListIdx, currCardIdx, isCreate, currLabel } = this.state
         if (!board || currCardIdx === null || currListIdx === null) return <></>
         const currCard = board.lists[currListIdx].cards[currCardIdx]
         return (
             <section className="label-popover">
+              { !isCreate && <div>
                 <TextareaAutosize
                     className="search-labels text-area-auto"
                     placeholder="Search labels..."
@@ -60,11 +74,20 @@ class _LabelsPopover extends React.Component {
                             {label.title}
                             {this.isLabelOnCard(currCard, label.id) && <DoneIcon />}
                         </div>
-                        <div className="edit-label-icon">
+                        <div onClick={this.editLabel(label)} className="edit-label-icon pointer">
                             <BsPencil />
                         </div>
                     </div>
                 ))}
+                <div className="pointer" onClick={this.toggleEditLabel}>Create a new label</div>
+                </div>}
+                {isCreate && <EditLabel
+                    board={board}
+                    currListIdx={currListIdx}
+                    currCardIdx={currCardIdx}
+                    toggleEditLabel={this.toggleEditLabel}
+                    currlabel={currLabel}
+                />}
             </section>
         )
     }

@@ -14,6 +14,7 @@ import { TemporaryDrawer } from '../cmp/DroweMenu.jsx';
 import { AttachmentsPopover } from './DynamicPopover/AttachmentsPopover';
 import { MuiPickersUtilsProvider, DatePicker, TimePicker, DateTimePicker, } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
+import { removeUser } from '../store/user.actions';
 
 export class DynamicPopover extends React.Component {
     state = {

@@ -66,7 +66,7 @@ async function login(userCred) {
     // if (user) return _saveLocalUser(user)
 }
 async function signup(userCred) {
-    userCred.initials = _getUserInitials(userCred.fullname)
+    userCred.initials = _getUserInitials(userCred.fullname)        
     // const user = await storageService.post(USER_KEY, userCred)
     const user = await httpService.post('auth/signup', userCred)
     // socketService.emit('set-user-socket', user._id);

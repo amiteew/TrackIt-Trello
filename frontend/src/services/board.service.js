@@ -6,7 +6,7 @@ import { storageService } from './async-storage.service'
 const BOARD_KEY = 'boardsDB'
 
 export const boardService = {
-  add,
+  // add,
   query,
   remove,
   getBoardById,
@@ -50,16 +50,15 @@ function query(userId) {
 function remove(boardId) {
   // return httpService.delete(`board/${boardId}`)
   return storageService.remove(BOARD_KEY, boardId)
-
 }
-async function add(board) {
-  // const addedBoard = await httpService.post(`board`, board)
-  // board.byUser = userService.getLoggedinUser()
-  // board.aboutUser = await userService.getById(board.aboutUserId)
+// async function add(board) {
+//   // const addedBoard = await httpService.post(`board`, board)
+//   // board.byUser = userService.getLoggedinUser()
+//   // board.aboutUser = await userService.getById(board.aboutUserId)
 
-  const addedBoard = storageService.post(BOARD_KEY, board)
-  return addedBoard
-}
+//   const addedBoard = storageService.post(BOARD_KEY, board)
+//   return addedBoard
+// }
 
 function getBoardById(boardId) {
   return httpService.get(`boards/${boardId}`)
