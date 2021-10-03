@@ -1,5 +1,43 @@
 .move-copy-card-popover {
     .board-title {
-        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .card-title {
+        margin-bottom: 20px;
+        #title {
+            padding: 5px 5px;
+        }
+    }
+    .copy-to {
+        margin-bottom: 10px;
+    }
+    .list-position {
+        margin-bottom: 15px;
+        & > div:nth-child(1) {
+            width: 200px;
+        }
+        & > div:nth-child(1),
+        & > div:nth-child(2) {
+            background-color: $cardBgcColor;
+            &:hover {
+                background-color: $cardHoverColor;
+            }
+        }
+        #list,
+        #select-list,
+        #select-position,
+        #position {
+            margin-left: 5px;
+            margin-top: 5px;
+        }
+    }
+    button {
+        background-color: $blueColor;
+        color: white;
+        padding: 6px 12px;
+        &:hover {
+            opacity: 0.8;
+        }
     }
 }
