@@ -12,6 +12,8 @@ import { DynamicButton } from './DynamicCmps/DynamicButton';
 import { UserMenuPopover } from './DynamicPopover/UserMenuPopover';
 import { TemporaryDrawer } from '../cmp/DroweMenu.jsx';
 import { AttachmentsPopover } from './DynamicPopover/AttachmentsPopover';
+import { DeleteCardPopover } from './DynamicPopover/DeleteCardPopover';
+import { MoveCopyCardPopover } from './DynamicPopover/MoveCopyCardPopover';
 import { MuiPickersUtilsProvider, DatePicker, TimePicker, DateTimePicker, } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import { removeUser } from '../store/user.actions';
@@ -77,6 +79,12 @@ export class DynamicPopover extends React.Component {
                     return <UserMenuPopover {...props} />
                 case 'boardMenu':
                     return <TemporaryDrawer {...props} />
+                case 'delete-card':
+                    return <DeleteCardPopover {...props} />
+                case 'move-card':
+                    return <MoveCopyCardPopover {...props} />
+                case 'copy-card':
+                    return <MoveCopyCardPopover {...props} isCopy={true} />
                 default:
                     break;
             }

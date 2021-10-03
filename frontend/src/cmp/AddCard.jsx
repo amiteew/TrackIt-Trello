@@ -30,6 +30,7 @@ export class _AddCard extends React.Component {
         const newCard = {
             cardId: utilService.makeId(),
             cardTitle,
+            isArchived: false,
             description: "",
             comments: [],
             cardMembers: [],

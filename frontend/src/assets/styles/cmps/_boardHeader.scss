@@ -55,6 +55,7 @@
             padding: 0;
             padding-right: rem(12px);
             margin-right: 5px;
+            max-height: 32px;
             .icon {
                 // position: relative;
                 padding: 8px;
@@ -64,6 +65,9 @@
                 font-size: rem(16px);
             }
         }
+    }
+    .menu-visible {
+        max-height: 32px;
     }
     .MuiAvatar-root {
         // font-size: 28px;
@@ -76,10 +80,6 @@
             opacity: 0.8;
         }
     }
-}
-
-.menu-content {
-    padding: 20px 6px 12px 12px;
 }
 
 .board-btn {

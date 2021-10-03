@@ -107,8 +107,7 @@ class _BoardApp extends React.Component {
 
     render() {
         const { board } = this.props;
-        if (!board) return <Loading />
-        console.log('board', board);
+        if (!board || !Object.keys(board).length) return <Loading />
         // const bgStyle = (board.boardStyle.bgImgUrl) ?
         //     { backgroundImage: `url(${board.boardStyle.bgImgUrl})` } :
         //     { backgroundColor: board.boardStyle.bgColor }

@@ -54,6 +54,9 @@
         color: white;
         border-radius: 3px;
         background-color: #1db79a;
+        &.start {
+            align-self: flex-start;
+        }
         &:hover {
             background-color: #45cbb2;
         }

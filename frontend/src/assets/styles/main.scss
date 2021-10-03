@@ -33,6 +33,8 @@
 @import "cmps/dynamicPopover/userInfoPopover";
 @import "cmps/dynamicPopover/editLabelPopOver";
 @import "cmps/dynamicPopover/datesPickerPopover";
+@import "cmps/dynamicPopover/deleteCardPopover";
+@import "cmps/dynamicPopover/moveCopyCardPopover";
 
 //CARD
 @import "cmps/cardPreview";
@@ -51,7 +53,7 @@
 @import "cmps/cardDetails/cardActivities";
 @import "cmps/cardDetails/commentPreview";
 @import "cmps/cardDetails/activityPreview";
-@import "cmps/cardDetails/addToCard";
+@import "cmps/cardDetails/cardSideBar";
 @import "cmps/cardDetails/cardChecklistApp";
 @import "cmps/cardDetails/addNewTask";
 @import "cmps/cardDetails/taskPreview";
