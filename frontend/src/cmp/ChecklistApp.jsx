@@ -8,71 +8,62 @@ import { ChecklistTask } from './ChecklistTask'
 import { AddNewTask } from './AddNewTask';
 class _ChecklistApp extends React.Component {
     state = {
-        board: null,
-        currListIdx: null,
-        currCardIdx: null,
-        checklistIdx: null,
-        isAddItem: false
+        isAddItem: false,
+        currChecklist: null,
+        title: null
     }
 
     componentDidMount() {
-        const { board, currListIdx, currCardIdx, checklistIdx } = this.props
-        this.setState({ board, currListIdx, currCardIdx, checklistIdx })
+        const { currCard, checklistIdx } = this.props
+        const currChecklist = currCard.checklists[checklistIdx]
+        const title = currChecklist.title
+        this.setState({ ...this.state, currChecklist, title })
     }
 
-    onDeleteChecklist = async () => {
-        const { currListIdx, currCardIdx, board, checklistIdx } = this.state
-        const currCard = board.lists[currListIdx].cards[currCardIdx]
-        const title = currCard.checklists[checklistIdx].title
-        const boardToUpdate = { ...this.state.board }
-        boardToUpdate.lists[currListIdx].cards[currCardIdx].checklists.splice(checklistIdx, 1)
+    onDeleteChecklist = () => {
+        const { title } = this.state
+        const { board, currCard, checklistIdx } = this.props
+        currCard.checklists.splice(checklistIdx, 1)
         const action = `Deleted Checklist ${title}`
-        await this.props.updateBoard(boardToUpdate, action, currCard)
+        this.props.updateBoard(board, action, currCard)
     }
 
-    onDeleteTask = async (taskIdx) => {
-        const { currListIdx, currCardIdx, board, checklistIdx } = this.state
-        const currCard = board.lists[currListIdx].cards[currCardIdx]
-        const title = currCard.checklists[checklistIdx].title
-        const boardToUpdate = { ...this.state.board }
-        boardToUpdate.lists[currListIdx].cards[currCardIdx].checklists[checklistIdx].tasks.splice(taskIdx, 1)
+    onDeleteTask = (taskIdx) => {
+        const { currChecklist, title } = this.state
+        const { board, currCard } = this.props
+        currChecklist.tasks.splice(taskIdx, 1)
         const action = `Deleted item on Checklist "${title}" `
-        await this.props.updateBoard(boardToUpdate, action, currCard)
+        this.props.updateBoard(board, action, currCard)
     }
 
 
-    onEditTask = async (taskIdx, updateIsDone, newTaskTxt) => {
-        const { currListIdx, currCardIdx, board, checklistIdx } = this.state
-        const currCard = board.lists[currListIdx].cards[currCardIdx]
-        const title = currCard.checklists[checklistIdx].title
-        const boardToUpdate = { ...this.state.board }
-        boardToUpdate.lists[currListIdx].cards[currCardIdx].checklists[checklistIdx].tasks[taskIdx].isDone = updateIsDone
-        boardToUpdate.lists[currListIdx].cards[currCardIdx].checklists[checklistIdx].tasks[taskIdx].txt = newTaskTxt
+    onEditTask = (taskIdx, updateIsDone, newTaskTxt) => {
+        const { currChecklist, title } = this.state
+        const { board, currCard } = this.props
+        currChecklist.tasks[taskIdx].isDone = updateIsDone
+        currChecklist.tasks[taskIdx].txt = newTaskTxt
         const action = `Updated "${newTaskTxt}" on Checklist "${title}" `
-        await this.props.updateBoard(boardToUpdate, action, currCard)
+        this.props.updateBoard(board, action, currCard)
     }
 
-    onAddTask = async (txt) => {
-        const { currListIdx, currCardIdx, board, checklistIdx } = this.state
-        const currCard = board.lists[currListIdx].cards[currCardIdx]
-        const title = currCard.checklists[checklistIdx].title
-        const boardToUpdate = { ...this.state.board }
-        boardToUpdate.lists[currListIdx].cards[currCardIdx].checklists[checklistIdx].tasks.push(
+    onAddTask = (txt) => {
+        const { currChecklist, title } = this.state
+        const { board, currCard } = this.props
+        currChecklist.tasks.push(
             { id: utilService.makeId(), txt: txt, isDone: false }
         )
         const action = `Added item "${txt}" on Checklist "${title}" `
-        await this.props.updateBoard(boardToUpdate, action, currCard)
+        this.props.updateBoard(board, action, currCard)
     }
 
     onIsAddItem = () => {
-
         this.setState({ ...this.state, isAddItem: !this.state.isAddItem })
     }
 
     render() {
-        const { board, currListIdx, currCardIdx, checklistIdx, isAddItem } = this.state
-        if (!board || currCardIdx === null || currListIdx === null || checklistIdx === null) return <></>
-        const currChecklist = board.lists[currListIdx].cards[currCardIdx].checklists[checklistIdx]
+        const { isAddItem, currChecklist } = this.state
+        const { board, checklistIdx } = this.props
+        if (!board || checklistIdx === null) return <></>
         if (!currChecklist) return <></>
         return (
             <div className="checklist-app">
@@ -99,7 +90,7 @@ class _ChecklistApp extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        boards: state.boardReducer.boards,
+        board: state.boardReducer.board,
         loggedInUser: state.userReducer.loggedInUser
     }
 }
