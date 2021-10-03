@@ -1,11 +1,21 @@
 .add-to-card {
     .join-to-card {
-        margin-bottom: 20px;
+        margin-bottom: 25px;
     }
     .btn-container {
         display: grid;
         gap: 8px 8px;
         grid-template-columns: 1fr 1fr;
+        h4 {
+            margin-top: 25px;
+        }
+        & :nth-child(11) {
+            background-color: #b14632;
+            color: white;
+            &:hover {
+                opacity: 0.8;
+            }
+        }
     }
     h4 {
         grid-column: 1/-1;
@@ -41,6 +51,12 @@
             // flex-direction: column;
             grid-template-columns: 168px;
             // margin: 0 24px;
+            & :nth-child(6) {
+                margin-bottom: 25px;
+            }
+            h4 {
+                margin-top: 0;
+            }
         }
     }
 }

@@ -3,7 +3,6 @@ import { MembersList } from './MembersList.jsx';
 import { CardCheckPreview } from './CardCheckPreview.jsx';
 import { CardCommentPreview } from './CardCommentPreview.jsx';
 import { CardVisibilityPreview } from './CardVisibilityPreview.jsx';
-import { AddToCard } from './AddToCard.jsx';
 import { BsPencil } from "react-icons/bs";
 import { GrTextAlignFull } from "react-icons/gr";
 import { connect } from 'react-redux';
@@ -87,9 +86,9 @@ class _QuickCardEditor extends React.Component {
         const isCover = card.cardStyle.isCover ? { fullCover: 'full ' + coverStyle, fullTitle: 'full' } : { fullTitle: 'half' }
         return (
             <div className={"card-preview-content pointer"}>
-                {card.cardStyle.id && <div className={'card-preview-header ' + coverStyle} style={{backgroundImage: `url(${card.cardStyle.img})`}}></div>}
+                {card.cardStyle.id && <div className={'card-preview-header ' + coverStyle} style={{ backgroundImage: `url(${card.cardStyle.img})` }}></div>}
                 <div className={"card-preview-main-content " + isCover.fullCover}>
-                   {isCover.fullTitle === 'half' && <div className="list-card-labels flex"> {card.cardLabelIds && card.cardLabelIds.map(labelId => <CardLabelsPreview key={labelId} labelId={labelId} boardLabels={board.labels} />)}</div>}
+                    {isCover.fullTitle === 'half' && <div className="list-card-labels flex"> {card.cardLabelIds && card.cardLabelIds.map(labelId => <CardLabelsPreview key={labelId} labelId={labelId} boardLabels={board.labels} />)}</div>}
                     {!isEditTitle && <span className={"card-preview-title " + isCover.fullCover}>{card.cardTitle}</span>}
                     {isEditTitle &&
                         // <Popover

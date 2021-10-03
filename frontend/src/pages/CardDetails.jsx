@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 // import { boardService } from '../services/board.service.js';
 import { loadBoards, removeBoard, addBoard, updateBoard, loadListAndCard } from '../store/board.actions.js';
 import { Loading } from '../cmp/Loading';
-import { AddToCard } from '../cmp/AddToCard';
+import { CardSideBar } from '../cmp/CardSideBar';
 import { MembersList } from '../cmp/MembersList'
 import { CardLabelsList } from '../cmp/CardLabelsList';
 import { CardActivities } from '../cmp/CardDetails/CardActivities'
@@ -154,7 +154,7 @@ class _CardDetails extends React.Component {
                                 OnUpdateBoard={this.OnUpdateBoard} />
                         </div>
                         <div className="card-details-sidebar">
-                            <AddToCard board={board}
+                            <CardSideBar board={board}
                                 currListIdx={currListIdx}
                                 currCardIdx={currCardIdx}
                                 handleClose={this.handleClose} />

@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import DeleteIcon from '@mui/icons-material/Delete';
+import RedoIcon from '@mui/icons-material/Redo';
 import { updateBoard } from '../../store/board.actions.js';
 import { DynamicPopover } from '../DynamicPopover.jsx';
 
@@ -24,11 +26,11 @@ class _ArchiveButtoms extends React.Component {
             <>
                 {
                     !currCard.isArchived &&
-                    <button onClick={this.onToggleArchived}>Archive</button>
+                    <button onClick={this.onToggleArchived}><DeleteIcon />Archive</button>
                 }
                 {
                     currCard.isArchived && <>
-                        <button onClick={this.onToggleArchived}>Send to board</button>
+                        <button onClick={this.onToggleArchived}><RedoIcon />Send to board</button>
                         <DynamicPopover type={'delete-card'} titleModal={'Delete card?'}
                             onDeleteCard={this.onDeleteCard} />
                     </>
