@@ -1,10 +1,30 @@
+.MuiPaper-root {
+    top: 44px !important;
+}
+
+.menu-screen {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 339px;
+    left: 0;
+    // z-index: 1;
+    background-color: transparent;
+}
+
 .board-menu-content {
+    // z-index: 1;
+    background-color: #f4f5f7;
+    color: #172b4d;
     box-sizing: border-box;
     height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
-    padding: rem(12px) rem(6px) rem(12px) rem(12px);
+    // overflow-x: hidden;
+    // overflow-y: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    // padding: rem(12px) rem(6px) rem(12px) rem(12px);
     width: rem(339px);
+    padding: 12px 6px 12px 12px;
 
     .board-menu-content-header {
         align-items: center;
@@ -14,24 +34,66 @@
         .title {
             flex: 1;
             line-height: 20px;
-            margin: 14px 32px;
+            margin: 2px 32px 14px 32px;
             overflow: hidden;
             text-align: center;
             text-overflow: ellipsis;
-            transition: margin .12s ease-in;
+            transition: margin 0.12s ease-in;
             white-space: nowrap;
-        }
-
-        .exit-icon{
-            font-size: rem(20px);
-            position: absolute;
-            right: rem(23px);
-            top: rem(23px);
-
-            &:hover{
-                cursor: pointer;
+            h3 {
+                margin: 0;
             }
         }
 
+        .exit-icon {
+            font-size: rem(20px);
+            position: absolute;
+            // right: rem(23px);
+            // top: rem(23px);
+            right: 6px;
+            top: 13px;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.menu-content {
+    height: calc(100vh - 44px - 48px);
+    // height: calc(100vh - 92px);
+    overflow-y: auto;
+    padding-inline-end: 6px;
+    // padding: 20px 6px 12px 12px;
+    > div {
+        padding: 12px 0;
+    }
+    .board-actions .menu-action-btn {
+        font-weight: 600;
+        line-height: 20px;
+        padding: 6px;
+        padding-inline-start: 40px;
+        width: 100%;
+        text-align: start;
+        color: #172b4d;
+        background-color: transparent;
+        position: relative;
+        &:hover {
+            background-color: #091e4214;
+        }
+        // h3 {
+        //     margin: 0;
+        //     font-size: rem(14px);
+        // }
+        .change-bg-preview {
+            position: absolute;
+            left: 12px;
+            height: 20px;
+            width: 20px;
+            border-radius: 3px;
+            background-position: 50%;
+            background-size: cover;
+        }
     }
 }
