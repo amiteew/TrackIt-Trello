@@ -11,15 +11,12 @@ import { MembersListBoard } from "./MembersListBoard"
 import { TemporaryDrawer } from '../cmp/DroweMenu.jsx';
 import { Loading } from "./Loading";
 import { socketService } from "../services/socket.service";
-import { DynamicBoardMenu } from "./DynamicBoardMenu";
 
 class _BoardHeader extends React.Component {
   state = {
     isEditTitle: false,
     title: '',
     isMenuOpen: false,
-    menuTitle: 'Menu',
-    menuTarget: 'main'
   }
 
   componentDidMount() {
@@ -60,18 +57,13 @@ class _BoardHeader extends React.Component {
   }
 
   toggleMenu = () => {
-    const { isMenuOpen } = this.state
-    this.setState(prevState => ({ ...prevState, isMenuOpen: !isMenuOpen }))
-    // this.setState(prevState => ({ ...prevState, isMenuOpen: !isMenuOpen, menuTitle: 'Menu', menuTarget: 'main' }))
-  }
-
-  changeMenu = (menuTitle, menuTarget) => {
-    this.setState(prevState => ({ ...prevState, menuTitle, menuTarget }))
+    this.setState({ isMenuOpen: !this.state.isMenuOpen })
   }
 
   render() {
     const { board, loggedInUser } = this.props
-    const { title, isEditTitle, isMenuOpen, menuTarget, menuTitle, notification } = this.state
+    if (!loggedInUser || !board) return <Loading />
+    const { title, isEditTitle, isMenuOpen, notification } = this.state
     const isStarred = userService.isBoardStarred(board, loggedInUser._id)
     return (
       <div className="board-header flex align-center space-between wrap">
@@ -107,9 +99,7 @@ class _BoardHeader extends React.Component {
           <span className="icon flex justify-center align-center"><BsThreeDots /> </span>
           <span className="title">Show menu</span>
         </button>}
-        {isMenuOpen && <DynamicBoardMenu board={board} toggleMenu={this.toggleMenu}
-          isMenuOpen={isMenuOpen} target={menuTarget} title={menuTitle} changeMenu={this.changeMenu} />}
-        {/* {isMenuOpen && <TemporaryDrawer board={board} toggleMenu={this.toggleMenu} isMenuOpen={isMenuOpen} />} */}
+        {isMenuOpen && <TemporaryDrawer board={board} toggleMenu={this.toggleMenu} isMenuOpen={isMenuOpen} />}
       </div>
     )
   }
@@ -117,6 +107,7 @@ class _BoardHeader extends React.Component {
 
 function mapStateToProps(state) {
   return {
+    boards: state.boardReducer.boards,
     loggedInUser: state.userReducer.loggedInUser
   }
 }

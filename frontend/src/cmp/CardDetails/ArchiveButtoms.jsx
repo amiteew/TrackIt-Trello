@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import DeleteIcon from '@mui/icons-material/Delete';
 import RedoIcon from '@mui/icons-material/Redo';
+import { BsArchive } from "react-icons/bs";
 import { updateBoard } from '../../store/board.actions.js';
 import { DynamicPopover } from '../DynamicPopover.jsx';
 
