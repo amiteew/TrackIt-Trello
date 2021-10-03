@@ -57,3 +57,14 @@
         }
     }
 }
+
+.create-label{
+    background-color: #091e420a;
+    margin: 8px 0;
+    border-radius: 3px;
+    padding: rem(12px) 0;
+    text-align: center;
+    &:hover{
+        background-color: #091e4214;
+    }
+}

@@ -8,6 +8,7 @@ class _EditLabel extends React.Component {
     state = {
         labelName: '',
         labelColor: '',
+        isDelete: false
     }
 
     componentDidMount() {
@@ -47,36 +48,44 @@ class _EditLabel extends React.Component {
         const labelIdx = board.labels.findIndex(label => label.id === currlabel.id)
         board.labels.splice(labelIdx, 1);
         this.props.updateBoard(board);
+    }
 
+    confirmDeleteLabel = () => {
+        this.setState({ ...this.state, isDelete: !this.state.isDelete })
     }
 
     render() {
-        const { labelName } = this.state;
+        const { labelName, isDelete } = this.state;
         const { board, currlabel } = this.props;
-        console.log('currlabel', currlabel);
-        // const labelName = currlabel ? currlabel.title : '';
         return (
             <div>
-                <TextareaAutosize className="text-area-auto"
-                    value={labelName}
-                    aria-label="empty textarea"
-                    onChange={this.handleChange}
-                    onKeyPress={this.handleChange}
-                    // onBlur={this.onAddCard}
-                    autoFocus
-                />
-                <div className="color-plate">
-                    {board.labels.map(label => (
-                        <div key={label.id} className={`color-sqr pointer + ${label.color}`} onClick={() => this.labelChoose(label.color)} >
-
-                        </div>))}
-                </div>
-                {currlabel && <div className="pointer" onClick={this.deleteLabel}>Delete</div>}
-                <div className="pointer" onClick={this.onSaveLabel}>Save</div>
+                {!isDelete && <div>
+                    <label className="edit-labels-label">Name</label>
+                    <TextareaAutosize className="text-area-auto label-input"
+                        value={labelName}
+                        aria-label="empty textarea"
+                        onChange={this.handleChange}
+                        onKeyPress={this.handleChange}
+                        autoFocus
+                    />
+                    <label className="edit-labels-label">Select a color</label>
+                    <div className="color-plate">
+                        {board.labels.map(label => (
+                            <div key={label.id} className={`color-sqr pointer + ${label.color}`} onClick={() => this.labelChoose(label.color)} >
+                            </div>))}
+                    </div>
+                    <div className="edit-labels-actions flex space-between">
+                    <div className="edit-labels-btn save pointer" onClick={this.onSaveLabel}>Save</div>
+                    {currlabel && <div className="edit-labels-btn delete pointer" onClick={this.confirmDeleteLabel}>Delete</div>}
+                    </div>
+                </div>}
+                {isDelete && <div>
+                    <p className="edit-label-delete">There is no undo. This will remove this label from all cards and destroy its history.</p>
+                    <div className="edit-labels-btn delete deleted pointer" onClick={this.deleteLabel}>Delete</div>
+                </div>}
             </div>
         )
     }
-
 }
 function mapStateToProps(state) {
     return {

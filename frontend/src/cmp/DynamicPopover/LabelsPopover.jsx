@@ -79,15 +79,18 @@ class _LabelsPopover extends React.Component {
                         </div>
                     </div>
                 ))}
-                <div className="pointer" onClick={this.toggleEditLabel}>Create a new label</div>
+                <div className="create-label pointer" onClick={this.toggleEditLabel}>Create a new label</div>
                 </div>}
-                {isCreate && <EditLabel
+               
+                {isCreate &&  <div><EditLabel
                     board={board}
                     currListIdx={currListIdx}
                     currCardIdx={currCardIdx}
                     toggleEditLabel={this.toggleEditLabel}
                     currlabel={currLabel}
-                />}
+                />
+                {/* <DynamicPopover type={'edit-label'}/> */}
+               </div>}
             </section>
         )
     }

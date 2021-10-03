@@ -19,6 +19,7 @@ import { removeUser } from '../store/user.actions';
 export class DynamicPopover extends React.Component {
     state = {
         anchorEl: null,
+        isEditLabel: false
     }
 
     handleClick = (event) => {
@@ -34,11 +35,18 @@ export class DynamicPopover extends React.Component {
         console.log('im in DynamicPopover.handleDateChange');
     }
 
+    handleLabel = () => {
+        this.setState({ ...this.state, isEditLabel: !this.state.isEditLabel })
+    }
+
     render() {
-        const { type, title, titleModal } = this.props
-        const { anchorEl } = this.state
+        let { type, title, titleModal } = this.props
+        const { anchorEl, isEditLabel } = this.state
         const open = Boolean(anchorEl);
-        const id = open ? 'simple-popover' : undefined;
+        let id = open ? 'simple-popover' : undefined;
+        if (this.props.type === 'edit-label') {
+            titleModal = 'Change label';
+        }
 
         const DynamicCmp = (props) => {
             switch (props.type) {
@@ -66,11 +74,12 @@ export class DynamicPopover extends React.Component {
                     return <UserMenuPopover {...props} />
                 case 'boardMenu':
                     return <TemporaryDrawer {...props} />
+                case 'edit-label':
+                    return this.handleLabel
                 default:
                     break;
             }
         }
-
         return (
             <React.Fragment>
                 <button onClick={this.handleClick}>
@@ -92,7 +101,8 @@ export class DynamicPopover extends React.Component {
                         <button className="close-popover" onClick={this.handleClose}></button>
                     </div>
                     <div className="popover-content-container">
-                        <DynamicCmp type={type} {...this.props} handleClose={this.handleClose} />
+                        {isEditLabel && <p>hello</p>}
+                        {!isEditLabel && <DynamicCmp type={type} {...this.props} handleClose={this.handleClose} />}
                     </div>
                 </Popover >
             </React.Fragment>
