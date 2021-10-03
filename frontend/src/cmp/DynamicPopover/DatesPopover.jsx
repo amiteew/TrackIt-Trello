@@ -1,36 +1,53 @@
 import React from 'react';
-
 import { connect } from 'react-redux';
 import { loadBoards, removeBoard, addBoard, updateBoard } from '../../store/board.actions.js';
 import DatePicker from "react-datepicker";
 
+
 class _DatesPopover extends React.Component {
     state = {
-        board: null,
-        currListIdx: null,
-        currCardIdx: null,
-        startDate: new Date(),
-        setStartDate: new Date()
+        date: null,
     }
 
     componentDidMount() {
         const { board, currListIdx, currCardIdx } = this.props
-        this.setState({ board, currListIdx, currCardIdx })
+        const currCard = board.lists[currListIdx].cards[currCardIdx]
+        const date = (currCard.dueDate.date) ? new Date(currCard.dueDate.date) : Date.now()
+        this.setState({ date })
     }
 
-    handleDateChange = () => {
-        console.log('im in DatesPopover.handleDateChange');
+    handleDateSelect = (date) => {
+        this.setState({ ...this.state, date: new Date(date) })
+    }
+
+    onSaveDate = (date) => {
+        const { board, currListIdx, currCardIdx } = this.props
+        const currCard = board.lists[currListIdx].cards[currCardIdx]
+        currCard.dueDate = {
+            date: date,
+            isDone: false
+        }
+        this.props.updateBoard(board, 'Added a new due date', currCard)
+        this.props.handleClose()
     }
 
     render() {
-        const { board, currListIdx, currCardIdx, startDate, setStartDate } = this.state
-        if (!board || currCardIdx === null || currListIdx === null) return <></>
-        const currCard = board.lists[currListIdx].cards[currCardIdx]
+        const { date } = this.state
+        if (!date) return <></>
         return (
-            <DatePicker
-                selected={startDate}
-                onChange={(date) => setStartDate(date)}
-            />
+            <div className="dates-popover">
+                <DatePicker
+                    onSelect={(date) => this.handleDateSelect(date)}
+                    startDate={new Date()}
+                    openToDate={date}
+                    inline
+                    formatWeekDay={nameOfDay => nameOfDay.substr(0, 3)}
+                />
+                <div className=" flex direction-col">
+                    <button className="btn-date-save" onClick={() => this.onSaveDate(this.state.date)}>Save</button>
+                    <button className="btn-date-remove" onClick={() => this.onSaveDate(null)}>Remove</button>
+                </div>
+            </div>
         )
     }
 }

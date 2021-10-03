@@ -52,6 +52,7 @@ export class DynamicPopover extends React.Component {
                     return <LabelsPopover {...props} />
                 case 'labels-preview':
                     return <LabelsPopover {...props} />
+                case 'dates-edit':
                 case 'dates':
                     return <DatesPopover {...props} />
                 case 'attachments':

@@ -42,7 +42,7 @@ class _BoardApp extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
         const { boardId } = this.props.match.params
-        console.log('prevprops', prevProps);
+        // console.log('prevprops', prevProps);
         if(prevProps.board && boardId !== prevProps.board._id){
             this.props.loadBoard(boardId)
         }
@@ -107,14 +107,15 @@ class _BoardApp extends React.Component {
     render() {
         const { board } = this.props;
         if (!board) return <Loading />
-        const bgStyle = (board.boardStyle.bgImgUrl) ?
-            { backgroundImage: `url(${board.boardStyle.bgImgUrl})` } :
-            { backgroundColor: board.boardStyle.bgColor }
+        console.log('board', board);
+        // const bgStyle = (board.boardStyle.bgImgUrl) ?
+        //     { backgroundImage: `url(${board.boardStyle.bgImgUrl})` } :
+        //     { backgroundColor: board.boardStyle.bgColor }
         return (
             <section className="board-app flex direction-col">
                 <Route exact component={CardDetails} path="/boards/:boardId/:listId/:cardId" />
                 <BoardHeader board={board} onUpdateBoard={this.onUpdateBoard} />
-                <div className="board-background" style={bgStyle}></div>
+                <div className="board-background" style={board.boardStyle}></div>
                 <div className="board-canvas flex">
                     <DragDropContext onDragEnd={this.onDragEnd}>
                         <BoardList board={board} lists={board.lists} onUpdateBoard={this.onUpdateBoard} className="board" />

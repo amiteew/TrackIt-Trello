@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import { userService } from '../services/user.service.js';
 import { loadBoards, loadBoard, updateBoard } from '../store/board.actions.js';
+import { socketService } from '../services/socket.service.js';
 
 import { BoardPreview } from '../cmp/UserBoards/BoardPreview'
 import { Loading } from '../cmp/Loading';
@@ -32,6 +32,10 @@ class _UserBoards extends React.Component {
         const userBoards = this.removeTemplateBoards(this.props.boards)
         this.setState({ userBoards })
         this.props.loadBoard(null)
+        socketService.setup()
+    }
+    componentWillUnmount() {
+        socketService.terminate()
     }
 
     removeTemplateBoards = (boards) => {
