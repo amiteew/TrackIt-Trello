@@ -19,28 +19,32 @@ class _DynamicButton extends React.Component {
         const DynamicCmp = (props) => {
             switch (props.type) {
                 case 'members':
-                    return <><PersonOutlineOutlinedIcon /> Members</>
+                case 'change members':
+                    return <><PersonOutlineOutlinedIcon />{props.title}</>
                 case 'add-members':
                 case 'add-labels':
                     return <><AddIcon /></>
                 case 'list actions':
                     return <><BsThreeDots /></>
                 case 'labels':
-                    return <><LocalOfferOutlinedIcon /> Labels</>
+                case 'edit labels':
+                    return <><LocalOfferOutlinedIcon /> {props.title}</>
                 case 'labels-preview':
                     return <LabelPreview {...props} />
                 case 'checklist':
                     return <><CheckBoxOutlinedIcon /> Checklist</>
                 case 'dates':
-                    return <><ScheduleOutlinedIcon /> Date</>
+                    return <><ScheduleOutlinedIcon />{props.title}</>
                 case 'dates-edit':
+                case 'edit-dates':
                     return <><DueDatePreview  {...props} /> </>
                 case 'attachments':
                     return <><AttachFileOutlinedIcon className="attachment-icon" /> Attachments</>
                 case 'add-attachments':
                     return <>Add an attachment</>
                 case 'cover':
-                    return <><CallToActionOutlinedIcon /> <span>Cover</span></>
+                case 'change cover':
+                    return <><CallToActionOutlinedIcon /> <span>{props.title}</span></>
                 case 'userMenu': {
                     return <>
                         <Avatar alt="" src={loggedInUser.imgUrl} className="logged-in-avatar">

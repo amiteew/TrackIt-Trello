@@ -85,9 +85,11 @@ export class ListPreview extends React.Component {
                                 </span>}
                         </div>
                     </section >
+
                 )
                 }
             </Draggable>
+
         )
     }
 }

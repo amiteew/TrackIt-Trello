@@ -57,6 +57,7 @@ class _BoardApp extends React.Component {
     }
 
     onDragEnd = (res) => {
+        console.log('res dnd', res);
         const { destination, source, draggableId, type } = res;
         const { board } = this.props
         if (!destination) return;

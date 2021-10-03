@@ -13,6 +13,7 @@ class _CardLabelsPreview extends React.Component {
         const { labelId, boardLabels } = this.props
         const isOpen = this.props.isLabelOpen ? ' label-preview-open' : '';
         const currLabel = boardLabels.find(label => label.id === labelId)
+        if(currLabel.color === 'clr11') return <> </>
         return (
             <div onClick={this.onToggleLabel} className={`${currLabel.color} label-card${isOpen}`}>
                 {isOpen && currLabel.title}

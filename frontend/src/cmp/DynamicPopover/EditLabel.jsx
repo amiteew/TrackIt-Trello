@@ -8,11 +8,13 @@ class _EditLabel extends React.Component {
     state = {
         labelName: '',
         labelColor: '',
-        isDelete: false
+        isDelete: false,
+        labelsColor: []
     }
 
     componentDidMount() {
         const { currlabel } = this.props;
+        this.createLabelsArr();
         if (currlabel) this.setState({ labelName: currlabel.title });
     }
 
@@ -54,9 +56,18 @@ class _EditLabel extends React.Component {
         this.setState({ ...this.state, isDelete: !this.state.isDelete })
     }
 
+    createLabelsArr = () => {
+        let labelsColor = [];
+        let clrNum = 1;
+        for (let i = 0; i < 11; i++) {
+            labelsColor.push('clr' + clrNum++);
+        }
+        this.setState({ ...this.state, labelsColor })
+    }
     render() {
-        const { labelName, isDelete } = this.state;
-        const { board, currlabel } = this.props;
+        const { labelName, isDelete, labelsColor } = this.state;
+        const { currlabel } = this.props;
+
         return (
             <div>
                 {!isDelete && <div>
@@ -70,13 +81,14 @@ class _EditLabel extends React.Component {
                     />
                     <label className="edit-labels-label">Select a color</label>
                     <div className="color-plate">
-                        {board.labels.map(label => (
-                            <div key={label.id} className={`color-sqr pointer + ${label.color}`} onClick={() => this.labelChoose(label.color)} >
+                        {labelsColor.map(label => (
+                            <div className={`color-sqr pointer + ${label}`} onClick={() => this.labelChoose(label)} >
                             </div>))}
+                        <p className="label-no-color">No color</p>
                     </div>
                     <div className="edit-labels-actions flex space-between">
-                    <div className="edit-labels-btn save pointer" onClick={this.onSaveLabel}>Save</div>
-                    {currlabel && <div className="edit-labels-btn delete pointer" onClick={this.confirmDeleteLabel}>Delete</div>}
+                        <div className="edit-labels-btn save pointer" onClick={this.onSaveLabel}>Save</div>
+                        {currlabel && <div className="edit-labels-btn delete pointer" onClick={this.confirmDeleteLabel}>Delete</div>}
                     </div>
                 </div>}
                 {isDelete && <div>
@@ -87,6 +99,7 @@ class _EditLabel extends React.Component {
         )
     }
 }
+
 function mapStateToProps(state) {
     return {
         boards: state.boardReducer.boards

@@ -50,6 +50,11 @@
 
 }
 
+.label-no-color {
+    margin: unset;
+    color: $clr10;
+}
+
 .edit-label-delete {
     color: $clr10;
     width: rem(280px);

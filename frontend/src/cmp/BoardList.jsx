@@ -9,7 +9,7 @@ export function BoardList({ lists, onUpdateBoard, board }) {
                 <div className="all-lists flex" {...provided.droppableProps} ref={provided.innerRef}>
                     {lists.map((list, index) => (
                         <ListPreview key={list.listId} board={board} list={list} currListIdx={index} onUpdateBoard={onUpdateBoard} />))}
-                    {provided.placeholder}
+                        {provided.placeholder}
                 </div>
             )}
         </Droppable>

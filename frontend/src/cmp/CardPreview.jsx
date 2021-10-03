@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom';
 
 class _CardPreview extends React.Component {
 
-    state ={
+    state = {
         isEditMode: false
     }
 
@@ -16,31 +16,29 @@ class _CardPreview extends React.Component {
         console.log('is dragging', this.props.draggingOver);
     }
 
-    onEditMode = () =>{
-        this.setState({isEditMode: !this.state.isEditMode})
+    onEditMode = () => {
+        this.setState({ isEditMode: !this.state.isEditMode })
     }
 
     onSelectedCard = () => {
         const { list, board, card } = this.props;
         this.props.loadListAndCard(list, card);
-        if(this.state.isEditMode) return;
+        if (this.state.isEditMode) return;
         this.props.history.push(`/boards/${board._id}/${list.listId}/${card.cardId}`);
     }
- 
+
     render() {
         const { card, currCardIdx, currListIdx, list } = this.props
+        if(card.isArchived) return <></>
         return (
             <Draggable draggableId={card.cardId} index={currCardIdx}>
                 {(provided, snapshot) => (
-                    <div onClick={this.onSelectedCard} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} isdraggingover={snapshot.draggingOver}>
-                        {/* <Link className="flex" to={`/boards/${board._id}/${list.listId}/${card.cardId}`}> */}
-                            <QuickCardEditor isEditMode={this.onEditMode} list={list} card={card} currListIdx={currListIdx} currCardIdx={currCardIdx} />
-                        {/* </Link> */}
+                    <div onClick={this.onSelectedCard} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+                        <QuickCardEditor list={list} card={card} currListIdx={currListIdx} currCardIdx={currCardIdx} onEditMode={this.onEditMode} isDragging={snapshot.isDragging} />
                     </div>
                 )
                 }
             </Draggable>
-
         )
     }
 }

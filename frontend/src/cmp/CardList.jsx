@@ -4,17 +4,15 @@ import { Droppable } from 'react-beautiful-dnd';
 export function CardList({ cards, list, onUpdateBoard, board, currListIdx }) {
     if (!cards) return <> </>
     return (
-        <section className="all-cards">
-            <Droppable droppableId={list.listId} type="card">
-                {provided => (
-                    <div ref={provided.innerRef} {...provided.droppableProps}>
+        <Droppable droppableId={list.listId} type="card">
+            {(provided, snapshot) => (
+                <section className="all-cards" ref={provided.innerRef} {...provided.droppableProps}>
                         {cards.map((card, index) => (
                             <CardPreview key={card.cardId} board={board} currListIdx={currListIdx} list={list} currCardIdx={index} card={card} onUpdateBoard={onUpdateBoard} />
                         ))}
-                        {provided.placeholder}
-                    </div>
-                )}
-            </Droppable>
-        </section>
+                    {provided.placeholder}
+                </section>
+            )}
+        </Droppable>
     )
 }

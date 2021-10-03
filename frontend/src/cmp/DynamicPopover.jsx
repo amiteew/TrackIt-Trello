@@ -52,21 +52,24 @@ export class DynamicPopover extends React.Component {
             switch (props.type) {
                 case 'members':
                 case 'add-members':
+                case 'change members':
                     return <MembersPopover {...props} />
                 case 'list actions':
                     return <ActionList {...props} />
                 case 'labels':
                 case 'add-labels':
+                case 'edit labels':
                     return <LabelsPopover {...props} />
                 case 'labels-preview':
                     return <LabelsPopover {...props} />
                 case 'dates-edit':
-                case 'dates':
+                case 'edit-dates':
                     return <DatesPopover {...props} />
                 case 'attachments':
                 case 'add-attachments':
                     return <AttachmentsPopover {...props} />
                 case 'cover':
+                case 'change cover':
                     return <CoverPopover {...props} />
                 case 'checklist':
                     return <ChecklistPopover {...props} />
@@ -74,8 +77,6 @@ export class DynamicPopover extends React.Component {
                     return <UserMenuPopover {...props} />
                 case 'boardMenu':
                     return <TemporaryDrawer {...props} />
-                case 'edit-label':
-                    return this.handleLabel
                 default:
                     break;
             }

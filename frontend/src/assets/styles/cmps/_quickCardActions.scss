@@ -1,0 +1,43 @@
+.quick-card-actions {
+    left: 100%;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    transform: translateX(-20px);
+    transition: opacity 85ms ease-in, transform 85ms ease-in;
+    width: 240px;
+    opacity: 1;
+    transform: translateX(0);
+
+    &.fade-in {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .quick-card-actions-btn {
+        button {
+            display: flex;
+            align-items: center;
+            background: #0009;
+            border-radius: 3px;
+            clear: both;
+            color: #e6e6e6;
+            // display: block;
+            float: left;
+            margin: 0 0 4px 8px;
+            padding: 6px 12px 6px 8px;
+            transition: transform 85ms ease-in;
+
+            &:hover {
+                background: #000c;
+                color: #fff;
+                transform: translateX(5px);
+            }
+
+            svg {
+                font-size: rem(16px);
+                margin-right: rem(4px);
+            }
+        }
+    }
+}
