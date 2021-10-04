@@ -80,17 +80,18 @@ export function toggleLabels() {
 
 // when we move to backend this function will check if the board has 'createBy'
 // if not- it's a template and it should only update the store, NOT the server!
-export function updateBoard(board, action = null, card = {}, txt = "") {
+export function updateBoard(board, action = null, card = '', txt = "") {
   return async dispatch => {
     try {
       if (action) {        
         var activity = _storeSaveActivity(action, card, txt);
         board.activities.unshift(activity);        
-        if (activity.isNotif) socketService.emit('resieve notification', activity);
       }
+      console.log('board before backend', board);
       await boardService.save(board);
       dispatch({ type: 'UPDATE_BOARD', board: { ...board } });
       socketService.emit('update-board', board);
+      if (action && activity.isNotif) socketService.emit('resieve notification', true);
       // socketService.emit('resieve notification', action);
     } catch (err) {
       // console.log('board id: ', board._id)
@@ -104,14 +105,14 @@ export function updateBoard(board, action = null, card = {}, txt = "") {
 
 function _storeSaveActivity(action, card, txt) {
 
-  const cardCopy = { ...card } // MAYBE WE DONT NEED IT
+  // const cardCopy = { ...card } // MAYBE WE DONT NEED IT
   const activity = {
     id: utilService.makeId(),
     txt,
     createdAt: Date.now(),
     byMember: userService.getLoggedinUser(),
     action,
-    card: { cardId: cardCopy.cardId, cardTitle: cardCopy.cardTitle },
+    card: card ? { cardId: card.cardId, cardTitle: card.cardTitle } : '',
     isNotif: false,
   }
   console.log('activity', activity);

@@ -39,7 +39,8 @@ function connectSockets(http, session) {
         })
         socket.on('resieve notification', notif => {
             console.log('Emitting notification', notif);
-            socket.to(socket.myTopic).emit('sending notification', notif)
+            // gIo.emit('sending notification', notif)
+            gIo.emit('sending notification', notif)
         })
     })
 }

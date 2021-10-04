@@ -42,7 +42,7 @@ class _ChecklistApp extends React.Component {
         const { board, currCard } = this.props
         currChecklist.tasks[taskIdx].isDone = updateIsDone
         currChecklist.tasks[taskIdx].txt = newTaskTxt
-
+        console.log('checklist', currChecklist);
         if (currChecklist.tasks.every(task => task.isDone)) {
             var action = `Completed checklist`
             this.props.updateBoard(board, action, currCard)

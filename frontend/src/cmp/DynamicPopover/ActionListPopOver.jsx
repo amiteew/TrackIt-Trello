@@ -8,7 +8,7 @@ export function ActionList({ list, board, onUpdateBoard }) {
         board.lists.splice(listIdx, 1);
         console.log('board from delete', board);
         const action = `Deleted list ${list.listTitle}`;
-        onUpdateBoard(board, action);
+        onUpdateBoard(action);
     }
 
     return (

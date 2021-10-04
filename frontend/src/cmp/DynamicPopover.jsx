@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -17,6 +17,7 @@ import { MoveCopyCardPopover } from './DynamicPopover/MoveCopyCardPopover';
 import { MuiPickersUtilsProvider, DatePicker, TimePicker, DateTimePicker, } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import { removeUser } from '../store/user.actions';
+import {NotifPopover} from './DynamicPopover/NotifPopover';
 
 export class DynamicPopover extends React.Component {
     state = {
@@ -86,6 +87,9 @@ export class DynamicPopover extends React.Component {
                     return <MoveCopyCardPopover {...props} />
                 case 'copy-card':
                     return <MoveCopyCardPopover {...props} isCopy={true} />
+                case 'newNotif':
+                case 'noNotif':
+                    return <NotifPopover {...props} />
                 default:
                     break;
             }

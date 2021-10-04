@@ -14,6 +14,8 @@ import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 import { LabelPreview } from '../LabelPreview';
 import { BsThreeDots } from "react-icons/bs";  //merge conflict- is this needed here? <AW>
 import { DueDatePreview } from '../DueDatePreview';
+import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 
 class _DynamicButton extends React.Component {
     render() {
@@ -61,6 +63,10 @@ class _DynamicButton extends React.Component {
                         </Avatar>
                     </>
                 }
+                case 'newNotif':
+                    return <NotificationsActiveOutlinedIcon />
+                case 'noNotif':
+                    return <NotificationsNoneIcon /> 
                 default:
                     return props.type
             }
