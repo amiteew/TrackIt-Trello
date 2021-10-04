@@ -3,13 +3,18 @@ const { Socket } = require('socket.io');
 const logger = require('./logger.service');
 
 var gIo = null
-
 function connectSockets(http, session) {
     gIo = require('socket.io')(http, {
         cors: {
-            origin: '*',
+            origin: 'http://localhost:3000',
+            methods: ['GET', 'POST']
         }
     })
+    const sharedSession = require('express-socket.io-session')
+    gIo.use(sharedSession(session, {
+        autoSave: true
+    }))
+
     gIo.on('connection', socket => {
         console.log('New socket', socket.id)
         socket.on('disconnect', socket => {
@@ -33,14 +38,13 @@ function connectSockets(http, session) {
             socket.join(boardId)
             socket.myTopic = boardId;
         })
+
         socket.on('update-board', board => {
             console.log('Emitting update board', board.boardTitle);
             socket.to(socket.myTopic).emit('board updated', board)
         })
-        socket.on('resieve notification', notif => {
-            console.log('Emitting notification', notif);
-            // gIo.emit('sending notification', notif)
-            gIo.to(socket.myTopic).emit('sending notification', notif)
+        socket.on('resieve notification', () => {
+            socket.broadcast.to(socket.myTopic).emit('sending notification', true)
         })
     })
 }
@@ -75,6 +79,17 @@ async function broadcast({ type, data, room = null, userId }) {
     } else {
         excludedSocket.broadcast.emit(type, data)
     }
+}
+
+async function _getBoardSockets(boardId, userId) {
+    let sockets = await _getAllSockets();
+    console.log(userId);
+    console.log('board', boardId);
+    return sockets.filter(s => {
+        console.log(s.userId === userId);
+        return s.myTopic == boardId && s.userId !== userId
+    })
+
 }
 
 async function _getUserSocket(userId) {

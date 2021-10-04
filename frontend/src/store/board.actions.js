@@ -1,5 +1,5 @@
 import { boardService } from '../services/board.service'
-import { socketService } from '../services/socket.service'
+import { emitToUser, socketService } from '../services/socket.service'
 // import { socketService, SOCKET_EVENT_BOARD_ADDED } from '../services/socket.service'
 import { userService } from '../services/user.service'
 import { utilService } from '../services/util.service.js'
@@ -91,8 +91,7 @@ export function updateBoard(board, action = null, card = '', txt = "") {
       dispatch({ type: 'UPDATE_BOARD', board: { ...board } });
       await boardService.save(board);
       socketService.emit('update-board', board);
-      if (action && activity.isNotif) socketService.emit('resieve notification', true);
-      // socketService.emit('resieve notification', action);
+      if (action && activity.isNotif) socketService.emit('resieve notification');
     } catch (err) {
       // console.log('board id: ', board._id)
       // loadBoard(board._id)
@@ -101,6 +100,28 @@ export function updateBoard(board, action = null, card = '', txt = "") {
       // console.log('after loadboard')
     }
   }
+}
+
+export function setNotif(isNotif) {
+  return async dispatch => {
+    try {
+      dispatch({ type: 'SET_NOTIF', isNotif: isNotif });
+    } catch (err) {
+      console.log('Cannot update notification', err);
+    }
+  }
+
+}
+
+export function setNotifCount(count) {
+  return async dispatch => {
+    try {
+      dispatch({ type: 'SET_NOTIFCOUNT', notifCount: count });
+    } catch (err) {
+      console.log('Cannot update notification', err);
+    }
+  }
+
 }
 
 function _storeSaveActivity(action, card, txt) {

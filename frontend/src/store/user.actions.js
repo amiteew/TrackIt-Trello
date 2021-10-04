@@ -1,6 +1,6 @@
 import { userService } from "../services/user.service.js";
 // import { showErrorMsg } from '../services/event-bus.service.js'
-// import { socketService, SOCKET_EMIT_USER_WATCH, SOCKET_EVENT_USER_UPDATED } from "../services/socket.service.js";
+import { socketService } from '../services/socket.service'
 
 export function loadUsers() {
     return async dispatch => {
@@ -18,14 +18,15 @@ export function loadUsers() {
 
 export function updateUser(user) {
     return async dispatch => {
-      try {
-        await userService.update(user);
-        dispatch({ type: 'SET_USER', user });
-      } catch (err) {
-        console.log('err in updateUser:', err);
-      }
+        try {
+            await userService.update(user);
+            dispatch({ type: 'SET_USER', user });
+            // socket.emit('set-user-socket',user.id)
+        } catch (err) {
+            console.log('err in updateUser:', err);
+        }
     }
-  }
+}
 
 export function removeUser(userId) {
     return async dispatch => {
