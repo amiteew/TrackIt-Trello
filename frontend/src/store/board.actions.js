@@ -122,7 +122,7 @@ function _filterActionsNotif(activity) {
     case 'Added':
     case 'Removed':
     // DUE DATE
-    case 'Added due date':
+    case 'Set due date':
     case 'Removed due date':
     case 'Changed due date':
     // CHECKLIST

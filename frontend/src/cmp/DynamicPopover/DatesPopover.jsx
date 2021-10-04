@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { loadBoards, removeBoard, addBoard, updateBoard } from '../../store/board.actions.js';
 import DatePicker from "react-datepicker";
 
-
 class _DatesPopover extends React.Component {
     state = {
         date: null,
@@ -23,11 +22,15 @@ class _DatesPopover extends React.Component {
     onSaveDate = (date) => {
         const { board, currListIdx, currCardIdx } = this.props
         const currCard = board.lists[currListIdx].cards[currCardIdx]
+        // need to fix
+        if (!date) var action = 'Removed due date'
+        else if (date && currCard.duedate && !currCard.duedate.date) var action = 'Set due date'
+        else var action = 'Changed due date'
         currCard.dueDate = {
             date: date,
             isDone: false
         }
-        this.props.updateBoard(board, 'Added a new due date', currCard)
+        this.props.updateBoard(board, action, currCard)
         this.props.handleClose()
     }
 

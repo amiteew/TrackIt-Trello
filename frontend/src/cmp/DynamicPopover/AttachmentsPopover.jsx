@@ -19,12 +19,10 @@ class _AttachmentsPopover extends React.Component {
 
     onAddAttach = async (ev) => {
         const attachment = await cloudinaryService.uploadFile(ev)
-        console.log('attachment', attachment)
         const { board, currListIdx, currCardIdx } = this.props
         const currCard = board.lists[currListIdx].cards[currCardIdx]
         currCard.attachments.unshift(attachment)
-        console.log('cuurent card: ', currCard)
-        this.props.updateBoard(board, 'Added a new attachment', currCard)
+        this.props.updateBoard(board, 'Attached', currCard)
         this.props.handleClose()
     }
 

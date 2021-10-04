@@ -29,11 +29,7 @@ export class CardTitle extends React.Component {
     }
 
     onSaveTitle = () => {
-        const { board, currListIdx, currCardIdx } = this.state
-        const currCard = board.lists[currListIdx].cards[currCardIdx];
-        const action = `changed title`
-        const txt = currCard.cardTitle
-        this.props.OnUpdateBoard({ ...this.state.board }, action, currCard, txt)
+        this.props.OnUpdateBoard({ ...this.state.board })
         this.onToggleEdit()
     }
 

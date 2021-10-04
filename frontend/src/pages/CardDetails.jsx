@@ -56,11 +56,13 @@ class _CardDetails extends React.Component {
 
     onToggleDone = () => {
         const { currListIdx, currCardIdx } = this.state
-        const boardToUpdate = this.props.board
-        boardToUpdate.lists[currListIdx].cards[currCardIdx].dueDate.isDone =
-            !boardToUpdate.lists[currListIdx].cards[currCardIdx].dueDate.isDone
-        const action = 'changed Due Date'
-        this.props.updateBoard(boardToUpdate, action) // need to add card
+        const board = this.props.board
+        const currCard = board.lists[currListIdx].cards[currCardIdx]
+        currCard.dueDate.isDone = !currCard.dueDate.isDone
+        const action = currCard.dueDate.isDone
+            ? 'Marked the due date complete'
+            : 'Marked the due date incomplete'
+        this.props.updateBoard(board, action, currCard)
 
     }
 
@@ -87,7 +89,8 @@ class _CardDetails extends React.Component {
                     handleClose={this.handleClose} />
                 <div className="card-details-main-content">
 
-                    <CardTitle board={board}
+                    <CardTitle
+                        board={board}
                         currListIdx={currListIdx}
                         currCardIdx={currCardIdx}
                         OnUpdateBoard={this.OnUpdateBoard} />
