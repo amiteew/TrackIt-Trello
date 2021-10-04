@@ -4,10 +4,18 @@ import { NavLink } from 'react-router-dom'
 import { LogoName } from './LogoName';
 import { DynamicPopover } from '../DynamicPopover';
 import { CreateBoard } from '../CreateBoard';
+import { socketService } from "../../services/socket.service";
+
 
 class _AppHeader extends React.Component {
     state = {
         isCreateBoard: false
+    }
+
+    componentDidMount() {
+        socketService.on('sending notification', notif => {
+            console.log('notifi', notif);
+        })
     }
 
     onToggleCreateBoard = () => {

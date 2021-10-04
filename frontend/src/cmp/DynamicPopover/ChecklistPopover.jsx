@@ -28,7 +28,7 @@ class _ChecklistPopover extends React.Component {
         ev.preventDefault();
         const { currListIdx, currCardIdx, title, board } = this.state
         const currCard = board.lists[currListIdx].cards[currCardIdx]
-        const action = `Added Checklist "${title}"`
+        const action = `Added checklist "${title}"`
         const boardToUpdate = { ...this.state.board }
         boardToUpdate.lists[currListIdx].cards[currCardIdx].checklists.push({
             checklistId: utilService.makeId(),

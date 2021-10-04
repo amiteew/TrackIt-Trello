@@ -34,12 +34,12 @@ function connectSockets(http, session) {
             socket.myTopic = boardId;
         })
         socket.on('update-board', board => {
-            console.log('Emitting update board', board);
+            console.log('Emitting update board', board.boardTitle);
             socket.to(socket.myTopic).emit('board updated', board)
         })
         socket.on('resieve notification', notif => {
             console.log('Emitting notification', notif);
-            socket.broadcast.to(socket.myTopic).emit('sending notification', notif)
+            socket.to(socket.myTopic).emit('sending notification', notif)
         })
     })
 }

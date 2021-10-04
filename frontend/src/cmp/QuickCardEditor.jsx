@@ -50,8 +50,7 @@ class _QuickCardEditor extends React.Component {
         if (!cardTitle) return;
         const { board, card, updateBoard } = this.props;
         card.cardTitle = cardTitle;
-        const action = "Edit title";
-        updateBoard(board, action, card);
+        updateBoard(board);
         this.toggleEditTitle();
         this.props.onEditMode();
     }
@@ -65,7 +64,7 @@ class _QuickCardEditor extends React.Component {
     onArchive = () => {
         const { card, board, updateBoard } = this.props;
         card.isArchived = true;
-        const action = `Archive card`;
+        const action = `Archived card`;
         updateBoard({ ...board }, action, card);
         this.toggleEditTitle();
     }
