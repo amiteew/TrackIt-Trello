@@ -83,13 +83,13 @@ export function toggleLabels() {
 export function updateBoard(board, action = null, card = '', txt = "") {
   return async dispatch => {
     try {
-      if (action) {        
+      if (action) {
         var activity = _storeSaveActivity(action, card, txt);
-        board.activities.unshift(activity);        
+        board.activities.unshift(activity);
       }
       console.log('board before backend', board);
-      await boardService.save(board);
       dispatch({ type: 'UPDATE_BOARD', board: { ...board } });
+      await boardService.save(board);
       socketService.emit('update-board', board);
       if (action && activity.isNotif) socketService.emit('resieve notification', true);
       // socketService.emit('resieve notification', action);
