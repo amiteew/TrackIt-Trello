@@ -26,10 +26,11 @@
             padding-top: 37px;
 
         }
-        
+
         .selected {
             box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #0079bf;
         }
+
         .paragraph {
             height: 31px;
             background: #5E6C84;
@@ -82,4 +83,32 @@
             filter: saturate(85%) brightness(85%);
         }
     }
+}
+
+.cover-img-plate {
+
+    display: grid;
+    grid-gap: 8px;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 4px;
+    margin: 0 -4px;
+
+    .img-cover {
+        border-radius: 3px;
+        height: 67px;
+        background-size: cover;
+        height: 48px;
+        width: 88px;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        &.cover-selected {
+            box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #0079bf;
+            filter: none;
+        }
+    }
+}
+
+.file-input{
+    display: none;
 }
