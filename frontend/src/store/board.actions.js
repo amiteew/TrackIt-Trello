@@ -83,14 +83,14 @@ export function toggleLabels() {
 export function updateBoard(board, action = null, card = {}, txt = "") {
   return async dispatch => {
     try {
-      if (action) {
-        var activity = _storeSaveActivity(txt, action, card);
-        board.activities.unshift(activity);
+      if (action) {        
+        var activity = _storeSaveActivity(action, card, txt);
+        board.activities.unshift(activity);        
+        if (activity.isNotif) socketService.emit('resieve notification', activity);
       }
       await boardService.save(board);
       dispatch({ type: 'UPDATE_BOARD', board: { ...board } });
       socketService.emit('update-board', board);
-      // if (action && activity.isNotif) socketService.emit('resieve notification', activity);
       // socketService.emit('resieve notification', action);
     } catch (err) {
       // console.log('board id: ', board._id)
@@ -102,7 +102,8 @@ export function updateBoard(board, action = null, card = {}, txt = "") {
   }
 }
 
-function _storeSaveActivity(txt, action, card) {
+function _storeSaveActivity(action, card, txt) {
+
   const cardCopy = { ...card } // MAYBE WE DONT NEED IT
   const activity = {
     id: utilService.makeId(),
@@ -111,8 +112,9 @@ function _storeSaveActivity(txt, action, card) {
     byMember: userService.getLoggedinUser(),
     action,
     card: { cardId: cardCopy.cardId, cardTitle: cardCopy.cardTitle },
-    isNotif: false
+    isNotif: false,
   }
+  console.log('activity', activity);
   return _filterActionsNotif(activity)
 }
 

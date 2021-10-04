@@ -10,7 +10,6 @@ import { updateBoard } from "../store/board.actions"
 import { MembersListBoard } from "./MembersListBoard"
 import { TemporaryDrawer } from '../cmp/DroweMenu.jsx';
 import { Loading } from "./Loading";
-import { socketService } from "../services/socket.service";
 import { DynamicBoardMenu } from "./DynamicBoardMenu";
 
 class _BoardHeader extends React.Component {
@@ -24,9 +23,6 @@ class _BoardHeader extends React.Component {
 
   componentDidMount() {
     this.setState({ title: this.props.board.boardTitle })
-    // socketService.on('sending notification', notif => {
-    //   console.log('notifi', notif);
-    // })
   }
 
   handleChange = (ev) => {

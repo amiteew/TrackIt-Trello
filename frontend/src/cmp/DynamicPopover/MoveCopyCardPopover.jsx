@@ -30,14 +30,21 @@ class _MoveCopyCardPopoverWithRouter extends React.Component {
         const { board } = this.props
         const { listIdx, cardIdx, title } = this.state
         const listId = board.lists[listIdx].listId
+        let action;
         board.lists.forEach(list => {
             list.cards.forEach((boardCard, idx) => {
                 if (boardCard.cardId === cardToMove.cardId) list.cards.splice(idx, 1)
             })
-            if (list.listId === listId) list.cards.splice(cardIdx, 0, cardToMove)
+            if (list.listId === listId) {
+                list.cards.splice(cardIdx, 0, cardToMove)
+                action = `Moved card ${title}`;
+            } else {
+                action = `copied card ${title}`
+            }
+
         })
         this.props.history.push(`/boards/${board._id}`)
-        this.props.updateBoard(board, `Move Card ${title}`, cardToMove)
+        this.props.updateBoard(board, action, cardToMove)
     }
 
     onCopyCard = () => {

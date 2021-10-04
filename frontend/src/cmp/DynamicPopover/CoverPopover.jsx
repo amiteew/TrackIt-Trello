@@ -32,16 +32,14 @@ class _CoverPopover extends React.Component {
         const currCard = newBoard.lists[currListIdx].cards[currCardIdx]
         if (this.isCoverOnCard(currCard, cover.id)) {
             newBoard.lists[currListIdx].cards[currCardIdx].cardStyle = {}
-            var action = `Removed Cover from `
         } else {
             newBoard.lists[currListIdx].cards[currCardIdx].cardStyle = {
                 id: cover.id,
                 color: cover.color,
                 isCover: false
             }
-            var action = `Added Cover to `
         }
-        await this.props.updateBoard(newBoard, action, currCard)
+        await this.props.updateBoard(newBoard)
     }
 
     isCoverOnCard = (currCard, coverId) => {
@@ -57,8 +55,7 @@ class _CoverPopover extends React.Component {
     onRemoveCover = (currCard) => {
         const { board } = this.props;
         currCard.cardStyle = {};
-        var action = `Removed Cover from `
-        this.props.updateBoard(board, action, currCard);
+        this.props.updateBoard(board);
     }
 
     handleChange = (ev) => {
@@ -79,16 +76,14 @@ class _CoverPopover extends React.Component {
         const { board } = this.props;
         if (this.isCoverOnCard(currCard, coverImg.id)) {
             currCard.cardStyle = {}
-            var action = `Removed Cover from `
         } else {
             currCard.cardStyle = {
                 id: coverImg.id,
                 img: coverImg.small,
                 isCover: false
             }
-            var action = `Added Cover to `
         }
-        this.props.updateBoard(board, action, currCard)
+        this.props.updateBoard(board)
     }
 
     onAddImage = async (ev) => {
@@ -101,17 +96,15 @@ class _CoverPopover extends React.Component {
         const currCard = board.lists[currListIdx].cards[currCardIdx];
         if (this.isCoverOnCard(currCard, coverUploadImg.id)) {
             currCard.cardStyle = {}
-            var action = `Removed Cover from `
         } else {
             currCard.cardStyle = {
                 id: coverUploadImg.id,
                 img: coverUploadImg.url,
                 isCover: false
             }
-            var action = `Added Cover to `
         }
         currCard.attachments.unshift(coverUploadImg);
-        this.props.updateBoard(board, action, currCard)
+        this.props.updateBoard(board)
 
     }
 

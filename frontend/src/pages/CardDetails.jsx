@@ -61,7 +61,6 @@ class _CardDetails extends React.Component {
             !boardToUpdate.lists[currListIdx].cards[currCardIdx].dueDate.isDone
         const action = 'changed Due Date'
         this.props.updateBoard(boardToUpdate, action) // need to add card
-
     }
 
     OnUpdateBoard = (board, action, currCard, txt) => {
