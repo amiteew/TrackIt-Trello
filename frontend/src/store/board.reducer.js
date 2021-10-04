@@ -4,7 +4,7 @@ const initialState = {
   isLabelOpen: false,
   currCard: null,
   currList: null,
-  isNotif:false,
+  isNotif: false,
   notifCount: 0
 }
 
@@ -37,9 +37,11 @@ export function boardReducer(state = initialState, action = null) {
     //     action.board : board)
     // }
     case 'SET_NOTIF':
-    return {...state, isNotif: action.isNotif}
-    case 'SET_NOTIFCOUNT':
-    return {...state, notifCount: action.count}
+      return { ...state, isNotif: action.isNotif }
+    case 'SET_NOTIF_COUNT':
+      return { ...state, notifCount: action.count }
+    case 'SET_NOTIF_COUNT++':
+      return { ...state, notifCount: state.notifCount + 1 }
     default:
       return state
   }

@@ -17,7 +17,7 @@ import { MoveCopyCardPopover } from './DynamicPopover/MoveCopyCardPopover';
 import { MuiPickersUtilsProvider, DatePicker, TimePicker, DateTimePicker, } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import { removeUser } from '../store/user.actions';
-import {NotifPopover} from './DynamicPopover/NotifPopover';
+import { NotifPopover } from './DynamicPopover/NotifPopover';
 
 export class DynamicPopover extends React.Component {
     state = {
@@ -32,6 +32,7 @@ export class DynamicPopover extends React.Component {
 
     handleClose = () => {
         this.setState({ anchorEl: null })
+        if (this.props.markReadNotif) this.props.markReadNotif()
     };
 
     handleDateChange = () => {

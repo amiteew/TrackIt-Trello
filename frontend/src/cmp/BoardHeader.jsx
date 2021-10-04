@@ -24,12 +24,12 @@ class _BoardHeader extends React.Component {
 
   componentDidMount() {
     this.setState({ title: this.props.board.boardTitle })
-    let count = 0;
-    socketService.on('sending notification', (isNotif)=>{
-      count += 1
-      console.log(count);
+    // let count = this.props.notifCount;
+    socketService.on('sending notification', (isNotif) => {
+      // count += 1
+      // console.log(count);
       this.props.setNotif(isNotif)
-      this.props.setNotifCount(count)
+      // this.props.setNotifCount(count)
     })
   }
 

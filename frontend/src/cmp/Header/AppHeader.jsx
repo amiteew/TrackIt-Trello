@@ -5,7 +5,7 @@ import { LogoName } from './LogoName';
 import { DynamicPopover } from '../DynamicPopover';
 import { CreateBoard } from '../CreateBoard';
 import { socketService } from "../../services/socket.service";
-import { setNotif } from '../../store/board.actions';
+import { setNotif, setNotifCount } from '../../store/board.actions';
 import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 
@@ -27,8 +27,9 @@ class _AppHeader extends React.Component {
         this.setState({ isCreateBoard: !isCreateBoard })
     }
 
-    toggleNotif = () => {
+    markReadNotif = () => {
         this.props.setNotif(false);
+        // this.props.setNotifCount(0)
     }
 
     render() {
@@ -48,7 +49,9 @@ class _AppHeader extends React.Component {
                             </NavLink>
                             <button className="header-btn create" onClick={this.onToggleCreateBoard}>Create</button>
                         </div>
-                        <div onClick={this.toggleNotif} ><DynamicPopover type={notificaion} titleModal={'Notifications'} />
+                        <div >
+                            <DynamicPopover type={notificaion}
+                                titleModal={'Notifications'} markReadNotif={this.markReadNotif} />
                         </div>
 
                         {/* {!isNotifi && <div><NotificationsNoneIcon /> </div>}
@@ -73,7 +76,8 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-    setNotif
+    setNotif,
+    setNotifCount
 }
 
 export const AppHeader = connect(mapStateToProps, mapDispatchToProps)(_AppHeader)

@@ -102,27 +102,6 @@ export function updateBoard(board, action = null, card = '', txt = "") {
   }
 }
 
-export function setNotif(isNotif) {
-  return async dispatch => {
-    try {
-      dispatch({ type: 'SET_NOTIF', isNotif: isNotif });
-    } catch (err) {
-      console.log('Cannot update notification', err);
-    }
-  }
-
-}
-
-export function setNotifCount(count) {
-  return async dispatch => {
-    try {
-      dispatch({ type: 'SET_NOTIFCOUNT', notifCount: count });
-    } catch (err) {
-      console.log('Cannot update notification', err);
-    }
-  }
-
-}
 
 function _storeSaveActivity(action, card, txt) {
 
@@ -162,3 +141,29 @@ function _filterActionsNotif(activity) {
   return activity
 }
 
+
+export function setNotif(isNotif) {
+  return async dispatch => {
+    try {
+      dispatch({ type: 'SET_NOTIF', isNotif: isNotif });
+      isNotif ?
+        dispatch({ type: 'SET_NOTIF_COUNT++' })
+        : dispatch({ type: 'SET_NOTIF_COUNT', count: 0 });
+    } catch (err) {
+      console.log('Cannot update notification', err);
+    }
+  }
+
+}
+
+// can be deleteted:
+export function setNotifCount(count) {
+  return async dispatch => {
+    try {
+      dispatch({ type: 'SET_NOTIF_COUNT', count });
+    } catch (err) {
+      console.log('Cannot update notification', err);
+    }
+  }
+
+}
