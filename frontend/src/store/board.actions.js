@@ -80,7 +80,7 @@ export function toggleLabels() {
 
 // when we move to backend this function will check if the board has 'createBy'
 // if not- it's a template and it should only update the store, NOT the server!
-export function updateBoard(board, action, card = {}, txt = "") {
+export function updateBoard(board, action, isPush, card = {}, txt = "") {
   return async dispatch => {
     try {
       const activity = _storeSaveActivity(txt, action, card);
@@ -88,6 +88,7 @@ export function updateBoard(board, action, card = {}, txt = "") {
       await boardService.save(board);
       dispatch({ type: 'UPDATE_BOARD', board: { ...board } });
       socketService.emit('update-board', board);
+      // if (activity.isNotif) socketService.emit('resieve notification', activity);
       // socketService.emit('resieve notification', action);
     } catch (err) {
       // console.log('board id: ', board._id)
@@ -107,10 +108,31 @@ function _storeSaveActivity(txt, action, card) {
     createdAt: Date.now(),
     byMember: userService.getLoggedinUser(),
     action,
-    card: { cardId: cardCopy.cardId, cardTitle: cardCopy.cardTitle }
+    card: { cardId: cardCopy.cardId, cardTitle: cardCopy.cardTitle },
+    isNotif: false
+  }
+  return _filterActionsNotif(activity)
+}
+
+function _filterActionsNotif(activity) {
+  switch (activity.action) {
+    // MEMBERs
+    case 'Added':
+    case 'Removed':
+    // DUE DATE
+    case 'Added due date':
+    case 'Removed due date':
+    case 'Changed due date':
+    // CHECKLIST
+    case 'Completed checklist':
+    // COMMENT
+    case 'Added comment':
+      activity.isNotif = true
+      break
+    default:
+      activity.isNotif = false
+      break
   }
   return activity
 }
-
-
 
