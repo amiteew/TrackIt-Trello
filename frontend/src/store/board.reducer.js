@@ -4,6 +4,8 @@ const initialState = {
   isLabelOpen: false,
   currCard: null,
   currList: null,
+  isNotif:false,
+  notifCount: 0
 }
 
 export function boardReducer(state = initialState, action = null) {
@@ -34,6 +36,10 @@ export function boardReducer(state = initialState, action = null) {
     //   ...state, boards: state.boards.map(board => board._id === action.board._id ?
     //     action.board : board)
     // }
+    case 'SET_NOTIF':
+    return {...state, isNotif: action.isNotif}
+    case 'SET_NOTIFCOUNT':
+    return {...state, notifCount: action.count}
     default:
       return state
   }
