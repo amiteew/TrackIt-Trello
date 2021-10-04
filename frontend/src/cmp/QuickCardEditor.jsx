@@ -27,9 +27,9 @@ class _QuickCardEditor extends React.Component {
         if (ev) {
             ev.stopPropagation();
             ev.preventDefault();
+            var rect = ev.target.getBoundingClientRect();
+            rect.x = rect.x - 256;
         }
-        const rect = ev.target.getBoundingClientRect();
-        rect.x = rect.x - 256;
         this.props.onEditMode();
         const { card } = this.props;
         this.setState({ isEditMode: !this.state.isEditMode, cardTitle: card.cardTitle, rect })
@@ -62,10 +62,9 @@ class _QuickCardEditor extends React.Component {
         this.setState({ ...this.state, isEditTitle: !this.state.isEditTitle })
     }
 
-    onArchive = (ev) => {
-        ev.preventDefault();
+    onArchive = () => {
         const { card, board, updateBoard } = this.props;
-        card.isArchive = true;
+        card.isArchived = true;
         const action = `Archive card`;
         updateBoard({ ...board }, action, card);
         this.toggleEditTitle();
@@ -77,11 +76,12 @@ class _QuickCardEditor extends React.Component {
         const draggingClass = isDragging ? 'dragged' : 'not-dragged';
         const coverStyle = card.cardStyle.img ? 'img-cover' : card.cardStyle.color
         const editClass = isEditMode ? 'quick-card-edit-preview' : '';
-        const isCover = card.cardStyle.isCover ? { fullCover: 'full ' + coverStyle, fullTitle: 'full' } : { fullTitle: 'half' }
+        const isCover = card.cardStyle.isCover ? { fullCover: 'full ' + coverStyle, fullTitle: 'full' } : { fullTitle: 'half' };
+        // if (!rect) return <></>
         return (
             <React.Fragment>
                 {isEditMode && <div className="screen-quick-card-edit" onClick={this.toggleEditTitle}><img src={close} alt="close" /></div>}
-                 <div className={editClass} style={isEditMode ? { left: `${rect.x}`, top: `${rect.y}` } : {}}>
+                <div className={editClass} style={isEditMode ? { left: `${rect.x}`, top: `${rect.y}` } : {}}>
                     <div className={`card-preview-content pointer ${draggingClass}`}>
                         {card.cardStyle.id && <div className={'card-preview-header ' + coverStyle} style={{ backgroundImage: `url(${card.cardStyle.img})` }}></div>}
                         <div className={"card-preview-main-content " + isCover.fullCover}>
@@ -112,7 +112,7 @@ class _QuickCardEditor extends React.Component {
                         </div>
                     </div>
                     {isEditMode && <button className="save-quick-card-btn" onClick={this.onSaveCardTitle}>Save</button>}
-                    {isEditMode && <div><QuickCardActions board={board} currListIdx={currListIdx} currCardIdx={currCardIdx} onArchive={this.onArchive}/></div>}
+                    {isEditMode && <div><QuickCardActions board={board} currListIdx={currListIdx} currCardIdx={currCardIdx} currCard={card} onArchive={this.onArchive} /></div>}
                 </div>
             </React.Fragment>
         )

@@ -33,6 +33,21 @@ export function QuickCardActions({ board, currListIdx, currCardIdx, currCard, On
                 currCardIdx={currCardIdx}
             />
             </span>
+
+            <span className="quick-card-actions-btn"> <DynamicPopover type={'move-card'} titleModal={'Move Card'}
+                board={board}
+                currListIdx={currListIdx}
+                currCardIdx={currCardIdx}
+                currCard={currCard}
+            /></span>
+
+            <span className="quick-card-actions-btn"> <DynamicPopover type={'copy-card'} titleModal={'Copy Card'}
+                board={board}
+                currListIdx={currListIdx}
+                currCardIdx={currCardIdx}
+                currCard={currCard}
+            /></span>
+
             <span className="quick-card-actions-btn"> <button onClick={onArchive}><BsArchive /> Archive</button></span>
         </div>
     )

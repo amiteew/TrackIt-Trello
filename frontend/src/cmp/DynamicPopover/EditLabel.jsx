@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { TextareaAutosize } from '@mui/material';
 import { utilService } from '../../services/util.service.js'
 import { updateBoard } from '../../store/board.actions.js';
+import DoneIcon from '@mui/icons-material/Done';
+
 class _EditLabel extends React.Component {
 
     state = {
@@ -64,6 +66,10 @@ class _EditLabel extends React.Component {
         }
         this.setState({ ...this.state, labelsColor })
     }
+
+    isLabelChoosen = (chosenLabel) => {
+        return chosenLabel === this.state.labelColor;
+    }
     render() {
         const { labelName, isDelete, labelsColor } = this.state;
         const { currlabel } = this.props;
@@ -83,6 +89,7 @@ class _EditLabel extends React.Component {
                     <div className="color-plate">
                         {labelsColor.map(label => (
                             <div className={`color-sqr pointer + ${label}`} onClick={() => this.labelChoose(label)} >
+                                {this.isLabelChoosen(label) && <DoneIcon />}
                             </div>))}
                         <p className="label-no-color">No color</p>
                     </div>
