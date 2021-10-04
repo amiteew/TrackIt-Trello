@@ -3,7 +3,8 @@ import { DebounceInput } from 'react-debounce-input';
 import { BiSearch } from 'react-icons/bi'
 import { unsplashService } from '../../../services/unsplash.service'
 import { connect } from 'react-redux'
-import { updateBoard } from "../../../store/board.actions"
+import { updateBoard } from '../../../store/board.actions'
+import { Loading } from '../../Loading'
 
 class _ChooseBgImg extends React.Component {
     state = {
@@ -12,32 +13,34 @@ class _ChooseBgImg extends React.Component {
     }
 
     async componentDidMount() {
-        const imgs = await this.getImgs()
-        this.setState({ imgs }, () => console.log(this.state))
+        this.getImgs()
     }
 
     handleChange = (ev) => {
         const value = ev.target.value
-        this.setState({ searchStr: value }, () => console.log(this.state))
-        this.getImgs()
+        this.setState({ searchStr: value }, this.getImgs)
     }
 
-    getImgs = () => {
-        // const imgs = 
-        unsplashService.getImgs(this.state.searchStr, 18)
-        // console.log('imgs:', imgs);
+    getImgs = async () => {
+        // console.log('getting imgs for:', this.state.searchStr);
+        const imgs = await unsplashService.getImgs(this.state.searchStr, 18)
+        this.setState(prevState => ({ ...prevState, imgs }))
     }
 
-    changeBgImg = (imgUrl) => {
+    setBgImg = (imgIdx) => {
+        const img = this.state.imgs[imgIdx]
         const newBoard = { ...this.props.board }
-        newBoard.boardStyle = { backgroundImage: `url(${imgUrl})` }
-        this.props.updateBoard(newBoard, 'changed background image')
+        newBoard.boardStyle = { backgroundImage: `url(${img.full})` }
+        this.props.updateBoard(newBoard, 'changed the board background image')
+    }
+
+    openLink = (ev) => {
+        ev.stopPropagation()
     }
 
     render() {
-        const { searchStr, imgs } = this.state
-        // console.log('render imgs',imgs);
-        if (!imgs || !imgs.length) return <></>
+        const { imgs } = this.state
+        if (!imgs || !imgs.length) return <Loading className="menu-load" />
         return (
             <div className="choose-bg-img">
                 <div className="search-photos flex align-center">
@@ -47,8 +50,12 @@ class _ChooseBgImg extends React.Component {
                         debounceTimeout={400}
                         onChange={this.handleChange} />
                 </div>
-                <div className="bg-img-list">
-
+                <div className="bg-img-list flex wrap">
+                  {imgs.map((img,idx) => (
+                      <div key={img.id} className="bg-img" style={{backgroundImage: `url(${img.small})`}} onClick={()=>this.setBgImg(idx)}>
+                          <a href={img.link} target="_blank" onClick={this.openLink}>{img.name}</a>
+                      </div>
+                  ))}
                 </div>
             </div>
         )

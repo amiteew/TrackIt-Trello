@@ -55,55 +55,63 @@ class _MoveCopyCardPopoverWithRouter extends React.Component {
         const { listIdx, cardIdx, title } = this.state
         const chosenCards = board.lists[listIdx].cards
         return (
-            <section className="move-copy-card-popover">
+            <section className="move-copy-card-popover flex direction-col">
                 <div className="board-title">
-                    <h5>Board</h5>
-                    {board.boardTitle}
+                    <h4>Board:</h4>
+                    <h4>{board.boardTitle}</h4>
                 </div>
                 {
                     isCopy &&
-                    <TextareaAutosize
-                        name='title'
-                        className="text-area-auto "
-                        type='text'
-                        placeholder='Title'
-                        onChange={this.handleChange}
-                        value={title}
-                        // onBlur={this.onSaveDescription}
-                        // onFocus={(ev) => ev.target.select()}
-                        autoFocus
-                    />
+                    <div className="card-title flex direction-col">
+                        <label htmlFor="title"><h4>Title:</h4></label>
+                        <TextareaAutosize
+                            id='title'
+                            name='title'
+                            className="text-area-auto"
+                            type='text'
+                            placeholder='Title'
+                            onChange={this.handleChange}
+                            value={title}
+                            // onBlur={this.onSaveDescription}
+                            // onFocus={(ev) => ev.target.select()}
+                            autoFocus
+                        />
+                    </div>
                 }
+                <h4 className="copy-to">copy to...</h4>
+                <div className="list-position flex diirection-row space-between">
 
-                <FormControl variant="standard" >
-                    <InputLabel id="demo-simple-select-label">List</InputLabel>
-                    <Select
-                        label="List"
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select-filled"
-                        value={listIdx}
-                        name="listIdx"
-                        onChange={this.handleChange}
-                    >
-                        {board.lists.map((list, idx) => (<MenuItem value={idx}>{list.listTitle}</MenuItem>))}
-                    </Select>
-                </FormControl>
+                    <FormControl variant="standard" >
+                        <InputLabel id="list">List</InputLabel>
+                        <Select
+                            label="List"
+                            labelId="list"
+                            id="select-list"
+                            value={listIdx}
+                            name="listIdx"
+                            onChange={this.handleChange}
+                        >
+                            {board.lists.map((list, idx) => (<MenuItem value={idx}>{list.listTitle}</MenuItem>))}
+                        </Select>
+                    </FormControl>
 
-                <FormControl variant="filled" >
-                    <InputLabel id="demo-simple-select-filled-label">Position</InputLabel>
-                    <Select
-                        labelId="demo-simple-select-filled-label"
-                        id="demo-simple-select-filled"
-                        value={cardIdx}
-                        name="cardIdx"
-                        onChange={this.handleChange}
-                    >
-                        {chosenCards.length ?
-                            chosenCards.map((card, idx) => <MenuItem value={idx}>{idx ? idx + 1 : 1}</MenuItem>)
-                            :
-                            <MenuItem value={0}>1</MenuItem>}
-                    </Select>
-                </FormControl>
+                    <FormControl variant="standard"  >
+                        <InputLabel id="position">Position</InputLabel>
+                        <Select
+                            labelId="position"
+                            id="select-position"
+                            value={cardIdx}
+                            name="cardIdx"
+                            onChange={this.handleChange}
+                        >
+                            {chosenCards.length ?
+                                chosenCards.map((card, idx) => <MenuItem value={idx}>{idx ? idx + 1 : 1}</MenuItem>)
+                                :
+                                <MenuItem value={0}>1</MenuItem>}
+                        </Select>
+                    </FormControl>
+                </div>
+
 
                 {!isCopy && <button onClick={() => this.onMoveCard(this.props.currCard)}>Move</button>}
                 {isCopy && <button onClick={this.onCopyCard}>Create card</button>}

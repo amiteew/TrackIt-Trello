@@ -71,6 +71,7 @@
     // height: calc(100vh - 92px);
     overflow-y: auto;
     padding-inline-end: 6px;
+    position: relative;
     // padding: 20px 6px 12px 12px;
     > div {
         padding: 12px 0;
@@ -160,5 +161,46 @@
                 width: 16px;
             }
         }
+        .bg-img-list {
+            width: 100%;
+            gap: 8px;
+            .bg-img {
+                height: 96px;
+                border-radius: 8px;
+                background-size: cover;
+                background-position: center;
+                width: calc(50% - 8px);
+                cursor: pointer;
+                position: relative;
+                &:hover {
+                    opacity: 0.8;
+                    a {
+                        visibility: visible;
+                    }
+                }
+                a {
+                    z-index: 1;
+                    visibility: hidden;
+                    color: white;
+                    opacity: 1;
+                    background-color: rgba(0, 0, 0, 0.4);
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    font-size: rem(14px);
+                    height: rem(24px);
+                    line-height: rem(20px);
+                    padding: 2px 12px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+            }
+        }
+    }
+    .loader {
+        position: absolute;
+        background-color: transparent;
     }
 }
