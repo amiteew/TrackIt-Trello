@@ -70,7 +70,8 @@ function mapStateToProps(state) {
     return {
         board: state.boardReducer.board,
         isNotif: state.boardReducer.isNotif,
-        loggedInUser: state.userReducer.loggedInUser
+        loggedInUser: state.userReducer.loggedInUser,
+        notifCount: state.boardReducer.notifCount
     }
 }
 
