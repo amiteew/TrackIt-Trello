@@ -115,7 +115,6 @@ function _storeSaveActivity(action, card, txt) {
     card: card ? { cardId: card.cardId, cardTitle: card.cardTitle } : '',
     isNotif: false,
   }
-  console.log('activity', activity);
   return _filterActionsNotif(activity)
 }
 

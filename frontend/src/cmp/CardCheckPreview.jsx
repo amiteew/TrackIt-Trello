@@ -17,7 +17,7 @@ export function CardCheckPreview({ checklists }) {
     const isDoneLabel = taskCount === taskCountDone ? 'done' : '';
     return (
         <div className={"badge flex align-center " + isDoneLabel}>
-            <span className="badge-icon flex align-center" ><BsCheckBox className="card-icon"/></span>
+            <span className="badge-icon checkbox flex align-center" ><BsCheckBox className="card-icon"/></span>
             <span className="card-txt"> {taskCountDone + '/' + taskCount} </span>
         </div>
     )

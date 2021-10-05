@@ -8,6 +8,7 @@ import { MainBoardMenuContent } from './DynamicPopover/BoardMenu/MainBoardMenuCo
 import { SelectBgType } from './DynamicPopover/BoardMenu/SelectBgType';
 import { ChooseBgColor } from './DynamicPopover/BoardMenu/ChooseBgColor';
 import { ChooseBgImg } from './DynamicPopover/BoardMenu/ChooseBgImg';
+import { SearchMenu } from './SearchMenu';
 
 export function DynamicBoardMenu({ board, toggleMenu, isMenuOpen, target, title, changeMenu }) {
 
@@ -21,6 +22,8 @@ export function DynamicBoardMenu({ board, toggleMenu, isMenuOpen, target, title,
                 return <ChooseBgColor {...props} />
             case 'photos':
                 return <ChooseBgImg {...props} />
+            case 'search':
+                return <SearchMenu {...props} />
         }
     }
 

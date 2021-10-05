@@ -70,7 +70,7 @@ class _QuickCardEditor extends React.Component {
     }
 
     render() {
-        const { card, board, isDragging, currListIdx, currCardIdx } = this.props
+        const { card, board, isDragging, currListIdx, currCardIdx, updateBoard } = this.props
         const { isEditMode, cardTitle, rect } = this.state;
         const draggingClass = isDragging ? 'dragged' : 'not-dragged';
         const coverStyle = card.cardStyle.img ? 'img-cover' : card.cardStyle.color
@@ -97,11 +97,11 @@ class _QuickCardEditor extends React.Component {
                             />}
                             {/* <div onClick={this.onArchive}>Archive</div> */}
                             {isCover.fullTitle === 'half' && <span className="card-preview-icon flex">
-                                <div className="flex wrap">
+                                <div className="icons-preview flex wrap">
+                                    {card.dueDate.date && <CardDuDatePreview dueDate={card.dueDate} board={board} card={card} updateBoard={updateBoard}/>}
                                     {card.description && <div className='badge flex align-center'><GrTextAlignFull /></div>}
                                     {/* <span className="badge is-watch">{card.cardMembers && <CardVisibilityPreview cardMembers={card.cardMembers} />} </span> */}
                                     {card.comments.length ? <CardCommentPreview cardComments={card.comments} /> : <> </>}
-                                    {/* {card.dueDate.date && <CardDuDatePreview dueDate={card.dueDate}/>} */}
                                     <div title="checklist">{card.checklists.length ? <CardCheckPreview checklists={card.checklists} /> : <> </>}</div>
                                 </div>
                                 <div className="badge-icon members flex">{card.cardMembers && <MembersList members={card.cardMembers} currCard={card} isCardOpen={false} />}
