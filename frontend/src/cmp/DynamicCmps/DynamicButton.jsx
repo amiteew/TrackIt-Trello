@@ -64,9 +64,9 @@ class _DynamicButton extends React.Component {
                     </>
                 }
                 case 'newNotif':
-                    return <NotificationsActiveOutlinedIcon />
+                    return <> <NotificationsActiveOutlinedIcon /> {this.props.notifCount}</>
                 case 'noNotif':
-                    return <NotificationsNoneIcon /> 
+                    return <NotificationsNoneIcon />
                 default:
                     return props.type
             }
@@ -79,7 +79,8 @@ class _DynamicButton extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        loggedInUser: state.userReducer.loggedInUser
+        loggedInUser: state.userReducer.loggedInUser,
+        notifCount: state.boardReducer.notifCount
     }
 }
 

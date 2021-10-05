@@ -1,6 +1,7 @@
 const initialState = {
   boards: [],
   board: null,
+  lastUpdatedBoard: null,
   isLabelOpen: false,
   currCard: null,
   currList: null,
@@ -13,11 +14,20 @@ export function boardReducer(state = initialState, action = null) {
     case 'SET_BOARDS':
       return { ...state, boards: action.boards }
     case 'SET_BOARD':
-      return { ...state, board: { ...action.board } }
+      return { ...state, board: { ...action.board }, lastUpdatedBoard: { ...action.board } }
     case 'ADD_BOARD':
       return { ...state, board: action.board, boards: [...state.boards, action.board] }
     case 'REMOVE_BOARD':
       return { ...state, boards: state.boards.filter(board => board._id !== action.boardId) }
+    // case 'UPDATE_BOARD': {
+    //   const lastUpdatedBoard = JSON.parse(JSON.stringify(state.board))
+    //   const board = JSON.parse(JSON.stringify(action.board))
+    //   return {
+    //     ...state, board: board, lastUpdatedBoard: lastUpdatedBoard,
+    //     boards: state.boards.map(board =>
+    //       board._id === action.board._id ? action.board : board)
+    //   }
+    // }
     case 'UPDATE_BOARD': {
       return {
         ...state, board: action.board, boards: state.boards.map(board =>
