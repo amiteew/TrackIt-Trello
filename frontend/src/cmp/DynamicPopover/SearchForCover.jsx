@@ -27,7 +27,7 @@ export class SearchForCover extends React.Component {
         const { handleChange, searchCover, getImgForCover } = this.props;
         const searchKey = ['Animals', 'Business', 'Nature', 'Organization', 'Colorful', 'Minimal', 'Space', 'Perspective'];
         return (
-            <div>
+            <div className="search-cover">
                 <div className="search-cover-input">
                     <DebounceInput 
                         minLength={2}

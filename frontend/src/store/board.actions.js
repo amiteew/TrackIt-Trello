@@ -82,7 +82,8 @@ export function setFilterBy(filterBy, boardId) {
     try {
       dispatch({ type: 'SET_FILTER', filterBy: filterBy });
       const board = !boardId ? null : await boardService.getBoardById(boardId, filterBy)
-      dispatch({ type: 'SET_BOARD', board: { ...board } })
+      dispatch({ type: 'UPDATE_BOARD', board: { ...board } });
+      // dispatch({ type: 'SET_BOARD', board: { ...board } })
     } catch (err) {
       console.log('Cannot update notification', err);
     }

@@ -90,7 +90,7 @@
 
     .icons-preview {
         align-items: center;
-
+        margin-bottom: 4px;
 
         .is-watch svg {
             height: rem(20px);
@@ -99,7 +99,7 @@
         }
 
         > :not(:last-child) {
-            margin-inline-end: 5px;
+            margin-inline-end: 10px;
         }
 
     }
@@ -108,14 +108,20 @@
         &.members {
             flex-grow: 1;
             justify-content: flex-end;
+            margin-right: -10px;
 
-            .btn-photo-member img {
-                // margin: unset;
+            .btn-photo-member .MuiAvatar-root {
+                margin-left: -8px;
             }
         }
     }
 
     .due-date {
+
+
+        span.clock {
+            height: 16px;
+        }
 
         &:hover {
 
@@ -139,6 +145,17 @@
 
         span {
             padding-right: 2px;
+            padding-left: 2px;
+        }
+
+        .date {
+            padding: 0 rem(5px);
+        }
+
+        &.overdue {
+            background-color: #ec9488;
+            border-radius: 3px;
+            color: #fff;
         }
 
         // padding-right: 6px;
@@ -172,6 +189,14 @@
                 opacity: 1;
                 color: #172b4d;
             }
+        }
+    }
+
+    .list-card-labels {
+        display: none;
+
+        &.show-labels {
+            display: flex;
         }
     }
 }

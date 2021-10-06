@@ -20,6 +20,13 @@ class _SearchMenu extends React.Component {
         }
     }
 
+    componentDidMount (){
+        const {filterBy} = this.props;
+
+        console.log('filterby', filterBy);
+        // this.setState({ filterBy: { ...this.state.filterBy, searchKey:filterBy.searchKey, members:filterBy.members,labels:filterBy.labels }})
+    }
+
     handleChange = (ev) => {
         const value = ev.target.value;
         this.setState({ searchKey: value });
@@ -30,7 +37,13 @@ class _SearchMenu extends React.Component {
 
     onFilterBy = (type, id) => {
         let filterType = this.state.filterBy[type];
-        filterType.push(id);
+        const filterIdx = filterType.findIndex(filteryid => filteryid === id)
+        console.log('type', filterIdx);
+        if(filterIdx === 0) {
+            filterIdx.splice(filterIdx, 1);
+        } else{
+            filterType.push(id);
+        }
         this.setState({ filterBy: { ...this.state.filterBy, [type]: filterType, isFilter: true } }, () => {
             console.log('filter', this.state.filterBy);
             this.props.setFilterBy(this.state.filterBy, this.props.board._id);
@@ -38,7 +51,7 @@ class _SearchMenu extends React.Component {
     }
 
     render() {
-        const { board } = this.props;
+        const { board, filterBy } = this.props;
         const { searchKey } = this.state;
         return (
             <div className="search-cards">
@@ -48,13 +61,14 @@ class _SearchMenu extends React.Component {
                     className="search-cards"
                     type='text'
                     onChange={this.handleChange}
-                    value={searchKey}
+                    forceNotifyByEnter={false}
+                    value={filterBy.searchKey}
                 />
                 <p>Search by term, label or member</p>
 
                 <Divider />
                 <div className="search-types">
-                    <ui className="labels-filter">
+                    <ul className="clean-list">
                         {board.labels.map(label => (
                             <li className="pointer" key={label.id} onClick={() => this.onFilterBy('labels', label.id)} >
                                <div className="label-menu">
@@ -70,10 +84,10 @@ class _SearchMenu extends React.Component {
                                 </div>
                             </li>
                         ))}
-                    </ui>
+                    </ul>
 
                     <Divider />
-                    <ui className="members-search">
+                    <ul className="members-search clean-list">
                         <AvatarGroup max={6} >
                             {board.boardMembers.map(member => (
                                 <li key={member._id} onClick={() => this.onFilterBy('members', member._id)} >
@@ -83,7 +97,7 @@ class _SearchMenu extends React.Component {
                                 </li>
                             ))}
                         </AvatarGroup>
-                    </ui>
+                    </ul>
                 </div>
             </div>
         )

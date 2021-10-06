@@ -43,7 +43,7 @@
             padding: rem(6px) rem(12px);
             position: relative;
             flex-grow: 1;
-            transition: margin 80ms;
+            transition: max-width .4s height .4s .4s padding 4s .4s color #fff;
 
             &:hover {
                 margin-left: rem(5px);

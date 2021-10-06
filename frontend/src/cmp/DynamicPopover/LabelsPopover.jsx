@@ -79,7 +79,7 @@ class _LabelsPopover extends React.Component {
                         filteredLabels.map(label => (
                             <div key={label.id} className="edit-label-popover flex" onClick={() => this.toggleLabel(label)} >
                                 <div className={'edit-label-color ' + label.color}>
-                                    {label.title}
+                                    <span>{label.title}</span>
                                     {this.isLabelOnCard(currCard, label.id) && <DoneIcon />}
                                 </div>
                                 <div onClick={this.editLabel(label)} className="edit-label-icon pointer">

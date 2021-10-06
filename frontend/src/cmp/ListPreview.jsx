@@ -58,8 +58,8 @@ export class ListPreview extends React.Component {
                         <div className="list-content flex direction-col">
                             <div className="list-header flex">
                                 {!isEditTitle && <h2 onClick={this.toggleEditTitle}>{list.listTitle}</h2>}
-                                {isEditTitle &&
-                                    <TextareaAutosize className="text-area-auto list-input"
+                                {isEditTitle && 
+                                    <TextareaAutosize className="text-area-auto list-title-input"
                                         value={listTitle}
                                         aria-label="empty textarea"
                                         onChange={this.handleChange}

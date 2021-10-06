@@ -133,7 +133,7 @@ class _CoverPopover extends React.Component {
                 </div>}
 
                 {!isSearch && <div>
-                    {<h4>Colors</h4>}
+                    {<h4 className ="color-title">Colors</h4>}
                     <div className="color-plate">
                         {board.covers.length && board.covers.map(cover => (
                             <div key={cover.id} onClick={() => this.onToggleCover(cover)}

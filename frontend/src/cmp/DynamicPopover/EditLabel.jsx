@@ -75,7 +75,7 @@ class _EditLabel extends React.Component {
         const { currlabel } = this.props;
 
         return (
-            <div>
+            <div className="labels-board">
                 {!isDelete && <div>
                     <label className="edit-labels-label">Name</label>
                     <TextareaAutosize className="text-area-auto label-input"

@@ -9,6 +9,7 @@ import { SelectBgType } from './DynamicPopover/BoardMenu/SelectBgType';
 import { ChooseBgColor } from './DynamicPopover/BoardMenu/ChooseBgColor';
 import { ChooseBgImg } from './DynamicPopover/BoardMenu/ChooseBgImg';
 import { SearchMenu } from './SearchMenu';
+import { ArchiveItems } from './ArchiveItems';
 
 export function DynamicBoardMenu({ board, toggleMenu, isMenuOpen, target, title, changeMenu }) {
 
@@ -24,6 +25,8 @@ export function DynamicBoardMenu({ board, toggleMenu, isMenuOpen, target, title,
                 return <ChooseBgImg {...props} />
             case 'search':
                 return <SearchMenu {...props} />
+            case 'archive':
+                return <ArchiveItems {...props} />
         }
     }
 

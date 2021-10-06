@@ -16,6 +16,9 @@ export function MainBoardMenuContent({ board, changeMenu }) {
                     <span className="search-cards"> <SearchSharpIcon /></span>
                     <span> Search cards </span>
                 </button>
+                <button className="menu-action-btn" onClick={() => changeMenu('Archived', 'archive')}>
+                <span> Archived itens </span>
+                </button>
             </div>
             <Divider />
             <div className="activities">

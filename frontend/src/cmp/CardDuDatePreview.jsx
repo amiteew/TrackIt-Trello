@@ -1,8 +1,8 @@
 import React from 'react';
-import { Checkbox } from '@mui/material';
 import AccessTimeSharpIcon from '@mui/icons-material/AccessTimeSharp';
-
-export class CardDuDatePreview extends React.Component{
+import { RiCheckboxBlankLine } from "react-icons/ri";
+import { IoMdCheckboxOutline } from "react-icons/io";
+export class CardDuDatePreview extends React.Component {
 
 
     onToggleDone = (ev) => {
@@ -16,15 +16,14 @@ export class CardDuDatePreview extends React.Component{
     render() {
         const { dueDate } = this.props;
         const classDone = dueDate.isDone ? 'done' : '';
+        const overDue = !dueDate.isDone && dueDate.date < Date.now() ? 'overdue' : '';
         return (
-            <div className={`badge due-date flex align-center ${classDone}`}>
-                <span className="check"><Checkbox
-                    checked={dueDate.isDone}
-                    onClick={this.onToggleDone}
-                />
-                </span>
+            <div className={`badge due-date flex align-center ${classDone} ${overDue}`} onClick={this.onToggleDone}>
+                { !dueDate.isDone && <span className="check"><RiCheckboxBlankLine />
+                </span>}
+                { dueDate.isDone && <span className="check"> <IoMdCheckboxOutline /> </span>}
                 <span className="clock"><AccessTimeSharpIcon /> </span>
-                <span>{new Date(dueDate.date).toString().substring(3, 10)}</span>
+                <span className="date">{new Date(dueDate.date).toString().substring(3, 10)}</span>
             </div>
         )
     }

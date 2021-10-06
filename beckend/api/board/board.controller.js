@@ -21,6 +21,7 @@ async function getBoardById(req, res) {
     let board = await boardService.getById(boardId)
     // console.log('filterby', filterBy);
     board = _filterBoard(filterBy, board);
+    board = filterActivities(board)
     res.json(board)
   } catch (err) {
     logger.error('Failed to get board', err)
@@ -73,25 +74,42 @@ function _filterBoard(filterBy, board) {
   if (!newFilterBy.isFilter) return board
 
   console.log('filterBy.searchKey', newFilterBy)
-  if (newFilterBy.searchKey) {
-    const regex = new RegExp(newFilterBy.searchKey, 'i');
-    board.lists.forEach(list => {
-      list.cards = list.cards.filter(card => {
-        if (newFilterBy.members) {          
-          var isMemberOnCard = newFilterBy.members.some(filterMember => card.cardMembers.some(cardMember => filterMember === cardMember._id))
-        }
 
-        if (newFilterBy.labels) {
-          var isLabelsOnCard = newFilterBy.labels.some(filterLabel => card.cardLabels.some(cardLabel => filterLabel._id === cardLabel._id))
-        }
+  const regex = new RegExp(newFilterBy.searchKey, 'i');
+  board.lists.forEach(list => {
+    list.cards = list.cards.filter(card => {
+      let isMemberOnCard = true
+      let isLabelsOnCard = true
+ 
+      if (newFilterBy.members.length) {        
+         isMemberOnCard = newFilterBy.members.some(filterMember => card.cardMembers.some(cardMember => filterMember === cardMember._id))
         
-        const isTxtOnCard = regex.test(card.cardTitle)
-        return isTxtOnCard || isMemberOnCard || isLabelsOnCard
-      })
+      }
+      
+      if (newFilterBy.labels.length) {
+        isLabelsOnCard = newFilterBy.labels.some(filterLabel => card.cardLabels.some(cardLabel => filterLabel._id === cardLabel._id))
+      }
+
+      const isTxtOnCard = regex.test(card.cardTitle)
+      
+      return isTxtOnCard && isMemberOnCard && isLabelsOnCard
     })
-  }
+  })
+// console.log('board', board);
+
   return board
 }
+
+function filterActivities(board) {
+  if (board.activities.length > 10) {
+    const activities = board.activities.splice(0, 9)
+    // console.log('activities', board.activities);
+
+  }
+
+  return board;
+}
+
 module.exports = {
   getBoards,
   getBoardById,

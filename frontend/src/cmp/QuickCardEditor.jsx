@@ -75,6 +75,7 @@ class _QuickCardEditor extends React.Component {
         const draggingClass = isDragging ? 'dragged' : 'not-dragged';
         const coverStyle = card.cardStyle.img ? 'img-cover' : card.cardStyle.color
         const editClass = isEditMode ? 'quick-card-edit-preview' : '';
+        const isLabels = card.cardLabelIds ? 'show-labels' : ''
         const isCover = card.cardStyle.isCover ? { fullCover: 'full ' + coverStyle, fullTitle: 'full' } : { fullTitle: 'half' };
         // if (!rect) return <></>
         return (
@@ -84,8 +85,8 @@ class _QuickCardEditor extends React.Component {
                     <div className={`card-preview-content pointer ${draggingClass}`}>
                         {card.cardStyle.id && <div className={'card-preview-header ' + coverStyle} style={{ backgroundImage: `url(${card.cardStyle.img})` }}></div>}
                         <div className={"card-preview-main-content " + isCover.fullCover}>
-                            {isCover.fullTitle === 'half' && <div className="list-card-labels flex"> {card.cardLabelIds && card.cardLabelIds.map(labelId => <CardLabelsPreview key={labelId} labelId={labelId} boardLabels={board.labels} />)}</div>}
-                            {!isEditMode && <span className={"card-preview-title" + isCover.fullCover}>{card.cardTitle}</span>}
+                            {isCover.fullTitle === 'half' && <div className={`list-card-labels  ${isLabels} flex`}> {card.cardLabelIds && card.cardLabelIds.map(labelId => <CardLabelsPreview key={labelId} labelId={labelId} boardLabels={board.labels} />)}</div>}
+                            {!isEditMode && <span className={`card-preview-title  ${isCover.fullCover}`}>{card.cardTitle}</span>}
                             {isEditMode && <TextareaAutosize className="quick-card-input"
                                 value={cardTitle}
                                 aria-label="card title"
