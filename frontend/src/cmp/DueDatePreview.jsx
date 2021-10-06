@@ -11,7 +11,6 @@ export class DueDatePreview extends React.Component {
 
     render() {
         const { dueDate } = this.props
-        console.log('dueDate', dueDate)
         return (
             <div className="due-date-preview">
                 <h3>Due Date</h3>

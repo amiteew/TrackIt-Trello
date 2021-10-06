@@ -11,12 +11,19 @@ class _DatesPopover extends React.Component {
     componentDidMount() {
         const { board, currListIdx, currCardIdx } = this.props
         const currCard = board.lists[currListIdx].cards[currCardIdx]
-        const date = (currCard.dueDate.date) ? new Date(currCard.dueDate.date) : Date.now()
+        const date = (currCard.dueDate && currCard.dueDate.date) ? currCard.dueDate.date : Date.now()
+        console.log('date', date)
         this.setState({ date })
     }
 
     handleDateSelect = (date) => {
-        this.setState({ ...this.state, date: new Date(date) })
+        const stringDate = date.toString()
+        const day = stringDate.substring(8, 10)
+        const month = stringDate.substring(4, 7)
+        const year = stringDate.substring(11, 15)
+        const hourGmt = stringDate.substring(17, 28)
+        const timestamp = `${day} ${month} ${year} ${hourGmt}`
+        this.setState({ ...this.state, date: Date.parse(timestamp) })
     }
 
     onSaveDate = (date) => {
@@ -40,8 +47,10 @@ class _DatesPopover extends React.Component {
         return (
             <div className="dates-popover">
                 <DatePicker
-                    onSelect={(date) => this.handleDateSelect(date)}
-                    startDate={new Date()}
+                    onSelect={this.handleDateSelect}
+                    startDate={Date.now()}
+                    // startDate={new Date()}
+                    // dateFormat="Pp"
                     openToDate={date}
                     inline
                     formatWeekDay={nameOfDay => nameOfDay.substr(0, 3)}

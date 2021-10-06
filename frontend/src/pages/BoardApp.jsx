@@ -8,6 +8,7 @@ import { BoardHeader } from '../cmp/BoardHeader.jsx';
 import { AddList } from '../cmp/AddList.jsx';
 import { Route, Link } from 'react-router-dom';
 import { CardDetails } from '../pages/CardDetails.jsx';
+import { Dashboard } from './Dashboard'
 import { Loading } from '../cmp/Loading.jsx';
 import { socketService } from '../services/socket.service';
 
@@ -19,6 +20,7 @@ class _BoardApp extends React.Component {
     async componentDidMount() {
         const { loggedInUser } = this.props
         if (!loggedInUser) {
+            // TODO: NEED TO ADD OGIN GUEST INSTEAD OF PUSH / TO HOME
             this.props.history.push('/')
         }
         if (!this.props.boards.length) await this.props.loadBoards()
@@ -104,6 +106,11 @@ class _BoardApp extends React.Component {
         this.props.toggleLabels()
     }
 
+    onOpenDashboard = () => {
+        const { board } = this.props
+        this.props.history.push(`/boards/${board._id}/dashboard`);
+    }
+
     render() {
         const { board } = this.props;
         if (!board || !Object.keys(board).length) return <Loading />
@@ -113,7 +120,8 @@ class _BoardApp extends React.Component {
         return (
             <section className="board-app flex direction-col">
                 <Route exact component={CardDetails} path="/boards/:boardId/:listId/:cardId" />
-                <BoardHeader board={board} onUpdateBoard={this.onUpdateBoard} />
+                <Route exact component={Dashboard} path="/boards/:boardId/dashboard" />
+                <BoardHeader board={board} onUpdateBoard={this.onUpdateBoard} onOpenDashboard={this.onOpenDashboard} />
                 <div className="board-background" style={board.boardStyle}></div>
                 <div className="board-canvas flex">
                     <DragDropContext onDragEnd={this.onDragEnd}>
