@@ -11,8 +11,9 @@ import AttachFileOutlinedIcon from '@mui/icons-material/AttachFileOutlined';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
+import DownArrow from '../../assets/imgs/icons/menu-arrow-icon.svg';
 import { LabelPreview } from '../LabelPreview';
-import { BsThreeDots } from "react-icons/bs";  //merge conflict- is this needed here? <AW>
+import { BsThreeDots } from "react-icons/bs";
 import { DueDatePreview } from '../DueDatePreview';
 import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
@@ -56,13 +57,14 @@ class _DynamicButton extends React.Component {
                     return <> <ArrowForwardIcon />  Move</>
                 case 'copy-card':
                     return <> <ContentCopyIcon /> Copy</>
-                case 'userMenu': {
+                case 'userMenu':
                     return <>
                         <Avatar alt="" src={loggedInUser.imgUrl} className="logged-in-avatar">
                             <p>{loggedInUser.initials}</p>
                         </Avatar>
                     </>
-                }
+                case 'userBoards':
+                    return <><span onClick={() => props.onToggleUserBoards()}>Boards</span><img src={DownArrow} alt="" /></>
                 case 'newNotif':
                     return <> <NotificationsActiveOutlinedIcon /> {this.props.notifCount}</>
                 case 'noNotif':

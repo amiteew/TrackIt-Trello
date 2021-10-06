@@ -3,14 +3,14 @@ import { Pie } from 'react-chartjs-2';
 
 export class PieDoneOverdue extends React.Component {
 
-    getDoneOverdue = () => {
+    getValuesDoneOverdue = () => {
         const { board } = this.props
         const data = [0, 0]
         board.lists.forEach(list => {
             list.cards.forEach(card => {
                 if (card.dueDate && !card.dueDate.isDone && (card.dueDate.date < Date.now())) {
-                    data[0]++
-                } else if (card.dueDate && card.dueDate.isDone) data[1]++
+                    data[1]++
+                } else if (card.dueDate && card.dueDate.isDone) data[0]++
             })
         })
         return data
@@ -22,7 +22,7 @@ export class PieDoneOverdue extends React.Component {
             datasets: [
                 {
                     // label: '# of Votes', // WHAT IS IT?
-                    data: this.getDoneOverdue(),
+                    data: this.getValuesDoneOverdue(),
                     backgroundColor: [
                         '#61bd4f',
                         '#eb5a46'

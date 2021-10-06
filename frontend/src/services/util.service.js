@@ -2,6 +2,7 @@ export const utilService = {
     makeId,
     makeLorem,
     getRandomIntInclusive,
+    getFormattedBgStyle
 }
 
 function makeId(length = 8) {
@@ -13,6 +14,13 @@ function makeId(length = 8) {
     }
 
     return txt;
+}
+
+function getFormattedBgStyle(background, size = 'small') {
+    if (typeof (background) === 'object') {
+        const bgImgUrl = (size === 'small') ? background.small : background.full
+        return { background: `url(${bgImgUrl}) center / cover no-repeat` }
+    } else return { background }
 }
 
 function makeLorem(size = 100) {

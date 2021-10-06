@@ -13,18 +13,18 @@ class _AppHeader extends React.Component {
 
     state = {
         isCreateBoard: false,
+        isUserBoardsOpen: false,
         isNotif: false
-    }
-
-    componentDidMount() {
-    }
-
-    componentWillUnmount() {
     }
 
     onToggleCreateBoard = () => {
         const { isCreateBoard } = this.state
-        this.setState({ isCreateBoard: !isCreateBoard })
+        this.setState(prevState => ({ ...prevState, isCreateBoard: !isCreateBoard }))
+    }
+
+    onToggleUserBoards = () => {
+        const { isUserBoardsOpen } = this.state
+        this.setState(prevState => ({ ...prevState, isUserBoardsOpen: !isUserBoardsOpen }))
     }
 
     markReadNotif = () => {
@@ -42,10 +42,13 @@ class _AppHeader extends React.Component {
                     <nav className="nav-bar flex space-between" >
                         <div className="main-nav-links flex align-center">
                             <LogoName isLoggedIn={true} />
-                            <NavLink className="header-btn" to="/boards">
+                            <span className={`user-boards${this.state.isUserBoardsOpen ? " open" : ""}`}>
+                                <DynamicPopover type={'userBoards'} titleModal={'Your Boards'} onToggleUserBoards={this.onToggleUserBoards} />
+                            </span>
+                            {/* <NavLink className="header-btn" to="/boards">
                                 <span>Boards</span>
                                 <img src="" alt="" />
-                            </NavLink>
+                            </NavLink> */}
                             <button className="header-btn create" onClick={this.onToggleCreateBoard}>Create</button>
                         </div>
                         <div >
@@ -69,8 +72,9 @@ class _AppHeader extends React.Component {
 function mapStateToProps(state) {
     return {
         board: state.boardReducer.board,
-        isNotif: state.boardReducer.isNotif,
+        boards: state.boardReducer.boards,
         loggedInUser: state.userReducer.loggedInUser,
+        isNotif: state.boardReducer.isNotif,
         notifCount: state.boardReducer.notifCount
     }
 }

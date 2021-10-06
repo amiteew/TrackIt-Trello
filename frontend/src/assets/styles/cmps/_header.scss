@@ -60,7 +60,7 @@
                 margin-right: 12px;
                 .icon-span {
                     height: 1.5rem;
-                    width: 1.5rem; 
+                    width: 1.5rem;
                     border: 2px solid white;
                     // border: 2px solid white;
                     border-radius: rem(5px);
@@ -77,24 +77,41 @@
                     margin-inline-end: 6px;
                 }
             }
-            .header-btn {
+            .header-btn,
+            .user-boards {
                 padding: 6px 12px;
                 border-radius: 3px;
-                &.create{
+                background-color: transparent;
+                color: white;
+                &.create {
                     margin-inline-start: 8px;
-                    color: white;
-                    background-color: rgba(0, 0, 0, 0.24);;
+                    background-color: rgba(0, 0, 0, 0.24);
                 }
-                &:hover {
-                    background-color: rgba(255, 255, 255, 0.3);
+                &:hover, &.open {
+                    background-color: rgba(255, 255, 255, 0.2);
+                }
+            }
+            .user-boards {
+                button {
+                    background-color: transparent;
+                    color: white;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 6px;
+                    img {
+                        height: 16px;
+                        width: 16px;
+                    }
                 }
             }
         }
         .user-section button {
             position: absolute;
-            right: 3px;
+            right: 4px;
             top: 5px;
             background-color: transparent;
+            padding: 0;
             .MuiAvatar-root {
                 height: 32px;
                 width: 32px;
@@ -118,4 +135,8 @@
     p {
         font-size: rem(15px);
     }
+}
+
+.MuiPopover-root.userBoards .MuiPaper-root {
+    top: 48px !important;
 }

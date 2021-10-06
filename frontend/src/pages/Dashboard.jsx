@@ -59,7 +59,7 @@ class _Dashboard extends React.Component {
                 <h1>Dashboard</h1>
                 <button onClick={this.goBack}>Go Back</button>
                 <PieDoneOverdue board={board} />
-                {/* <PieTasksPerLabel /> */}
+                <PieTasksPerLabel board={board} />
             </section>
         )
     }

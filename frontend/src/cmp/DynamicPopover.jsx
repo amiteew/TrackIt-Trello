@@ -17,6 +17,7 @@ import { MoveCopyCardPopover } from './DynamicPopover/MoveCopyCardPopover';
 import { MuiPickersUtilsProvider, DatePicker, TimePicker, DateTimePicker, } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import { removeUser } from '../store/user.actions';
+import { UserBoardsPopover } from './DynamicPopover/UserBoardsPopover';
 import { NotifPopover } from './DynamicPopover/NotifPopover';
 
 export class DynamicPopover extends React.Component {
@@ -31,6 +32,7 @@ export class DynamicPopover extends React.Component {
     };
 
     handleClose = () => {
+        if (this.props.type === 'userBoards') this.props.onToggleUserBoards()
         this.setState({ anchorEl: null })
         if (this.props.markReadNotif) this.props.markReadNotif()
     };
@@ -80,6 +82,8 @@ export class DynamicPopover extends React.Component {
                     return <ChecklistPopover {...props} />
                 case 'userMenu':
                     return <UserMenuPopover {...props} />
+                case 'userBoards':
+                    return <UserBoardsPopover {...props} handleClose={this.handleClose} />
                 case 'boardMenu':
                     return <TemporaryDrawer {...props} />
                 case 'delete-card':
@@ -101,6 +105,7 @@ export class DynamicPopover extends React.Component {
                     <DynamicButton type={type} {...this.props} />
                 </button>
                 <Popover
+                    className = {type}
                     id={id}
                     open={open}
                     anchorEl={anchorEl}

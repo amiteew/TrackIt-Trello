@@ -61,8 +61,8 @@ class _BoardHeader extends React.Component {
 
   toggleMenu = () => {
     const { isMenuOpen } = this.state
-    this.setState(prevState => ({ ...prevState, isMenuOpen: !isMenuOpen }))
-    // this.setState(prevState => ({ ...prevState, isMenuOpen: !isMenuOpen, menuTitle: 'Menu', menuTarget: 'main' }))
+    // this.setState(prevState => ({ ...prevState, isMenuOpen: !isMenuOpen }))
+    this.setState(prevState => ({ ...prevState, isMenuOpen: !isMenuOpen, menuTitle: 'Menu', menuTarget: 'main' }))
   }
 
   changeMenu = (menuTitle, menuTarget) => {

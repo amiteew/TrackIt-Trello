@@ -87,6 +87,19 @@ export function onLogout() {
     }
 }
 
+// export async function loginAsGuest() {
+//     const guestCreds = {
+//         username: "pandaguest",
+//         password: "123"
+//     }
+//     try {
+//         return await onLogin(guestCreds);
+
+//     } catch (err) {
+//         console.log('error login as guest');
+//     }
+// }
+
 // export function loadAndWatchUser(userId) {
 //     return async (dispatch) => {
 //         try {

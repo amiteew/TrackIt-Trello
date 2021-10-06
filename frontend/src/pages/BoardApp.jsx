@@ -11,6 +11,7 @@ import { CardDetails } from '../pages/CardDetails.jsx';
 import { Dashboard } from './Dashboard'
 import { Loading } from '../cmp/Loading.jsx';
 import { socketService } from '../services/socket.service';
+import {utilService} from '../services/util.service';
 
 class _BoardApp extends React.Component {
     state = {
@@ -114,15 +115,14 @@ class _BoardApp extends React.Component {
     render() {
         const { board } = this.props;
         if (!board || !Object.keys(board).length) return <Loading />
-        // const bgStyle = (board.boardStyle.bgImgUrl) ?
-        //     { backgroundImage: `url(${board.boardStyle.bgImgUrl})` } :
-        //     { backgroundColor: board.boardStyle.bgColor }
+        const bgStyle = utilService.getFormattedBgStyle(board.boardStyle, 'full')
         return (
             <section className="board-app flex direction-col">
                 <Route exact component={CardDetails} path="/boards/:boardId/:listId/:cardId" />
                 <Route exact component={Dashboard} path="/boards/:boardId/dashboard" />
                 <BoardHeader board={board} onUpdateBoard={this.onUpdateBoard} onOpenDashboard={this.onOpenDashboard} />
-                <div className="board-background" style={board.boardStyle}></div>
+                <div className="board-background" style={bgStyle}></div>
+               
                 <div className="board-canvas flex">
                     <DragDropContext onDragEnd={this.onDragEnd}>
                         <BoardList board={board} lists={board.lists} onUpdateBoard={this.onUpdateBoard} className="board" />

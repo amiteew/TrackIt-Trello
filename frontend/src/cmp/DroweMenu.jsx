@@ -38,7 +38,7 @@ export function TemporaryDrawer({ board, toggleMenu, isMenuOpen }) {
                 <div className="menu-content fancy-scrollbar">
                     <div className="board-actions">
                         <button className="menu-action-btn">
-                            <span className="change-bg-preview" style={board.boardStyle}></span>
+                            {/* <span className="change-bg-preview" style={board.boardStyle}></span> */}
                             Change background
                         </button>
                     </div>
