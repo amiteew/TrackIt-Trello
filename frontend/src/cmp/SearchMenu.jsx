@@ -73,17 +73,17 @@ class _SearchMenu extends React.Component {
                     </ui>
 
                     <Divider />
-                    <div className="members-search">
+                    <ui className="members-search">
                         <AvatarGroup max={6} >
                             {board.boardMembers.map(member => (
-                                <div key={member._id} onClick={() => this.onFilterBy('members', member._id)} >
+                                <li key={member._id} onClick={() => this.onFilterBy('members', member._id)} >
                                     <div>
                                         <Avatar alt={member.username} src={member.imgUrl} key={member._id} />
                                     </div>
-                                </div>
+                                </li>
                             ))}
                         </AvatarGroup>
-                    </div>
+                    </ui>
                 </div>
             </div>
         )
