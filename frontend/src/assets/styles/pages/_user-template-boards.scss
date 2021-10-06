@@ -40,8 +40,10 @@
     .boards-section {
         margin: 40px 16px;
         flex-grow: 1;
-        .starred-boards {
+        .inner-section {
             margin-bottom: 60px;
+        }
+        .starred-boards {
             .star-title {
                 color: #172b4d;
                 margin-bottom: 1rem;
@@ -51,7 +53,7 @@
                     margin-inline-end: 0.9rem;
                 }
                 h3 {
-                    display: inline-block;
+                    // display: inline-block;
                     font-weight: 700;
                     margin: 0;
                 }

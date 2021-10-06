@@ -32,7 +32,7 @@ export class DynamicPopover extends React.Component {
     };
 
     handleClose = () => {
-        if (this.props.type === 'userBoards') this.props.onToggleUserBoards()
+        if (this.props.type === 'userBoards' || this.props.type === 'starredBoards') this.props.onToggle()
         this.setState({ anchorEl: null })
         if (this.props.markReadNotif) this.props.markReadNotif()
     };
@@ -83,6 +83,7 @@ export class DynamicPopover extends React.Component {
                 case 'userMenu':
                     return <UserMenuPopover {...props} />
                 case 'userBoards':
+                case 'starredBoards':
                     return <UserBoardsPopover {...props} handleClose={this.handleClose} />
                 case 'boardMenu':
                     return <TemporaryDrawer {...props} />
@@ -105,7 +106,7 @@ export class DynamicPopover extends React.Component {
                     <DynamicButton type={type} {...this.props} />
                 </button>
                 <Popover
-                    className = {type}
+                    className={type}
                     id={id}
                     open={open}
                     anchorEl={anchorEl}

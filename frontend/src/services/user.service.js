@@ -87,8 +87,11 @@ function filterUserBoards(boards, userId, type) {
     return boards.filter(board => {
         if (!board.createdBy) return false
         if (type === "all") return true
+        else if (type === "owner") return (board.createdBy._id === userId)
+        else if (type === "guest") return (board.createdBy._id !== userId)
         else if (type === "starred") return isBoardStarred(board, userId)
-        else return !isBoardStarred(board, userId)
+        else return []
+        // else return !isBoardStarred(board, userId)
     })
     // newest to oldest order
     // return filteredBoards.sort((board1, board2) => board2.createdAt - board1.createdAt)

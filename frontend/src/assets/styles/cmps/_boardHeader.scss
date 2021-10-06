@@ -37,6 +37,11 @@
             color: white;
         }
     }
+    .header-right {
+        flex-grow: 1;
+        justify-content: flex-end;
+        gap: 4px;
+    }
     .board-btn {
         &.star {
             width: rem(32px);
@@ -89,6 +94,7 @@
     border-radius: rem(3px);
     color: white;
     background-color: #ffffff3d;
+    height: 32px;
     &:hover {
         // background-color: #00000029;
         background-color: #ffffff52;
