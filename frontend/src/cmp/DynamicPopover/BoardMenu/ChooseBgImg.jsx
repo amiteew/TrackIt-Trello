@@ -30,7 +30,7 @@ class _ChooseBgImg extends React.Component {
     setBgImg = (imgIdx) => {
         const img = this.state.imgs[imgIdx]
         const newBoard = { ...this.props.board }
-        newBoard.boardStyle = { backgroundImage: `url(${img.full})` }
+        newBoard.boardStyle = { full: img.full, small: img.small }
         this.props.updateBoard(newBoard, 'changed the board background image')
     }
 
@@ -51,11 +51,11 @@ class _ChooseBgImg extends React.Component {
                         onChange={this.handleChange} />
                 </div>
                 <div className="bg-img-list flex wrap">
-                  {imgs.map((img,idx) => (
-                      <div key={img.id} className="bg-img" style={{backgroundImage: `url(${img.small})`}} onClick={()=>this.setBgImg(idx)}>
-                          <a href={img.link} target="_blank" onClick={this.openLink}>{img.name}</a>
-                      </div>
-                  ))}
+                    {imgs.map((img, idx) => (
+                        <div key={img.id} className="bg-img" style={{ backgroundImage: `url(${img.small})` }} onClick={() => this.setBgImg(idx)}>
+                            <a href={img.link} target="_blank" onClick={this.openLink}>{img.name}</a>
+                        </div>
+                    ))}
                 </div>
             </div>
         )

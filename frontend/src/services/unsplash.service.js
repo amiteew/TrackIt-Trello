@@ -12,7 +12,7 @@ async function getImgs(keyword, count = 10) {
         count++
     }
     const res = await Axios.get(`https://api.unsplash.com/search/photos?query=${keyword}&per_page=${count}&orientation=landscape&client_id=${KEY}`)
-    const imgs = res.data.results.map(img => ({ id: img.id, small: img.urls.small, full: img.urls.full, link: img.links.html, name:img.user.name }))
+    const imgs = res.data.results.map(img => ({ id: img.id, small: img.urls.small, full: `${img.urls.full}&auto=format&fit=crop&w=1920`, link: img.links.html, name:img.user.name }))
     if (keyword === 'scenery') imgs.shift()
     return imgs
 }

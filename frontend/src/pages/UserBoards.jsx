@@ -29,7 +29,7 @@ class _UserBoards extends React.Component {
             await this.props.loadBoards(loggedInUser._id)
             console.log('boards loaded',this.props.boards);
         }
-        const userBoards = this.removeTemplateBoards(this.props.boards)
+        const userBoards = userService.filterUserBoards(this.props.boards, loggedInUser._id, "all")
         this.setState({ userBoards })
         this.props.loadBoard(null)
         socketService.setup()
@@ -38,16 +38,17 @@ class _UserBoards extends React.Component {
         socketService.terminate()
     }
 
-    removeTemplateBoards = (boards) => {
-        return boards.filter(board => board.createdBy)
-    }
+    // removeTemplateBoards = (boards) => {
+    //     return boards.filter(board => board.createdBy)
+    // }
 
     getStarredBoards = () => {
         const { loggedInUser } = this.props
-        return this.state.userBoards.filter(board => {
-            if (!board.boardMembers.length) return false
-            return userService.isBoardStarred(board, loggedInUser._id)
-        })
+        return userService.filterUserBoards(this.state.userBoards, loggedInUser._id, "starred")
+        // return this.state.userBoards.filter(board => {
+        //     if (!board.boardMembers.length) return false
+        //     return userService.isBoardStarred(board, loggedInUser._id)
+        // })
     }
 
     toggleStarBoard = (ev, board) => {

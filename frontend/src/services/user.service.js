@@ -14,10 +14,11 @@ export const userService = {
     getById,
     remove,
     update,
+    filterUserBoards,
     isBoardStarred,
     toggleStarBoard
 }
-getUsers()
+// getUsers()
 function getUsers() {
     // return storageService.query(USER_KEY)
     //     .then((users) => {
@@ -51,10 +52,10 @@ async function update(user) {
 
 async function login(userCred) {
     // console.log('usercred',userCred);
-    
+
     // const users = await storageService.query(USER_KEY)
     console.log('userCred', userCred);
-    
+
     const user = await httpService.post('auth/login', userCred)
     // const user = users.find(user => user.username === userCred.username)
     if (!user) {
@@ -66,20 +67,31 @@ async function login(userCred) {
     // if (user) return _saveLocalUser(user)
 }
 async function signup(userCred) {
-    userCred.initials = _getUserInitials(userCred.fullname)        
+    userCred.initials = _getUserInitials(userCred.fullname)
     // const user = await storageService.post(USER_KEY, userCred)
     const user = await httpService.post('auth/signup', userCred)
     // socketService.emit('set-user-socket', user._id);
     return _saveLocalUser(user)
 }
 async function logout() {
-    // sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+    sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
     // socketService.emit('unset-user-socket');
     return await httpService.post('auth/logout')
 }
 
 function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER) || 'null')
+}
+
+function filterUserBoards(boards, userId, type) {
+    return boards.filter(board => {
+        if (!board.createdBy) return false
+        if (type === "all") return true
+        else if (type === "starred") return isBoardStarred(board, userId)
+        else return !isBoardStarred(board, userId)
+    })
+    // newest to oldest order
+    // return filteredBoards.sort((board1, board2) => board2.createdAt - board1.createdAt)
 }
 
 function isBoardStarred(board, userId) {
