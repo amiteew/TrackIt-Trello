@@ -109,26 +109,28 @@
             flex-grow: 1;
             justify-content: flex-end;
 
-            .btn-photo-member div {
-                height: 28px;
-                width: 28px;
-                margin: 5px 1px;
+            .btn-photo-member img {
+                // margin: unset;
             }
         }
     }
 
     .due-date {
 
-        .clock:hover {
-            display: none;
+        &:hover {
+
+            .clock {
+                display: none;
+            }
+
+            .check {
+                display: inherit;
+            }
+
         }
 
         .check {
             display: none;
-
-            &:hover {
-                display: inherit;
-            }
         }
 
         svg {

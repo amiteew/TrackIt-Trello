@@ -6,7 +6,8 @@ const initialState = {
   currCard: null,
   currList: null,
   isNotif: false,
-  notifCount: 0
+  notifCount: 0,
+  filterBy:{}
 }
 
 export function boardReducer(state = initialState, action = null) {
@@ -52,6 +53,8 @@ export function boardReducer(state = initialState, action = null) {
       return { ...state, notifCount: action.count }
     case 'SET_NOTIF_COUNT++':
       return { ...state, notifCount: state.notifCount + 1 }
+    case 'SET_FILTER':
+      return { ...state, filterBy: action.filterBy }
     default:
       return state
   }

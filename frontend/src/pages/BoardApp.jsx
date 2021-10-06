@@ -24,7 +24,6 @@ class _BoardApp extends React.Component {
         if (!this.props.boards.length) await this.props.loadBoards()
         const { boardId } = this.props.match.params
         this.props.loadBoard(boardId);
-        console.log('boardid', boardId);
         socketService.setup();
         socketService.emit('boardId', boardId);
         socketService.on('board updated', board => {
