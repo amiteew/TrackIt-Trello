@@ -53,7 +53,7 @@ class _SearchMenu extends React.Component {
                 <p>Search by term, label or member</p>
 
                 <Divider />
-                <div className="search types">
+                <div className="search-types">
                     <ui className="labels-filter">
                         {board.labels.map(label => (
                             <li className="pointer" key={label.id} onClick={() => this.onFilterBy('labels', label.id)} >
