@@ -113,6 +113,7 @@ class _BoardHeader extends React.Component {
             <MembersListBoard members={board.boardMembers} />
           </div>
         </div>
+        <button onClick={this.props.onOpenDashboard}>Dashboard</button>
         {!isMenuOpen && <button className="board-btn show-menu flex align-center" onClick={this.toggleMenu}>
           <span className="icon flex justify-center align-center"><BsThreeDots /> </span>
           <span className="title">Show menu</span>

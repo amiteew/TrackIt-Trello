@@ -14,16 +14,19 @@ export function boardReducer(state = initialState, action = null) {
     case 'SET_BOARDS':
       return { ...state, boards: action.boards }
     case 'SET_BOARD':
-      return { ...state, board: { ...action.board }, lastUpdatedBoard: { ...action.board } }
+      // console.log('in set board', state.board)
+      // const lastUpdatedBoard = JSON.parse(JSON.stringify(state.board))
+      return { ...state, board: { ...action.board } }
     case 'ADD_BOARD':
       return { ...state, board: action.board, boards: [...state.boards, action.board] }
     case 'REMOVE_BOARD':
       return { ...state, boards: state.boards.filter(board => board._id !== action.boardId) }
     // case 'UPDATE_BOARD': {
+    //   // console.log('state.board', state.board)
     //   const lastUpdatedBoard = JSON.parse(JSON.stringify(state.board))
-    //   const board = JSON.parse(JSON.stringify(action.board))
+    //   // const board = JSON.parse(JSON.stringify(action.board))
     //   return {
-    //     ...state, board: board, lastUpdatedBoard: lastUpdatedBoard,
+    //     ...state, board: action.board, lastUpdatedBoard,
     //     boards: state.boards.map(board =>
     //       board._id === action.board._id ? action.board : board)
     //   }
