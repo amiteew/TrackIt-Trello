@@ -3,9 +3,9 @@ import { Pie } from 'react-chartjs-2';
 
 export class PieTasksPerLabel extends React.Component {
 
-    mapTasksPerLabel = () => {
+    get mapTasksPerLabel() {
         const { board } = this.props
-        const mapTasksPerLabel = board.labels.map((label, idx) => (
+        let mapTasksPerLabel = board.labels.map((label, idx) => (
             {
                 label: label.title ? label.title : `label${idx + 1} (no title)`,
                 id: label.id,
@@ -22,13 +22,14 @@ export class PieTasksPerLabel extends React.Component {
 
             })
         })
-        console.log('mapTasksPerLabel', mapTasksPerLabel)
+        mapTasksPerLabel = mapTasksPerLabel.filter(taskPerLabel => taskPerLabel.tasks !== 0)
+        // console.log('mapTasksPerLabel', mapTasksPerLabel)
         return mapTasksPerLabel
     }
 
-    getPieData = () => {
-        const mapTasksPerLabel = this.mapTasksPerLabel()
-        console.log('tasksPerLabels', mapTasksPerLabel)
+    get getPieData() {
+        const mapTasksPerLabel = this.mapTasksPerLabel
+        // console.log('tasksPerLabels', mapTasksPerLabel)
         return {
             labels: mapTasksPerLabel.map(taskPerLabel => taskPerLabel.label),
             // labels: board.labels.map((label, idx) => label.title ? label.title : `label${idx + 1} (no title)`),
@@ -48,28 +49,23 @@ export class PieTasksPerLabel extends React.Component {
                         '#ff8ed4'
                     ],
                     borderColor: [
-                        '#61bd4f',
-                        '#f2d600',
-                        '#ff9f1a',
-                        '#eb5a46',
-                        '#c377e0',
-                        '#5ba4cf',
-                        '#51e898',
-                        '#2acce5',
-                        '#ff8ed4'
+                        'black'
                     ],
-                    borderWidth: 1,
+                    borderWidth: .5,
                 },
             ],
         }
     }
 
     render() {
-        const data = this.getPieData()
+        const data = this.getPieData
+        // console.log('data', data)
+        if (!data.datasets[0].data.length) return <div>there is no tasks tagged to any labels</div>
         return (
-            <>
+            <div className="pie-task-per-label">
+                <h1>Tasks per label</h1>
                 <Pie data={data} />
-            </>
+            </div>
         )
     }
 };

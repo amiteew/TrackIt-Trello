@@ -24,6 +24,7 @@ class _BoardHeader extends React.Component {
 
   componentDidMount() {
     this.setState({ title: this.props.board.boardTitle })
+    // socketService.setup()
     socketService.on('sending notification', (isNotif) => {
       this.props.setNotif(isNotif)
     })
@@ -103,14 +104,16 @@ class _BoardHeader extends React.Component {
             <MembersListBoard members={board.boardMembers} />
           </div>
         </div>
-        <button onClick={this.props.onOpenDashboard}>Dashboard</button>
-        {!isMenuOpen && <button className="board-btn show-menu flex align-center" onClick={this.toggleMenu}>
-          <span className="icon flex justify-center align-center"><BsThreeDots /> </span>
-          <span className="title">Show menu</span>
-        </button>}
-        {isMenuOpen && <DynamicBoardMenu board={board} toggleMenu={this.toggleMenu}
-          isMenuOpen={isMenuOpen} target={menuTarget} title={menuTitle} changeMenu={this.changeMenu} />}
-        {/* {isMenuOpen && <TemporaryDrawer board={board} toggleMenu={this.toggleMenu} isMenuOpen={isMenuOpen} />} */}
+        <div className="header-right flex">
+          <button className="board-btn" onClick={this.props.onOpenDashboard}>Dashboard</button>
+          {!isMenuOpen && <button className="board-btn show-menu flex align-center" onClick={this.toggleMenu}>
+            <span className="icon flex justify-center align-center"><BsThreeDots /> </span>
+            <span className="title">Show menu</span>
+          </button>}
+          {isMenuOpen && <DynamicBoardMenu board={board} toggleMenu={this.toggleMenu}
+            isMenuOpen={isMenuOpen} target={menuTarget} title={menuTitle} changeMenu={this.changeMenu} />}
+          {/* {isMenuOpen && <TemporaryDrawer board={board} toggleMenu={this.toggleMenu} isMenuOpen={isMenuOpen} />} */}
+        </div>
       </div>
     )
   }
@@ -126,7 +129,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
   updateBoard,
   setNotif,
-  
+
 }
 
 export const BoardHeader = connect(mapStateToProps, mapDispatchToProps)(_BoardHeader)

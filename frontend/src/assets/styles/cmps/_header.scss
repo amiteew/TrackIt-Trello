@@ -50,7 +50,7 @@
     background-color: rgba($color: #000000, $alpha: 0.4);
     color: white;
     font-size: rem(14px);
-    padding: 7px 1rem;
+    padding: 6px 1rem;
     // z-index: 1;
     .nav-bar {
         width: 100%;
@@ -78,7 +78,8 @@
                 }
             }
             .header-btn,
-            .user-boards {
+            .user-boards,
+            .starred-boards {
                 padding: 6px 12px;
                 border-radius: 3px;
                 background-color: transparent;
@@ -87,11 +88,13 @@
                     margin-inline-start: 8px;
                     background-color: rgba(0, 0, 0, 0.24);
                 }
-                &:hover, &.open {
+                &:hover,
+                &.open {
                     background-color: rgba(255, 255, 255, 0.2);
                 }
             }
-            .user-boards {
+            .user-boards,
+            .starred-boards {
                 button {
                     background-color: transparent;
                     color: white;
@@ -106,15 +109,36 @@
                 }
             }
         }
-        .user-section button {
-            position: absolute;
-            right: 4px;
-            top: 5px;
-            background-color: transparent;
-            padding: 0;
-            .MuiAvatar-root {
+        .user-section {
+            gap: 8px;
+            .notifications button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
                 height: 32px;
                 width: 32px;
+                padding: 0;
+                background-color: transparent;
+                svg{
+                    color: white;
+                }
+                &:hover {
+                    background-color: #ffffff33;
+                }
+            }
+            .user-avatar {
+                // position: absolute;
+                // right: 4px;
+                // top: 5px;
+                button {
+                    background-color: transparent;
+                    padding: 0;
+                }
+                .MuiAvatar-root {
+                    height: 32px;
+                    width: 32px;
+                }
             }
         }
     }

@@ -64,7 +64,9 @@ class _DynamicButton extends React.Component {
                         </Avatar>
                     </>
                 case 'userBoards':
-                    return <><span onClick={() => props.onToggleUserBoards()}>Boards</span><img src={DownArrow} alt="" /></>
+                    return <><span onClick={() => props.onToggle()}><span>Boards</span><img src={DownArrow} alt="" /></span></>
+                case 'starredBoards':
+                    return <><span onClick={() => props.onToggle()}><span>Starred</span><img src={DownArrow} alt="" /></span></>
                 case 'newNotif':
                     return <> <NotificationsActiveOutlinedIcon /> {this.props.notifCount}</>
                 case 'noNotif':

@@ -42,13 +42,22 @@ class _UserBoards extends React.Component {
     //     return boards.filter(board => board.createdBy)
     // }
 
-    getStarredBoards = () => {
-        const { loggedInUser } = this.props
-        return userService.filterUserBoards(this.state.userBoards, loggedInUser._id, "starred")
+    // getStarredBoards = () => {
+        // const { loggedInUser } = this.props
+        // return userService.filterUserBoards(this.state.userBoards, loggedInUser._id, "starred")
         // return this.state.userBoards.filter(board => {
         //     if (!board.boardMembers.length) return false
         //     return userService.isBoardStarred(board, loggedInUser._id)
         // })
+    // }
+
+    getBoardsByType = (type) => {
+        const { loggedInUser } = this.props
+        return userService.filterUserBoards(this.state.userBoards, loggedInUser._id, type)
+    }
+
+    getGuestBoards = () => {
+
     }
 
     toggleStarBoard = (ev, board) => {
@@ -68,14 +77,17 @@ class _UserBoards extends React.Component {
         const { userBoards } = this.state
         const { loggedInUser } = this.props
         if (!loggedInUser) return <Loading />
-        const starredBoards = userBoards.length ? this.getStarredBoards() : []
+        const starredBoards = userBoards.length ? this.getBoardsByType("starred") : []
+        const owndBoards = userBoards.length ? this.getBoardsByType("owner") : []
+        const guestdBoards = userBoards.length ? this.getBoardsByType("guest") : []
+        // const starredBoards = userBoards.length ? this.getStarredBoards() : []
         return (
             <section className="main-container boards">
                 <section className="boards-page flex">
                     <SideNav path={path} />
                     <section className="boards-section">
                         {starredBoards.length ?
-                            <section className="starred-boards">
+                            <section className="inner-section starred-boards">
                                 <div className="star-title flex">
                                     <IconContext.Provider value={{ className: "star-icon" }} >
                                         <FiStar />
@@ -88,16 +100,25 @@ class _UserBoards extends React.Component {
                                     )}
                                 </div>
                             </section> : <></>}
-                        <section className="user-boards">
-                            <h3>All Boards</h3>
+                        <section className="inner-section user-boards">
+                            <h3>Your Boards</h3>
                             <div className="boards-preview">
-                                {userBoards.map(board => {
+                                {owndBoards.map(board => {
                                     board.isStarred = board.boardMembers.find(member => member._id === loggedInUser._id).isStarred
                                     return <BoardPreview key={board._id} board={board} loggedInUser={loggedInUser} toggleStarBoard={this.toggleStarBoard} isLarge={board.isStarred} />
                                 })}
                                 <div className="board-preview create-board flex align-center justify-center" onClick={this.onToggleCreateBoard}>Create new board</div>
                             </div>
                         </section>
+                        {guestdBoards.length ? <section className="inner-section guest-boards user-boards">
+                            <h3>Guest Boards</h3>
+                            <div className="boards-preview">
+                                {guestdBoards.map(board => {
+                                    board.isStarred = board.boardMembers.find(member => member._id === loggedInUser._id).isStarred
+                                    return <BoardPreview key={board._id} board={board} loggedInUser={loggedInUser} toggleStarBoard={this.toggleStarBoard} isLarge={board.isStarred} />
+                                })}
+                            </div>
+                        </section> : <></>}
                     </section>
                 </section>
                 {this.state.isCreateBoard && <CreateBoard onToggleCreateBoard={this.onToggleCreateBoard} />}
