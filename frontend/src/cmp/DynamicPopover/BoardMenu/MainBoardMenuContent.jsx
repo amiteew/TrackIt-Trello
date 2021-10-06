@@ -10,8 +10,8 @@ export function MainBoardMenuContent({ board, changeMenu }) {
                     <span className="change-bg-preview" style={board.boardStyle}></span>
                     Change background
                 </button>
-                <button onClick={() => changeMenu('Search cards', 'search')}>
-                    <SearchSharpIcon />
+                <button className="menu-action-btn" onClick={() => changeMenu('Search cards', 'search')}>
+                    <span className="search-cards"> <SearchSharpIcon /></span>
                     <span> Search cards </span>
                 </button>
             </div>

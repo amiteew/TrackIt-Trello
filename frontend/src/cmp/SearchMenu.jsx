@@ -23,7 +23,7 @@ class _SearchMenu extends React.Component {
     handleChange = (ev) => {
         const value = ev.target.value;
         this.setState({ searchKey: value });
-        this.setState({ filterBy: { ...this.state.filterBy, searchKey: value, isFilter:true } },()=>{
+        this.setState({ filterBy: { ...this.state.filterBy, searchKey: value, isFilter: true } }, () => {
             this.props.setFilterBy(this.state.filterBy, this.props.board._id);
         })
     }
@@ -31,7 +31,7 @@ class _SearchMenu extends React.Component {
     onFilterBy = (type, id) => {
         let filterType = this.state.filterBy[type];
         filterType.push(id);
-        this.setState({ filterBy: { ...this.state.filterBy, [type]: filterType, isFilter:true } }, () => {
+        this.setState({ filterBy: { ...this.state.filterBy, [type]: filterType, isFilter: true } }, () => {
             console.log('filter', this.state.filterBy);
             this.props.setFilterBy(this.state.filterBy, this.props.board._id);
         });
@@ -41,29 +41,36 @@ class _SearchMenu extends React.Component {
         const { board } = this.props;
         const { searchKey } = this.state;
         return (
-            <div className="search cards">
-                   <DebounceInput
-                        minLength={2}
-                        debounceTimeout={2000}
-                        className="search-cards"
-                        placeholder="Search unsplash photo..."
-                        type='text'
-                        onChange={this.handleChange}
-                        value={searchKey}
+            <div className="search-cards">
+                <DebounceInput
+                    minLength={2}
+                    debounceTimeout={2000}
+                    className="search-cards"
+                    type='text'
+                    onChange={this.handleChange}
+                    value={searchKey}
                 />
-                <p>Search by term, label, member, or due time.</p>
+                <p>Search by term, label or member</p>
 
                 <Divider />
                 <div className="search types">
-                    <div className="labels-filter">
+                    <ui className="labels-filter">
                         {board.labels.map(label => (
-                            <div key={label.id} onClick={() => this.onFilterBy('labels', label.id)} >
-                                <div className={`label-menu pointer ${label.color}`}>
-                                    {label.title}
+                            <li className="pointer" key={label.id} onClick={() => this.onFilterBy('labels', label.id)} >
+                               <div className="label-menu">
+                                   <div className="label-list-item">
+                                <div className={`label-menu-color pointer ${label.color}`}>
+                                    <span >
+                                    </span>
+                                    </div>
                                 </div>
-                            </div>
+                                <span>
+                                    {label.title}
+                                </span>
+                                </div>
+                            </li>
                         ))}
-                    </div>
+                    </ui>
 
                     <Divider />
                     <div className="members-search">

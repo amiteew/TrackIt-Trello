@@ -25,11 +25,11 @@ export class SearchForCover extends React.Component {
     render() {
         // const { searchCover } = this.state;
         const { handleChange, searchCover, getImgForCover } = this.props;
-        const searchKey = ['Animals', 'Business', 'Nature', 'Organization'];
+        const searchKey = ['Animals', 'Business', 'Nature', 'Organization', 'Colorful', 'Minimal', 'Space', 'Perspective'];
         return (
             <div>
-                <div>
-                    <DebounceInput
+                <div className="search-cover-input">
+                    <DebounceInput 
                         minLength={2}
                         debounceTimeout={400}
                         className="search-cover-img text-area-auto"
@@ -39,12 +39,12 @@ export class SearchForCover extends React.Component {
                         value={searchCover}
                     />
                 </div>
-                <div>
+                <h4>Suggested searches</h4>
+                <div className="suggested-keywords">
                     {searchKey.map((key, idx) => (
-                        <div key={idx} onClick={() => { getImgForCover(12, key) }}>
+                        <button className="suggested-search-btn" key={idx} onClick={() => { getImgForCover(12, key) }}>
                             {key}
-                        </div>))}
-
+                        </button>))}
                 </div>
 
             </div>
