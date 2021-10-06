@@ -56,11 +56,14 @@ class _CardDetails extends React.Component {
 
     onToggleDone = () => {
         const { currListIdx, currCardIdx } = this.state
-        const boardToUpdate = this.props.board
-        boardToUpdate.lists[currListIdx].cards[currCardIdx].dueDate.isDone =
-            !boardToUpdate.lists[currListIdx].cards[currCardIdx].dueDate.isDone
-        const action = 'changed Due Date'
-        this.props.updateBoard(boardToUpdate, action) // need to add card
+        const board = this.props.board
+        const currCard = board.lists[currListIdx].cards[currCardIdx]
+        currCard.dueDate.isDone = !currCard.dueDate.isDone
+        console.log('currCard.dueDate', currCard.dueDate)
+        const action = currCard.dueDate.isDone
+            ? 'Marked the due date complete'
+            : 'Marked the due date incomplete'
+        this.props.updateBoard(board, action, currCard)
 
     }
 
@@ -78,91 +81,93 @@ class _CardDetails extends React.Component {
         const { board } = this.props
         if (!board || currCardIdx === null || currListIdx === null) return <Loading />
         const currCard = board.lists[currListIdx].cards[currCardIdx]
-        return (<div className="card-details-wrapper" >
-            <div className="screen-card-details" onClick={this.handleClose}></div>
-            <div className="card-details" >
-                <CardDetailsHeader board={board}
-                    currListIdx={currListIdx}
-                    currCardIdx={currCardIdx}
-                    handleClose={this.handleClose} />
-                <div className="card-details-main-content">
-
-                    <CardTitle board={board}
+        return (
+            <div className="card-details-wrapper" >
+                <div className="screen-card-details" onClick={this.handleClose}></div>
+                <div className="card-details" >
+                    <CardDetailsHeader board={board}
                         currListIdx={currListIdx}
                         currCardIdx={currCardIdx}
-                        OnUpdateBoard={this.OnUpdateBoard} />
+                        handleClose={this.handleClose} />
+                    <div className="card-details-main-content">
 
-                    <div className="card-details-content">
-                        <div className="card-details-main">
-                            <div className="card-details-items flex direction-row items-flex-start wrap">
+                        <CardTitle
+                            board={board}
+                            currListIdx={currListIdx}
+                            currCardIdx={currCardIdx}
+                            OnUpdateBoard={this.OnUpdateBoard} />
 
-                                {
-                                    currCard.cardMembers.length ? <div>
-                                        <h3>Members</h3>
-                                        <MembersList members={currCard.cardMembers} board={board}
-                                            currListIdx={currListIdx}
-                                            currCardIdx={currCardIdx} currCard={currCard} isCardOpen={true} />
-                                    </div> : ''
-                                }
+                        <div className="card-details-content">
+                            <div className="card-details-main">
+                                <div className="card-details-items flex direction-row items-flex-start wrap">
 
-                                {
-                                    currCard.cardLabelIds.length ?
-                                        <CardLabelsList cardLabelIds={currCard.cardLabelIds} boardLabels={board.labels}
-                                            board={board}
-                                            currListIdx={currListIdx}
-                                            currCardIdx={currCardIdx} isCardOpen={true} /> : ''
-                                }
+                                    {
+                                        currCard.cardMembers.length ? <div>
+                                            <h3>Members</h3>
+                                            <MembersList members={currCard.cardMembers} board={board}
+                                                currListIdx={currListIdx}
+                                                currCardIdx={currCardIdx} currCard={currCard} isCardOpen={true} />
+                                        </div> : ''
+                                    }
 
-                                {
-                                    currCard.dueDate.date &&
-                                    <div id="due-date-preview-card">
-                                        <DynamicPopover type={'dates-edit'} title={'Dates'} titleModal={'Dates'}
-                                            board={board}
-                                            currListIdx={currListIdx}
-                                            currCardIdx={currCardIdx}
-                                            dueDate={currCard.dueDate}
-                                            onToggleDone={this.onToggleDone}
-                                        />
-                                    </div>
+                                    {
+                                        currCard.cardLabelIds.length ?
+                                            <CardLabelsList cardLabelIds={currCard.cardLabelIds} boardLabels={board.labels}
+                                                board={board}
+                                                currListIdx={currListIdx}
+                                                currCardIdx={currCardIdx} isCardOpen={true} /> : ''
+                                    }
+
+                                    {
+                                        currCard.dueDate.date &&
+                                        <div id="due-date-preview-card">
+                                            <DynamicPopover type={'dates-edit'} title={'Dates'} titleModal={'Dates'}
+                                                board={board}
+                                                currListIdx={currListIdx}
+                                                currCardIdx={currCardIdx}
+                                                dueDate={currCard.dueDate}
+                                                onToggleDone={this.onToggleDone}
+                                            />
+                                        </div>
 
 
 
 
-                                    // <DueDatePreview dueDate={currCard.dueDate} onToggleDone={this.onToggleDone}
-                                    //     board={board}
-                                    //     currListIdx={currListIdx}
-                                    //     currCardIdx={currCardIdx} />
-                                }
+                                        // <DueDatePreview dueDate={currCard.dueDate} onToggleDone={this.onToggleDone}
+                                        //     board={board}
+                                        //     currListIdx={currListIdx}
+                                        //     currCardIdx={currCardIdx} />
+                                    }
+                                </div>
+
+
+                                <CardDescription board={board}
+                                    currListIdx={currListIdx}
+                                    currCardIdx={currCardIdx}
+                                    OnUpdateBoard={this.OnUpdateBoard} />
+
+                                <CardAttachmentsList board={board}
+                                    currListIdx={currListIdx}
+                                    currCardIdx={currCardIdx}
+                                    OnUpdateBoard={this.OnUpdateBoard} />
+
+                                <ChecklistListApp currCard={currCard} />
+
+                                <CardActivities board={board}
+                                    currListIdx={currListIdx}
+                                    currCardIdx={currCardIdx}
+                                    OnUpdateBoard={this.OnUpdateBoard} />
                             </div>
-
-
-                            <CardDescription board={board}
-                                currListIdx={currListIdx}
-                                currCardIdx={currCardIdx}
-                                OnUpdateBoard={this.OnUpdateBoard} />
-
-                            <CardAttachmentsList board={board}
-                                currListIdx={currListIdx}
-                                currCardIdx={currCardIdx}
-                                OnUpdateBoard={this.OnUpdateBoard} />
-
-                            <ChecklistListApp currCard={currCard} />
-
-                            <CardActivities board={board}
-                                currListIdx={currListIdx}
-                                currCardIdx={currCardIdx}
-                                OnUpdateBoard={this.OnUpdateBoard} />
+                            <div className="card-details-sidebar">
+                                <CardSideBar board={board}
+                                    currListIdx={currListIdx}
+                                    currCardIdx={currCardIdx}
+                                    handleClose={this.handleClose} />
+                            </div>
                         </div>
-                        <div className="card-details-sidebar">
-                            <CardSideBar board={board}
-                                currListIdx={currListIdx}
-                                currCardIdx={currCardIdx}
-                                handleClose={this.handleClose} />
-                        </div>
-                    </div>
-                </div >
-            </div>
-        </div>)
+                    </div >
+                </div>
+            </div>)
     }
 }
 

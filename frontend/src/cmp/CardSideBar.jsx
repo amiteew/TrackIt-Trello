@@ -16,8 +16,6 @@ export function CardSideBar({ board, currListIdx, currCardIdx, OnUpdateBoard, ha
             <h4>ADD TO CARD</h4>
             <div className="btn-container">
 
-
-
                 <DynamicPopover type={'members'} title={'Members'} titleModal={'Members'}
                     board={board}
                     currListIdx={currListIdx}

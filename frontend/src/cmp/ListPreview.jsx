@@ -19,6 +19,7 @@ export class ListPreview extends React.Component {
     toggleOnAdd = () => {
         this.setState({ isAdding: !this.state.isAdding })
     }
+
     onCloseAdding = () => {
         this.toggleOnAdd();
     }
@@ -42,7 +43,7 @@ export class ListPreview extends React.Component {
         if (!listTitle) return;
         const { onUpdateBoard, board, currListIdx } = this.props;
         board.lists[currListIdx].listTitle = listTitle;
-        onUpdateBoard();
+        onUpdateBoard(board);
         this.toggleEditTitle();
     }
 
@@ -85,7 +86,6 @@ export class ListPreview extends React.Component {
                                 </span>}
                         </div>
                     </section >
-
                 )
                 }
             </Draggable>

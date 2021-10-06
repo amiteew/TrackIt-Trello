@@ -6,12 +6,12 @@ import { BsThreeDots } from "react-icons/bs";
 import AutosizeInput from 'react-input-autosize';
 
 import { userService } from "../services/user.service"
-import { updateBoard } from "../store/board.actions"
+import { updateBoard, setNotif } from "../store/board.actions"
 import { MembersListBoard } from "./MembersListBoard"
 import { TemporaryDrawer } from '../cmp/DroweMenu.jsx';
 import { Loading } from "./Loading";
-import { socketService } from "../services/socket.service";
 import { DynamicBoardMenu } from "./DynamicBoardMenu";
+import { socketService } from '../services/socket.service';
 
 class _BoardHeader extends React.Component {
   state = {
@@ -24,9 +24,9 @@ class _BoardHeader extends React.Component {
 
   componentDidMount() {
     this.setState({ title: this.props.board.boardTitle })
-    // socketService.on('sending notification', notif => {
-    //   console.log('notifi', notif);
-    // })
+    socketService.on('sending notification', (isNotif) => {
+      this.props.setNotif(isNotif)
+    })
   }
 
   handleChange = (ev) => {
@@ -103,6 +103,7 @@ class _BoardHeader extends React.Component {
             <MembersListBoard members={board.boardMembers} />
           </div>
         </div>
+        <button onClick={this.props.onOpenDashboard}>Dashboard</button>
         {!isMenuOpen && <button className="board-btn show-menu flex align-center" onClick={this.toggleMenu}>
           <span className="icon flex justify-center align-center"><BsThreeDots /> </span>
           <span className="title">Show menu</span>
@@ -117,12 +118,15 @@ class _BoardHeader extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    loggedInUser: state.userReducer.loggedInUser
+    loggedInUser: state.userReducer.loggedInUser,
+    notifCount: state.boardReducer.notifCount
   }
 }
 
 const mapDispatchToProps = {
-  updateBoard
+  updateBoard,
+  setNotif,
+  
 }
 
 export const BoardHeader = connect(mapStateToProps, mapDispatchToProps)(_BoardHeader)

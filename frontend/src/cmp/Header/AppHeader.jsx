@@ -4,11 +4,17 @@ import { NavLink } from 'react-router-dom'
 import { LogoName } from './LogoName';
 import { DynamicPopover } from '../DynamicPopover';
 import { CreateBoard } from '../CreateBoard';
+import { socketService } from "../../services/socket.service";
+import { setNotif} from '../../store/board.actions';
+import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 
 class _AppHeader extends React.Component {
+
     state = {
         isCreateBoard: false,
-        isUserBoardsOpen: false
+        isUserBoardsOpen: false,
+        isNotif: false
     }
 
     onToggleCreateBoard = () => {
@@ -21,9 +27,15 @@ class _AppHeader extends React.Component {
         this.setState(prevState => ({ ...prevState, isUserBoardsOpen: !isUserBoardsOpen }))
     }
 
+    markReadNotif = () => {
+        this.props.setNotif(false);
+    }
+
     render() {
-        const { loggedInUser } = this.props
+        const { loggedInUser, isNotif } = this.props;
+        const { } = this.state;
         if (!loggedInUser) return (<></>)
+        const notificaion = isNotif ? 'newNotif' : 'noNotif';
         return (
             <>
                 <header className="main-header">
@@ -39,6 +51,13 @@ class _AppHeader extends React.Component {
                             </NavLink> */}
                             <button className="header-btn create" onClick={this.onToggleCreateBoard}>Create</button>
                         </div>
+                        <div >
+                            <DynamicPopover type={notificaion}
+                                titleModal={'Notifications'} markReadNotif={this.markReadNotif} />
+                        </div>
+
+                        {/* {!isNotifi && <div><NotificationsNoneIcon /> </div>}
+                        {isNotifi && <div><NotificationsActiveOutlinedIcon /></div>} */}
                         <div className="user-section">
                             <DynamicPopover type={'userMenu'} titleModal={'Account'} loggedInUser={loggedInUser} />
                         </div>
@@ -54,8 +73,14 @@ function mapStateToProps(state) {
     return {
         board: state.boardReducer.board,
         boards: state.boardReducer.boards,
-        loggedInUser: state.userReducer.loggedInUser
+        loggedInUser: state.userReducer.loggedInUser,
+        isNotif: state.boardReducer.isNotif,
+        notifCount: state.boardReducer.notifCount
     }
 }
 
-export const AppHeader = connect(mapStateToProps)(_AppHeader)
+const mapDispatchToProps = {
+    setNotif,
+}
+
+export const AppHeader = connect(mapStateToProps, mapDispatchToProps)(_AppHeader)

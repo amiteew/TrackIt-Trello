@@ -20,17 +20,17 @@ class _MembersPopover extends React.Component {
 
     toggleMember = (member) => {
         const { currListIdx, currCardIdx } = this.state
-        const newBoard = { ...this.state.board }
-        const currCard = newBoard.lists[currListIdx].cards[currCardIdx]
+        const { loggedInUser, board } = this.props
+        const currCard = board.lists[currListIdx].cards[currCardIdx]
         if (this.isMemberOnCard(currCard, member._id)) {
             const memberIdx = currCard.cardMembers.findIndex(cardMember => cardMember._id === member._id)
-            newBoard.lists[currListIdx].cards[currCardIdx].cardMembers.splice(memberIdx, 1)
-            var action = `${member} Removed from `
+            currCard.cardMembers.splice(memberIdx, 1)
+            var action = (loggedInUser._id === member._id) ? 'Left' : `Removed`
         } else {
-            newBoard.lists[currListIdx].cards[currCardIdx].cardMembers.push(member)
-            var action = `${member} Added to `
+            currCard.cardMembers.push(member)
+            var action = (loggedInUser._id === member._id) ? 'Join' : `Added`
         }
-        this.props.updateBoard(newBoard, action, currCard)
+        this.props.updateBoard(board, action, currCard)
     }
 
     isMemberOnCard = (currCard, memberId) => {

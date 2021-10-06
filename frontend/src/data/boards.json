@@ -4,7 +4,7 @@
         "boardTitle": "Emoji Maker Project",
         "createdAt": 1589983468418,
         "createdBy": {
-            "_id": "u104",
+            "_id": "615866221f0b4eb558de162c",
             "fullname": "Alexa Pierce",
             "initials": "AP",
             "imgUrl": "https://randomuser.me/api/portraits/med/women/55.jpg"
@@ -88,7 +88,7 @@
         ],
         "boardMembers": [
             {
-                "_id": "u100",
+                "_id": "6158117b1f0b4eb558de162a",
                 "fullname": "Panda Guest",
                 "username": "pandaguest",
                 "imgUrl": "https://res.cloudinary.com/dhxwkomwu/image/upload/v1632685060/WhatsApp_Image_2021-09-26_at_22.36.21_fktx98.jpg",
@@ -96,7 +96,7 @@
                 "isStarred": true
             },
             {
-                "_id": "u104",
+                "_id": "615866221f0b4eb558de162c",
                 "fullname": "Alexa Pierce",
                 "username": "alexapi",
                 "initials": "AP",
@@ -104,7 +104,7 @@
                 "isStarred": false
             },
             {
-                "_id": "u101",
+                "_id": "615814e3da8a72aac35397ea",
                 "fullname": "Shany pollack",
                 "username": "shanypo",
                 "initials": "SP",
@@ -112,7 +112,7 @@
                 "isStarred": true
             },
             {
-                "_id": "u102",
+                "_id": "61585c941f0b4eb558de162b",
                 "fullname": "Amitee Weiner",
                 "username": "amiteewe",
                 "initials": "AW",
@@ -204,21 +204,21 @@
                         "comments": [],
                         "cardMembers": [
                             {
-                                "_id": "u104",
+                                "_id": "615866221f0b4eb558de162c",
                                 "fullname": "Alexa Pierce",
                                 "username": "alexapi",
                                 "initials": "AP",
                                 "imgUrl": "https://randomuser.me/api/portraits/med/women/55.jpg"
                             },
                             {
-                                "_id": "u101",
+                                "_id": "615814e3da8a72aac35397ea",
                                 "fullname": "Shany pollack",
                                 "username": "shanypo",
                                 "initials": "SP",
                                 "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632417771/shanypo_nzjhlq.jpg"
                             },
                             {
-                                "_id": "u102",
+                                "_id": "61585c941f0b4eb558de162b",
                                 "fullname": "Amitee Weiner",
                                 "username": "amiteewe",
                                 "initials": "AW",
@@ -381,7 +381,7 @@
                         "comments": [
                             {
                                 "byMember": {
-                                    "_id": "u101",
+                                    "_id": "615814e3da8a72aac35397ea",
                                     "fullname": "Shany Pollack",
                                     "username": "shany",
                                     "password": "shanypo",
@@ -425,7 +425,7 @@
                         "comments": [],
                         "cardMembers": [
                             {
-                                "_id": "u102",
+                                "_id": "61585c941f0b4eb558de162b",
                                 "fullname": "Amitee Weiner",
                                 "username": "looply@gmail.com",
                                 "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg",
@@ -448,7 +448,7 @@
                         "comments": [],
                         "cardMembers": [
                             {
-                                "_id": "u102",
+                                "_id": "61585c941f0b4eb558de162b",
                                 "fullname": "Shany pollack",
                                 "username": "shanypo",
                                 "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632417771/shanypo_nzjhlq.jpg",
@@ -481,7 +481,7 @@
                         "comments": [],
                         "cardMembers": [
                             {
-                                "_id": "u101",
+                                "_id": "615814e3da8a72aac35397ea",
                                 "fullname": "Shany pollack",
                                 "username": "looply@gmail.com",
                                 "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632417771/shanypo_nzjhlq.jpg",
@@ -550,7 +550,7 @@
                         "comments": [],
                         "cardMembers": [
                             {
-                                "_id": "u101",
+                                "_id": "615814e3da8a72aac35397ea",
                                 "fullname": "Shany pollack",
                                 "username": "looply@gmail.com",
                                 "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632417771/shanypo_nzjhlq.jpg",
@@ -631,7 +631,7 @@
                 "txt": "Create the messaging house that will be replicated across all assets",
                 "createdAt": 1632912971751,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -656,7 +656,7 @@
                 "txt": "Communication Plan",
                 "createdAt": 1632912937870,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -681,7 +681,7 @@
                 "txt": "",
                 "createdAt": 1632912901717,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -706,7 +706,7 @@
                 "txt": "",
                 "createdAt": 1632912900389,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -731,7 +731,7 @@
                 "txt": "",
                 "createdAt": 1632912885504,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -756,7 +756,7 @@
                 "txt": "",
                 "createdAt": 1632912879678,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -781,7 +781,7 @@
                 "txt": "",
                 "createdAt": 1632912874311,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -806,7 +806,7 @@
                 "txt": "Animated emoji support",
                 "createdAt": 1632912871838,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -831,7 +831,7 @@
                 "txt": "",
                 "createdAt": 1632912830389,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -856,7 +856,7 @@
                 "txt": "",
                 "createdAt": 1632912823229,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -881,7 +881,7 @@
                 "txt": "",
                 "createdAt": 1632912806797,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -906,7 +906,7 @@
                 "txt": "",
                 "createdAt": 1632912796277,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -931,7 +931,7 @@
                 "txt": "",
                 "createdAt": 1632912782181,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -956,7 +956,7 @@
                 "txt": "",
                 "createdAt": 1632912767781,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -981,7 +981,7 @@
                 "txt": "",
                 "createdAt": 1632912759429,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1006,7 +1006,7 @@
                 "txt": "Localization",
                 "createdAt": 1632912736517,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1031,7 +1031,7 @@
                 "txt": "",
                 "createdAt": 1632912726631,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1053,7 +1053,7 @@
                 "txt": "1. Open any image\n2. Press 'tab'\nExpected: Focus on the emoji reaction field",
                 "createdAt": 1632912707969,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1078,7 +1078,7 @@
                 "txt": "",
                 "createdAt": 1632912676837,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1103,7 +1103,7 @@
                 "txt": "",
                 "createdAt": 1632912675421,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1128,7 +1128,7 @@
                 "txt": "Add Tab to react on images",
                 "createdAt": 1632912664469,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1153,7 +1153,7 @@
                 "txt": "Repro Windows/Chrome\n\n1. Open checklist\n2. Use Shift+Click to highlight multiple items\nExpected: Ability to select multiple items",
                 "createdAt": 1632912646367,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1178,7 +1178,7 @@
                 "txt": "",
                 "createdAt": 1632912628181,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1203,7 +1203,7 @@
                 "txt": "",
                 "createdAt": 1632912620045,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1228,7 +1228,7 @@
                 "txt": "Multiple Emojis select",
                 "createdAt": 1632912614925,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1253,7 +1253,7 @@
                 "txt": "One week, all outstanding bugs!",
                 "createdAt": 1632912584232,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1278,7 +1278,7 @@
                 "txt": "",
                 "createdAt": 1632912574077,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1303,7 +1303,7 @@
                 "txt": "",
                 "createdAt": 1632912568845,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1328,7 +1328,7 @@
                 "txt": "",
                 "createdAt": 1632912567429,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1353,7 +1353,7 @@
                 "txt": "Operation: All The Bugs",
                 "createdAt": 1632912544509,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1378,7 +1378,7 @@
                 "txt": "",
                 "createdAt": 1632912534485,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1400,7 +1400,7 @@
                 "txt": "1. Open image library\n2. Click + Hold image to add emoji reactions\nExpected: Emoji reactions displayed on the image",
                 "createdAt": 1632912502513,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1425,7 +1425,7 @@
                 "txt": "",
                 "createdAt": 1632912459894,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1450,7 +1450,7 @@
                 "txt": "",
                 "createdAt": 1632912442852,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1475,7 +1475,7 @@
                 "txt": "Add Emoji Reactions on images",
                 "createdAt": 1632912438142,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1500,7 +1500,7 @@
                 "txt": "I ran into this issu",
                 "createdAt": 1632912412879,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1525,7 +1525,7 @@
                 "txt": "Repro Windows on IE 11\n\nUpload a video greater than 100mb\n1. Play video\n2. Expected: Video streams in player\n\nActual: Video does not load or stream",
                 "createdAt": 1632912362200,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1550,7 +1550,7 @@
                 "txt": "Repro Windows on IE 11\n\nUpload a video greater than 100mb\nPlay video\nExpected: Video streams in player\n\nActual: Video does not load or stream",
                 "createdAt": 1632912339385,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1575,7 +1575,7 @@
                 "txt": "",
                 "createdAt": 1632912325639,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1600,7 +1600,7 @@
                 "txt": "",
                 "createdAt": 1632912313085,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1625,7 +1625,7 @@
                 "txt": "Video load issues on IE 11",
                 "createdAt": 1632912309934,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1650,7 +1650,7 @@
                 "txt": "---Add a card below if you have any request/question/feedback - make sure to tag Alexa---",
                 "createdAt": 1632912295877,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1675,7 +1675,7 @@
                 "txt": "",
                 "createdAt": 1632912288173,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1697,7 +1697,7 @@
                 "txt": "",
                 "createdAt": 1632912260014,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1722,7 +1722,7 @@
                 "txt": "",
                 "createdAt": 1632912247541,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1747,7 +1747,7 @@
                 "txt": "",
                 "createdAt": 1632912238637,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1772,7 +1772,7 @@
                 "txt": "",
                 "createdAt": 1632912229921,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1797,7 +1797,7 @@
                 "txt": "Competitor Research",
                 "createdAt": 1632912213348,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1822,7 +1822,7 @@
                 "txt": "Emojis and Team Productivity",
                 "createdAt": 1632912185533,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1847,7 +1847,7 @@
                 "txt": "",
                 "createdAt": 1632912106205,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1872,7 +1872,7 @@
                 "txt": "",
                 "createdAt": 1632912104277,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1897,7 +1897,7 @@
                 "txt": "",
                 "createdAt": 1632912102332,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1922,7 +1922,7 @@
                 "txt": "",
                 "createdAt": 1632912085772,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1947,7 +1947,7 @@
                 "txt": "",
                 "createdAt": 1632912083269,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1972,7 +1972,7 @@
                 "txt": "How to use this board",
                 "createdAt": 1632912075279,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -1997,7 +1997,7 @@
                 "txt": "Project manager:\nAlexa,\n\nDev team:\nShany, Michael, and Amitee,\n\nDesign:\nAndre,\n\nMarketing:\nSamantha,\n\nSupport:\nChris",
                 "createdAt": 1632912013910,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -2022,7 +2022,7 @@
                 "txt": "Team Members Responsibilities",
                 "createdAt": 1632911985795,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -2047,7 +2047,7 @@
                 "txt": "Project manager:\nAlexa,\n\nDev team:\nShany, Amitee and Michael,\n\nDesign:\nAndre,\n\nMarketing:\nSamantha,\n\nSupport:\nChris",
                 "createdAt": 1632911728019,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -2072,7 +2072,7 @@
                 "txt": "",
                 "createdAt": 1632911637495,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -2094,7 +2094,7 @@
                 "txt": "Metrics and KPI",
                 "createdAt": 1632911511111,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -2119,7 +2119,7 @@
                 "txt": "Project manager:\nShany,\n\nDev team:\nAmitee and Michael,\n\nDesign:\nAndre,\n\nMarketing:\nSamantha,\n\nSupport:\nChris",
                 "createdAt": 1632911473793,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -2144,7 +2144,7 @@
                 "txt": "Team Members Responsibilities",
                 "createdAt": 1632911470573,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -2169,7 +2169,7 @@
                 "txt": "Project manager:\nShany,\n\nDev team:\nAmitee and Michael,\n\nDesign:\nAndre,\n\nMarketing:\nSamantha,\n\nSupport:\nChris",
                 "createdAt": 1632911450754,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -2194,7 +2194,7 @@
                 "txt": "Project manager:\nShany,\n\nDev team:\nAmitee and Michael,\n\nDesign:\nAndre,\n\nMarketing:\nSamantha,\n\nSupport:\nChris",
                 "createdAt": 1632911430817,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -2219,7 +2219,7 @@
                 "txt": "Project manager:\nShany,\n\nDev team:\nAmitee, and Michael,\n\nDesign:\nAndre,\n\nMarketing:\nSamantha,\n\nSupport:\nChris",
                 "createdAt": 1632911419346,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -2244,7 +2244,7 @@
                 "txt": "Project manager:\nAlexia,\n\nDev team:\nAmy, Samantha and Chris T,\n\nDesign:\nAndre,\n\nMarketing:\nMarques,\n\nSupport:\nPriscilla",
                 "createdAt": 1632911353763,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -2269,7 +2269,7 @@
                 "txt": "Project manager\nAlexia\n\nDev team:\nAmy, Samantha and Chris T\n\nDesign:\nAndre\n\nMarketing\nMarques\n\nSupport\nPriscilla",
                 "createdAt": 1632911302624,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -2294,7 +2294,7 @@
                 "txt": "Team Members Responsibilities",
                 "createdAt": 1632911294029,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -2319,7 +2319,7 @@
                 "txt": "",
                 "createdAt": 1632911209928,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -2341,7 +2341,7 @@
                 "txt": "",
                 "createdAt": 1632911208802,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -2363,7 +2363,7 @@
                 "txt": "Let's add Emoji reaction capabilities to our tools",
                 "createdAt": 1632911131232,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -2388,7 +2388,7 @@
                 "txt": "Build Emoji Reactions in our tool - Project Overview",
                 "createdAt": 1632911121917,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -2413,7 +2413,7 @@
                 "txt": "",
                 "createdAt": 1632911077247,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "Shany Pollack",
                     "username": "shany",
                     "password": "shanypo",
@@ -2438,7 +2438,7 @@
         "boardTitle": "final project2",
         "createdAt": 1589983468418,
         "createdBy": {
-            "_id": "u102",
+            "_id": "61585c941f0b4eb558de162b",
             "fullname": "Amitee Long Name Weiner",
             "imgUrl": "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg"
         },
@@ -2464,7 +2464,7 @@
         ],
         "boardMembers": [
             {
-                "_id": "u101",
+                "_id": "615814e3da8a72aac35397ea",
                 "fullname": "Shany pollack",
                 "username": "shanypo",
                 "initials": "SP",
@@ -2472,7 +2472,7 @@
                 "isStarred": true
             },
             {
-                "_id": "u102",
+                "_id": "61585c941f0b4eb558de162b",
                 "fullname": "Amitee Weiner",
                 "username": "amiteewe",
                 "initials": "AW",
@@ -2503,7 +2503,7 @@
                                 "txt": "also @yaronb please CR this",
                                 "createdAt": 1590999817436,
                                 "byMember": {
-                                    "_id": "u101",
+                                    "_id": "615814e3da8a72aac35397ea",
                                     "fullname": "Tal Tarablus",
                                     "username": "looply@gmail.com",
                                     "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
@@ -2512,7 +2512,7 @@
                         ],
                         "cardMembers": [
                             {
-                                "_id": "u101",
+                                "_id": "615814e3da8a72aac35397ea",
                                 "username": "Tal",
                                 "fullname": "Tal Tarablus",
                                 "isWatch": true,
@@ -2571,7 +2571,7 @@
                 "txt": "",
                 "createdAt": 154514,
                 "byMember": {
-                    "_id": "u101",
+                    "_id": "615814e3da8a72aac35397ea",
                     "fullname": "amit weiner",
                     "imgUrl": ""
                 },

@@ -34,8 +34,8 @@ export class AddList extends React.Component {
         }
         const { board } = this.props;
         board.lists.push(newList);
+        const action = `Added list ${listTitle}`
         this.setState({ listTitle: "" });
-        const action = `Added list "${listTitle}"`
         this.props.onUpdateBoard(action);
         this.onCloseAdding();
     }

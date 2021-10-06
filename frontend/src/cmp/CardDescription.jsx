@@ -29,11 +29,7 @@ export class CardDescription extends React.Component {
     onSaveDescription = (ev) => {
         ev.preventDefault();
         ev.stopPropagation()
-        const { board, currListIdx, currCardIdx } = this.state
-        const currCard = board.lists[currListIdx].cards[currCardIdx];
-        const action = `Changed description`
-        const txt = currCard.description
-        this.props.OnUpdateBoard({ ...this.state.board }, action, currCard, txt)
+        this.props.OnUpdateBoard({ ...this.state.board })
         this.setState({ ...this.state, isEditing: false })
     }
 

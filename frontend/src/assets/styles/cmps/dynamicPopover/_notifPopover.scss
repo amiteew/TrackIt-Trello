@@ -1,0 +1,20 @@
+.notif-popover {
+    width: 250px;
+    &:first-child {
+        margin-top: 20px;
+    }
+    .notif {
+        margin-bottom: 5px;
+        cursor: pointer;
+        padding: 2px 5px;
+        &:hover {
+            background-color: $cardHoverColor;
+        }
+        &.unread {
+            background-color: #e4f7fa;
+            &:hover {
+                background-color: #e4f7fabc;
+            }
+        }
+    }
+}

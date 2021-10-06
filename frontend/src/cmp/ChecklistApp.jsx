@@ -24,26 +24,29 @@ class _ChecklistApp extends React.Component {
         const { title } = this.state
         const { board, currCard, checklistIdx } = this.props
         currCard.checklists.splice(checklistIdx, 1)
-        const action = `Deleted Checklist ${title}`
-        this.props.updateBoard(board, action, currCard)
+        // const action = `Deleted Checklist ${title}`
+        this.props.updateBoard(board)
     }
 
     onDeleteTask = (taskIdx) => {
         const { currChecklist, title } = this.state
         const { board, currCard } = this.props
         currChecklist.tasks.splice(taskIdx, 1)
-        const action = `Deleted item on Checklist "${title}" `
-        this.props.updateBoard(board, action, currCard)
+        // const action = `Deleted item on Checklist "${title}" `
+        this.props.updateBoard(board)
     }
-
 
     onEditTask = (taskIdx, updateIsDone, newTaskTxt) => {
         const { currChecklist, title } = this.state
         const { board, currCard } = this.props
         currChecklist.tasks[taskIdx].isDone = updateIsDone
         currChecklist.tasks[taskIdx].txt = newTaskTxt
-        const action = `Updated "${newTaskTxt}" on Checklist "${title}" `
-        this.props.updateBoard(board, action, currCard)
+        if (currChecklist.tasks.every(task => task.isDone)) {
+            var action = `Completed checklist`
+            this.props.updateBoard(board, action, currCard)
+        } else {
+            this.props.updateBoard(board)
+        }
     }
 
     onAddTask = (txt) => {
@@ -52,8 +55,8 @@ class _ChecklistApp extends React.Component {
         currChecklist.tasks.push(
             { id: utilService.makeId(), txt: txt, isDone: false }
         )
-        const action = `Added item "${txt}" on Checklist "${title}" `
-        this.props.updateBoard(board, action, currCard)
+        // const action = `Added item "${txt}" on Checklist "${title}" `
+        this.props.updateBoard(board)
     }
 
     onIsAddItem = () => {

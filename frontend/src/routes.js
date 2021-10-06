@@ -5,6 +5,7 @@ import { Login } from "./pages/Login";
 import { Signup } from "./pages/Signup";
 import { TemplateBoards } from "./pages/TemplateBoards";
 import { UserBoards } from "./pages/UserBoards";
+import { CardNotFound } from "./pages/CardNotFound";
 
 const routes = [
     {
@@ -14,6 +15,10 @@ const routes = [
     {
         path: '/boards',
         component: UserBoards,
+    },
+    {
+        path: '/cardNotFound',
+        component: CardNotFound,
     },
     {
         path: '/templates',

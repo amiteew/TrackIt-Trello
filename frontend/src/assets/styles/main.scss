@@ -23,6 +23,7 @@
 @import "cmps/loading";
 @import "cmps/singleMemberPopover";
 @import "cmps/createBoard";
+@import "cmps/searchMenu";
 
 // DYNAMIC_POPOVER
 @import "cmps/dynamicPopover/membersPopover";
@@ -36,6 +37,8 @@
 @import "cmps/dynamicPopover/deleteCardPopover";
 @import "cmps/dynamicPopover/moveCopyCardPopover";
 @import "cmps/dynamicPopover/userBoardsPopover";
+@import "cmps/dynamicPopover/notifPopover";
+@import "cmps/dynamicPopover/searchCover";
 
 //CARD
 @import "cmps/cardPreview";
@@ -72,3 +75,4 @@
 @import "pages/login-signup";
 @import "pages/cardDetails";
 @import "pages/user-template-boards";
+@import "pages/cardNotFound";

@@ -4,10 +4,11 @@ const ObjectId = require('mongodb').ObjectId
 
 async function query(userId) {
     try {
-        const criteria = _buildCriteria(userId)        
+        const criteria = _buildCriteria(userId)
         const collection = await dbService.getCollection('board')
         const boards = await collection.find(criteria).toArray()
         // var boards = await collection.find(criteria).toArray()
+        // results: { $elemMatch: { product: "xyz", score: { $gte: 8 } } }        
         return boards
     } catch (err) {
         logger.error('cannot find boards', err)
@@ -18,13 +19,15 @@ async function query(userId) {
 async function getById(boardId) {
     try {
         const collection = await dbService.getCollection('board')
-        const board = collection.findOne({ '_id': ObjectId(boardId) })
+        const board = collection.findOne({ '_id': ObjectId(boardId) })        
         return board
     } catch (err) {
         logger.error(`while finding board ${boardId}`, err)
         throw err
     }
 }
+
+
 
 async function remove(boardId) {
     try {
@@ -62,18 +65,6 @@ async function save(board) {
         }
     } else {
         try {
-            // savedBoard = {
-            //     createdAt: ObjectId(board._id).getTimestamp(),
-            //     boardTitle: board.boardTitle,
-            //     createdBy: board.createdBy,
-            //     boardStyle: board.boardStyle,
-            //     covers: board.covers,
-            //     labels: [],
-            //     boardMembers: board.boardMembers,
-            //     lists: [],
-            //     activities: []
-            // }
-
             const collection = await dbService.getCollection('board')
             await collection.insertOne(board)
             return board
@@ -85,10 +76,10 @@ async function save(board) {
 
 }
 
+
 function _buildCriteria(userId) {
     let criteria = {}
-    criteria.$or = [{'boardMembers._id':  userId.userId}, {'createdBy': null}] 
-
+    criteria.$or = [{ 'boardMembers._id': userId.userId }, { 'createdBy': null }]
     return criteria;
 }
 

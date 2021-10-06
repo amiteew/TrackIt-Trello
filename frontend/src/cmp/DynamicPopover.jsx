@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -18,6 +18,7 @@ import { MuiPickersUtilsProvider, DatePicker, TimePicker, DateTimePicker, } from
 import DateFnsUtils from '@date-io/date-fns';
 import { removeUser } from '../store/user.actions';
 import { UserBoardsPopover } from './DynamicPopover/UserBoardsPopover';
+import { NotifPopover } from './DynamicPopover/NotifPopover';
 
 export class DynamicPopover extends React.Component {
     state = {
@@ -33,6 +34,7 @@ export class DynamicPopover extends React.Component {
     handleClose = () => {
         if (this.props.type === 'userBoards') this.props.onToggleUserBoards()
         this.setState({ anchorEl: null })
+        if (this.props.markReadNotif) this.props.markReadNotif()
     };
 
     handleDateChange = () => {
@@ -68,6 +70,7 @@ export class DynamicPopover extends React.Component {
                     return <LabelsPopover {...props} />
                 case 'dates-edit':
                 case 'edit-dates':
+                case 'dates':
                     return <DatesPopover {...props} />
                 case 'attachments':
                 case 'add-attachments':
@@ -89,6 +92,9 @@ export class DynamicPopover extends React.Component {
                     return <MoveCopyCardPopover {...props} />
                 case 'copy-card':
                     return <MoveCopyCardPopover {...props} isCopy={true} />
+                case 'newNotif':
+                case 'noNotif':
+                    return <NotifPopover {...props} />
                 default:
                     break;
             }

@@ -27,9 +27,9 @@ class _QuickCardEditor extends React.Component {
         if (ev) {
             ev.stopPropagation();
             ev.preventDefault();
+            var rect = ev.target.getBoundingClientRect();
+            rect.x = rect.x - 256;
         }
-        const rect = ev.target.getBoundingClientRect();
-        rect.x = rect.x - 256;
         this.props.onEditMode();
         const { card } = this.props;
         this.setState({ isEditMode: !this.state.isEditMode, cardTitle: card.cardTitle, rect })
@@ -50,8 +50,7 @@ class _QuickCardEditor extends React.Component {
         if (!cardTitle) return;
         const { board, card, updateBoard } = this.props;
         card.cardTitle = cardTitle;
-        const action = "Edit title";
-        updateBoard(board, action, card);
+        updateBoard(board);
         this.toggleEditTitle();
         this.props.onEditMode();
     }
@@ -62,26 +61,26 @@ class _QuickCardEditor extends React.Component {
         this.setState({ ...this.state, isEditTitle: !this.state.isEditTitle })
     }
 
-    onArchive = (ev) => {
-        ev.preventDefault();
+    onArchive = () => {
         const { card, board, updateBoard } = this.props;
-        card.isArchive = true;
-        const action = `Archive card`;
+        card.isArchived = true;
+        const action = `Archived card`;
         updateBoard({ ...board }, action, card);
         this.toggleEditTitle();
     }
 
     render() {
-        const { card, board, isDragging, currListIdx, currCardIdx } = this.props
+        const { card, board, isDragging, currListIdx, currCardIdx, updateBoard } = this.props
         const { isEditMode, cardTitle, rect } = this.state;
         const draggingClass = isDragging ? 'dragged' : 'not-dragged';
         const coverStyle = card.cardStyle.img ? 'img-cover' : card.cardStyle.color
         const editClass = isEditMode ? 'quick-card-edit-preview' : '';
-        const isCover = card.cardStyle.isCover ? { fullCover: 'full ' + coverStyle, fullTitle: 'full' } : { fullTitle: 'half' }
+        const isCover = card.cardStyle.isCover ? { fullCover: 'full ' + coverStyle, fullTitle: 'full' } : { fullTitle: 'half' };
+        // if (!rect) return <></>
         return (
             <React.Fragment>
                 {isEditMode && <div className="screen-quick-card-edit" onClick={this.toggleEditTitle}><img src={close} alt="close" /></div>}
-                 <div className={editClass} style={isEditMode ? { left: `${rect.x}`, top: `${rect.y}` } : {}}>
+                <div className={editClass} style={isEditMode ? { left: `${rect.x}`, top: `${rect.y}` } : {}}>
                     <div className={`card-preview-content pointer ${draggingClass}`}>
                         {card.cardStyle.id && <div className={'card-preview-header ' + coverStyle} style={{ backgroundImage: `url(${card.cardStyle.img})` }}></div>}
                         <div className={"card-preview-main-content " + isCover.fullCover}>
@@ -98,11 +97,11 @@ class _QuickCardEditor extends React.Component {
                             />}
                             {/* <div onClick={this.onArchive}>Archive</div> */}
                             {isCover.fullTitle === 'half' && <span className="card-preview-icon flex">
-                                <div className="flex wrap">
+                                <div className="icons-preview flex wrap">
+                                    {card.dueDate.date && <CardDuDatePreview dueDate={card.dueDate} board={board} card={card} updateBoard={updateBoard}/>}
                                     {card.description && <div className='badge flex align-center'><GrTextAlignFull /></div>}
                                     {/* <span className="badge is-watch">{card.cardMembers && <CardVisibilityPreview cardMembers={card.cardMembers} />} </span> */}
                                     {card.comments.length ? <CardCommentPreview cardComments={card.comments} /> : <> </>}
-                                    {/* {card.dueDate.date && <CardDuDatePreview dueDate={card.dueDate}/>} */}
                                     <div title="checklist">{card.checklists.length ? <CardCheckPreview checklists={card.checklists} /> : <> </>}</div>
                                 </div>
                                 <div className="badge-icon members flex">{card.cardMembers && <MembersList members={card.cardMembers} currCard={card} isCardOpen={false} />}
@@ -112,7 +111,7 @@ class _QuickCardEditor extends React.Component {
                         </div>
                     </div>
                     {isEditMode && <button className="save-quick-card-btn" onClick={this.onSaveCardTitle}>Save</button>}
-                    {isEditMode && <div><QuickCardActions board={board} currListIdx={currListIdx} currCardIdx={currCardIdx} onArchive={this.onArchive}/></div>}
+                    {isEditMode && <div><QuickCardActions board={board} currListIdx={currListIdx} currCardIdx={currCardIdx} currCard={card} onArchive={this.onArchive} /></div>}
                 </div>
             </React.Fragment>
         )

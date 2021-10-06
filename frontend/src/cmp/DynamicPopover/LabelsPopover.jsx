@@ -31,12 +31,10 @@ class _LabelsPopover extends React.Component {
         if (this.isLabelOnCard(currCard, label.id)) {
             const labelIdx = currCard.cardLabelIds.findIndex(cardLabelId => cardLabelId === label.id)
             newBoard.lists[currListIdx].cards[currCardIdx].cardLabelIds.splice(labelIdx, 1)
-            var action = `Removed label "${label.title}" from `
         } else {
             newBoard.lists[currListIdx].cards[currCardIdx].cardLabelIds.push(label.id)
-            var action = `Added label "${label.title}"  to `
         }
-        this.props.updateBoard(newBoard, action, currCard)
+        this.props.updateBoard(newBoard)
     }
 
     isLabelOnCard = (currCard, labelId) => {

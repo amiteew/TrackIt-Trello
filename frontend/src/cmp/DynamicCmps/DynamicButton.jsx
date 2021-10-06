@@ -15,6 +15,8 @@ import DownArrow from '../../assets/imgs/icons/menu-arrow-icon.svg';
 import { LabelPreview } from '../LabelPreview';
 import { BsThreeDots } from "react-icons/bs";
 import { DueDatePreview } from '../DueDatePreview';
+import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 
 class _DynamicButton extends React.Component {
     render() {
@@ -63,6 +65,10 @@ class _DynamicButton extends React.Component {
                     </>
                 case 'userBoards':
                     return <><span onClick={() => props.onToggleUserBoards()}>Boards</span><img src={DownArrow} alt="" /></>
+                case 'newNotif':
+                    return <> <NotificationsActiveOutlinedIcon /> {this.props.notifCount}</>
+                case 'noNotif':
+                    return <NotificationsNoneIcon />
                 default:
                     return props.type
             }
@@ -75,7 +81,8 @@ class _DynamicButton extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        loggedInUser: state.userReducer.loggedInUser
+        loggedInUser: state.userReducer.loggedInUser,
+        notifCount: state.boardReducer.notifCount
     }
 }
 
