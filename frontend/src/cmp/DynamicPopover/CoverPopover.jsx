@@ -129,33 +129,41 @@ class _CoverPopover extends React.Component {
                         <div className="row full"></div>
                         <div className="row second full"></div>
                     </div>
-                    {currCard.cardStyle.id && <span onClick={() => { this.onRemoveCover(currCard) }}>Remove cover</span>}
-                </div>}
-                {!isSearch && <h4>Colors</h4>}
-                {!isSearch && <div className="color-plate">
-                    {board.covers.length && board.covers.map(cover => (
-                        <div key={cover.id} onClick={() => this.onToggleCover(cover)}
-                            className={`color-sqr pointer ${cover.color} 
-                             ${this.isCoverOnCard(currCard, cover.id) ? 'color-selected' : ''} `}>
-                        </div>
-                    ))}
+                    {currCard.cardStyle.id && <div className="remove-cover btn" onClick={() => { this.onRemoveCover(currCard) }}>Remove cover</div>}
                 </div>}
 
                 {!isSearch && <div>
+                    {<h4>Colors</h4>}
+                    <div className="color-plate">
+                        {board.covers.length && board.covers.map(cover => (
+                            <div key={cover.id} onClick={() => this.onToggleCover(cover)}
+                                className={`color-sqr pointer ${cover.color} 
+                             ${this.isCoverOnCard(currCard, cover.id) ? 'color-selected' : ''} `}>
+                            </div>
+                        ))}
+                    </div>
+                </div>}
+                {!isSearch && <div>
+                    <h4>Attachment</h4>
                     <label htmlFor="file-input">
-                        <div className="uplaod-img">Upload a cover image</div>
+                        <div className="uplaod-img btn pointer">Upload a cover image</div>
                     </label>
                     <input type="file" className="file-input" id={'file-input'} onChange={this.onAddImage} />
                 </div>}
 
-                <div className="cover-img-plate">
-                    {coverImgs.map(coverImg => (<div key={coverImg.id} onClick={() => this.onToggleImgCover(currCard, coverImg)}
-                        className={`img-cover ${this.isCoverOnCard(currCard, coverImg.id) ? 'cover-selected' : ''} `} style={{ backgroundImage: `url(${coverImg.small})` }}></div>))}
+                <div >
+                    {!isSearch && <h4>Unsplash</h4>}
+                    {isSearch && <h4>Top photos</h4>}
+                    <div className="cover-img-plate ">
+                        {coverImgs.map(coverImg => (<div key={coverImg.id} onClick={() => this.onToggleImgCover(currCard, coverImg)}
+                            className={`img-cover ${this.isCoverOnCard(currCard, coverImg.id) ? 'cover-selected' : ''} `} style={{ backgroundImage: `url(${coverImg.small})` }}></div>))}
+                    </div>
                 </div>
-                <div>
-                    {!isSearch && <p onClick={() => {
+
+                <div className="search-cover btn pointer">
+                    {!isSearch && <span onClick={() => {
                         this.setState({ ...this.state, isSearch: !this.state.isSearch })
-                    }}>Search for photos</p>}
+                    }}>Search for photos</span>}
                 </div>
             </section>
         )

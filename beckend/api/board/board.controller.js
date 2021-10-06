@@ -3,21 +3,24 @@ const logger = require('../../services/logger.service');
 
 // GET Boards
 async function getBoards(req, res) {
-    try {
-        var userId = req.query;                
-        const boards = await boardService.query(userId)
-        res.json(boards);
-    } catch (err) {
-        logger.error('Failed to get boards', err)
-        res.status(500).send({ err: 'Failed to get boards' })
-    }
+  try {
+    var userId = req.query;
+    const boards = await boardService.query(userId)
+    res.json(boards);
+  } catch (err) {
+    logger.error('Failed to get boards', err)
+    res.status(500).send({ err: 'Failed to get boards' })
+  }
 }
 
 // GET BY ID 
 async function getBoardById(req, res) {
   try {
     const boardId = req.params.id;
-    const board = await boardService.getById(boardId)
+    const filterBy = req.query;
+    let board = await boardService.getById(boardId)
+    // console.log('filterby', filterBy);
+    board = _filterBoard(filterBy, board);
     res.json(board)
   } catch (err) {
     logger.error('Failed to get board', err)
@@ -40,7 +43,7 @@ async function addBoard(req, res) {
 // DELETE BOARD
 async function removeBoard(req, res) {
   try {
-    const boardId = req.params.id;    
+    const boardId = req.params.id;
     const removedId = await boardService.remove(boardId)
     res.send(removedId)
   } catch (err) {
@@ -52,20 +55,47 @@ async function removeBoard(req, res) {
 // PUT (Update board)
 async function updateBoard(req, res) {
   try {
-      const board = req.body      
-      const savedBoard = await boardService.save(board)
-      res.send(savedBoard)
+    const board = req.body
+    const savedBoard = await boardService.save(board)
+    // if (board.activities[0].isNotif) socketService.emit('resieve notification');
+    res.send(savedBoard)
   } catch (err) {
-      console.log(err)
-      logger.error('Failed to update board', err)
-      res.status(500).send({ err: 'Failed to update board' })
+    console.log(err)
+    logger.error('Failed to update board', err)
+    res.status(500).send({ err: 'Failed to update board' })
   }
 }
 
+function _filterBoard(filterBy, board) {
+  // console.log('before', filterBy);
+  // filterBy = JSON.stringify(filterBy)
+  const newFilterBy = JSON.parse(filterBy.filterBy)
+  if (!newFilterBy.isFilter) return board
+
+  console.log('filterBy.searchKey', newFilterBy)
+  if (newFilterBy.searchKey) {
+    const regex = new RegExp(newFilterBy.searchKey, 'i');
+    board.lists.forEach(list => {
+      list.cards = list.cards.filter(card => {
+        if (newFilterBy.members) {          
+          var isMemberOnCard = newFilterBy.members.some(filterMember => card.cardMembers.some(cardMember => filterMember === cardMember._id))
+        }
+
+        if (newFilterBy.labels) {
+          var isLabelsOnCard = newFilterBy.labels.some(filterLabel => card.cardLabels.some(cardLabel => filterLabel._id === cardLabel._id))
+        }
+        
+        const isTxtOnCard = regex.test(card.cardTitle)
+        return isTxtOnCard || isMemberOnCard || isLabelsOnCard
+      })
+    })
+  }
+  return board
+}
 module.exports = {
-    getBoards,
-    getBoardById,
-    addBoard,
-    removeBoard,
-    updateBoard
+  getBoards,
+  getBoardById,
+  addBoard,
+  removeBoard,
+  updateBoard
 }

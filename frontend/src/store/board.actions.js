@@ -27,7 +27,6 @@ export function loadBoard(boardId) {
       // socketService.on(SOCKET_EVENT_BOARD_ADDED, (board) =>{
       //   dispatch({ type: 'ADD_BOARD', board })
       // })
-
     } catch (err) {
       console.log('BoardActions: err in loadBoards', err)
     }
@@ -78,6 +77,19 @@ export function toggleLabels() {
   }
 }
 
+export function setFilterBy(filterBy, boardId) { 
+  return async dispatch => {
+    try {
+      dispatch({ type: 'SET_FILTER', filterBy: filterBy });
+      const board = !boardId ? null : await boardService.getBoardById(boardId, filterBy)
+      dispatch({ type: 'SET_BOARD', board: { ...board } })
+    } catch (err) {
+      console.log('Cannot update notification', err);
+    }
+  }
+
+}
+
 // when we move to backend this function will check if the board has 'createBy'
 // if not- it's a template and it should only update the store, NOT the server!
 export function updateBoard(board, action = null, card = '', txt = "") {
@@ -87,7 +99,6 @@ export function updateBoard(board, action = null, card = '', txt = "") {
         var activity = _storeSaveActivity(action, card, txt);
         board.activities.unshift(activity);
       }
-      console.log('board before backend', board);
       dispatch({ type: 'UPDATE_BOARD', board: { ...board } });
       await boardService.save(board);
       socketService.emit('update-board', board);
@@ -115,7 +126,6 @@ function _storeSaveActivity(action, card, txt) {
     card: card ? { cardId: card.cardId, cardTitle: card.cardTitle } : '',
     isNotif: false,
   }
-  console.log('activity', activity);
   return _filterActionsNotif(activity)
 }
 

@@ -23,11 +23,11 @@
     box-shadow: 0 1px 0 #c0c6d0;
     transition: transform 0.3s;
 
-    &.dragged{
+    &.dragged {
         transform: rotate(10deg) translateX(20px);
     }
 
-    &.not-dragged{
+    &.not-dragged {
         transform: unset;
     }
 
@@ -36,7 +36,7 @@
     }
 
     .card-preview-header {
-        height: 32px;
+        height: rem(32px);
 
         &.img-cover {
             background-position: 50%;
@@ -84,18 +84,24 @@
         width: rem(28px);
         align-items: flex-end;
         position: absolute;
-        right: rem(2px);
-        bottom: rem(2px);
+        right: rem(7px);
+        // bottom: rem(2px);
     }
 
-    .is-watch svg {
-        height: rem(20px);
-        width: 1.25em;
-        display: flex;
-    }
+    .icons-preview {
+        align-items: center;
 
-    > :not(:last-child) {
-        margin-inline-end: 5px;
+
+        .is-watch svg {
+            height: rem(20px);
+            width: 1.25em;
+            display: flex;
+        }
+
+        > :not(:last-child) {
+            margin-inline-end: 5px;
+        }
+
     }
 
     .badge-icon {
@@ -103,16 +109,39 @@
             flex-grow: 1;
             justify-content: flex-end;
 
-            .btn-photo-member div {
-                height: 28px;
-                width: 28px;
-                margin: 5px 1px;
+            .btn-photo-member img {
+                // margin: unset;
             }
         }
     }
 
     .due-date {
-        padding-right: 6px;
+
+        &:hover {
+
+            .clock {
+                display: none;
+            }
+
+            .check {
+                display: inherit;
+            }
+
+        }
+
+        .check {
+            display: none;
+        }
+
+        svg {
+            font-size: 16px;
+        }
+
+        span {
+            padding-right: 2px;
+        }
+
+        // padding-right: 6px;
     }
 }
 
@@ -147,9 +176,10 @@
     }
 }
 
+
 .badge {
     color: #5e6c84;
-    margin: 0 4px 4px 0;
+    margin: 0 8px 4px 0;
     max-width: 100%;
     min-height: 20px;
     overflow: hidden;
@@ -168,11 +198,16 @@
         font-size: rem(12px);
         height: rem(16px);
         width: rem(16px);
+
+        &.checkbox {
+            margin-left: 5px;
+        }
     }
 
     &.is-watch {
         padding: 0 rem(6px) 0 rem(2px);
     }
+
 
     .card-txt {
         padding: 0 rem(4px) 0 rem(2px);

@@ -6,7 +6,7 @@ import { BsThreeDots } from "react-icons/bs";
 import AutosizeInput from 'react-input-autosize';
 
 import { userService } from "../services/user.service"
-import { updateBoard, setNotif, setNotifCount } from "../store/board.actions"
+import { updateBoard, setNotif } from "../store/board.actions"
 import { MembersListBoard } from "./MembersListBoard"
 import { TemporaryDrawer } from '../cmp/DroweMenu.jsx';
 import { Loading } from "./Loading";
@@ -24,20 +24,10 @@ class _BoardHeader extends React.Component {
 
   componentDidMount() {
     this.setState({ title: this.props.board.boardTitle })
-    // let count = this.props.notifCount;
     socketService.on('sending notification', (isNotif) => {
-      // count += 1
-      // console.log(count);
       this.props.setNotif(isNotif)
-      // this.props.setNotifCount(count)
     })
   }
-
-
-  //   onNotif = () => {
-  //     console.log('hello');
-  //     this.setState({ isNotif:true })
-  // }
 
   handleChange = (ev) => {
     const value = ev.target.value
@@ -136,7 +126,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
   updateBoard,
   setNotif,
-  setNotifCount
+  
 }
 
 export const BoardHeader = connect(mapStateToProps, mapDispatchToProps)(_BoardHeader)

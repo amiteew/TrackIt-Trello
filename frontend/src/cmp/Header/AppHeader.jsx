@@ -5,7 +5,7 @@ import { LogoName } from './LogoName';
 import { DynamicPopover } from '../DynamicPopover';
 import { CreateBoard } from '../CreateBoard';
 import { socketService } from "../../services/socket.service";
-import { setNotif, setNotifCount } from '../../store/board.actions';
+import { setNotif} from '../../store/board.actions';
 import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 
@@ -29,7 +29,6 @@ class _AppHeader extends React.Component {
 
     markReadNotif = () => {
         this.props.setNotif(false);
-        // this.props.setNotifCount(0)
     }
 
     render() {
@@ -78,7 +77,6 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
     setNotif,
-    setNotifCount
 }
 
 export const AppHeader = connect(mapStateToProps, mapDispatchToProps)(_AppHeader)

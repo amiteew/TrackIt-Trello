@@ -6,7 +6,7 @@
         font-weight: 500;
         letter-spacing: 0.04em;
         line-height: rem(20px);
-        margin: 8px 8px 4px 0;
+        margin: 8px 8px 7px 0;
         text-transform: uppercase;
 
     }
@@ -109,6 +109,31 @@
     }
 }
 
-.file-input{
-    display: none;
+.btn {
+    border-radius: 3px;
+    width: 100%;
+    line-height: 20px;
+    padding: 6px 12px;
+    margin: 4px 0 0;
+    background-color: #091e420a;
+    text-align: center;
+
+    &.remove-cover {
+            
+    }
+
+    &.uplaod-img{
+
+    }
+    &.search-cover{
+        
+    }
+
+    &:hover{
+        background-color: #091e4214;
+    }
+
 }
+    .file-input {
+        display: none;
+    }
