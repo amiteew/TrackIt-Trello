@@ -119,21 +119,24 @@ class _CoverPopover extends React.Component {
             <section className="popover-cover">
                 {isSearch && <SearchForCover searchCover={searchCover} getImgForCover={this.getImgForCover} handleChange={this.handleChange} />}
                 {!isSearch && <h4>Size</h4>}
-                {!isSearch && <div className="header-cover">
-                    <div onClick={() => { this.handelSize(currCard, false) }} className={`header-half-cover pointer  ${halfCover}`}>
-                        <div className="paragraph"></div>
-                        <div className="row"></div>
-                        <div className="row second"></div>
-                    </div>
-                    <div onClick={() => { this.handelSize(currCard, true) }} className={`header-full-cover pointer ${fullCover}`}>
-                        <div className="row full"></div>
-                        <div className="row second full"></div>
+                {!isSearch && <div>
+                    <div className="header-cover">
+                        <div onClick={() => { this.handelSize(currCard, false) }} className={`header-half-cover pointer  ${halfCover}`}>
+                            <div className="paragraph"></div>
+                            <div className="row"></div>
+                            <div className="row second"></div>
+                        </div>
+                        <div onClick={() => { this.handelSize(currCard, true) }} className={`header-full-cover pointer ${fullCover}`}>
+                            <div className="row full"></div>
+                            <div className="row second full"></div>
+                        </div>
                     </div>
                     {currCard.cardStyle.id && <div className="remove-cover btn" onClick={() => { this.onRemoveCover(currCard) }}>Remove cover</div>}
-                </div>}
+                </div>
+                }
 
-                {!isSearch && <div>
-                    {<h4 className ="color-title">Colors</h4>}
+                {!isSearch && <div className="colors-for-cover">
+                    {<h4 className="color-title">Colors</h4>}
                     <div className="color-plate">
                         {board.covers.length && board.covers.map(cover => (
                             <div key={cover.id} onClick={() => this.onToggleCover(cover)}

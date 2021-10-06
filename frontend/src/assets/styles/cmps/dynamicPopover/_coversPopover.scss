@@ -61,29 +61,32 @@
 
 }
 
-.color-title{
-    margin-top: 44px;
-}
-.color-plate {
-    display: grid;
-    gap: 8px;
-    padding: 4px;
-    margin: 0 -4px;
-    overflow-x: hidden;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+.colors-for-cover {
 
-    .color-sqr {
-        height: 32px;
-        border-radius: 3px;
-        width: 50px;
+    margin-top: 2px;
 
-        &.color-selected {
-            box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #0079bf;
-            filter: none;
-        }
 
-        &:hover {
-            filter: saturate(85%) brightness(85%);
+    .color-plate {
+        display: grid;
+        gap: 8px;
+        padding: 4px;
+        margin: 0 -4px;
+        overflow-x: hidden;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+        .color-sqr {
+            height: 32px;
+            border-radius: 3px;
+            width: 50px;
+
+            &.color-selected {
+                box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #0079bf;
+                filter: none;
+            }
+
+            &:hover {
+                filter: saturate(85%) brightness(85%);
+            }
         }
     }
 }
@@ -121,22 +124,18 @@
     background-color: #091e420a;
     text-align: center;
 
-    &.remove-cover {
-            
-    }
+    &.remove-cover {}
 
-    &.uplaod-img{
+    &.uplaod-img {}
 
-    }
-    &.search-cover{
-        
-    }
+    &.search-cover {}
 
-    &:hover{
+    &:hover {
         background-color: #091e4214;
     }
 
 }
-    .file-input {
-        display: none;
-    }
+
+.file-input {
+    display: none;
+}
