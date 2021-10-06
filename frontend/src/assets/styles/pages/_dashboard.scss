@@ -1,0 +1,83 @@
+.dashboard-wrapper {
+    position: absolute;
+    top: 2px;
+    padding-bottom: 48px;
+    width: 100%;
+
+    .screen-dashboard {
+        position: fixed;
+        right: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+        background-color: rgba(0, 0, 0, 0.883);
+    }
+    .dashboard {
+        position: relative;
+        right: 0;
+        left: 0;
+        z-index: 2;
+        margin: 40px 20px;
+        // padding-bottom: 85px;
+        // margin-top: 25px;
+        // color: #42526e;
+        // background-color: white;
+        max-width: 850px;
+
+        .charts-container {
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 300px 300px;
+            grid-template-rows: 1fr 1fr;
+            align-items: center;
+            justify-content: center;
+            gap: 0px 30px;
+            div > h1 {
+                text-align: center;
+                color: white;
+                font-size: rem(30px);
+                margin-bottom: 15px;
+            }
+        }
+        .pie-done-overdue {
+        }
+        .pie-task-per-label {
+        }
+        .bar-task-per-member {
+        }
+        .bar-task-per-list {
+        }
+    }
+
+    .close-window-btn {
+        background-color: #ffffffe5;
+        color: #42526e;
+        border-radius: 50%;
+        border: none;
+        position: fixed;
+        width: 40px;
+        height: 40px;
+        top: 55px;
+        right: 55px;
+        text-align: center;
+        transition: background-color 85ms, color 85ms;
+
+        img {
+            height: 20px;
+            width: 20px;
+        }
+
+        &:hover {
+            background-color: #ffffffa2;
+        }
+    }
+
+    // RESPONVSIVE
+
+    @media screen and (min-width: 784px) {
+        .dashboard {
+            margin: 0 auto;
+        }
+    }
+}

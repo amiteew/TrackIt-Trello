@@ -59,7 +59,7 @@ class _CardDetails extends React.Component {
         const board = this.props.board
         const currCard = board.lists[currListIdx].cards[currCardIdx]
         currCard.dueDate.isDone = !currCard.dueDate.isDone
-        console.log('currCard.dueDate', currCard.dueDate)
+        // console.log('currCard.dueDate', currCard.dueDate)
         const action = currCard.dueDate.isDone
             ? 'Marked the due date complete'
             : 'Marked the due date incomplete'
