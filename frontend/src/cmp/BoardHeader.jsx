@@ -12,6 +12,7 @@ import { TemporaryDrawer } from '../cmp/DroweMenu.jsx';
 import { Loading } from "./Loading";
 import { DynamicBoardMenu } from "./DynamicBoardMenu";
 import { socketService } from '../services/socket.service';
+import EqualizerIcon from '@mui/icons-material/Equalizer';
 
 class _BoardHeader extends React.Component {
   state = {
@@ -70,9 +71,9 @@ class _BoardHeader extends React.Component {
   onFilterCards = () => {
     const { board, filterBy } = this.props;
     if (!filterBy.members.length && !filterBy.labels.length && filterBy.searchKey === '') {
-      this.setState({ ...this.state, cardsCount: 0});
+      this.setState({ ...this.state, cardsCount: 0 });
       filterBy.isFilter = false;
-    }else{
+    } else {
       this.setState({ ...this.state, cardsCount: board.cardsCount });
     }
   }
@@ -86,7 +87,7 @@ class _BoardHeader extends React.Component {
     }, this.props.board._id)
     this.setState({ ...this.state, cardsCount: 0 });
   }
- 
+
   toggleMenu = () => {
     const { isMenuOpen } = this.state
     // this.setState(prevState => ({ ...prevState, isMenuOpen: !isMenuOpen }))
@@ -133,7 +134,7 @@ class _BoardHeader extends React.Component {
         </div>
         <div className="header-right flex">
           {filterBy.isFilter && <div onClick={this.resetSearch}>{board.cardsCount} X</div>}
-          <button className="board-btn" onClick={this.props.onOpenDashboard}>Dashboard</button>
+          <button className="board-btn flex align-center" onClick={this.props.onOpenDashboard}><EqualizerIcon /> Dashboard</button>
           {!isMenuOpen && <button className="board-btn show-menu flex align-center" onClick={this.toggleMenu}>
             <span className="icon flex justify-center align-center"><BsThreeDots /> </span>
             <span className="title">Show menu</span>
