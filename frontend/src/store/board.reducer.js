@@ -7,7 +7,7 @@ const initialState = {
   currList: null,
   isNotif: false,
   notifCount: 0,
-  filterBy:{}
+  filterBy: {}
 }
 
 export function boardReducer(state = initialState, action = null) {
@@ -16,8 +16,8 @@ export function boardReducer(state = initialState, action = null) {
       return { ...state, boards: action.boards }
     case 'SET_BOARD':
       // console.log('in set board', state.board)
-      // const lastUpdatedBoard = JSON.parse(JSON.stringify(state.board))
-      return { ...state, board: { ...action.board } }
+      const lastUpdatedBoard = JSON.parse(JSON.stringify(action.board))
+      return { ...state, board: { ...action.board }, lastUpdatedBoard }
     case 'ADD_BOARD':
       return { ...state, board: action.board, boards: [...state.boards, action.board] }
     case 'REMOVE_BOARD':
@@ -37,6 +37,23 @@ export function boardReducer(state = initialState, action = null) {
         ...state, board: action.board, boards: state.boards.map(board =>
           board._id === action.board._id ? action.board : board)
       }
+    }
+    case 'UPDATE_LAST_UPDATED_BOARD': {
+      const lastUpdatedBoard = JSON.parse(JSON.stringify(state.board))
+      return {
+        ...state, lastUpdatedBoard
+      }
+    }
+    case 'UNDO_UPDATE_BOARD': {
+      if (state.lastUpdatedBoard) {
+        const undoLastBoard = JSON.parse(JSON.stringify(state.lastUpdatedBoard))
+        return {
+          ...state, boards: state.boards.map(board =>
+            board._id === state.board._id ? state.lastUpdatedBoard : board),
+          board: undoLastBoard
+        }
+      }
+      return state
     }
     case 'TOGGLE_LABELS': {
       const isLabelOpen = state.isLabelOpen

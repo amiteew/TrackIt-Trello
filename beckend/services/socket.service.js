@@ -41,7 +41,8 @@ function connectSockets(http, session) {
 
         socket.on('update-board', board => {
             console.log('Emitting update board', board.boardTitle);
-            socket.to(socket.myTopic).emit('board updated', board)
+            // socket.to(socket.myTopic).emit('board updated', board) 
+            socket.broadcast.to(socket.myTopic).emit('board updated', board) //CHECKING TEST
         })
         socket.on('resieve notification', () => {
             socket.broadcast.to(socket.myTopic).emit('sending notification', true)

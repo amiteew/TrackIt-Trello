@@ -21,7 +21,6 @@ async function getBoardById(req, res) {
     let board = await boardService.getById(boardId)
     // console.log('filterby', filterBy);
     board = _filterBoard(filterBy, board);
-    board = filterActivities(board)
     res.json(board)
   } catch (err) {
     logger.error('Failed to get board', err)
@@ -57,7 +56,8 @@ async function removeBoard(req, res) {
 async function updateBoard(req, res) {
   try {
     const board = req.body
-    const savedBoard = await boardService.save(board)
+    let savedBoard = await boardService.save(board)
+    // savedBoard = _LimitActivities(savedBoard) //Avoiding Data leak - Board Object too large
     // if (board.activities[0].isNotif) socketService.emit('resieve notification');
     res.send(savedBoard)
   } catch (err) {
@@ -80,35 +80,36 @@ function _filterBoard(filterBy, board) {
     list.cards = list.cards.filter(card => {
       let isMemberOnCard = true
       let isLabelsOnCard = true
- 
-      if (newFilterBy.members.length) {        
-         isMemberOnCard = newFilterBy.members.some(filterMember => card.cardMembers.some(cardMember => filterMember === cardMember._id))
-        
+
+      if (newFilterBy.members.length) {
+        isMemberOnCard = newFilterBy.members.some(filterMember => card.cardMembers.some(cardMember => filterMember === cardMember._id))
+
       }
-      
+
       if (newFilterBy.labels.length) {
         isLabelsOnCard = newFilterBy.labels.some(filterLabel => card.cardLabels.some(cardLabel => filterLabel._id === cardLabel._id))
       }
 
       const isTxtOnCard = regex.test(card.cardTitle)
-      
+
       return isTxtOnCard && isMemberOnCard && isLabelsOnCard
     })
   })
-// console.log('board', board);
+  // console.log('board', board);
 
   return board
 }
 
-function filterActivities(board) {
-  if (board.activities.length > 10) {
-    const activities = board.activities.splice(0, 9)
-    // console.log('activities', board.activities);
+// function _LimitActivities(board) {
+//   if (board.activities.length > 20) {
+//     console.log('activities', board.activities.length)
+//     board.activities.splice(19)
+//     console.log('activities', board.activities.length)
 
-  }
-
-  return board;
-}
+//     // console.log('activities', board.activities);
+//   }
+//   return board;
+// }
 
 module.exports = {
   getBoards,
