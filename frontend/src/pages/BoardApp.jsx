@@ -45,7 +45,7 @@ class _BoardApp extends React.Component {
     componentDidUpdate(prevProps, prevState) {
         const { boardId } = this.props.match.params
         // console.log('prevprops', prevProps);
-        if (prevProps.board && boardId !== prevProps.board._id) {
+        if (prevProps.board && boardId !== this.props.board._id) {
             this.props.loadBoard(boardId)
         }
         // socketService.on('board updated', board => {
