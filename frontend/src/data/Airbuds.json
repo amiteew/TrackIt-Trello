@@ -1,0 +1,658 @@
+{
+    "_id" : "615df2d75723f2413a55c72b",
+    "boardTitle" : "Airbuds Project",
+    "createdAt" : 1633546967198.0,
+    "createdBy" : {
+        "_id" : "6158962b17bfd7b1350e906a",
+        "fullname" : "Shany Pollack",
+        "username" : "shany",
+        "imgUrl" : "https://res.cloudinary.com/amiteew/image/upload/v1632417771/shanypo_nzjhlq.jpg",
+        "initials" : "SP"
+    },
+    "cardsCount" : 0,
+    "boardStyle" : "linear-gradient(225deg, rgb(255, 60, 172) 0%, rgb(120, 75, 160) 50%, rgb(43, 134, 197) 100%)",
+    "covers" : [ 
+        {
+            "id" : "Yhol2Gh9",
+            "color" : "clr1"
+        }, 
+        {
+            "id" : "Re4mCswa",
+            "color" : "clr2"
+        }, 
+        {
+            "id" : "8pHRUcVo",
+            "color" : "clr3"
+        }, 
+        {
+            "id" : "pjffOgIM",
+            "color" : "clr4"
+        }, 
+        {
+            "id" : "DxIMfysu",
+            "color" : "clr5"
+        }, 
+        {
+            "id" : "XQtDabJW",
+            "color" : "clr6"
+        }, 
+        {
+            "id" : "xaJ9hj5g",
+            "color" : "clr7"
+        }, 
+        {
+            "id" : "CKeVVpUC",
+            "color" : "clr8"
+        }, 
+        {
+            "id" : "FF1KfOwP",
+            "color" : "clr9"
+        }, 
+        {
+            "id" : "e2NPoI93",
+            "color" : "clr10"
+        }
+    ],
+    "labels" : [ 
+        {
+            "id" : "U2JlTVYo",
+            "title" : "In progress",
+            "color" : "clr1"
+        }, 
+        {
+            "id" : "a6dGGVZI",
+            "title" : "Pending 3rd party",
+            "color" : "clr2"
+        }, 
+        {
+            "id" : "GubKH0Ii",
+            "title" : "Medium priority",
+            "color" : "clr3"
+        }, 
+        {
+            "id" : "7CeUVotF",
+            "title" : "High priority",
+            "color" : "clr4"
+        }, 
+        {
+            "id" : "fXEdrq1C",
+            "title" : "",
+            "color" : "clr5"
+        }, 
+        {
+            "id" : "N31dJJ0x",
+            "title" : "Low priority",
+            "color" : "clr6"
+        }
+    ],
+    "boardMembers" : [ 
+        {
+            "_id" : "6158962b17bfd7b1350e906a",
+            "fullname" : "Shany pollack",
+            "username" : "shanypo",
+            "initials" : "SP",
+            "imgUrl" : "https://res.cloudinary.com/amiteew/image/upload/v1632417771/shanypo_nzjhlq.jpg",
+            "isStarred" : true
+        }, 
+        {
+            "_id" : "6158964017bfd7b1350e907d",
+            "fullname" : "Amitee Weiner",
+            "username" : "amiteewe",
+            "initials" : "AW",
+            "imgUrl" : "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg",
+            "isStarred" : false
+        }, 
+        {
+            "_id" : "6158965017bfd7b1350e9084",
+            "fullname" : "Looply Uzan",
+            "username" : "looplyuz",
+            "initials" : "LU",
+            "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
+            "isStarred" : false
+        }, 
+        {
+            "_id" : "615895d917bfd7b1350e9044",
+            "fullname" : "Panda Guest",
+            "username" : "pandaguest",
+            "imgUrl" : "https://res.cloudinary.com/dhxwkomwu/image/upload/v1632685060/WhatsApp_Image_2021-09-26_at_22.36.21_fktx98.jpg",
+            "initials" : "PG",
+            "isStarred" : false
+        }
+    ],
+    "lists" : [ 
+        {
+            "listId" : "VlGtpTRp",
+            "listTitle" : "General",
+            "cards" : []
+        }, 
+        {
+            "listId" : "RscwC3Sr",
+            "listTitle" : "Backlog",
+            "cards" : []
+        }, 
+        {
+            "listId" : "VLufcTxF",
+            "listTitle" : "In Development",
+            "cards" : []
+        }, 
+        {
+            "listId" : "58BfTM9n",
+            "listTitle" : "QA",
+            "cards" : [ 
+                {
+                    "cardId" : "riAibqX6",
+                    "cardTitle" : "Search places to stay",
+                    "isArchived" : false,
+                    "description" : "Check search both from home page and other pages",
+                    "comments" : [ 
+                        {
+                            "byMember" : {
+                                "_id" : "6158964017bfd7b1350e907d",
+                                "fullname" : "Amitee Weiner",
+                                "username" : "amiteewe",
+                                "imgUrl" : "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg",
+                                "initials" : "AW"
+                            },
+                            "createdAt" : 1633620786749.0,
+                            "id" : "ByTMCyC8",
+                            "txt" : "Issue with filters"
+                        }
+                    ],
+                    "cardMembers" : [ 
+                        {
+                            "_id" : "6158965017bfd7b1350e9084",
+                            "fullname" : "Looply Uzan",
+                            "username" : "looplyuz",
+                            "initials" : "LU",
+                            "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
+                            "isStarred" : false
+                        }
+                    ],
+                    "cardLabelIds" : [ 
+                        "7CeUVotF", 
+                        "U2JlTVYo"
+                    ],
+                    "checklists" : [ 
+                        {
+                            "checklistId" : "KRWJt8uE",
+                            "title" : "To check",
+                            "tasks" : [ 
+                                {
+                                    "id" : "HCzfvpqL",
+                                    "txt" : "All input details present",
+                                    "isDone" : true
+                                }, 
+                                {
+                                    "id" : "DKnEtoNv",
+                                    "txt" : "Flexible location",
+                                    "isDone" : true
+                                }, 
+                                {
+                                    "id" : "zQJJuzh8",
+                                    "txt" : "Flexible dates",
+                                    "isDone" : true
+                                }, 
+                                {
+                                    "id" : "fToc9kBr",
+                                    "txt" : "Flexible location + dates",
+                                    "isDone" : false
+                                }, 
+                                {
+                                    "id" : "e4bhyybg",
+                                    "txt" : "Search  filters (type of place, verified place, etc)",
+                                    "isDone" : true
+                                }
+                            ]
+                        }
+                    ],
+                    "createdAt" : "2021-10-07T09:30:37.303Z",
+                    "dueDate" : {
+                        "date" : 1633392000000.0,
+                        "isDone" : false
+                    },
+                    "attachments" : [ 
+                        {
+                            "id" : "5Z3mSRcz",
+                            "fileName" : "2021-10-07 (4)",
+                            "url" : "https://res.cloudinary.com/looply/image/upload/v1633603594/ycaetytewni4rotmfynk.png",
+                            "createdAt" : 1633603594954.0
+                        }
+                    ],
+                    "cardStyle" : {
+                        "id" : "DxIMfysu",
+                        "color" : "clr5",
+                        "isCover" : false
+                    }
+                }, 
+                {
+                    "cardId" : "vucCm5zr",
+                    "cardTitle" : "Host \"backoffice\" - manage stays",
+                    "isArchived" : false,
+                    "description" : "See statistics about their place as well as manage each active booking:\n1. host date change will issue an approval request to customer before the stay dates actually changed\n2. change dates done by customer will send a request to be approved by host\n3. cancel stay by host - adds cancellation input in host DB\n\n",
+                    "comments" : [],
+                    "cardMembers" : [ 
+                        {
+                            "_id" : "6158964017bfd7b1350e907d",
+                            "fullname" : "Amitee Weiner",
+                            "username" : "amiteewe",
+                            "initials" : "AW",
+                            "imgUrl" : "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg",
+                            "isStarred" : false
+                        }
+                    ],
+                    "cardLabelIds" : [ 
+                        "7CeUVotF"
+                    ],
+                    "checklists" : [],
+                    "createdAt" : "2021-10-07T15:01:54.974Z",
+                    "dueDate" : {
+                        "date" : 1633824000000.0,
+                        "isDone" : false
+                    },
+                    "attachments" : [],
+                    "cardStyle" : {}
+                }, 
+                {
+                    "cardId" : "UUUANNGR",
+                    "cardTitle" : "Site footer with all links",
+                    "isArchived" : false,
+                    "description" : "",
+                    "comments" : [],
+                    "cardMembers" : [ 
+                        {
+                            "_id" : "6158964017bfd7b1350e907d",
+                            "fullname" : "Amitee Weiner",
+                            "username" : "amiteewe",
+                            "initials" : "AW",
+                            "imgUrl" : "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg",
+                            "isStarred" : false
+                        }
+                    ],
+                    "cardLabelIds" : [ 
+                        "N31dJJ0x"
+                    ],
+                    "checklists" : [],
+                    "createdAt" : "2021-10-07T10:29:27.517Z",
+                    "dueDate" : {},
+                    "attachments" : [],
+                    "cardStyle" : {}
+                }
+            ]
+        }, 
+        {
+            "listId" : "jkn9P4Rf",
+            "listTitle" : "Passed QA",
+            "cards" : []
+        }, 
+        {
+            "listId" : "fJrrjsSJ",
+            "listTitle" : "Deployed",
+            "cards" : []
+        }, 
+        {
+            "listId" : "qWdp7oON",
+            "listTitle" : "On Hold",
+            "cards" : []
+        }
+    ],
+    "activities" : [ 
+        {
+            "id" : "xvSyNbzN",
+            "txt" : "",
+            "createdAt" : 1633620954744.0,
+            "byMember" : {
+                "_id" : "6158964017bfd7b1350e907d",
+                "fullname" : "Amitee Weiner",
+                "username" : "amiteewe",
+                "imgUrl" : "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg",
+                "initials" : "AW"
+            },
+            "action" : "Left",
+            "card" : {
+                "cardId" : "riAibqX6",
+                "cardTitle" : "Search places to stay"
+            },
+            "isNotif" : false
+        }, 
+        {
+            "id" : "lEirVcAe",
+            "txt" : "",
+            "createdAt" : 1633620951327.0,
+            "byMember" : {
+                "_id" : "6158964017bfd7b1350e907d",
+                "fullname" : "Amitee Weiner",
+                "username" : "amiteewe",
+                "imgUrl" : "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg",
+                "initials" : "AW"
+            },
+            "action" : "Added",
+            "card" : {
+                "cardId" : "riAibqX6",
+                "cardTitle" : "Search places to stay"
+            },
+            "isNotif" : true
+        }, 
+        {
+            "id" : "BGKCoelZ",
+            "txt" : "",
+            "createdAt" : 1633620900207.0,
+            "byMember" : {
+                "_id" : "6158964017bfd7b1350e907d",
+                "fullname" : "Amitee Weiner",
+                "username" : "amiteewe",
+                "imgUrl" : "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg",
+                "initials" : "AW"
+            },
+            "action" : "Left",
+            "card" : {
+                "cardId" : "voWBSzph",
+                "cardTitle" : "Book a stay as guest"
+            },
+            "isNotif" : false
+        }, 
+        {
+            "id" : "v7HYkYaz",
+            "txt" : "",
+            "createdAt" : 1633620896432.0,
+            "byMember" : {
+                "_id" : "6158964017bfd7b1350e907d",
+                "fullname" : "Amitee Weiner",
+                "username" : "amiteewe",
+                "imgUrl" : "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg",
+                "initials" : "AW"
+            },
+            "action" : "Added",
+            "card" : {
+                "cardId" : "voWBSzph",
+                "cardTitle" : "Book a stay as guest"
+            },
+            "isNotif" : true
+        }, 
+        {
+            "id" : "wlzFgEBp",
+            "txt" : "Issue with filters",
+            "createdAt" : 1633620786750.0,
+            "byMember" : {
+                "_id" : "6158964017bfd7b1350e907d",
+                "fullname" : "Amitee Weiner",
+                "username" : "amiteewe",
+                "imgUrl" : "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg",
+                "initials" : "AW"
+            },
+            "action" : "Added comment",
+            "card" : {
+                "cardId" : "riAibqX6",
+                "cardTitle" : "Search places to stay"
+            },
+            "isNotif" : true
+        }, 
+        {
+            "id" : "Cnpe4dgm",
+            "txt" : "",
+            "createdAt" : 1633620683784.0,
+            "byMember" : {
+                "_id" : "6158962b17bfd7b1350e906a",
+                "fullname" : "Shany Pollack",
+                "username" : "shany",
+                "imgUrl" : "https://res.cloudinary.com/amiteew/image/upload/v1632417771/shanypo_nzjhlq.jpg",
+                "initials" : "SP"
+            },
+            "action" : "Left",
+            "card" : {
+                "cardId" : "UUUANNGR",
+                "cardTitle" : "Site footer with all links"
+            },
+            "isNotif" : false
+        }, 
+        {
+            "id" : "0sdbCnfP",
+            "txt" : "",
+            "createdAt" : 1633620681944.0,
+            "byMember" : {
+                "_id" : "6158962b17bfd7b1350e906a",
+                "fullname" : "Shany Pollack",
+                "username" : "shany",
+                "imgUrl" : "https://res.cloudinary.com/amiteew/image/upload/v1632417771/shanypo_nzjhlq.jpg",
+                "initials" : "SP"
+            },
+            "action" : "Added",
+            "card" : {
+                "cardId" : "UUUANNGR",
+                "cardTitle" : "Site footer with all links"
+            },
+            "isNotif" : true
+        }, 
+        {
+            "id" : "CDPzwOOP",
+            "txt" : "",
+            "createdAt" : 1633619338601.0,
+            "byMember" : {
+                "_id" : "6158964017bfd7b1350e907d",
+                "fullname" : "Amitee Weiner",
+                "username" : "amiteewe",
+                "imgUrl" : "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg",
+                "initials" : "AW"
+            },
+            "action" : "Added",
+            "card" : {
+                "cardId" : "xuHCX6oe",
+                "cardTitle" : "Host edit apt info page"
+            },
+            "isNotif" : true
+        }, 
+        {
+            "id" : "qD6TYEZF",
+            "txt" : "",
+            "createdAt" : 1633619330882.0,
+            "byMember" : {
+                "_id" : "6158964017bfd7b1350e907d",
+                "fullname" : "Amitee Weiner",
+                "username" : "amiteewe",
+                "imgUrl" : "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg",
+                "initials" : "AW"
+            },
+            "action" : "Added card",
+            "card" : {
+                "cardId" : "xuHCX6oe",
+                "cardTitle" : "Host edit apt info page"
+            },
+            "isNotif" : false
+        }, 
+        {
+            "id" : "meIQuqum",
+            "txt" : "",
+            "createdAt" : 1633619232580.0,
+            "byMember" : {
+                "_id" : "6158964017bfd7b1350e907d",
+                "fullname" : "Amitee Weiner",
+                "username" : "amiteewe",
+                "imgUrl" : "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg",
+                "initials" : "AW"
+            },
+            "action" : "Changed due date",
+            "card" : {
+                "cardId" : "vucCm5zr",
+                "cardTitle" : "Host \"backoffice\" - manage stays"
+            },
+            "isNotif" : true
+        }, 
+        {
+            "id" : "Xzhk2Uw5",
+            "txt" : "",
+            "createdAt" : 1633619219313.0,
+            "byMember" : {
+                "_id" : "6158964017bfd7b1350e907d",
+                "fullname" : "Amitee Weiner",
+                "username" : "amiteewe",
+                "imgUrl" : "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg",
+                "initials" : "AW"
+            },
+            "action" : "Join",
+            "card" : {
+                "cardId" : "vucCm5zr",
+                "cardTitle" : "Host \"backoffice\" - manage stays"
+            },
+            "isNotif" : false
+        }, 
+        {
+            "id" : "CEWHrWyf",
+            "txt" : "",
+            "createdAt" : 1633618914975.0,
+            "byMember" : {
+                "_id" : "6158964017bfd7b1350e907d",
+                "fullname" : "Amitee Weiner",
+                "username" : "amiteewe",
+                "imgUrl" : "https://res.cloudinary.com/amiteew/image/upload/v1632416023/amitee_yg3luy.jpg",
+                "initials" : "AW"
+            },
+            "action" : "Added card",
+            "card" : {
+                "cardId" : "vucCm5zr",
+                "cardTitle" : "Host \"backoffice\" - manage stays"
+            },
+            "isNotif" : false
+        }, 
+        {
+            "id" : "GeaMhZrh",
+            "txt" : "",
+            "createdAt" : 1633605374300.0,
+            "byMember" : {
+                "_id" : "6158962b17bfd7b1350e906a",
+                "fullname" : "Shany Pollack",
+                "username" : "shany",
+                "imgUrl" : "https://res.cloudinary.com/amiteew/image/upload/v1632417771/shanypo_nzjhlq.jpg",
+                "initials" : "SP"
+            },
+            "action" : "Marked the due date complete",
+            "card" : {
+                "cardId" : "JLpcbEnR",
+                "cardTitle" : "Home page with: search, nearby places, common destinations, accommodation types"
+            },
+            "isNotif" : false
+        }, 
+        {
+            "id" : "XCNVlTb8",
+            "txt" : "",
+            "createdAt" : 1633605373274.0,
+            "byMember" : {
+                "_id" : "6158962b17bfd7b1350e906a",
+                "fullname" : "Shany Pollack",
+                "username" : "shany",
+                "imgUrl" : "https://res.cloudinary.com/amiteew/image/upload/v1632417771/shanypo_nzjhlq.jpg",
+                "initials" : "SP"
+            },
+            "action" : "Changed due date",
+            "card" : {
+                "cardId" : "JLpcbEnR",
+                "cardTitle" : "Home page with: search, nearby places, common destinations, accommodation types"
+            },
+            "isNotif" : true
+        }, 
+        {
+            "id" : "haWrL5yr",
+            "txt" : "",
+            "createdAt" : 1633605364266.0,
+            "byMember" : {
+                "_id" : "6158962b17bfd7b1350e906a",
+                "fullname" : "Shany Pollack",
+                "username" : "shany",
+                "imgUrl" : "https://res.cloudinary.com/amiteew/image/upload/v1632417771/shanypo_nzjhlq.jpg",
+                "initials" : "SP"
+            },
+            "action" : "Join",
+            "card" : {
+                "cardId" : "JLpcbEnR",
+                "cardTitle" : "Home page with: search, nearby places, common destinations, accommodation types"
+            },
+            "isNotif" : false
+        }, 
+        {
+            "id" : "Pz2P6Je3",
+            "txt" : "",
+            "createdAt" : 1633605357683.0,
+            "byMember" : {
+                "_id" : "6158962b17bfd7b1350e906a",
+                "fullname" : "Shany Pollack",
+                "username" : "shany",
+                "imgUrl" : "https://res.cloudinary.com/amiteew/image/upload/v1632417771/shanypo_nzjhlq.jpg",
+                "initials" : "SP"
+            },
+            "action" : "Added",
+            "card" : {
+                "cardId" : "WgxehNgR",
+                "cardTitle" : "Guest demo from home page"
+            },
+            "isNotif" : true
+        }, 
+        {
+            "id" : "woW2inLQ",
+            "txt" : "",
+            "createdAt" : 1633605347814.0,
+            "byMember" : {
+                "_id" : "6158962b17bfd7b1350e906a",
+                "fullname" : "Shany Pollack",
+                "username" : "shany",
+                "imgUrl" : "https://res.cloudinary.com/amiteew/image/upload/v1632417771/shanypo_nzjhlq.jpg",
+                "initials" : "SP"
+            },
+            "action" : "Added card",
+            "card" : {
+                "cardId" : "JLpcbEnR",
+                "cardTitle" : "Home page with: search, nearby places, common destinations, accommodation types"
+            },
+            "isNotif" : false
+        }, 
+        {
+            "id" : "fhozJnZr",
+            "txt" : "",
+            "createdAt" : 1633605202918.0,
+            "byMember" : {
+                "_id" : "6158962b17bfd7b1350e906a",
+                "fullname" : "Shany Pollack",
+                "username" : "shany",
+                "imgUrl" : "https://res.cloudinary.com/amiteew/image/upload/v1632417771/shanypo_nzjhlq.jpg",
+                "initials" : "SP"
+            },
+            "action" : "Removed attachment",
+            "card" : {
+                "cardId" : "WgxehNgR",
+                "cardTitle" : "Guest demo from home page"
+            },
+            "isNotif" : false
+        }, 
+        {
+            "id" : "czHYl67o",
+            "txt" : "",
+            "createdAt" : 1633605086689.0,
+            "byMember" : {
+                "_id" : "6158962b17bfd7b1350e906a",
+                "fullname" : "Shany Pollack",
+                "username" : "shany",
+                "imgUrl" : "https://res.cloudinary.com/amiteew/image/upload/v1632417771/shanypo_nzjhlq.jpg",
+                "initials" : "SP"
+            },
+            "action" : "Changed due date",
+            "card" : {
+                "cardId" : "AkwJAYll",
+                "cardTitle" : "Add a new place to host"
+            },
+            "isNotif" : true
+        }, 
+        {
+            "id" : "IiAnHk9I",
+            "txt" : "",
+            "createdAt" : 1633547026405.0,
+            "byMember" : {
+                "_id" : "6158962b17bfd7b1350e906a",
+                "fullname" : "Shany Pollack",
+                "username" : "shany",
+                "imgUrl" : "https://res.cloudinary.com/amiteew/image/upload/v1632417771/shanypo_nzjhlq.jpg",
+                "initials" : "SP"
+            },
+            "action" : "Added list In Development",
+            "card" : "",
+            "isNotif" : false
+        }
+    ],
+    "archive" : []
+}
