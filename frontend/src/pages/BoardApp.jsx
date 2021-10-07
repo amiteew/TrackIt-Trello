@@ -32,6 +32,9 @@ class _BoardApp extends React.Component {
         socketService.on('board updated', board => {
             this.props.loadBoard(board._id)
         })
+        socketService.on('sending notification', (isNotif) => {
+            this.props.setNotif(isNotif)
+          })
         // console.log('board component did mount');
     }
 
@@ -53,8 +56,8 @@ class _BoardApp extends React.Component {
         // })
     }
 
-    onUpdateBoard = (action, card = '', txt = '') => {
-        const { board } = this.props
+    onUpdateBoard = (board, action, card = '', txt = '') => {
+        // const { board } = this.props
         this.props.updateBoard(board, action, card, txt);
     }
 

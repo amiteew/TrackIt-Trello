@@ -44,7 +44,7 @@ function connectSockets(http, session) {
             // socket.to(socket.myTopic).emit('board updated', board) 
             socket.broadcast.to(socket.myTopic).emit('board updated', board) //CHECKING TEST
         })
-        socket.on('resieve notification', () => {
+        socket.on('received notification', () => {
             socket.broadcast.to(socket.myTopic).emit('sending notification', true)
         })
     })

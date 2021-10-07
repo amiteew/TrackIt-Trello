@@ -19,7 +19,7 @@ async function getBoardById(req, res) {
     const boardId = req.params.id;
     const filterBy = req.query;
     let board = await boardService.getById(boardId)
-    board = _filterBoard(filterBy, board);
+    // board = _filterBoard(filterBy, board);
     res.json(board)
   } catch (err) {
     logger.error('Failed to get board', err)
@@ -70,10 +70,11 @@ function _filterBoard(filterBy, board) {
   // console.log('before', filterBy);
   // filterBy = JSON.stringify(filterBy)
   const newFilterBy = JSON.parse(filterBy.filterBy)
+  const filteredBoard = JSON.parse(JSON.stringify(board))
   
   if (!newFilterBy.isFilter) return board
 
-  board.lists.forEach(list => {
+  filteredBoard.lists.forEach(list => {
     list.cards = list.cards.filter(card => {
       const regex = new RegExp(newFilterBy.searchKey, 'i');
 
@@ -92,12 +93,12 @@ function _filterBoard(filterBy, board) {
 
       return isTxtOnCard && isMemberOnCard && isLabelsOnCard
     })
-    board.cardsCount += list.cards.reduce((acc, card) => {
+    filteredBoard.cardsCount += list.cards.reduce((acc, card) => {
       acc++ 
       return acc;
     }, 0)
   })
-  return board
+  return filteredBoard
 }
 
 // function _LimitActivities(board) {

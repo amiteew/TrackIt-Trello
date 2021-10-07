@@ -41,11 +41,12 @@ export class _AddCard extends React.Component {
             attachments: [],
             cardStyle: {}
         }
-        const { list } = this.props;
+        const { list, board } = this.props;
         list.cards.push(newCard);
         this.setState({ cardTitle: "" })
         const action = `Added card`;
-        this.props.onUpdateBoard(action, newCard);
+        console.log('board from add card', board);
+        this.props.updateBoard(board, action, newCard);
         this.props.onCloseAdding();
     }
 
@@ -74,7 +75,7 @@ export class _AddCard extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        boards: state.boardReducer.boards
+        board: state.boardReducer.board
     }
 }
 const mapDispatchToProps = {

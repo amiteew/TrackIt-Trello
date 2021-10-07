@@ -88,7 +88,7 @@
         ],
         "boardMembers": [
             {
-                "_id": "6158117b1f0b4eb558de162a",
+                "_id": "615f4586c375bb154681275d",
                 "fullname": "Panda Guest",
                 "username": "pandaguest",
                 "imgUrl": "https://res.cloudinary.com/dhxwkomwu/image/upload/v1632685060/WhatsApp_Image_2021-09-26_at_22.36.21_fktx98.jpg",
@@ -96,7 +96,7 @@
                 "isStarred": true
             },
             {
-                "_id": "615866221f0b4eb558de162c",
+                "_id": "615f46cec375bb154682c1c8",
                 "fullname": "Alexa Pierce",
                 "username": "alexapi",
                 "initials": "AP",
@@ -104,7 +104,7 @@
                 "isStarred": false
             },
             {
-                "_id": "615814e3da8a72aac35397ea",
+                "_id": "615f4655c375bb154682280d",
                 "fullname": "Shany pollack",
                 "username": "shanypo",
                 "initials": "SP",
@@ -112,7 +112,7 @@
                 "isStarred": true
             },
             {
-                "_id": "61585c941f0b4eb558de162b",
+                "_id": "615f468ac375bb1546826d8f",
                 "fullname": "Amitee Weiner",
                 "username": "amiteewe",
                 "initials": "AW",
