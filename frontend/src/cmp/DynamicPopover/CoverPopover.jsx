@@ -135,17 +135,17 @@ class _CoverPopover extends React.Component {
                 </div>
                 }
 
-                {!isSearch && <div className="colors-for-cover">
-                    {<h4 className="color-title">Colors</h4>}
-                    <div className="color-plate">
+                {/* { <div className="colors-for-cover"> */}
+                {!isSearch && <h4 className="color-title">Colors</h4>}
+                    {!isSearch &&<div className="color-plate">
                         {board.covers.length && board.covers.map(cover => (
                             <div key={cover.id} onClick={() => this.onToggleCover(cover)}
                                 className={`color-sqr pointer ${cover.color} 
                              ${this.isCoverOnCard(currCard, cover.id) ? 'color-selected' : ''} `}>
                             </div>
                         ))}
-                    </div>
-                </div>}
+                    </div>}
+                {/* </div>} */}
                 {!isSearch && <div>
                     <h4>Attachment</h4>
                     <label htmlFor="file-input">

@@ -77,7 +77,7 @@ export function toggleLabels() {
   }
 }
 
-export function setFilterBy(filterBy, boardId) { 
+export function setFilterBy(filterBy, boardId) {
   return async dispatch => {
     try {
       dispatch({ type: 'SET_FILTER', filterBy: filterBy });

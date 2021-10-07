@@ -6,7 +6,7 @@ import { BsThreeDots } from "react-icons/bs";
 import AutosizeInput from 'react-input-autosize';
 
 import { userService } from "../services/user.service"
-import { updateBoard, setNotif } from "../store/board.actions"
+import { updateBoard, setNotif, setFilterBy } from "../store/board.actions"
 import { MembersListBoard } from "./MembersListBoard"
 import { TemporaryDrawer } from '../cmp/DroweMenu.jsx';
 import { Loading } from "./Loading";
@@ -19,7 +19,8 @@ class _BoardHeader extends React.Component {
     title: '',
     isMenuOpen: false,
     menuTitle: 'Menu',
-    menuTarget: 'main'
+    menuTarget: 'main',
+    cardsCount: 0
   }
 
   componentDidMount() {
@@ -28,6 +29,12 @@ class _BoardHeader extends React.Component {
     socketService.on('sending notification', (isNotif) => {
       this.props.setNotif(isNotif)
     })
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.filterBy && prevProps.filterBy !== this.props.filterBy) {
+      this.onFilterCards()
+    }
   }
 
   handleChange = (ev) => {
@@ -60,6 +67,26 @@ class _BoardHeader extends React.Component {
     updateBoard(updatedBoard)
   }
 
+  onFilterCards = () => {
+    const { board, filterBy } = this.props;
+    if (!filterBy.members.length && !filterBy.labels.length && filterBy.searchKey === '') {
+      this.setState({ ...this.state, cardsCount: 0});
+      filterBy.isFilter = false;
+    }else{
+      this.setState({ ...this.state, cardsCount: board.cardsCount });
+    }
+  }
+
+  resetSearch = () => {
+    this.props.setFilterBy({
+      searchKey: '',
+      labels: [],
+      members: [],
+      isFilter: false
+    }, this.props.board._id)
+    this.setState({ ...this.state, cardsCount: 0 });
+  }
+ 
   toggleMenu = () => {
     const { isMenuOpen } = this.state
     // this.setState(prevState => ({ ...prevState, isMenuOpen: !isMenuOpen }))
@@ -71,7 +98,7 @@ class _BoardHeader extends React.Component {
   }
 
   render() {
-    const { board, loggedInUser } = this.props
+    const { board, loggedInUser, filterBy } = this.props
     const { title, isEditTitle, isMenuOpen, menuTarget, menuTitle, notification } = this.state
     const isStarred = userService.isBoardStarred(board, loggedInUser._id)
     return (
@@ -105,12 +132,13 @@ class _BoardHeader extends React.Component {
           </div>
         </div>
         <div className="header-right flex">
+          {filterBy.isFilter && <div onClick={this.resetSearch}>{board.cardsCount} X</div>}
           <button className="board-btn" onClick={this.props.onOpenDashboard}>Dashboard</button>
           {!isMenuOpen && <button className="board-btn show-menu flex align-center" onClick={this.toggleMenu}>
             <span className="icon flex justify-center align-center"><BsThreeDots /> </span>
             <span className="title">Show menu</span>
           </button>}
-          {isMenuOpen && <DynamicBoardMenu board={board} toggleMenu={this.toggleMenu}
+          {isMenuOpen && <DynamicBoardMenu board={board} toggleMenu={this.toggleMenu} onFilterCards={this.onFilterCards}
             isMenuOpen={isMenuOpen} target={menuTarget} title={menuTitle} changeMenu={this.changeMenu} />}
           {/* {isMenuOpen && <TemporaryDrawer board={board} toggleMenu={this.toggleMenu} isMenuOpen={isMenuOpen} />} */}
         </div>
@@ -122,13 +150,15 @@ class _BoardHeader extends React.Component {
 function mapStateToProps(state) {
   return {
     loggedInUser: state.userReducer.loggedInUser,
-    notifCount: state.boardReducer.notifCount
+    notifCount: state.boardReducer.notifCount,
+    filterBy: state.boardReducer.filterBy,
   }
 }
 
 const mapDispatchToProps = {
   updateBoard,
   setNotif,
+  setFilterBy,
 
 }
 

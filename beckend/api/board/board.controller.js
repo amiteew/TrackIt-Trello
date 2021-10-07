@@ -21,7 +21,7 @@ async function getBoardById(req, res) {
     let board = await boardService.getById(boardId)
     // console.log('filterby', filterBy);
     board = _filterBoard(filterBy, board);
-    board = filterActivities(board)
+    // board = filterActivities(board)
     res.json(board)
   } catch (err) {
     logger.error('Failed to get board', err)
@@ -71,32 +71,33 @@ function _filterBoard(filterBy, board) {
   // console.log('before', filterBy);
   // filterBy = JSON.stringify(filterBy)
   const newFilterBy = JSON.parse(filterBy.filterBy)
+  
   if (!newFilterBy.isFilter) return board
 
-  console.log('filterBy.searchKey', newFilterBy)
-
-  const regex = new RegExp(newFilterBy.searchKey, 'i');
   board.lists.forEach(list => {
     list.cards = list.cards.filter(card => {
+      const regex = new RegExp(newFilterBy.searchKey, 'i');
+
       let isMemberOnCard = true
       let isLabelsOnCard = true
- 
-      if (newFilterBy.members.length) {        
-         isMemberOnCard = newFilterBy.members.some(filterMember => card.cardMembers.some(cardMember => filterMember === cardMember._id))
-        
+
+      if (newFilterBy.members.length) {
+        isMemberOnCard = newFilterBy.members.some(filterMember => card.cardMembers.some(cardMember => filterMember === cardMember._id))
       }
-      
+
       if (newFilterBy.labels.length) {
-        isLabelsOnCard = newFilterBy.labels.some(filterLabel => card.cardLabels.some(cardLabel => filterLabel._id === cardLabel._id))
+        isLabelsOnCard = newFilterBy.labels.some(filterLabel => card.cardLabelIds.some(cardLabel => filterLabel === cardLabel))
       }
 
       const isTxtOnCard = regex.test(card.cardTitle)
-      
+
       return isTxtOnCard && isMemberOnCard && isLabelsOnCard
     })
+    board.cardsCount += list.cards.reduce((acc, card) => {
+      acc++ 
+      return acc;
+    }, 0)
   })
-// console.log('board', board);
-
   return board
 }
 

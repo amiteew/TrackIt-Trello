@@ -4,7 +4,7 @@ import { updateBoard, loadListAndCard, loadBoard, setFilterBy } from '../store/b
 import Divider from '@mui/material/Divider';
 import { TextareaAutosize } from '@mui/material';
 import { DebounceInput } from 'react-debounce-input';
-
+import DoneIcon from '@mui/icons-material/Done';
 import AvatarGroup from '@mui/material/AvatarGroup';
 import Avatar from '@mui/material/Avatar';
 
@@ -20,39 +20,41 @@ class _SearchMenu extends React.Component {
         }
     }
 
-    componentDidMount (){
-        const {filterBy} = this.props;
+    componentDidMount() {
+        // const {filterBy} = this.props;
 
-        console.log('filterby', filterBy);
+        // console.log('filterby', filterBy);
         // this.setState({ filterBy: { ...this.state.filterBy, searchKey:filterBy.searchKey, members:filterBy.members,labels:filterBy.labels }})
     }
 
     handleChange = (ev) => {
         const value = ev.target.value;
-        this.setState({ searchKey: value });
-        this.setState({ filterBy: { ...this.state.filterBy, searchKey: value, isFilter: true } }, () => {
-            this.props.setFilterBy(this.state.filterBy, this.props.board._id);
-        })
+        const { filterBy } = this.props;
+        filterBy.searchKey = value;
+        filterBy.isFilter = true;
+        this.props.setFilterBy(filterBy, this.props.board._id);
     }
 
     onFilterBy = (type, id) => {
-        let filterType = this.state.filterBy[type];
+        let filterType = this.props.filterBy[type];
         const filterIdx = filterType.findIndex(filteryid => filteryid === id)
-        console.log('type', filterIdx);
-        if(filterIdx === 0) {
-            filterIdx.splice(filterIdx, 1);
-        } else{
+        // this.onToggleSearch();
+        if (filterIdx !== -1) {
+            filterType.splice(filterIdx, 1);
+        } else {
             filterType.push(id);
         }
         this.setState({ filterBy: { ...this.state.filterBy, [type]: filterType, isFilter: true } }, () => {
-            console.log('filter', this.state.filterBy);
             this.props.setFilterBy(this.state.filterBy, this.props.board._id);
         });
     }
 
+    onToggleSearch = (type, id) => {
+        return this.props.filterBy[type].some(searchId => searchId === id)
+    }
+
     render() {
         const { board, filterBy } = this.props;
-        const { searchKey } = this.state;
         return (
             <div className="search-cards">
                 <DebounceInput
@@ -70,34 +72,39 @@ class _SearchMenu extends React.Component {
                 <div className="search-types">
                     <ul className="clean-list">
                         {board.labels.map(label => (
-                            <li className="pointer" key={label.id} onClick={() => this.onFilterBy('labels', label.id)} >
-                               <div className="label-menu">
-                                   <div className="label-list-item">
-                                <div className={`label-menu-color pointer ${label.color}`}>
-                                    <span >
-                                    </span>
+                            <li className="labels pointer" key={label.id} onClick={() => this.onFilterBy('labels', label.id)} >
+                                <div className="label-menu">
+                                    <div className="label-list-item">
+                                        <div className={`label-menu-color pointer ${label.color}`}>
+                                            <span >
+                                            </span>
+                                        </div>
+                                        <span> {this.onToggleSearch('labels', label.id) && <DoneIcon />}</span>
                                     </div>
-                                </div>
-                                <span>
-                                    {label.title}
-                                </span>
+                                    <span>
+                                        {label.title}
+                                    </span>
                                 </div>
                             </li>
                         ))}
                     </ul>
 
                     <Divider />
-                    <ul className="members-search clean-list">
-                        <AvatarGroup max={6} >
+                    <div className="members-type">
+                        <ul className="members-search clean-list">
+                            {/* <AvatarGroup max={6} > */}
                             {board.boardMembers.map(member => (
-                                <li key={member._id} onClick={() => this.onFilterBy('members', member._id)} >
+                                <li className="members-list flex align-center" key={member._id} onClick={() => this.onFilterBy('members', member._id)} >
                                     <div>
                                         <Avatar alt={member.username} src={member.imgUrl} key={member._id} />
                                     </div>
+                                    <span>{member.username}</span>
+                                    <span> {this.onToggleSearch('members', member._id) && <DoneIcon />}</span>
                                 </li>
                             ))}
-                        </AvatarGroup>
-                    </ul>
+                            {/* </AvatarGroup> */}
+                        </ul>
+                    </div>
                 </div>
             </div>
         )

@@ -11,7 +11,7 @@ import { ChooseBgImg } from './DynamicPopover/BoardMenu/ChooseBgImg';
 import { SearchMenu } from './SearchMenu';
 import { ArchiveItems } from './ArchiveItems';
 
-export function DynamicBoardMenu({ board, toggleMenu, isMenuOpen, target, title, changeMenu }) {
+export function DynamicBoardMenu({ board, toggleMenu, isMenuOpen, target, title, changeMenu, onFilterCards }) {
 
     const DynamicCmp = (props) => {
         switch (props.target) {
@@ -58,7 +58,7 @@ export function DynamicBoardMenu({ board, toggleMenu, isMenuOpen, target, title,
                             </div>
                             <Divider />
                             <div className="menu-content fancy-scrollbar">
-                                <DynamicCmp target={target} board={board} changeMenu={changeMenu} />
+                                <DynamicCmp target={target} board={board} changeMenu={changeMenu} onFilterCards={onFilterCards}/>
                             </div>
                         </div>
                     </div>

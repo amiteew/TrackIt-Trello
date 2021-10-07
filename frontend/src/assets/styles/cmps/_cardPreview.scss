@@ -224,8 +224,9 @@
         height: rem(16px);
         width: rem(16px);
 
-        &.checkbox {
-            // margin-left: 5px;
+        &.checkbox.done{
+            margin-left: 5px;
+            margin-right: 3px;
         }
     }
 

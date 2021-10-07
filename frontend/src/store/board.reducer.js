@@ -7,7 +7,13 @@ const initialState = {
   currList: null,
   isNotif: false,
   notifCount: 0,
-  filterBy:{}
+  filterBy: {
+    searchKey: '',
+    labels: [],
+    members: [],
+    isFilter: false,
+    cardsCount: 0
+  }
 }
 
 export function boardReducer(state = initialState, action = null) {

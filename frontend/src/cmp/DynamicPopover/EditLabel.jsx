@@ -102,7 +102,7 @@ class _EditLabel extends React.Component {
                     <p className="edit-label-delete">There is no undo. This will remove this label from all cards and destroy its history.</p>
                     <div className="edit-labels-btn delete deleted pointer" onClick={this.deleteLabel}>Delete</div>
                 </div>}
-            </div>
+             </div>
         )
     }
 }
