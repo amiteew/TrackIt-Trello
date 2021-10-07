@@ -49,6 +49,7 @@ class _CreateBoard extends React.Component {
             "boardTitle": title,
             "createdAt": Date.now(),
             "createdBy": loggedInUser,
+            "cardsCount": 0,
             "boardStyle": backgrounds[selectedBgIdx],
             "covers": this.getCovers(),
             "labels": this.getLabels(),
