@@ -1,6 +1,8 @@
 {
-  "short_name": "TrackIt",
   "name": "Keep everything on track",
+  "short_name": "TrackIt",
+  "start_url": ".",
+  "display": "standalone",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,8 +20,6 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
-  "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
 }

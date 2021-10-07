@@ -13,7 +13,7 @@ export function MainBoardMenuContent({ board, changeMenu }) {
                     Change background
                 </button>
                 <button className="menu-action-btn" onClick={() => changeMenu('Search cards', 'search')}>
-                    <span className="search-cards"> <SearchSharpIcon /></span>
+                    <span className="search-cards"><SearchSharpIcon /></span>
                     <span> Search cards </span>
                 </button>
                 <button className="menu-action-btn" onClick={() => changeMenu('Archived', 'archive')}>
