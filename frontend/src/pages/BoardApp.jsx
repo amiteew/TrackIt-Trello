@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { loadBoards, loadBoard, removeBoard, updateBoard, toggleLabels } from '../store/board.actions.js';
+import { loadBoards, loadBoard, removeBoard, updateBoard, toggleLabels, setNotif } from '../store/board.actions.js';
 // import { boardService } from '../services/board.service.js';
 import { BoardList } from '../cmp/BoardList.jsx';
 import { DragDropContext } from 'react-beautiful-dnd';
@@ -152,7 +152,8 @@ const mapDispatchToProps = {
     loadBoards,
     loadBoard,
     updateBoard,
-    toggleLabels
+    toggleLabels,
+    setNotif
 }
 
 export const BoardApp = connect(mapStateToProps, mapDispatchToProps)(_BoardApp)

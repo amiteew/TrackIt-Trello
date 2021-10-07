@@ -99,13 +99,9 @@ export function setFilterBy(filterBy, boardId) {
 // if not- it's a template and it should only update the store, NOT the server!
 export function updateBoard(board, action = null, card = '', txt = "") {
   return async dispatch => {
-    try {
-      console.log('card', card);
-      console.log('board', board);
-      
+    try {      
       if (action) {
         var activity = _storeSaveActivity(action, card, txt);
-        
         board.activities.unshift(activity);
       }
       dispatch({ type: 'UPDATE_BOARD', board: { ...board } });

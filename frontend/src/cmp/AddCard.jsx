@@ -45,7 +45,6 @@ export class _AddCard extends React.Component {
         list.cards.push(newCard);
         this.setState({ cardTitle: "" })
         const action = `Added card`;
-        console.log('board from add card', board);
         this.props.updateBoard(board, action, newCard);
         this.props.onCloseAdding();
     }
