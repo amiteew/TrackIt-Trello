@@ -3,7 +3,7 @@ import { emitToUser, socketService } from '../services/socket.service'
 // import { socketService, SOCKET_EVENT_BOARD_ADDED } from '../services/socket.service'
 import { userService } from '../services/user.service'
 import { utilService } from '../services/util.service.js'
-
+import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service';
 export function loadBoards(userId) {
   return async dispatch => {
     try {
@@ -14,6 +14,7 @@ export function loadBoards(userId) {
       // })
 
     } catch (err) {
+      showErrorMsg('Sorry cannot load boards')
       console.log('BoardActions: err in loadBoards', err)
     }
   }
@@ -28,6 +29,7 @@ export function loadBoard(boardId) {
       //   dispatch({ type: 'ADD_BOARD', board })
       // })
     } catch (err) {
+      showErrorMsg('Sorry cannot load board')
       console.log('BoardActions: err in loadBoards', err)
     }
   }
@@ -55,6 +57,7 @@ export function addBoard(board) {
       dispatch({ type: 'ADD_BOARD', board: addedBoard })
 
     } catch (err) {
+      showErrorMsg('Sorry cannot add board')
       console.log('BoardActions: err in addBoard', err)
     }
   }
@@ -66,6 +69,7 @@ export function removeBoard(boardId) {
       await boardService.remove(boardId)
       dispatch({ type: 'REMOVE_BOARD', boardId })
     } catch (err) {
+      showErrorMsg('Sorry cannot remove board')
       console.log('BoardActions: err in removeBoard', err)
     }
   }
@@ -102,12 +106,15 @@ export function updateBoard(board, action = null, card = '', txt = "") {
       }
       dispatch({ type: 'UPDATE_BOARD', board: { ...board } });
       await boardService.save(board);
+      dispatch({ type: 'UPDATE_LAST_UPDATED_BOARD' });
       socketService.emit('update-board', board);
       if (action && activity.isNotif) socketService.emit('resieve notification');
     } catch (err) {
       // console.log('board id: ', board._id)
       // loadBoard(board._id)
       // dispatch({ type: 'UPDATE_BOARD', board: { ...board } });
+      dispatch({ type: 'UNDO_UPDATE_BOARD' });
+      showErrorMsg('Sorry cannot update board')
       console.log('BoardActions: err in updateBoard', err);
       // console.log('after loadboard')
     }

@@ -2,7 +2,7 @@ import React from 'react'
 import { Switch, Route } from 'react-router'
 import routes from './routes.js'
 import { AppHeader } from './cmp/Header/AppHeader.jsx'
-
+import { UserMsg } from './cmp/UserMsg';
 export class RootCmp extends React.Component {
 
     render() {
@@ -14,6 +14,7 @@ export class RootCmp extends React.Component {
                         {routes.map(route => <Route key={route.path} component={route.component} path={route.path} />)}
                         {/* {routes.map(route => <Route key={route.path} exact component={route.component} path={route.path} />)} */}
                     </Switch>
+                    <UserMsg />
                 </main>
             </>
         )

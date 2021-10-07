@@ -3,6 +3,7 @@ import Avatar from '@mui/material/Avatar';
 import { connect } from 'react-redux';
 import { loadBoards, removeBoard, addBoard, updateBoard } from '../../store/board.actions.js';
 import { cloudinaryService } from '../../services/cloudinary.service.js';
+import { showSuccessMsg, showErrorMsg } from '../../services/event-bus.service';
 import DoneIcon from '@mui/icons-material/Done';
 import { color } from '@mui/system';
 import { utilService } from '../../services/util.service';
@@ -20,12 +21,14 @@ class _AttachmentsPopover extends React.Component {
     }
 
     onAddAttach = async (ev) => {
+        showErrorMsg('Uploading...')
         const attachment = await cloudinaryService.uploadFile(ev)
         const { board, currListIdx, currCardIdx } = this.props
         const currCard = board.lists[currListIdx].cards[currCardIdx]
         currCard.attachments.unshift(attachment)
         this.props.updateBoard(board, 'Attached', currCard)
         this.props.handleClose()
+        showSuccessMsg('Uploading Complete')
     }
 
     // onAddLink = (ev) => {

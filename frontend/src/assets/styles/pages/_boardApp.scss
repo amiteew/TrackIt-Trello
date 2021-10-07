@@ -10,12 +10,12 @@
 }
 .board-background {
     position: fixed;
-    top:0;
+    top: 0;
     bottom: 0;
     right: 0;
     left: 0;
     z-index: -1;
-    background-size:cover;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -44,9 +44,9 @@
         background: #bfc3ce88;
     }
 
-    .all-lists{
-        align-items: flex-start;
-    }
+    // .all-lists{
+    //     align-items: flex-start;
+    // }
 }
 
 // do we need this class? AW

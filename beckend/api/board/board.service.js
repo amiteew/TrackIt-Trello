@@ -19,7 +19,7 @@ async function query(userId) {
 async function getById(boardId) {
     try {
         const collection = await dbService.getCollection('board')
-        const board = collection.findOne({ '_id': ObjectId(boardId) })        
+        const board = collection.findOne({ '_id': ObjectId(boardId) })
         return board
     } catch (err) {
         logger.error(`while finding board ${boardId}`, err)
@@ -54,7 +54,7 @@ async function save(board) {
                 labels,
                 boardMembers,
                 lists,
-                activities
+                activities: activities.slice(0, 20) //Avoiding Data leak - Board Object too large
             }
             const collection = await dbService.getCollection('board')
             await collection.updateOne({ "_id": savedBoard._id }, { $set: { ...savedBoard } })
