@@ -47,6 +47,7 @@ export function onLogin(credentials) {
                 type: 'SET_USER',
                 user
             })
+            return user
         } catch (err) {
             // showErrorMsg('Cannot login')
             console.log('Cannot login', err)
@@ -87,18 +88,18 @@ export function onLogout() {
     }
 }
 
-// export async function loginAsGuest() {
-//     const guestCreds = {
-//         username: "pandaguest",
-//         password: "123"
-//     }
-//     try {
-//         return await onLogin(guestCreds);
+export function loginAsGuest() {
+    const guestCreds = {
+        username: "pandaguest",
+        password: "123"
+    }
+    try {
+        return onLogin(guestCreds)
+    } catch (err) {
+        console.log('error login as guest');
+    }
+}
 
-//     } catch (err) {
-//         console.log('error login as guest');
-//     }
-// }
 
 // export function loadAndWatchUser(userId) {
 //     return async (dispatch) => {

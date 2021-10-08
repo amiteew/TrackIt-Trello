@@ -27,7 +27,7 @@ class _BoardHeader extends React.Component {
   componentDidMount() {
     this.setState({ title: this.props.board.boardTitle })
     // socketService.setup()
-  
+
     // socketService.on('sending notification', (isNotif) => {
     //   this.props.setNotif(isNotif)
     // })
@@ -129,20 +129,21 @@ class _BoardHeader extends React.Component {
           </button>
           <span className="board-header-divider"></span>
           <div className="board-members">
-            {/* <div className="board-header-btn board-members"> */}
             <MembersListBoard members={board.boardMembers} />
           </div>
         </div>
         <div className="header-right flex">
           {filterBy.isFilter && <div onClick={this.resetSearch}>{board.cardsCount} X</div>}
-          <button className="board-btn flex align-center" onClick={this.props.onOpenDashboard}><EqualizerIcon /> Dashboard</button>
+          <button className="board-btn flex align-center" onClick={this.props.onOpenDashboard}>
+            <span className="icon"><EqualizerIcon /></span>
+            <span className="title">Dashboard</span>
+          </button>
           {!isMenuOpen && <button className="board-btn show-menu flex align-center" onClick={this.toggleMenu}>
             <span className="icon flex justify-center align-center"><BsThreeDots /> </span>
             <span className="title">Show menu</span>
           </button>}
           {isMenuOpen && <DynamicBoardMenu board={board} toggleMenu={this.toggleMenu} onFilterCards={this.onFilterCards}
             isMenuOpen={isMenuOpen} target={menuTarget} title={menuTitle} changeMenu={this.changeMenu} />}
-          {/* {isMenuOpen && <TemporaryDrawer board={board} toggleMenu={this.toggleMenu} isMenuOpen={isMenuOpen} />} */}
         </div>
       </div>
     )

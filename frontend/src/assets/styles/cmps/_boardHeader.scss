@@ -1,12 +1,7 @@
 .board-header {
-    // height: rem(52px);
     padding: 8px 4px 8px 14px;
-    // position: fixed;
-    // top: rem(44px);
     width: 100%;
     line-height: rem(32px);
-    // color: $clr10;
-    // z-index: 1;
     color: white;
     .header-left {
         gap: 4px;
@@ -33,52 +28,61 @@
             height: 16px;
             padding: 5px;
         }
-        .MuiAvatar-root {
-            color: white;
+        .board-members {
+            display: none;
+        }
+        .board-btn.star {
+            width: rem(32px);
+            height: rem(32px);
+            font-size: rem(16px);
+            margin-right: 3px;
+            &.active {
+                .star-icon {
+                    color: #f2d600;
+                }
+            }
+        }
+        @include for-narrow-layout {
+            .board-members {
+                display: inline-block;
+            }
+            .MuiAvatar-root {
+                color: white;
+            }
         }
     }
     .header-right {
         flex-grow: 1;
         justify-content: flex-end;
         gap: 4px;
-    }
-    .board-btn {
-        &.star {
-            width: rem(32px);
-            height: rem(32px);
-            font-size: rem(16px);
-            margin-right: 3px;
-            &.active {
-                // background-color: #00000029;
-                // &:hover {
-                //     background-color: #0000003d;
-                // }
-                .star-icon {
-                    color: #f2d600;
-                }
-            }
-        }
-        &.show-menu {
-            // cursor: pointer;
+
+        .board-btn {
             padding: 0;
-            padding-right: rem(12px);
-            margin-right: 5px;
             max-height: 32px;
+            &.show-menu {
+                margin-right: 5px;
+            }
+            .title {
+                display: none;
+            }
             .icon {
-                // position: relative;
                 padding: 8px;
-                // top: 1px;
-                // color: #42526e;
                 color: white;
                 font-size: rem(16px);
             }
+            @include for-normal-layout {
+                .title {
+                    display: inline-block;
+                    padding: 0;
+                    padding-right: rem(12px);
+                }
+            }
+        }
+        .menu-visible {
+            max-height: 32px;
         }
     }
-    .menu-visible {
-        max-height: 32px;
-    }
     .MuiAvatar-root {
-        // font-size: 28px;
         height: 29px;
         width: 29px;
         background-color: #00000014;
@@ -96,26 +100,25 @@
     background-color: #ffffff3d;
     height: 32px;
     &:hover {
-        // background-color: #00000029;
         background-color: #ffffff52;
     }
 }
 
-.light-bg {
-    .header-title:hover {
-        background-color: #00000029;
-    }
-    .board-btn {
-        &:hover {
-            background-color: #00000029;
-        }
-        &.star {
-            &.active {
-                background-color: #00000029;
-                &:hover {
-                    background-color: #0000003d;
-                }
-            }
-        }
-    }
-}
+// .light-bg {
+//     .header-title:hover {
+//         background-color: #00000029;
+//     }
+//     .board-btn {
+//         &:hover {
+//             background-color: #00000029;
+//         }
+//         &.star {
+//             &.active {
+//                 background-color: #00000029;
+//                 &:hover {
+//                     background-color: #0000003d;
+//                 }
+//             }
+//         }
+//     }
+// }

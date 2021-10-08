@@ -25,7 +25,7 @@ class _UserBoardsPopover extends React.Component {
         console.log('this.props:', this.props);
         return boards.map(board => {
             const bgStyle = utilService.getFormattedBgStyle(board.boardStyle)
-            return <div className="board-menu-btn flex align-center">
+            return <div key={board._id} className="board-menu-btn flex align-center">
                 <Link key={board._id} className="flex align-center" to={`/boards/${board._id}`} onClick={() => this.props.handleClose()}>
                     <span className="board-bg" style={bgStyle}></span>
                     <p>{board.boardTitle}</p>
@@ -54,7 +54,7 @@ class _UserBoardsPopover extends React.Component {
         const { type } = this.props
         const boardsToShow = (type === 'userBoards') ? this.getfilteredBoards("owner") : this.getfilteredBoards("starred")
         const guestBoards = (type === 'userBoards') ? this.getfilteredBoards("guest") : []
-        if (!boardsToShow.length && !guestBoards.length) return <div>No boards yet...</div>
+        if (!boardsToShow.length && !guestBoards.length) return <div className="no-boards">No boards yet...</div>
         return (
             <div className="user-boards-popover">
                 {type === 'userBoards' && <>
