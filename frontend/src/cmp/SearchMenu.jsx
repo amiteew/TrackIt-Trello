@@ -4,7 +4,7 @@ import { updateBoard, loadListAndCard, loadBoard, setFilterBy } from '../store/b
 import Divider from '@mui/material/Divider';
 import { TextareaAutosize } from '@mui/material';
 import { DebounceInput } from 'react-debounce-input';
-import DoneIcon from '@mui/icons-material/Done';
+import checked from '../assets/imgs/checked.svg';
 import AvatarGroup from '@mui/material/AvatarGroup';
 import Avatar from '@mui/material/Avatar';
 
@@ -20,11 +20,8 @@ class _SearchMenu extends React.Component {
         }
     }
 
-    componentDidMount() {
-        // const {filterBy} = this.props;
-
-        // console.log('filterby', filterBy);
-        // this.setState({ filterBy: { ...this.state.filterBy, searchKey:filterBy.searchKey, members:filterBy.members,labels:filterBy.labels }})
+    componentDidMount (){
+        this.setState({ filterBy: this.props.filterBy })
     }
 
     handleChange = (ev) => {
@@ -37,13 +34,14 @@ class _SearchMenu extends React.Component {
 
     onFilterBy = (type, id) => {
         let filterType = this.props.filterBy[type];
+
         const filterIdx = filterType.findIndex(filteryid => filteryid === id)
-        // this.onToggleSearch();
         if (filterIdx !== -1) {
             filterType.splice(filterIdx, 1);
         } else {
             filterType.push(id);
         }
+        
         this.setState({ filterBy: { ...this.state.filterBy, [type]: filterType, isFilter: true } }, () => {
             this.props.setFilterBy(this.state.filterBy, this.props.board._id);
         });
@@ -79,11 +77,11 @@ class _SearchMenu extends React.Component {
                                             <span >
                                             </span>
                                         </div>
-                                        <span> {this.onToggleSearch('labels', label.id) && <DoneIcon />}</span>
                                     </div>
                                     <span>
                                         {label.title}
                                     </span>
+                                    <span className="checked-icon labels"> {this.onToggleSearch('labels',label.id) && <img src={checked} alt="checked" />}</span>
                                 </div>
                             </li>
                         ))}
@@ -94,12 +92,12 @@ class _SearchMenu extends React.Component {
                         <ul className="members-search clean-list">
                             {/* <AvatarGroup max={6} > */}
                             {board.boardMembers.map(member => (
-                                <li className="members-list flex align-center" key={member._id} onClick={() => this.onFilterBy('members', member._id)} >
+                                <li className="members-list flex align-center pointer" key={member._id} onClick={() => this.onFilterBy('members', member._id)} >
                                     <div>
                                         <Avatar alt={member.username} src={member.imgUrl} key={member._id} />
                                     </div>
                                     <span>{member.username}</span>
-                                    <span> {this.onToggleSearch('members', member._id) && <DoneIcon />}</span>
+                                    <span className="checked-icon members"> {this.onToggleSearch('members',member._id) && <img src={checked} alt="checked" />}</span>
                                 </li>
                             ))}
                             {/* </AvatarGroup> */}

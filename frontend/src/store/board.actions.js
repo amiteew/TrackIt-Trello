@@ -174,6 +174,17 @@ export function setNotif(isNotif) {
 
 }
 
+export function setUpdateLabel(labelsProps) {
+  return async dispatch => {
+    try {
+      dispatch({ type: 'SET_LABEL', labelsProps });
+    } catch (err) {
+      console.log('Cannot set labels props', err);
+    }
+  }
+
+}
+
 // can be deleteted:
 export function setNotifCount(count) {
   return async dispatch => {
@@ -185,3 +196,5 @@ export function setNotifCount(count) {
   }
 
 }
+
+

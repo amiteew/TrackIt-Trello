@@ -16,6 +16,18 @@
         margin: 0 auto;
     }
 
+    .back-icon {
+        color: #6b778c;
+        left: 0;
+        position: absolute;
+        top: 4px;
+
+        svg {
+            height: 16px;
+            width: 16px;
+        }
+    }
+
     .close-popover {
         position: absolute;
         top: 50%;

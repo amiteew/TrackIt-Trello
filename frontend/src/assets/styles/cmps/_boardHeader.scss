@@ -8,8 +8,10 @@
     // color: $clr10;
     // z-index: 1;
     color: white;
+
     .header-left {
         gap: 4px;
+
         .header-title {
             font-size: rem(18px);
             font-weight: 700;
@@ -19,6 +21,7 @@
             border-radius: 3px;
             cursor: pointer;
         }
+
         .header-title-input input {
             border: none;
             border-radius: 3px;
@@ -28,27 +31,68 @@
             padding: 0 rem(10px);
             box-shadow: inset 0 0 0 2px #0079bf;
         }
+
         .board-header-divider {
             border-left: 1px solid #0003;
             height: 16px;
             padding: 5px;
         }
+
         .MuiAvatar-root {
             color: white;
         }
     }
+
     .header-right {
         flex-grow: 1;
         justify-content: flex-end;
         gap: 4px;
+
+        .cards-count {
+
+            background: #5aac44;
+            color: #fff;
+
+            &:hover {
+                background: #61bd4f;
+            }
+
+            .number-count {
+                overflow: hidden;
+                padding-right: 12px;
+                padding-left: 10px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            .close-filter-btn {
+                background: #61bd4f;
+                border-radius: 0 3px 3px 0;
+                padding: 6px;
+
+                &:hover {
+                    background: #99d18f;
+                }
+
+                img {
+                    height: 16px;
+                    width: 16px;
+                    position: relative;
+                    top: 4px;
+                }
+            }
+        }
     }
+
     .board-btn {
         &.star {
             width: rem(32px);
             height: rem(32px);
             font-size: rem(16px);
             margin-right: 3px;
+
             &.active {
+
                 // background-color: #00000029;
                 // &:hover {
                 //     background-color: #0000003d;
@@ -58,12 +102,14 @@
                 }
             }
         }
+
         &.show-menu {
             // cursor: pointer;
             padding: 0;
             padding-right: rem(12px);
             margin-right: 5px;
             max-height: 32px;
+
             .icon {
                 // position: relative;
                 padding: 8px;
@@ -74,9 +120,11 @@
             }
         }
     }
+
     .menu-visible {
         max-height: 32px;
     }
+
     .MuiAvatar-root {
         // font-size: 28px;
         height: 29px;
@@ -84,6 +132,7 @@
         background-color: #00000014;
         font-size: rem(12px);
         color: $clr10;
+
         &:hover {
             opacity: 0.8;
         }
@@ -95,23 +144,28 @@
     color: white;
     background-color: #ffffff3d;
     height: 32px;
+
     &:hover {
         // background-color: #00000029;
         background-color: #ffffff52;
     }
+
 }
 
 .light-bg {
     .header-title:hover {
         background-color: #00000029;
     }
+
     .board-btn {
         &:hover {
             background-color: #00000029;
         }
+
         &.star {
             &.active {
                 background-color: #00000029;
+
                 &:hover {
                     background-color: #0000003d;
                 }

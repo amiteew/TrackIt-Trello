@@ -13,6 +13,7 @@ import { Loading } from "./Loading";
 import { DynamicBoardMenu } from "./DynamicBoardMenu";
 import { socketService } from '../services/socket.service';
 import EqualizerIcon from '@mui/icons-material/Equalizer';
+import close from '../assets/imgs/close-filter.svg';
 
 class _BoardHeader extends React.Component {
   state = {
@@ -27,7 +28,7 @@ class _BoardHeader extends React.Component {
   componentDidMount() {
     this.setState({ title: this.props.board.boardTitle })
     // socketService.setup()
-  
+
     // socketService.on('sending notification', (isNotif) => {
     //   this.props.setNotif(isNotif)
     // })
@@ -99,6 +100,11 @@ class _BoardHeader extends React.Component {
     this.setState(prevState => ({ ...prevState, menuTitle, menuTarget }))
   }
 
+  openSearchOnMenu = () => {
+    const { isMenuOpen } = this.state
+    this.setState(prevState => ({ ...prevState, isMenuOpen: !isMenuOpen, menuTitle: 'Search cards', menuTarget: 'search' }))
+  }
+
   render() {
     const { board, loggedInUser, filterBy } = this.props
     const { title, isEditTitle, isMenuOpen, menuTarget, menuTitle, notification } = this.state
@@ -134,7 +140,10 @@ class _BoardHeader extends React.Component {
           </div>
         </div>
         <div className="header-right flex">
-          {filterBy.isFilter && <div onClick={this.resetSearch}>{board.cardsCount} X</div>}
+          {filterBy.isFilter && <div className="cards-count pointer">
+            <span onClick={this.openSearchOnMenu}  className="number-count">{board.cardsCount} search results</span>
+            <span onClick={this.resetSearch} className="close-filter-btn"><img src={close} alt="close" /></span>
+          </div>}
           <button className="board-btn flex align-center" onClick={this.props.onOpenDashboard}><EqualizerIcon /> Dashboard</button>
           {!isMenuOpen && <button className="board-btn show-menu flex align-center" onClick={this.toggleMenu}>
             <span className="icon flex justify-center align-center"><BsThreeDots /> </span>

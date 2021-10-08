@@ -77,7 +77,6 @@ class _QuickCardEditor extends React.Component {
         const editClass = isEditMode ? 'quick-card-edit-preview' : '';
         const isLabels = card.cardLabelIds ? 'show-labels' : ''
         const isCover = card.cardStyle.isCover ? { fullCover: 'full ' + coverStyle, fullTitle: 'full' } : { fullTitle: 'half' };
-        // if (!rect) return <></>
         return (
             <React.Fragment>
                 {isEditMode && <div className="screen-quick-card-edit" onClick={this.toggleEditTitle}><img src={close} alt="close" /></div>}
@@ -108,7 +107,7 @@ class _QuickCardEditor extends React.Component {
                                 <div className="badge-icon members flex">{card.cardMembers && <MembersList members={card.cardMembers} currCard={card} isCardOpen={false} />}
                                 </div>
                             </span>}
-                            {!isEditMode && <button className="quick-card-edit-btn" onClick={this.toggleEditTitle}><BsPencil /></button>}
+                            {!isEditMode && !card.isArchived && <button className="quick-card-edit-btn" onClick={this.toggleEditTitle}><BsPencil /></button>}
                         </div>
                     </div>
                     {isEditMode && <button className="save-quick-card-btn" onClick={this.onSaveCardTitle}>Save</button>}

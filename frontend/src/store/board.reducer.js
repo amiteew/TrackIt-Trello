@@ -13,6 +13,10 @@ const initialState = {
     members: [],
     isFilter: false,
     cardsCount: 0
+  },
+  labelsProps: {
+    label: {},
+    isCreate: false
   }
 }
 
@@ -81,6 +85,8 @@ export function boardReducer(state = initialState, action = null) {
       return { ...state, notifCount: state.notifCount + 1 }
     case 'SET_FILTER':
       return { ...state, filterBy: action.filterBy }
+    case 'SET_LABEL':
+      return { ...state, labelsProps: action.labelsProps}
     default:
       return state
   }

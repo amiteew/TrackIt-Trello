@@ -127,6 +127,16 @@
                     background-color: #ffffff33;
                 }
             }
+
+            .notif-background{
+                background-color: red;
+                border-radius: 50%;
+                width: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            
             .user-avatar {
                 // position: absolute;
                 // right: 4px;

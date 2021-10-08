@@ -110,7 +110,8 @@ class _CoverPopover extends React.Component {
 
 
     render() {
-        const { board, currListIdx, currCardIdx, coverImgs, isSearch, searchCover } = this.state
+        const { board, currListIdx, currCardIdx, coverImgs, searchCover } = this.state
+        const { changeTitle, isSearch } = this.props;
         if (!board || currCardIdx === null || currListIdx === null) return <></>
         const currCard = board.lists[currListIdx].cards[currCardIdx];
         const halfCover = !currCard.cardStyle.isCover ? 'selected' : '';
@@ -137,14 +138,14 @@ class _CoverPopover extends React.Component {
 
                 {/* { <div className="colors-for-cover"> */}
                 {!isSearch && <h4 className="color-title">Colors</h4>}
-                    {!isSearch &&<div className="color-plate">
-                        {board.covers.length && board.covers.map(cover => (
-                            <div key={cover.id} onClick={() => this.onToggleCover(cover)}
-                                className={`color-sqr pointer ${cover.color} 
+                {!isSearch && <div className="color-plate">
+                    {board.covers.length && board.covers.map(cover => (
+                        <div key={cover.id} onClick={() => this.onToggleCover(cover)}
+                            className={`color-sqr pointer ${cover.color} 
                              ${this.isCoverOnCard(currCard, cover.id) ? 'color-selected' : ''} `}>
-                            </div>
-                        ))}
-                    </div>}
+                        </div>
+                    ))}
+                </div>}
                 {/* </div>} */}
                 {!isSearch && <div>
                     <h4>Attachment</h4>
@@ -165,9 +166,11 @@ class _CoverPopover extends React.Component {
 
                 <div className="search-cover btn pointer">
                     {!isSearch && <span onClick={() => {
-                        this.setState({ ...this.state, isSearch: !this.state.isSearch })
+                        changeTitle(true, 'change cover')
+                        // this.setState({ ...this.state, isSearch: !this.state.isSearch })
                     }}>Search for photos</span>}
                 </div>
+
             </section>
         )
     }

@@ -80,7 +80,8 @@
         font-weight: 600;
         line-height: 20px;
         padding: 6px;
-        padding-inline-start: 40px;
+        padding-inline-start: 42px;
+        // padding-inline-start: 40px;
         width: 100%;
         text-align: start;
         color: #172b4d;
@@ -88,6 +89,19 @@
         position: relative;
         &:hover {
             background-color: #091e4214;
+        }
+
+        &.search{
+            padding-inline-start: 12px;
+
+            .search-cards-icon{
+                height: 20px;
+                width: 20px;
+            }
+
+            .search-cards-txt{
+                margin-left: rem(9px);
+            }
         }
         // h3 {
         //     margin: 0;
@@ -106,6 +120,14 @@
         // .search-cards{
 
         // }
+
+        &.archive{
+            padding-inline-start: rem(15px);
+
+            .archive-txt{
+                margin-left: rem(12px);
+            }
+        }
 
     }
     .select-bg {

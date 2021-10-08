@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { onSignup } from '../store/user.actions'
 import { Loading } from '../cmp/Loading.jsx'
 import { LogoName } from '../cmp/Header/LogoName'
+import GoogleLogin from 'react-google-login';
 
 class _Signup extends React.Component {
     state = {
@@ -86,6 +87,14 @@ class _Signup extends React.Component {
                             placeholder="Password"
                             onChange={this.handleChange}
                             required
+                        />
+
+                        <GoogleLogin
+                            // clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+                            buttonText="Login"
+                            // onSuccess={responseGoogle}
+                            // onFailure={responseGoogle}
+                            cookiePolicy={'single_host_origin'}
                         />
                         <button>Sign up</button>
                     </form>
