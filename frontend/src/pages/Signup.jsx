@@ -39,7 +39,7 @@ class _Signup extends React.Component {
             this.setState({ isLoading: true })
             await this.props.onSignup(this.state.credentials);
             // await this.props.loadBoards(this.props.loggedInUser._id)
-            this.props.history.push('/templates')
+            this.props.history.push('/boards')
         } catch (err) {
             this.setState(prevState => ({ ...prevState, isLoading: false, isSignupFailed: true }))
             this.clearForm()

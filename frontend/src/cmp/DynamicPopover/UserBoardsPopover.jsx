@@ -54,7 +54,7 @@ class _UserBoardsPopover extends React.Component {
         const { type } = this.props
         const boardsToShow = (type === 'userBoards') ? this.getfilteredBoards("owner") : this.getfilteredBoards("starred")
         const guestBoards = (type === 'userBoards') ? this.getfilteredBoards("guest") : []
-        if (!boardsToShow.length && !guestBoards.length) return <div className="no-boards">No boards yet...</div>
+        if (!boardsToShow.length && !guestBoards.length) return <div className="no-boards">{`No${type === 'starredBoards' ? " starred" : ""} boards yet...`}</div>
         return (
             <div className="user-boards-popover">
                 {type === 'userBoards' && <>
