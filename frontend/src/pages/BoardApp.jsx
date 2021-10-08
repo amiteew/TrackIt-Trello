@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { loadBoards, loadBoard, removeBoard, updateBoard, toggleLabels } from '../store/board.actions.js';
+import { loadBoards, loadBoard, removeBoard, updateBoard, toggleLabels, setNotif } from '../store/board.actions.js';
 // import { boardService } from '../services/board.service.js';
 import { BoardList } from '../cmp/BoardList.jsx';
 import { DragDropContext } from 'react-beautiful-dnd';
@@ -32,6 +32,9 @@ class _BoardApp extends React.Component {
         socketService.on('board updated', board => {
             this.props.loadBoard(board._id)
         })
+        socketService.on('sending notification', (isNotif) => {
+            this.props.setNotif(isNotif)
+          })
         // console.log('board component did mount');
     }
 
@@ -53,8 +56,8 @@ class _BoardApp extends React.Component {
         // })
     }
 
-    onUpdateBoard = (action, card = '', txt = '') => {
-        const { board } = this.props
+    onUpdateBoard = (board, action, card = '', txt = '') => {
+        // const { board } = this.props
         this.props.updateBoard(board, action, card, txt);
     }
 
@@ -149,7 +152,8 @@ const mapDispatchToProps = {
     loadBoards,
     loadBoard,
     updateBoard,
-    toggleLabels
+    toggleLabels,
+    setNotif
 }
 
 export const BoardApp = connect(mapStateToProps, mapDispatchToProps)(_BoardApp)

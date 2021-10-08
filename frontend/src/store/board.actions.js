@@ -99,7 +99,7 @@ export function setFilterBy(filterBy, boardId) {
 // if not- it's a template and it should only update the store, NOT the server!
 export function updateBoard(board, action = null, card = '', txt = "") {
   return async dispatch => {
-    try {
+    try {      
       if (action) {
         var activity = _storeSaveActivity(action, card, txt);
         board.activities.unshift(activity);
@@ -108,7 +108,7 @@ export function updateBoard(board, action = null, card = '', txt = "") {
       await boardService.save(board);
       dispatch({ type: 'UPDATE_LAST_UPDATED_BOARD' });
       socketService.emit('update-board', board);
-      if (action && activity.isNotif) socketService.emit('resieve notification');
+      if (action && activity.isNotif) socketService.emit('received notification');
     } catch (err) {
       // console.log('board id: ', board._id)
       // loadBoard(board._id)
