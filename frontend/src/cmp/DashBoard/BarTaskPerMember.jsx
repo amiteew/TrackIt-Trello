@@ -52,6 +52,13 @@ export class BarTaskPerMember extends React.Component {
         const options = {
             indexAxis: 'y',
             responsive: true,
+            scales: {
+                x: {
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            },
             tooltips: {
                 //     bodyFontColor: "#61bd4f",
                 //     backgroundColor: "#61bd4f"
@@ -68,7 +75,7 @@ export class BarTaskPerMember extends React.Component {
         // console.log('data', data)
         return (
             <div className="bar-task-per-member">
-                <h1>Tasks per label</h1>
+                <h1>Tasks per member</h1>
                 <Bar data={data} options={options} />
             </div>
         )
