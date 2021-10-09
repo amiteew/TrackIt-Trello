@@ -7,7 +7,7 @@ export function _ChooseBgColor(props) {
     const changeBgColor = (color) => {
         const newBoard = { ...props.board }
         newBoard.boardStyle = color
-        props.updateBoard(newBoard, 'changed the board background color')
+        props.updateBoard(newBoard, 'changed the board background')
     }
 
     return (

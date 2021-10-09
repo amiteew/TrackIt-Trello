@@ -5,7 +5,7 @@ import { FiStar } from 'react-icons/fi';
 import { BsThreeDots } from "react-icons/bs";
 import AutosizeInput from 'react-input-autosize';
 import { userService } from "../services/user.service"
-import { updateBoard, setNotif, setFilterBy, addBoard } from "../store/board.actions"
+import { updateBoard, setNotif, setFilterBy, addBoard, setSearchBg } from "../store/board.actions"
 import { MembersListBoard } from "./MembersListBoard"
 import { TemporaryDrawer } from '../cmp/DroweMenu.jsx';
 import { Loading } from "./Loading";
@@ -93,6 +93,7 @@ class _BoardHeader extends React.Component {
     const { isMenuOpen } = this.state
     // this.setState(prevState => ({ ...prevState, isMenuOpen: !isMenuOpen }))
     this.setState(prevState => ({ ...prevState, isMenuOpen: !isMenuOpen, menuTitle: 'Menu', menuTarget: 'main' }))
+    this.props.setSearchBg('')
   }
 
   changeMenu = (menuTitle, menuTarget) => {
@@ -178,7 +179,8 @@ const mapDispatchToProps = {
   updateBoard,
   setNotif,
   setFilterBy,
-  addBoard
+  addBoard,
+  setSearchBg
 }
 
 export const BoardHeader = connect(mapStateToProps, mapDispatchToProps)(_BoardHeader)

@@ -204,4 +204,13 @@ export function setNotifCount(count) {
 
 }
 
+export function setSearchBg(searchStr) {
+  return async dispatch => {
+    try {
+      dispatch({ type: 'SET_SEARCH_BG', searchStr });
+    } catch (err) {
+      console.log('Cannot set search background', err);
+    }
+  }
 
+}
