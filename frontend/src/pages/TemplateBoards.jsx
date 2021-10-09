@@ -11,17 +11,13 @@ class _TemplateBoards extends React.Component {
         templateBoards: []
     }
 
-    async componentDidMount() {
-        const { boards, loggedInUser } = this.props
-        if (!loggedInUser) {
-            this.props.history.push('/')
-            return
-        }
-        if (!boards.length) await this.props.loadBoards(loggedInUser._id);
+    async componentDidMount() {       
+        let user = this.props.loggedInUser
+        if (!user) user = await this.props.loginAsGuest()
+        await this.props.loadBoards(user._id)
         const templateBoards = this.getTemplateBoards()
         this.setState({ templateBoards })
         this.props.loadBoard(null)
-        // this.setState({ boards: this.props.boards })
     }
 
     getTemplateBoards = () => {

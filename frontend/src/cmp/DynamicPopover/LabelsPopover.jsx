@@ -1,7 +1,7 @@
 import React from 'react';
 import Avatar from '@mui/material/Avatar';
 import { connect } from 'react-redux';
-import { loadBoards, removeBoard, addBoard, updateBoard } from '../../store/board.actions.js';
+import { loadBoards, removeBoard, addBoard, updateBoard, setUpdateLabel } from '../../store/board.actions.js';
 import DoneIcon from '@mui/icons-material/Done';
 import { BsPencil } from "react-icons/bs";
 import { TextareaAutosize } from '@mui/material';
@@ -13,7 +13,7 @@ class _LabelsPopover extends React.Component {
         board: null,
         currListIdx: null,
         currCardIdx: null,
-        isCreate: false,
+        // isCreate: false,
         currLabel: '',
         filteredLabels: [],
         inputTxt: ''
@@ -43,12 +43,18 @@ class _LabelsPopover extends React.Component {
 
     editLabel = (label) => (ev) => {
         ev.stopPropagation();
-        this.setState({ ...this.state, isCreate: !this.state.isCreate, currLabel: label })
+        const { changeTitle, setUpdateLabel } = this.props;
+        setUpdateLabel({ label, isCreat: true });
+        changeTitle(true, 'Change label', label);
     }
 
-    toggleEditLabel = () => {
-        this.setState({ ...this.state, isCreate: !this.state.isCreate })
+    createLabel = () =>{
+        this.props.changeTitle(true, 'Create label');
     }
+
+    // toggleEditLabel = () => {
+    //     this.setState({ ...this.state, isCreate: !this.state.isCreate })
+    // }
 
     handleChange = ({ target }) => {
         this.setState({ ...this.state, inputTxt: target.value }, () => {
@@ -60,11 +66,12 @@ class _LabelsPopover extends React.Component {
 
     render() {
         const { board, currListIdx, currCardIdx, isCreate, currLabel, filteredLabels, inputTxt } = this.state
+        const { labelsProps} = this.props;
         if (!board || currCardIdx === null || currListIdx === null) return <></>
         const currCard = board.lists[currListIdx].cards[currCardIdx]
         return (
             <section className="label-popover">
-                {!isCreate && <div>
+                {!labelsProps.isCreate && <div>
                     <TextareaAutosize
                         className="search-labels text-area-auto"
                         placeholder="Search labels..."
@@ -89,18 +96,9 @@ class _LabelsPopover extends React.Component {
                         ))
                         : <>Sorry no results... <br />
                             Maybe try to create a new label</>}
-                    <div className="create-label pointer" onClick={this.toggleEditLabel}>Create a new label</div>
+                    <div className="create-label pointer" onClick={this.createLabel}>Create a new label</div>
                 </div>}
 
-                {isCreate && <div><EditLabel
-                    board={board}
-                    currListIdx={currListIdx}
-                    currCardIdx={currCardIdx}
-                    toggleEditLabel={this.toggleEditLabel}
-                    currlabel={currLabel}
-                />
-                    {/* <DynamicPopover type={'edit-label'}/> */}
-                </div>}
             </section>
         )
     }
@@ -108,7 +106,8 @@ class _LabelsPopover extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        board: state.boardReducer.board
+        board: state.boardReducer.board,
+        labelsProps: state.boardReducer.labelsProps
     }
 }
 
@@ -116,7 +115,8 @@ const mapDispatchToProps = {
     loadBoards,
     removeBoard,
     addBoard,
-    updateBoard
+    updateBoard,
+    setUpdateLabel
 }
 
 export const LabelsPopover = connect(mapStateToProps, mapDispatchToProps)(_LabelsPopover)

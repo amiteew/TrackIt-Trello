@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { loadBoards, loadBoard, removeBoard, updateBoard, toggleLabels, setNotif } from '../store/board.actions.js';
+import { loginAsGuest } from '../store/user.actions.js';
 // import { boardService } from '../services/board.service.js';
 import { BoardList } from '../cmp/BoardList.jsx';
 import { DragDropContext } from 'react-beautiful-dnd';
@@ -19,15 +20,13 @@ class _BoardApp extends React.Component {
     }
 
     async componentDidMount() {
-        const { loggedInUser } = this.props
-        if (!loggedInUser) {
-            // TODO: NEED TO ADD OGIN GUEST INSTEAD OF PUSH / TO HOME
-            this.props.history.push('/')
+        if (!this.props.loggedInUser) {
+            const user = await this.props.loginAsGuest()
+            await this.props.loadBoards(user._id)
         }
-        if (!this.props.boards.length) await this.props.loadBoards()
         const { boardId } = this.props.match.params
         this.props.loadBoard(boardId);
-        socketService.setup();
+        // socketService.setup();
         socketService.emit('boardId', boardId);
         socketService.on('board updated', board => {
             this.props.loadBoard(board._id)
@@ -42,7 +41,7 @@ class _BoardApp extends React.Component {
         socketService.off('board updated', this.updateSocket);
         socketService.off('boardId');
         // socketService.off('sending notification', this.resiveNotifi)
-        socketService.terminate()
+        // socketService.terminate()
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -115,6 +114,10 @@ class _BoardApp extends React.Component {
         this.props.history.push(`/boards/${board._id}/dashboard`);
     }
 
+    goToTemplateClone = (newBoardId) => {
+        this.props.history.push(`/boards/${newBoardId}`);
+    }
+
     render() {
         const { board } = this.props;
         if (!board || !Object.keys(board).length) return <Loading />
@@ -123,7 +126,7 @@ class _BoardApp extends React.Component {
             <section className="board-app flex direction-col">
                 <Route exact component={CardDetails} path="/boards/:boardId/:listId/:cardId" />
                 <Route exact component={Dashboard} path="/boards/:boardId/dashboard" />
-                <BoardHeader board={board} onUpdateBoard={this.onUpdateBoard} onOpenDashboard={this.onOpenDashboard} />
+                <BoardHeader board={board} onUpdateBoard={this.onUpdateBoard} onOpenDashboard={this.onOpenDashboard} goToTemplateClone={this.goToTemplateClone} />
                 <div className="board-background" style={bgStyle}></div>
                
                 <div className="board-canvas flex">
@@ -153,7 +156,8 @@ const mapDispatchToProps = {
     loadBoard,
     updateBoard,
     toggleLabels,
-    setNotif
+    setNotif,
+    loginAsGuest
 }
 
 export const BoardApp = connect(mapStateToProps, mapDispatchToProps)(_BoardApp)

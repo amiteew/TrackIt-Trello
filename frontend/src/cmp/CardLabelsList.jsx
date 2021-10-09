@@ -1,6 +1,7 @@
 import React from 'react'
 import { DynamicPopover } from './DynamicPopover'
-export function CardLabelsList({ cardLabelIds, boardLabels, board, currCardIdx, currListIdx }) {
+export function CardLabelsList({ cardLabelIds, boardLabels, board, currCardIdx, currListIdx, changeTitle }) {
+    
     return (
         <div>
             <h3>Labels</h3>
@@ -18,6 +19,7 @@ export function CardLabelsList({ cardLabelIds, boardLabels, board, currCardIdx, 
                     currListIdx={currListIdx}
                     currCardIdx={currCardIdx}
                 />
+                
             </div>
         </div>
     )

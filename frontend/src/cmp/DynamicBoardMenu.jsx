@@ -58,7 +58,7 @@ export function DynamicBoardMenu({ board, toggleMenu, isMenuOpen, target, title,
                             </div>
                             <Divider />
                             <div className="menu-content fancy-scrollbar">
-                                <DynamicCmp target={target} board={board} changeMenu={changeMenu} onFilterCards={onFilterCards}/>
+                                <DynamicCmp target={target} board={board} changeMenu={changeMenu} toggleMenu={toggleMenu} onFilterCards={onFilterCards}/>
                             </div>
                         </div>
                     </div>

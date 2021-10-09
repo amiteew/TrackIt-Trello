@@ -14,11 +14,18 @@ import { DeleteCardPopover } from './DynamicPopover/DeleteCardPopover';
 import { MoveCopyCardPopover } from './DynamicPopover/MoveCopyCardPopover';
 import { UserBoardsPopover } from './DynamicPopover/UserBoardsPopover';
 import { NotifPopover } from './DynamicPopover/NotifPopover';
+import { IoChevronBackOutline } from 'react-icons/io5';
+import { EditLabel } from './DynamicPopover/EditLabel';
+
 
 export class DynamicPopover extends React.Component {
     state = {
         anchorEl: null,
-        isEditLabel: false
+        isEditLabel: false,
+        newTitle: '',
+        isChangeTitle: false,
+        currLabel: '',
+        isSearch: false
     }
 
     handleClick = (event) => {
@@ -36,19 +43,26 @@ export class DynamicPopover extends React.Component {
         console.log('im in DynamicPopover.handleDateChange');
     }
 
-    handleLabel = () => {
-        this.setState({ ...this.state, isEditLabel: !this.state.isEditLabel })
+    changeTitle = (isChangeTitle, newTitle, currLabel = '') => {
+        if (newTitle === 'change cover') {
+            var isSearch = true
+        }
+        this.setState({ ...this.state, newTitle, isChangeTitle, currLabel, isSearch })
+    }
+
+    handleBack = () => {
+        if (this.props.titleModal === 'cover') {
+            var isSearch = true
+        }
+        this.setState({ ...this.state, isChangeTitle: !this.state.isChangeTitle, newTitle: this.props.titleModal, isSearch })
     }
 
     render() {
         let { type, title, titleModal } = this.props
-        const { anchorEl, isEditLabel } = this.state
+        const { anchorEl, isChangeTitle, newTitle, currLabel, isSearch } = this.state
         const open = Boolean(anchorEl);
+        const dnmTitleModal = isChangeTitle ? newTitle : titleModal;
         let id = open ? 'simple-popover' : undefined;
-        if (this.props.type === 'edit-label') {
-            titleModal = 'Change label';
-        }
-
         const DynamicCmp = (props) => {
             switch (props.type) {
                 case 'members':
@@ -58,10 +72,14 @@ export class DynamicPopover extends React.Component {
                 case 'list actions':
                     return <ActionList {...props} />
                 case 'labels':
-                case 'add-labels':
                 case 'edit labels':
+                    if (isChangeTitle)
+                        return <EditLabel {...props} />
+                case 'add-labels':
+                    if (isChangeTitle) return <EditLabel {...props} />
                     return <LabelsPopover {...props} />
                 case 'labels-preview':
+                    if (isChangeTitle) return <EditLabel {...props} />
                     return <LabelsPopover {...props} />
                 case 'dates-edit':
                 case 'edit-dates':
@@ -91,10 +109,12 @@ export class DynamicPopover extends React.Component {
                 case 'newNotif':
                 case 'noNotif':
                     return <NotifPopover {...props} />
+
                 default:
                     break;
             }
         }
+
         return (
             <React.Fragment>
                 <button onClick={this.handleClick}>
@@ -113,12 +133,15 @@ export class DynamicPopover extends React.Component {
                 >
                     {/* OPEN MODAL */}
                     <div className="popover-header-title flex">
-                        <span>{titleModal}</span>
+                        {isChangeTitle &&
+                            <span onClick={this.handleBack} className="back-icon pointer" >
+                                <IoChevronBackOutline />
+                            </span>}
+                        <span>{dnmTitleModal}</span>
                         <button className="close-popover" onClick={this.handleClose}></button>
                     </div>
                     <div className="popover-content-container">
-                        {isEditLabel && <p>hello</p>}
-                        {!isEditLabel && <DynamicCmp type={type} {...this.props} handleClose={this.handleClose} />}
+                        {<DynamicCmp type={type} currLabel={currLabel} isSearch={isSearch} changeTitle={this.changeTitle} {...this.props} handleClose={this.handleClose} />}
                     </div>
                 </Popover >
             </React.Fragment>
@@ -126,3 +149,4 @@ export class DynamicPopover extends React.Component {
     }
 
 }
+

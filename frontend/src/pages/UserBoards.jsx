@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { userService } from '../services/user.service.js';
 import { loadBoards, loadBoard, updateBoard } from '../store/board.actions.js';
+import { loginAsGuest } from '../store/user.actions.js';
 import { socketService } from '../services/socket.service.js';
 
 import { BoardPreview } from '../cmp/UserBoards/BoardPreview'
@@ -19,37 +20,14 @@ class _UserBoards extends React.Component {
     }
 
     async componentDidMount() {
-        const { boards, loggedInUser } = this.props
-        if (!loggedInUser) {
-            this.props.history.push('/')
-            return
-        }
-        if (!boards.length) {
-            console.log('loading boards...');
-            await this.props.loadBoards(loggedInUser._id)
-            console.log('boards loaded',this.props.boards);
-        }
-        const userBoards = userService.filterUserBoards(this.props.boards, loggedInUser._id, "all")
+        let user = this.props.loggedInUser
+        if (!user) user = await this.props.loginAsGuest()
+        await this.props.loadBoards(user._id)
+        const userBoards = userService.filterUserBoards(this.props.boards, this.props.loggedInUser._id, "all")
         this.setState({ userBoards })
         this.props.loadBoard(null)
-        socketService.setup()
-    }
-    componentWillUnmount() {
-        socketService.terminate()
     }
 
-    // removeTemplateBoards = (boards) => {
-    //     return boards.filter(board => board.createdBy)
-    // }
-
-    // getStarredBoards = () => {
-        // const { loggedInUser } = this.props
-        // return userService.filterUserBoards(this.state.userBoards, loggedInUser._id, "starred")
-        // return this.state.userBoards.filter(board => {
-        //     if (!board.boardMembers.length) return false
-        //     return userService.isBoardStarred(board, loggedInUser._id)
-        // })
-    // }
 
     getBoardsByType = (type) => {
         const { loggedInUser } = this.props
@@ -137,7 +115,8 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
     loadBoard,
     loadBoards,
-    updateBoard
+    updateBoard,
+    loginAsGuest
 }
 
 export const UserBoards = connect(mapStateToProps, mapDispatchToProps)(_UserBoards)

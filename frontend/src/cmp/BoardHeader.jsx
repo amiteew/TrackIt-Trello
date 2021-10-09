@@ -5,13 +5,14 @@ import { FiStar } from 'react-icons/fi';
 import { BsThreeDots } from "react-icons/bs";
 import AutosizeInput from 'react-input-autosize';
 import { userService } from "../services/user.service"
-import { updateBoard, setNotif, setFilterBy } from "../store/board.actions"
+import { updateBoard, setNotif, setFilterBy, addBoard } from "../store/board.actions"
 import { MembersListBoard } from "./MembersListBoard"
 import { TemporaryDrawer } from '../cmp/DroweMenu.jsx';
 import { Loading } from "./Loading";
 import { DynamicBoardMenu } from "./DynamicBoardMenu";
 import { socketService } from '../services/socket.service';
 import EqualizerIcon from '@mui/icons-material/Equalizer';
+import close from '../assets/imgs/close-filter.svg';
 
 class _BoardHeader extends React.Component {
   state = {
@@ -98,10 +99,19 @@ class _BoardHeader extends React.Component {
     this.setState(prevState => ({ ...prevState, menuTitle, menuTarget }))
   }
 
+  cloneTemplate = async () => {
+    const newBoard = {...this.props.board}
+    delete newBoard._id
+    newBoard.createdBy = this.props.loggedInUser
+    newBoard.boardMembers.push(this.props.loggedInUser)
+    const addedBoard = await this.props.addBoard(newBoard)
+    this.props.goToTemplateClone(addedBoard._id)
+  }
+
   render() {
     const { board, loggedInUser, filterBy } = this.props
     const { title, isEditTitle, isMenuOpen, menuTarget, menuTitle, notification } = this.state
-    const isStarred = userService.isBoardStarred(board, loggedInUser._id)
+    const isStarred = board.createdBy ? userService.isBoardStarred(board, loggedInUser._id) : false
     return (
       <div className="board-header flex align-center space-between wrap">
         <div className="header-left flex align-center">
@@ -127,21 +137,30 @@ class _BoardHeader extends React.Component {
             </IconContext.Provider>
           </button>
           <span className="board-header-divider"></span>
+          {!board.createdBy && <button className="board-btn template" onClick={this.cloneTemplate}>Create board from template</button>}
           <div className="board-members">
-            {/* <div className="board-header-btn board-members"> */}
             <MembersListBoard members={board.boardMembers} />
           </div>
         </div>
         <div className="header-right flex">
+          {filterBy.isFilter && <div className="cards-count pointer">
+            <span onClick={this.openSearchOnMenu}  className="number-count">{board.cardsCount} search results</span>
+            <span onClick={this.resetSearch} className="close-filter-btn"><img src={close} alt="close" /></span>
+          </div>}
+          {/* <button className="board-btn flex align-center" onClick={this.props.onOpenDashboard}><EqualizerIcon /> Dashboard</button> */}
+            {/* <span className="icon"><EqualizerIcon /></span>
+            <span className="title">Dashboard</span> */}
           {filterBy.isFilter && <div onClick={this.resetSearch}>{board.cardsCount} X</div>}
-          <button className="board-btn flex align-center" onClick={this.props.onOpenDashboard}><EqualizerIcon /> Dashboard</button>
+          {board.createdBy ? <button className="board-btn flex align-center" onClick={this.props.onOpenDashboard}>
+            <span className="icon"><EqualizerIcon /></span>
+            <span className="title">Dashboard</span>
+          </button> : <></>}
           {!isMenuOpen && <button className="board-btn show-menu flex align-center" onClick={this.toggleMenu}>
             <span className="icon flex justify-center align-center"><BsThreeDots /> </span>
             <span className="title">Show menu</span>
           </button>}
           {isMenuOpen && <DynamicBoardMenu board={board} toggleMenu={this.toggleMenu} onFilterCards={this.onFilterCards}
             isMenuOpen={isMenuOpen} target={menuTarget} title={menuTitle} changeMenu={this.changeMenu} />}
-          {/* {isMenuOpen && <TemporaryDrawer board={board} toggleMenu={this.toggleMenu} isMenuOpen={isMenuOpen} />} */}
         </div>
       </div>
     )
@@ -160,7 +179,7 @@ const mapDispatchToProps = {
   updateBoard,
   setNotif,
   setFilterBy,
-
+  addBoard
 }
 
 export const BoardHeader = connect(mapStateToProps, mapDispatchToProps)(_BoardHeader)

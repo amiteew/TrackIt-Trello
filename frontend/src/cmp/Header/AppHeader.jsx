@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { NavLink } from 'react-router-dom'
 import { LogoName } from './LogoName';
 import { DynamicPopover } from '../DynamicPopover';
 import { CreateBoard } from '../CreateBoard';
@@ -8,6 +7,7 @@ import { socketService } from "../../services/socket.service";
 import { setNotif } from '../../store/board.actions';
 import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import PlusIcon from '../../assets/imgs/icons/menu-plus-icon.svg'
 
 class _AppHeader extends React.Component {
 
@@ -16,6 +16,10 @@ class _AppHeader extends React.Component {
         isUserBoardsOpen: false,
         isStarredBoardsOpen: false,
         isNotif: false
+    }
+
+    componentDidMount() {
+        socketService.setup()
     }
 
     onToggleCreateBoard = () => {
@@ -48,17 +52,14 @@ class _AppHeader extends React.Component {
                     <nav className="nav-bar flex space-between" >
                         <div className="main-nav-links flex align-center">
                             <LogoName isLoggedIn={true} />
-                            <span className={`user-boards${this.state.isUserBoardsOpen ? " open" : ""}`}>
+                            <span className={`header-btn${this.state.isUserBoardsOpen ? " open" : ""}`}>
                                 <DynamicPopover type={'userBoards'} titleModal={'Boards'} onToggle={this.onToggleUserBoards} />
                             </span>
-                            <span className={`user-boards${this.state.isStarredBoardsOpen ? " open" : ""}`}>
+                            <span className={`header-btn starred${this.state.isStarredBoardsOpen ? " open" : ""}`}>
                                 <DynamicPopover type={'starredBoards'} titleModal={'Starred boards'} onToggle={this.onToggleStarredBoards} />
                             </span>
-                            {/* <NavLink className="header-btn" to="/boards">
-                                <span>Boards</span>
-                                <img src="" alt="" />
-                            </NavLink> */}
                             <button className="header-btn create" onClick={this.onToggleCreateBoard}>Create</button>
+                            <button className="header-btn create-small flex align-center justify-center" onClick={this.onToggleCreateBoard}><img src={PlusIcon} alt="" /></button>
                         </div>
                         <div className="user-section flex align-center">
                             <div className="notifications">
@@ -82,7 +83,6 @@ class _AppHeader extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        board: state.boardReducer.board,
         boards: state.boardReducer.boards,
         loggedInUser: state.userReducer.loggedInUser,
         isNotif: state.boardReducer.isNotif,

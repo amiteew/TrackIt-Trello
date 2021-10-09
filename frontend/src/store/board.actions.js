@@ -4,6 +4,7 @@ import { emitToUser, socketService } from '../services/socket.service'
 import { userService } from '../services/user.service'
 import { utilService } from '../services/util.service.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service';
+
 export function loadBoards(userId) {
   return async dispatch => {
     try {
@@ -55,6 +56,7 @@ export function addBoard(board) {
     try {
       const addedBoard = await boardService.save(board)
       dispatch({ type: 'ADD_BOARD', board: addedBoard })
+      return addedBoard
 
     } catch (err) {
       showErrorMsg('Sorry cannot add board')
@@ -95,11 +97,16 @@ export function setFilterBy(filterBy, boardId) {
 
 }
 
-// when we move to backend this function will check if the board has 'createBy'
-// if not- it's a template and it should only update the store, NOT the server!
 export function updateBoard(board, action = null, card = '', txt = "") {
+  if (!board.createdBy) {
+    return dispatch => {
+      dispatch({ type: 'UNDO_UPDATE_BOARD' });
+      showErrorMsg('Templates cannot be changed')
+    }
+  }
+
   return async dispatch => {
-    try {      
+    try {
       if (action) {
         var activity = _storeSaveActivity(action, card, txt);
         board.activities.unshift(activity);
@@ -174,6 +181,17 @@ export function setNotif(isNotif) {
 
 }
 
+export function setUpdateLabel(labelsProps) {
+  return async dispatch => {
+    try {
+      dispatch({ type: 'SET_LABEL', labelsProps });
+    } catch (err) {
+      console.log('Cannot set labels props', err);
+    }
+  }
+
+}
+
 // can be deleteted:
 export function setNotifCount(count) {
   return async dispatch => {
@@ -185,3 +203,5 @@ export function setNotifCount(count) {
   }
 
 }
+
+

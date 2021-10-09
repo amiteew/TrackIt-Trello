@@ -6,7 +6,7 @@ export const socketService = createSocketService()
 
 
 // var socketIsReady = false;
-socketService.setup()
+// socketService.setup()
 
 function createSocketService() {
     var socket = null;

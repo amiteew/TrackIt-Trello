@@ -1,11 +1,14 @@
 {
   "name": "backend",
   "version": "1.0.0",
+  "engines": {
+    "node": "14.x"
+  },
   "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "set NODE_ENV=development && nodemon server.js"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",

@@ -68,7 +68,7 @@ class _DynamicButton extends React.Component {
                 case 'starredBoards':
                     return <><span onClick={() => props.onToggle()}><span>Starred</span><img src={DownArrow} alt="" /></span></>
                 case 'newNotif':
-                    return <> <NotificationsActiveOutlinedIcon /> {this.props.notifCount}</>
+                    return <> <NotificationsActiveOutlinedIcon /> <div className="notif-background" ><span className="notif-count">{this.props.notifCount}</span></div></>
                 case 'noNotif':
                     return <NotificationsNoneIcon />
                 default:

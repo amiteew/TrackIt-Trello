@@ -1,13 +1,9 @@
 .board-header {
-    // height: rem(52px);
     padding: 8px 4px 8px 14px;
-    // position: fixed;
-    // top: rem(44px);
     width: 100%;
     line-height: rem(32px);
-    // color: $clr10;
-    // z-index: 1;
     color: white;
+    gap: 5px;
     .header-left {
         gap: 4px;
         .header-title {
@@ -18,7 +14,12 @@
             margin: 0;
             border-radius: 3px;
             cursor: pointer;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
+
         .header-title-input input {
             border: none;
             border-radius: 3px;
@@ -28,65 +29,122 @@
             padding: 0 rem(10px);
             box-shadow: inset 0 0 0 2px #0079bf;
         }
+
+        .board-btn {
+            &.star {
+                width: rem(32px);
+                height: rem(32px);
+                font-size: rem(16px);
+                margin-right: 3px;
+                &.active {
+                    .star-icon {
+                        color: #f2d600;
+                    }
+                }
+            }
+            &.template {
+                padding: 0 12px;
+            }
+        }
+
         .board-header-divider {
             border-left: 1px solid #0003;
             height: 16px;
             padding: 5px;
         }
-        .MuiAvatar-root {
-            color: white;
+
+        .board-members {
+            display: none;
+        }
+
+        @include for-narrow-layout {
+            .board-members {
+                display: inline-block;
+                .MuiAvatar-root {
+                    color: white;
+                    height: 29px;
+                    width: 29px;
+                    background-color: #00000014;
+                    font-size: rem(12px);
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+            }
         }
     }
+
     .header-right {
         flex-grow: 1;
         justify-content: flex-end;
         gap: 4px;
-    }
-    .board-btn {
-        &.star {
-            width: rem(32px);
-            height: rem(32px);
-            font-size: rem(16px);
-            margin-right: 3px;
-            &.active {
-                // background-color: #00000029;
-                // &:hover {
-                //     background-color: #0000003d;
-                // }
-                .star-icon {
-                    color: #f2d600;
+
+        .cards-count {
+            background: #5aac44;
+            color: #fff;
+            &:hover {
+                background: #61bd4f;
+            }
+
+            .number-count {
+                overflow: hidden;
+                padding-right: 12px;
+                padding-left: 10px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            .close-filter-btn {
+                background: #61bd4f;
+                border-radius: 0 3px 3px 0;
+                padding: 6px;
+
+                &:hover {
+                    background: #99d18f;
+                }
+
+                img {
+                    height: 16px;
+                    width: 16px;
+                    position: relative;
+                    top: 4px;
                 }
             }
         }
-        &.show-menu {
-            // cursor: pointer;
+
+        .board-btn {
             padding: 0;
-            padding-right: rem(12px);
-            margin-right: 5px;
             max-height: 32px;
+
+            &.show-menu {
+                margin-right: 5px;
+            }
+
+            .title {
+                display: none;
+            }
+
             .icon {
-                // position: relative;
                 padding: 8px;
-                // top: 1px;
-                // color: #42526e;
                 color: white;
                 font-size: rem(16px);
             }
+
+            @include for-normal-layout {
+                .title {
+                    display: inline-block;
+                    padding: 0;
+                    padding-right: rem(12px);
+                }
+            }
+        }
+        .menu-visible {
+            max-height: 32px;
         }
     }
-    .menu-visible {
-        max-height: 32px;
-    }
-    .MuiAvatar-root {
-        // font-size: 28px;
-        height: 29px;
-        width: 29px;
-        background-color: #00000014;
-        font-size: rem(12px);
-        color: $clr10;
-        &:hover {
-            opacity: 0.8;
-        }
+
+    .board-btn {
+        height: 32px;
     }
 }
 
@@ -94,28 +152,26 @@
     border-radius: rem(3px);
     color: white;
     background-color: #ffffff3d;
-    height: 32px;
     &:hover {
-        // background-color: #00000029;
         background-color: #ffffff52;
     }
 }
 
-.light-bg {
-    .header-title:hover {
-        background-color: #00000029;
-    }
-    .board-btn {
-        &:hover {
-            background-color: #00000029;
-        }
-        &.star {
-            &.active {
-                background-color: #00000029;
-                &:hover {
-                    background-color: #0000003d;
-                }
-            }
-        }
-    }
-}
+// .light-bg {
+//     .header-title:hover {
+//         background-color: #00000029;
+//     }
+//     .board-btn {
+//         &:hover {
+//             background-color: #00000029;
+//         }
+//         &.star {
+//             &.active {
+//                 background-color: #00000029;
+//                 &:hover {
+//                     background-color: #0000003d;
+//                 }
+//             }
+//         }
+//     }
+// }
