@@ -66,7 +66,7 @@ function getBoardById(boardId, filterBy = {}) {
 }
 
 function save(board) {
-  console.log('board', board);
+  // console.log('board', board);
 
   if (board._id) {
     return httpService.put(`boards/${board._id}`, board);

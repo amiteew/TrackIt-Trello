@@ -5,7 +5,9 @@ export class BarTaskPerMember extends React.Component {
 
     get mapTasksPerMember() {
         const { board } = this.props
-        let tasksPerMembers = board.boardMembers.map(member => ({ fullname: member.fullname, tasks: 0 }))
+        const membersMinusGuest = board.boardMembers.filter(member => member.username !== 'pandaguest')
+        // let tasksPerMembers = board.boardMembers.map(member => ({ fullname: member.fullname, tasks: 0 }))
+        let tasksPerMembers = membersMinusGuest.map(member => ({ fullname: member.fullname, tasks: 0 }))
 
         board.lists.forEach(list => {
             tasksPerMembers.forEach(member => {

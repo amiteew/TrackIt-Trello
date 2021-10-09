@@ -59,8 +59,9 @@ class _MembersPopover extends React.Component {
                 />
                 <h3>Board Members</h3>
                 {filteredMembers.length ?
-                    (filteredMembers.map(member => (
-                        <div className="member-preview flex direction-row space-between " onClick={() => this.toggleMember(member)} >
+                    (filteredMembers.map(member => {
+                        if (member.username === 'pandaguest') return
+                        return <div className="member-preview flex direction-row space-between " onClick={() => this.toggleMember(member)} >
                             <div className="flex direction-row ">
                                 <Avatar className="card-details-avatar" alt={member.fullname} src={member.imgUrl}
                                     key={member._id} />
@@ -68,7 +69,7 @@ class _MembersPopover extends React.Component {
                             </div>
                             {this.isMemberOnCard(currCard, member._id) && <DoneIcon />}
                         </div>
-                    )))
+                    }))
                     : <>Looks like that person isn't a member yet. <br />
                         Enter their email address to <br />
                         add them to the card and board.</>}

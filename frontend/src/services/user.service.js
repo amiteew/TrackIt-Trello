@@ -4,6 +4,7 @@ import { httpService } from './http.service'
 
 const USER_KEY = 'usersDB'
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
+const GUEST_USER_ID = '615f4586c375bb154681275d'
 
 export const userService = {
     login,
@@ -16,7 +17,8 @@ export const userService = {
     update,
     filterUserBoards,
     isBoardStarred,
-    toggleStarBoard
+    toggleStarBoard,
+    getGuestUser
 }
 // getUsers()
 function getUsers() {
@@ -83,6 +85,11 @@ function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER) || 'null')
 }
 
+async function getGuestUser() {
+    const guest = await getById(GUEST_USER_ID)
+    return guest
+}
+
 function filterUserBoards(boards, userId, type) {
     return boards.filter(board => {
         if (!board.createdBy) return false
@@ -91,10 +98,7 @@ function filterUserBoards(boards, userId, type) {
         else if (type === "guest") return (board.createdBy._id !== userId)
         else if (type === "starred") return isBoardStarred(board, userId)
         else return []
-        // else return !isBoardStarred(board, userId)
     })
-    // newest to oldest order
-    // return filteredBoards.sort((board1, board2) => board2.createdAt - board1.createdAt)
 }
 
 function isBoardStarred(board, userId) {

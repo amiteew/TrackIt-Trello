@@ -7,9 +7,11 @@ export function MembersList({ members, board, currListIdx, currCardIdx, isCardOp
     return (
         <div className="members-list flex direction-row">
             <AvatarGroup max={15} className="members-group">
-                {members.map(member =>
-                    <SingleMemberPopover key={member._id} member={member}
+                {members.map(member => {
+                    if (member.username === 'pandaguest') return
+                    return <SingleMemberPopover key={member._id} member={member}
                         currListIdx={currListIdx} currCardIdx={currCardIdx} currCard={currCard} />
+                }
                 )}
             </AvatarGroup>
             {isCardOpen &&

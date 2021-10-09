@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { utilService } from '../services/util.service';
+import { userService } from '../services/user.service'
 import { addBoard, loadBoard } from '../store/board.actions';
 import CloseIcon from '../assets/imgs/icons/close-icon-white.svg';
 import CheckedIcon from '../assets/imgs/icons/checked-icon-white.svg';
@@ -44,6 +45,13 @@ class _CreateBoard extends React.Component {
         const { loggedInUser } = this.props
         const boardMember = { ...loggedInUser }
         boardMember.isStarred = false
+        const boardMembers = [boardMember]
+       
+        if (loggedInUser.username !== 'pandaguest') {
+            const guestMember = await userService.getGuestUser()
+            guestMember.isStarred = false
+            boardMembers.push(guestMember)
+        }
 
         const newBoard = {
             "boardTitle": title,
@@ -53,7 +61,7 @@ class _CreateBoard extends React.Component {
             "boardStyle": backgrounds[selectedBgIdx],
             "covers": this.getCovers(),
             "labels": this.getLabels(),
-            "boardMembers": [boardMember],
+            "boardMembers": boardMembers,
             "lists": [],
             "activities": [],
             "archive": []

@@ -67,7 +67,7 @@ class _AppHeader extends React.Component {
                                     titleModal={'Notifications'} markReadNotif={this.markReadNotif} />
                             </div>
                             <div className="user-avatar">
-                                <DynamicPopover type={'userMenu'} titleModal={'Account'} loggedInUser={loggedInUser} />
+                                <DynamicPopover type={'userMenu'} titleModal={'Account'} user={loggedInUser} from="AppHeader"/>
                             </div>
                         </div>
 

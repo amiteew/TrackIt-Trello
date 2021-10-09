@@ -16,6 +16,7 @@ import { UserBoardsPopover } from './DynamicPopover/UserBoardsPopover';
 import { NotifPopover } from './DynamicPopover/NotifPopover';
 import { IoChevronBackOutline } from 'react-icons/io5';
 import { EditLabel } from './DynamicPopover/EditLabel';
+import { InvitePopover } from './DynamicPopover/InvitePopover';
 
 
 export class DynamicPopover extends React.Component {
@@ -93,6 +94,7 @@ export class DynamicPopover extends React.Component {
                     return <CoverPopover {...props} />
                 case 'checklist':
                     return <ChecklistPopover {...props} />
+                case 'boardMember':
                 case 'userMenu':
                     return <UserMenuPopover {...props} />
                 case 'userBoards':
@@ -109,7 +111,8 @@ export class DynamicPopover extends React.Component {
                 case 'newNotif':
                 case 'noNotif':
                     return <NotifPopover {...props} />
-
+                case 'invite':
+                    return <InvitePopover {...props} />
                 default:
                     break;
             }

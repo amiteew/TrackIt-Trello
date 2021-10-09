@@ -63,6 +63,8 @@ class _DynamicButton extends React.Component {
                             <p>{loggedInUser.initials}</p>
                         </Avatar>
                     </>
+                case 'boardMember':
+                    return <><span className="board-member-btn"></span></>
                 case 'userBoards':
                     return <><span onClick={() => props.onToggle()}><span>Boards</span><img src={DownArrow} alt="" /></span></>
                 case 'starredBoards':
@@ -71,6 +73,8 @@ class _DynamicButton extends React.Component {
                     return <> <NotificationsActiveOutlinedIcon /> <div className="notif-background" ><span className="notif-count">{this.props.notifCount}</span></div></>
                 case 'noNotif':
                     return <NotificationsNoneIcon />
+                case 'invite':
+                    return <> <span className="invite">Invite</span></>
                 default:
                     return props.type
             }

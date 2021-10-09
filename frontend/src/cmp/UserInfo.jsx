@@ -16,7 +16,7 @@ function _UserInfo(props) {
             <div className="user-name-info">
                 <p className="fullname">{user.fullname}</p>
                 <p className="username">{user.username}</p>
-                {(loggedInUser._id === user._id) && <Link className="edit-profile" to="/boards" onClick={closePopover}>Edit profile info</Link>}
+                {/* {(loggedInUser._id === user._id) && <Link className="edit-profile" to="/boards" onClick={closePopover}>Edit profile info</Link>} */}
             </div>
         </div>
     )

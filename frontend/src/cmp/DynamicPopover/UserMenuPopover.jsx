@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom';
 import { onLogout } from '../../store/user.actions'
 import { UserInfo } from '../UserInfo';
+import { updateBoard } from '../../store/board.actions'
 
 class _UserMenuPopover extends React.Component {
     onLogout = async () => {
@@ -10,15 +11,26 @@ class _UserMenuPopover extends React.Component {
         this.props.history.push('/')
     }
 
+    onRemoveFromBoard = (memberId) => {
+        const memberIdx = this.props.board.boardMembers.findIndex(member => member._id === memberId)
+        const newBoard = { ...this.props.board }
+        newBoard.boardMembers.splice(memberIdx, 1)
+        this.props.updateBoard(newBoard, `removed ${this.props.user.fullname} from the board`)
+        this.props.handleClose()
+    }
+
     render() {
-        const { loggedInUser } = this.props
-        if (!loggedInUser) return (<></>)
+        const { user, from } = this.props
+        if (!user) return (<></>)
         return (
             <div className="user-menu popover-content">
-                <UserInfo user={loggedInUser} handleClose={this.props.handleClose} />
-                <div>
+                <UserInfo user={user} handleClose={this.props.handleClose} />
+                {(from === 'AppHeader') && <div>
                     <button onClick={this.onLogout}>Logout</button>
-                </div>
+                </div>}
+                {(from === 'BoardHeader') &&
+                    <button className="remove-member-btn" onClick={() => this.onRemoveFromBoard(user._id)}>Remove from board</button>
+                }
             </div>
         )
     }
@@ -26,12 +38,14 @@ class _UserMenuPopover extends React.Component {
 
 function mapStateToProps(state) {
     return {
+        board: state.boardReducer.board,
         loggedInUser: state.userReducer.loggedInUser
     }
 }
 
 const mapDispatchToProps = {
-    onLogout
+    onLogout,
+    updateBoard
 }
 
 const _UserMenuPopoverWithRouter = withRouter(_UserMenuPopover);

@@ -40,7 +40,6 @@ class _ChooseBgImg extends React.Component {
     render() {
         const { imgs } = this.state
         if (!imgs || !imgs.length) return <Loading className="menu-load" />
-        console.log('props searchStr', this.props.searchStr);
         return (
             <div className="choose-bg-img">
                 <div className="search-photos flex align-center">

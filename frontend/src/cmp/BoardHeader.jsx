@@ -13,6 +13,7 @@ import { DynamicBoardMenu } from "./DynamicBoardMenu";
 import { socketService } from '../services/socket.service';
 import EqualizerIcon from '@mui/icons-material/Equalizer';
 import close from '../assets/imgs/close-filter.svg';
+import { DynamicPopover } from "./DynamicPopover";
 
 class _BoardHeader extends React.Component {
   state = {
@@ -101,7 +102,7 @@ class _BoardHeader extends React.Component {
   }
 
   cloneTemplate = async () => {
-    const newBoard = {...this.props.board}
+    const newBoard = { ...this.props.board }
     delete newBoard._id
     newBoard.createdBy = this.props.loggedInUser
     newBoard.boardMembers.push(this.props.loggedInUser)
@@ -139,18 +140,25 @@ class _BoardHeader extends React.Component {
           </button>
           <span className="board-header-divider"></span>
           {!board.createdBy && <button className="board-btn template" onClick={this.cloneTemplate}>Create board from template</button>}
+
           <div className="board-members">
             <MembersListBoard members={board.boardMembers} />
+            {/* {board.boardMembers.map((member) => {
+              if (member.username === 'pandaguest') return
+              return <DynamicPopover type={'boardMember'} titleModal={''} member={member} from="BoardHeader" />
+            })} */}
           </div>
+          <span className="board-btn invite">
+            <DynamicPopover type={'invite'} title={'Invite'} titleModal={'Invite to board'}
+              board={board} />
+          </span>
+
         </div>
         <div className="header-right flex">
           {filterBy.isFilter && <div className="cards-count pointer">
-            <span onClick={this.openSearchOnMenu}  className="number-count">{board.cardsCount} search results</span>
+            <span onClick={this.openSearchOnMenu} className="number-count">{board.cardsCount} search results</span>
             <span onClick={this.resetSearch} className="close-filter-btn"><img src={close} alt="close" /></span>
           </div>}
-          {/* <button className="board-btn flex align-center" onClick={this.props.onOpenDashboard}><EqualizerIcon /> Dashboard</button> */}
-            {/* <span className="icon"><EqualizerIcon /></span>
-            <span className="title">Dashboard</span> */}
           {board.createdBy ? <button className="board-btn flex align-center" onClick={this.props.onOpenDashboard}>
             <span className="icon"><EqualizerIcon /></span>
             <span className="title">Dashboard</span>

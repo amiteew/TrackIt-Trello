@@ -1,9 +1,11 @@
 .board-header {
     padding: 8px 4px 8px 14px;
     width: 100%;
-    line-height: rem(32px);
-    color: white;
+    // line-height: rem(20px);
     gap: 5px;
+    .board-btn {
+        height: 32px;
+    }
     .header-left {
         gap: 4px;
         .header-title {
@@ -42,8 +44,19 @@
                     }
                 }
             }
-            &.template {
+            &.template,
+            &.invite {
                 padding: 0 12px;
+            }
+            &.invite button {
+                height: 32px;
+                line-height: 20px;
+                background-color: transparent;
+                padding: 0;
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
         }
 
@@ -60,14 +73,33 @@
         @include for-narrow-layout {
             .board-members {
                 display: inline-block;
-                .MuiAvatar-root {
-                    color: white;
-                    height: 29px;
-                    width: 29px;
-                    background-color: #00000014;
-                    font-size: rem(12px);
-                    &:hover {
-                        opacity: 0.8;
+                margin-inline-end: 9px;
+                .avatar-btn {
+                    position: relative;
+                    button {
+                        position: absolute;
+                        border-radius: 50%;
+                        z-index: 1;
+                        top: 0;
+                        left: -8px;
+                        height: 29px;
+                        width: 29px;
+                        background-color: transparent;
+                        span {
+                            height: 100%;
+                            width: 100%;
+                        }
+                    }
+                    .MuiAvatar-root {
+                        background-color: #bdbdbd;
+                        color: white;
+                        height: 29px;
+                        width: 29px;
+                        // background-color: #00000014;
+                        font-size: rem(12px);
+                        &:hover {
+                            opacity: 0.8;
+                        }
                     }
                 }
             }
@@ -114,8 +146,6 @@
 
         .board-btn {
             padding: 0;
-            max-height: 32px;
-
             &.show-menu {
                 margin-right: 5px;
             }
@@ -142,10 +172,6 @@
             max-height: 32px;
         }
     }
-
-    .board-btn {
-        height: 32px;
-    }
 }
 
 .board-btn {
@@ -155,6 +181,11 @@
     &:hover {
         background-color: #ffffff52;
     }
+}
+
+.user-menu .remove-member-btn {
+    margin-top: 8px;
+    margin-left: 4px;
 }
 
 // .light-bg {
