@@ -135,7 +135,6 @@ class _BoardHeader extends React.Component {
           </button>
           <span className="board-header-divider"></span>
           <div className="board-members">
-            {/* <div className="board-header-btn board-members"> */}
             <MembersListBoard members={board.boardMembers} />
           </div>
         </div>
@@ -145,13 +144,14 @@ class _BoardHeader extends React.Component {
             <span onClick={this.resetSearch} className="close-filter-btn"><img src={close} alt="close" /></span>
           </div>}
           <button className="board-btn flex align-center" onClick={this.props.onOpenDashboard}><EqualizerIcon /> Dashboard</button>
+            {/* <span className="icon"><EqualizerIcon /></span>
+            <span className="title">Dashboard</span> */}
           {!isMenuOpen && <button className="board-btn show-menu flex align-center" onClick={this.toggleMenu}>
             <span className="icon flex justify-center align-center"><BsThreeDots /> </span>
             <span className="title">Show menu</span>
           </button>}
           {isMenuOpen && <DynamicBoardMenu board={board} toggleMenu={this.toggleMenu} onFilterCards={this.onFilterCards}
             isMenuOpen={isMenuOpen} target={menuTarget} title={menuTitle} changeMenu={this.changeMenu} />}
-          {/* {isMenuOpen && <TemporaryDrawer board={board} toggleMenu={this.toggleMenu} isMenuOpen={isMenuOpen} />} */}
         </div>
       </div>
     )

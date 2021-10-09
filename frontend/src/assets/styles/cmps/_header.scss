@@ -55,9 +55,9 @@
     .nav-bar {
         width: 100%;
         .main-nav-links {
+            gap: 4px;
             .logo-container {
                 gap: rem(7px);
-                margin-right: 12px;
                 .icon-span {
                     height: 1.5rem;
                     width: 1.5rem;
@@ -77,35 +77,64 @@
                     margin-inline-end: 6px;
                 }
             }
-            .header-btn,
-            .user-boards,
-            .starred-boards {
-                padding: 6px 12px;
+            .header-btn {
+                padding: 6px 8px;
                 border-radius: 3px;
                 background-color: transparent;
                 color: white;
-                &.create {
-                    margin-inline-start: 8px;
+                height: 32px;
+                button {
+                    background-color: transparent;
+                    color: white;
+                    padding: 0;
+                    span {
+                        display: flex;
+                        align-items: center;
+                        gap: 6px;
+                        img {
+                            height: 16px;
+                            width: 16px;
+                        }
+                    }
+                }
+                &.create,
+                &.create-small {
                     background-color: rgba(0, 0, 0, 0.24);
+                }
+                &.create-small {
+                    padding: 0;
+                    width: 32px;
+                    img {
+                        height: 20px;
+                        width: 20px;
+                    }
+                }
+                &.create,
+                &.starred {
+                    display: none;
                 }
                 &:hover,
                 &.open {
                     background-color: rgba(255, 255, 255, 0.2);
                 }
             }
-            .user-boards,
-            .starred-boards {
-                button {
-                    background-color: transparent;
-                    color: white;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 6px;
-                    img {
-                        height: 16px;
-                        width: 16px;
+            @include for-narrow-layout {
+                margin-right: 6px;
+                .header-btn {
+                    padding: 6px 12px;
+                    &.create {
+                        display: inline-block;
+                        line-height: 20px;
+                        margin-inline-start: 6px;
                     }
+                    &.create-small {
+                        display: none;
+                    }
+                }
+            }
+            @include for-normal-layout {
+                .header-btn.starred {
+                    display: inline-block;
                 }
             }
         }
@@ -120,7 +149,7 @@
                 width: 32px;
                 padding: 0;
                 background-color: transparent;
-                svg{
+                svg {
                     color: white;
                 }
                 &:hover {
@@ -138,6 +167,7 @@
             }
             
             .user-avatar {
+                height: 32px;
                 // position: absolute;
                 // right: 4px;
                 // top: 5px;
@@ -173,4 +203,8 @@
 
 .MuiPopover-root.userBoards .MuiPaper-root {
     top: 48px !important;
+}
+
+.no-boards {
+    margin: 12px;
 }

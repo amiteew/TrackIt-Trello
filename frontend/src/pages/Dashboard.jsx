@@ -6,6 +6,7 @@ import { PieTasksPerLabel } from '../cmp/DashBoard/PieTasksPerLabel';
 import { BarTaskPerMember } from '../cmp/DashBoard/BarTaskPerMember.jsx';
 import { BarTaskPerList } from '../cmp/DashBoard/BarTaskPerList.jsx';
 import { DashboardTitle } from '../cmp/DashBoard/DashboardTitle';
+import { LineTasksOverTime } from '../cmp/DashBoard/LineTasksOverTime.jsx';
 import close from '../assets/imgs/close.svg';
 class _Dashboard extends React.Component {
 
@@ -32,6 +33,7 @@ class _Dashboard extends React.Component {
                         <PieTasksPerLabel board={board} />
                         <BarTaskPerMember board={board} />
                         <BarTaskPerList board={board} />
+                        <LineTasksOverTime board={board} />
                     </div>
                 </section>
             </div>

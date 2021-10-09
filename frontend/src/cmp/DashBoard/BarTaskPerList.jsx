@@ -42,7 +42,26 @@ export class BarTaskPerList extends React.Component {
         return (
             <div className="bar-task-per-list">
                 <h1>Tasks per list</h1>
-                <Bar data={data} />
+                <Bar data={data} options={{
+                    scales: {
+                        y: {
+                            ticks: {
+                                stepSize: 1
+                            }
+                        }
+                    },
+                    // indexAxis: 'y',
+                    // responsive: true,
+                    // maintainAspectRatio: false,
+                    legend: {
+                        display: false,
+                    },
+                    plugins: {
+                        legend: {
+                            display: false,
+                        },
+                    },
+                }} />
             </div>
         )
     }

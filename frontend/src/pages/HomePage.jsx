@@ -1,20 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { loginAsGuest } from '../store/user.actions'
 import { HomeHeader } from '../cmp/Header/HomeHeader'
-import { onLogin } from '../store/user.actions'
 
 class _HomePage extends React.Component {
+
     onStartAsGuest = async () => {
-        const guestCreds = {
-            username: "pandaguest",
-            password: "123"
-        }
-        try {
-            await this.props.onLogin(guestCreds);
-            this.props.history.push('/boards')
-        } catch (err) {
-            console.log('error login as guest');
-        }
+        await this.props.loginAsGuest()
+        this.props.history.push('/boards')
     }
 
     render() {
@@ -22,7 +15,6 @@ class _HomePage extends React.Component {
             <>
                 <section className="home-page main-container">
                     <HomeHeader />
-                    {/* <HomeHeader className="full"/> */}
                     <div className="hero flex align-center">
                         <div className="info flex direction-col justify-center align-center">
                             <h1>TrackIt helps teams to stay on track.</h1>
@@ -44,7 +36,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-    onLogin
+    loginAsGuest
 }
 
 export const HomePage = connect(mapStateToProps, mapDispatchToProps)(_HomePage)
