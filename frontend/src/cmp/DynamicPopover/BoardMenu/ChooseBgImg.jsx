@@ -3,12 +3,11 @@ import { DebounceInput } from 'react-debounce-input';
 import { BiSearch } from 'react-icons/bi'
 import { unsplashService } from '../../../services/unsplash.service'
 import { connect } from 'react-redux'
-import { updateBoard } from '../../../store/board.actions'
+import { updateBoard, setSearchBg } from '../../../store/board.actions'
 import { Loading } from '../../Loading'
 
 class _ChooseBgImg extends React.Component {
     state = {
-        searchStr: '',
         imgs: []
     }
 
@@ -16,22 +15,22 @@ class _ChooseBgImg extends React.Component {
         this.getImgs()
     }
 
-    handleChange = (ev) => {
+    handleChange = async (ev) => {
         const value = ev.target.value
-        this.setState({ searchStr: value }, this.getImgs)
+        await this.props.setSearchBg(value)
+        this.getImgs()
     }
 
     getImgs = async () => {
-        // console.log('getting imgs for:', this.state.searchStr);
-        const imgs = await unsplashService.getImgs(this.state.searchStr, 18)
-        this.setState(prevState => ({ ...prevState, imgs }))
+        const imgs = await unsplashService.getImgs(this.props.searchStr, 18)
+        this.setState({ imgs })
     }
 
     setBgImg = (imgIdx) => {
         const img = this.state.imgs[imgIdx]
         const newBoard = { ...this.props.board }
         newBoard.boardStyle = { full: img.full, small: img.small }
-        this.props.updateBoard(newBoard, 'changed the board background image')
+        this.props.updateBoard(newBoard, 'changed the board background')
     }
 
     openLink = (ev) => {
@@ -41,11 +40,13 @@ class _ChooseBgImg extends React.Component {
     render() {
         const { imgs } = this.state
         if (!imgs || !imgs.length) return <Loading className="menu-load" />
+        console.log('props searchStr', this.props.searchStr);
         return (
             <div className="choose-bg-img">
                 <div className="search-photos flex align-center">
                     <BiSearch />
                     <DebounceInput
+                        value={this.props.searchStr}
                         minLength={2}
                         debounceTimeout={400}
                         onChange={this.handleChange} />
@@ -62,12 +63,15 @@ class _ChooseBgImg extends React.Component {
     }
 }
 
-function mapStateToProps() {
-    return {}
+function mapStateToProps(state) {
+    return {
+        searchStr: state.boardReducer.searchBg
+    }
 }
 
 const mapDispatchToProps = {
-    updateBoard
+    updateBoard,
+    setSearchBg
 }
 
 export const ChooseBgImg = connect(mapStateToProps, mapDispatchToProps)(_ChooseBgImg)

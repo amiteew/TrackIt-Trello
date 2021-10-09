@@ -17,7 +17,8 @@ const initialState = {
   labelsProps: {
     label: {},
     isCreate: false
-  }
+  },
+  searchBg: ''
 }
 
 export function boardReducer(state = initialState, action = null) {
@@ -86,7 +87,9 @@ export function boardReducer(state = initialState, action = null) {
     case 'SET_FILTER':
       return { ...state, filterBy: action.filterBy }
     case 'SET_LABEL':
-      return { ...state, labelsProps: action.labelsProps}
+      return { ...state, labelsProps: action.labelsProps }
+    case 'SET_SEARCH_BG':
+      return { ...state, searchBg: action.searchStr }
     default:
       return state
   }
