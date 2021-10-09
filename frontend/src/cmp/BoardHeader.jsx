@@ -4,7 +4,6 @@ import { IconContext } from "react-icons";
 import { FiStar } from 'react-icons/fi';
 import { BsThreeDots } from "react-icons/bs";
 import AutosizeInput from 'react-input-autosize';
-
 import { userService } from "../services/user.service"
 import { updateBoard, setNotif, setFilterBy, addBoard } from "../store/board.actions"
 import { MembersListBoard } from "./MembersListBoard"
@@ -138,7 +137,7 @@ class _BoardHeader extends React.Component {
             </IconContext.Provider>
           </button>
           <span className="board-header-divider"></span>
-          {!board.createdBy && <button className="board-btn" onClick={this.cloneTemplate}>Create board from template</button>}
+          {!board.createdBy && <button className="board-btn template" onClick={this.cloneTemplate}>Create board from template</button>}
           <div className="board-members">
             <MembersListBoard members={board.boardMembers} />
           </div>

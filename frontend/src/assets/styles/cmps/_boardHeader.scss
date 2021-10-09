@@ -6,7 +6,6 @@
     gap: 5px;
     .header-left {
         gap: 4px;
-
         .header-title {
             font-size: rem(18px);
             font-weight: 700;
@@ -31,14 +30,47 @@
             box-shadow: inset 0 0 0 2px #0079bf;
         }
 
+        .board-btn {
+            &.star {
+                width: rem(32px);
+                height: rem(32px);
+                font-size: rem(16px);
+                margin-right: 3px;
+                &.active {
+                    .star-icon {
+                        color: #f2d600;
+                    }
+                }
+            }
+            &.template {
+                padding: 0 12px;
+            }
+        }
+
         .board-header-divider {
             border-left: 1px solid #0003;
             height: 16px;
             padding: 5px;
         }
 
-        .MuiAvatar-root {
-            color: white;
+        .board-members {
+            display: none;
+        }
+
+        @include for-narrow-layout {
+            .board-members {
+                display: inline-block;
+                .MuiAvatar-root {
+                    color: white;
+                    height: 29px;
+                    width: 29px;
+                    background-color: #00000014;
+                    font-size: rem(12px);
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+            }
         }
     }
 
@@ -48,10 +80,8 @@
         gap: 4px;
 
         .cards-count {
-
             background: #5aac44;
             color: #fff;
-
             &:hover {
                 background: #61bd4f;
             }
@@ -81,116 +111,67 @@
                 }
             }
         }
-    }
 
-    .board-btn {
-        &.star {
-            .board-members {
+        .board-btn {
+            padding: 0;
+            max-height: 32px;
+
+            &.show-menu {
+                margin-right: 5px;
+            }
+
+            .title {
                 display: none;
             }
 
-            .board-btn.star {
-                width: rem(32px);
-                height: rem(32px);
+            .icon {
+                padding: 8px;
+                color: white;
                 font-size: rem(16px);
-                margin-right: 3px;
-
-                &.active {
-                    .star-icon {
-                        color: #f2d600;
-                    }
-                }
             }
 
-            @include for-narrow-layout {
-                .board-members {
-                    display: inline-block;
-                }
-
-                .MuiAvatar-root {
-                    color: white;
-                }
-            }
-        }
-
-        .header-right {
-            flex-grow: 1;
-            justify-content: flex-end;
-            gap: 4px;
-
-            .board-btn {
-                padding: 0;
-                max-height: 32px;
-
-                &.show-menu {
-                    margin-right: 5px;
-                }
-
+            @include for-normal-layout {
                 .title {
-                    display: none;
+                    display: inline-block;
+                    padding: 0;
+                    padding-right: rem(12px);
                 }
-
-                .icon {
-                    padding: 8px;
-                    color: white;
-                    font-size: rem(16px);
-                }
-
-                @include for-normal-layout {
-                    .title {
-                        display: inline-block;
-                        padding: 0;
-                        padding-right: rem(12px);
-                    }
-                }
-            }
-
-            .menu-visible {
-                max-height: 32px;
             }
         }
-
-        .MuiAvatar-root {
-            height: 29px;
-            width: 29px;
-            background-color: #00000014;
-            font-size: rem(12px);
-            color: $clr10;
-
-            &:hover {
-                opacity: 0.8;
-            }
+        .menu-visible {
+            max-height: 32px;
         }
     }
 
     .board-btn {
-        border-radius: rem(3px);
-        color: white;
-        background-color: #ffffff3d;
         height: 32px;
-
-        &:hover {
-            background-color: #ffffff52;
-        }
-
     }
 }
 
-    // .light-bg {
-    //     .header-title:hover {
-    //         background-color: #00000029;
-    //     }
-    //     .board-btn {
-    //         &:hover {
-    //             background-color: #00000029;
-    //         }
-    //         &.star {
-    //             &.active {
-    //                 background-color: #00000029;
-    //                 &:hover {
-    //                     background-color: #0000003d;
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
+.board-btn {
+    border-radius: rem(3px);
+    color: white;
+    background-color: #ffffff3d;
+    &:hover {
+        background-color: #ffffff52;
+    }
+}
+
+// .light-bg {
+//     .header-title:hover {
+//         background-color: #00000029;
+//     }
+//     .board-btn {
+//         &:hover {
+//             background-color: #00000029;
+//         }
+//         &.star {
+//             &.active {
+//                 background-color: #00000029;
+//                 &:hover {
+//                     background-color: #0000003d;
+//                 }
+//             }
+//         }
+//     }
+// }

@@ -1,0 +1,9 @@
+.pie-task-per-label {
+    canvas {
+        margin-top: 50px;
+    }
+    &.no-result {
+        color: white;
+        font-size: rem(15px);
+    }
+}

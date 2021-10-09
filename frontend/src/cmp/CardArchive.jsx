@@ -1,7 +1,7 @@
 export class extends CardArchive extends React.Component {
 
     handelArchive = () => {
-        
+
 
     }
 

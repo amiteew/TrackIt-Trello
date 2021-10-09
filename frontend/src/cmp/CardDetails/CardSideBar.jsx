@@ -1,10 +1,9 @@
 import React from 'react';
-import { DynamicPopover } from './DynamicPopover';
-import { JoinCard } from './CardDetails/JoinCard';
-import { ArchiveButtoms } from './CardDetails/ArchiveButtoms';
-import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import { DynamicPopover } from '../DynamicPopover';
+import { JoinCard } from './JoinCard';
+import { ArchiveButtoms } from './ArchiveButtoms';
 
-export function CardSideBar({ board, currListIdx, currCardIdx, OnUpdateBoard, handleClose }) {
+export function CardSideBar({ board, currListIdx, currCardIdx, handleClose }) {
     const currCard = board.lists[currListIdx].cards[currCardIdx]
     return (
         <div className="add-to-card">

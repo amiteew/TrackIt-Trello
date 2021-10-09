@@ -12,9 +12,9 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 import DownArrow from '../../assets/imgs/icons/menu-arrow-icon.svg';
-import { LabelPreview } from '../LabelPreview';
+import { LabelPreview } from '../CardDetails/LabelPreview';
 import { BsThreeDots } from "react-icons/bs";
-import { DueDatePreview } from '../DueDatePreview';
+import { DueDatePreview } from '../CardDetails/DueDatePreview';
 import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 

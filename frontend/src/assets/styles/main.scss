@@ -70,9 +70,15 @@
 @import "cmps/cardDetails/taskInput";
 @import "cmps/cardDetails/attachments";
 @import "cmps/cardDetails/attachmentsPreview";
+@import "cmps/cardDetails/cardArchive";
 
 // DASHBOARD
 @import "cmps/dashboard/dashboardTitle";
+@import "cmps/dashboard/lineTaskOverTime";
+@import "cmps/dashboard/progressbarDone";
+@import "cmps/dashboard/pieTaskPerLabel";
+@import "cmps/dashboard/pieTaskPerMember";
+@import "cmps/dashboard/barTaskPerList";
 
 // Views (pages)
 @import "pages/home-page";

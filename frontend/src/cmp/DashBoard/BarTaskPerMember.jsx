@@ -1,12 +1,7 @@
 import React from 'react';
-import { Bar, defaults } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 
 export class BarTaskPerMember extends React.Component {
-    componentDidMount() {
-        defaults.font.size = 16
-        defaults.color = '#fff'
-        defaults.plugins.legend.display = false
-    }
 
     get mapTasksPerMember() {
         const { board } = this.props
@@ -20,13 +15,11 @@ export class BarTaskPerMember extends React.Component {
                 })
             })
         })
-        // console.log('tasksPerMembers', tasksPerMembers)
         return tasksPerMembers
     }
 
     get getPieData() {
         const mapTasksPerMember = this.mapTasksPerMember
-        // console.log('mapTasksPerMember', mapTasksPerMember)
         return {
             labels: mapTasksPerMember.map(taskPerMember => taskPerMember.fullname),
             datasets: [
@@ -51,6 +44,7 @@ export class BarTaskPerMember extends React.Component {
 
         const options = {
             indexAxis: 'y',
+            maintainAspectRatio: false,
             responsive: true,
             scales: {
                 x: {
@@ -59,24 +53,28 @@ export class BarTaskPerMember extends React.Component {
                     }
                 }
             },
-            tooltips: {
-                //     bodyFontColor: "#61bd4f",
-                //     backgroundColor: "#61bd4f"
-                // fontColor: '#fff'
-            },
             plugins: {
                 legend: {
                     display: false,
-                    // position: 'right',
                 },
             },
         };
         const data = this.getPieData
-        // console.log('data', data)
+        console.log('data', data)
+        if (data.datasets[0].data.length < 2) return (
+            <div className="bar-task-per-member no-result">
+                <h1>Tasks per member</h1>
+                Sorry, not enough data<br />
+                to analyze...
+            </div>
+        )
+
+
         return (
             <div className="bar-task-per-member">
                 <h1>Tasks per member</h1>
-                <Bar data={data} options={options} />
+                <Bar height={350} width={200}
+                    data={data} options={options} />
             </div>
         )
     }

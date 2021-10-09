@@ -1,5 +1,6 @@
 import React from 'react';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+
 export class AttachmentPreview extends React.Component {
     render() {
         const { cardAttachment } = this.props

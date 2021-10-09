@@ -2,6 +2,7 @@ import React from 'react'
 import AttachFileOutlinedIcon from '@mui/icons-material/AttachFileOutlined';
 import { AttachmentPreview } from './AttachmentPreview'
 import { DynamicPopover } from '../DynamicPopover';
+
 export function CardAttachmentsList({ board, currListIdx, currCardIdx, OnUpdateBoard }) {
     const cardAttachments = board.lists[currListIdx].cards[currCardIdx].attachments
 

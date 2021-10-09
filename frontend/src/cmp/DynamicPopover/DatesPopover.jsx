@@ -12,7 +12,6 @@ class _DatesPopover extends React.Component {
         const { board, currListIdx, currCardIdx } = this.props
         const currCard = board.lists[currListIdx].cards[currCardIdx]
         const date = (currCard.dueDate && currCard.dueDate.date) ? currCard.dueDate.date : Date.now()
-        console.log('date', date)
         this.setState({ date })
     }
 
