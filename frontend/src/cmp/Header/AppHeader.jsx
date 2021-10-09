@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { NavLink } from 'react-router-dom'
 import { LogoName } from './LogoName';
 import { DynamicPopover } from '../DynamicPopover';
 import { CreateBoard } from '../CreateBoard';
@@ -59,10 +58,6 @@ class _AppHeader extends React.Component {
                             <span className={`header-btn starred${this.state.isStarredBoardsOpen ? " open" : ""}`}>
                                 <DynamicPopover type={'starredBoards'} titleModal={'Starred boards'} onToggle={this.onToggleStarredBoards} />
                             </span>
-                            {/* <NavLink className="header-btn" to="/boards">
-                                <span>Boards</span>
-                                <img src="" alt="" />
-                            </NavLink> */}
                             <button className="header-btn create" onClick={this.onToggleCreateBoard}>Create</button>
                             <button className="header-btn create-small flex align-center justify-center" onClick={this.onToggleCreateBoard}><img src={PlusIcon} alt="" /></button>
                         </div>
@@ -88,7 +83,6 @@ class _AppHeader extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        board: state.boardReducer.board,
         boards: state.boardReducer.boards,
         loggedInUser: state.userReducer.loggedInUser,
         isNotif: state.boardReducer.isNotif,

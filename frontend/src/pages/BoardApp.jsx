@@ -114,6 +114,10 @@ class _BoardApp extends React.Component {
         this.props.history.push(`/boards/${board._id}/dashboard`);
     }
 
+    goToTemplateClone = (newBoardId) => {
+        this.props.history.push(`/boards/${newBoardId}`);
+    }
+
     render() {
         const { board } = this.props;
         if (!board || !Object.keys(board).length) return <Loading />
@@ -122,7 +126,7 @@ class _BoardApp extends React.Component {
             <section className="board-app flex direction-col">
                 <Route exact component={CardDetails} path="/boards/:boardId/:listId/:cardId" />
                 <Route exact component={Dashboard} path="/boards/:boardId/dashboard" />
-                <BoardHeader board={board} onUpdateBoard={this.onUpdateBoard} onOpenDashboard={this.onOpenDashboard} />
+                <BoardHeader board={board} onUpdateBoard={this.onUpdateBoard} onOpenDashboard={this.onOpenDashboard} goToTemplateClone={this.goToTemplateClone} />
                 <div className="board-background" style={bgStyle}></div>
                
                 <div className="board-canvas flex">
