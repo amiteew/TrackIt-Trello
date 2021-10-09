@@ -138,7 +138,7 @@ class _BoardHeader extends React.Component {
             </IconContext.Provider>
           </button>
           <span className="board-header-divider"></span>
-          {!board.createdBy && <button className="board-btn" onClick={this.cloneTemplate}>Create board from template</button>}
+          {!board.createdBy && <button className="board-btn template" onClick={this.cloneTemplate}>Create board from template</button>}
           <div className="board-members">
             <MembersListBoard members={board.boardMembers} />
           </div>
