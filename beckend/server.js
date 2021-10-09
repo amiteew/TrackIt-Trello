@@ -13,7 +13,7 @@ const session = expressSession({
 })
 
 app.use(express.json({limit : '50mb'}));
-app.use(express.static('public'))
+app.use(express.static('src'))
 app.use(session)
 
 if (process.env.NODE_ENV === 'production') {
@@ -45,12 +45,12 @@ connectSockets(http, session)
 
 
 app.get('/**', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'))
+    res.sendFile(path.join(__dirname, 'src', 'index.html'))
 })
 
 const logger = require('./services/logger.service')
 const port = process.env.PORT || 3030
-app.listen(port, () => {
+http.listen(port, () => {
     logger.info(`App is running on port: ${port}`)
 })
 

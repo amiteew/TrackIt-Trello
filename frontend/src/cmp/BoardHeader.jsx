@@ -148,10 +148,9 @@ class _BoardHeader extends React.Component {
             <span onClick={this.openSearchOnMenu}  className="number-count">{board.cardsCount} search results</span>
             <span onClick={this.resetSearch} className="close-filter-btn"><img src={close} alt="close" /></span>
           </div>}
-          <button className="board-btn flex align-center" onClick={this.props.onOpenDashboard}><EqualizerIcon /> Dashboard</button>
+          {/* <button className="board-btn flex align-center" onClick={this.props.onOpenDashboard}><EqualizerIcon /> Dashboard</button> */}
             {/* <span className="icon"><EqualizerIcon /></span>
             <span className="title">Dashboard</span> */}
-          {filterBy.isFilter && <div onClick={this.resetSearch}>{board.cardsCount} X</div>}
           {board.createdBy ? <button className="board-btn flex align-center" onClick={this.props.onOpenDashboard}>
             <span className="icon"><EqualizerIcon /></span>
             <span className="title">Dashboard</span>

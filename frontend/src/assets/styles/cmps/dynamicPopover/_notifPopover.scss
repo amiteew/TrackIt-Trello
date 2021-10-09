@@ -1,19 +1,64 @@
 .notif-popover {
     width: 250px;
+
     &:first-child {
         margin-top: 20px;
     }
+
     .notif {
-        margin-bottom: 5px;
-        cursor: pointer;
-        padding: 2px 5px;
+        background: transparent;
+        padding: 8px 0;
+
         &:hover {
             background-color: $cardHoverColor;
         }
+
         &.unread {
             background-color: #e4f7fa;
+
             &:hover {
                 background-color: #e4f7fabc;
+            }
+        }
+
+        .notification-content {
+            background: #F4F5F7;
+            border-bottom: 1px solid rgba(9, 45, 66, 0.13);
+            border-radius: 3px;
+            border: 0;
+            box-shadow: 0 1px 1px rgb(9 45 66 / 25%), 0 0 0 1px rgb(9 45 66 / 8%);
+            min-height: 32px;
+            padding: 0 0 8px;
+            position: relative;
+
+            .notif-card-titles {
+                color: rgb(255, 255, 255);
+                background-size: 100% 64px, cover;
+
+                .notif-card-title {
+                    background-color: #FFFFFF;
+                    border-radius: 3px;
+                    box-sizing: border-box;
+                    box-shadow: 0 1px 0 0 rgb(9 30 66 / 25%);
+                    padding-bottom: 6px;
+
+
+                }
+
+                .notif-card-txt {
+                    color: #172B4D;
+                    margin: 0;
+                    padding: 6px 8px 0;
+                }
+
+                .notif-card-board-title {
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', sans-serif;
+                    font-size: 12px;
+                    height: 16px;
+                    line-height: 16px;
+                    letter-spacing: -0.2px;
+                    padding: 4px 8px;
+                }
             }
         }
     }
