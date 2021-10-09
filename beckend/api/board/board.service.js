@@ -1,5 +1,7 @@
 const dbService = require('../../services/db.service')
 const logger = require('../../services/logger.service')
+const socketService = require('../../services/socket.service')
+
 const ObjectId = require('mongodb').ObjectId
 
 async function query(userId) {

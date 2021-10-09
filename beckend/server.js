@@ -13,7 +13,7 @@ const session = expressSession({
 })
 
 app.use(express.json({limit : '50mb'}));
-app.use(express.static('src'))
+app.use(express.static('public'))
 app.use(session)
 
 if (process.env.NODE_ENV === 'production') {
@@ -45,7 +45,7 @@ connectSockets(http, session)
 
 
 app.get('/**', (req, res) => {
-    res.sendFile(path.join(__dirname, 'src', 'index.html'))
+    res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
 const logger = require('./services/logger.service')

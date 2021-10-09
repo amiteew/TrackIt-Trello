@@ -115,7 +115,7 @@ export function updateBoard(board, action = null, card = '', txt = "") {
       await boardService.save(board);
       dispatch({ type: 'UPDATE_LAST_UPDATED_BOARD' });
       socketService.emit('update-board', board);
-      if (action && activity.isNotif) socketService.emit('received notification');
+      // if (action && activity.isNotif) socketService.emit('received notification');
     } catch (err) {
       // console.log('board id: ', board._id)
       // loadBoard(board._id)
