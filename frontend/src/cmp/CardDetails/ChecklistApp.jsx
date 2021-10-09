@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
-import { loadBoards, removeBoard, addBoard, updateBoard } from '../store/board.actions.js';
-import { utilService } from '../services/util.service';
+import { updateBoard } from '../../store/board.actions.js';
+import { utilService } from '../../services/util.service';
 import { ProgressBar } from './ProgressBar'
 import { ChecklistTask } from './ChecklistTask'
 import { AddNewTask } from './AddNewTask';
+
 class _ChecklistApp extends React.Component {
     state = {
         isAddItem: false,
@@ -21,18 +22,15 @@ class _ChecklistApp extends React.Component {
     }
 
     onDeleteChecklist = () => {
-        const { title } = this.state
         const { board, currCard, checklistIdx } = this.props
         currCard.checklists.splice(checklistIdx, 1)
-        // const action = `Deleted Checklist ${title}`
         this.props.updateBoard(board)
     }
 
     onDeleteTask = (taskIdx) => {
-        const { currChecklist, title } = this.state
+        const { currChecklist } = this.state
         const { board, currCard } = this.props
         currChecklist.tasks.splice(taskIdx, 1)
-        // const action = `Deleted item on Checklist "${title}" `
         this.props.updateBoard(board)
     }
 
@@ -50,12 +48,11 @@ class _ChecklistApp extends React.Component {
     }
 
     onAddTask = (txt) => {
-        const { currChecklist, title } = this.state
+        const { currChecklist } = this.state
         const { board, currCard } = this.props
         currChecklist.tasks.push(
             { id: utilService.makeId(), txt: txt, isDone: false }
         )
-        // const action = `Added item "${txt}" on Checklist "${title}" `
         this.props.updateBoard(board)
     }
 

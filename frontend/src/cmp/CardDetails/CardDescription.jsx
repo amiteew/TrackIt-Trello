@@ -1,5 +1,5 @@
 import React from 'react';
-import { Loading } from './Loading';
+import { Loading } from '../Loading';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
 

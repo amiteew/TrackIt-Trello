@@ -16,9 +16,9 @@ class _ArchiveButtoms extends React.Component {
 
     onDeleteCard = () => {
         const { board, currListIdx, currCardIdx, currCard } = this.props
-        this.props.handleClose()
         board.lists[currListIdx].cards.splice(currCardIdx, 1)
         this.props.updateBoard(board, `Deleted card`, currCard)
+        this.props.handleClose()
     }
 
     render() {

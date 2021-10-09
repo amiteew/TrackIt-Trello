@@ -9,13 +9,11 @@ export class BarTaskPerList extends React.Component {
         board.lists.forEach(list => {
             tasksPerList.push({ list: list.listTitle, tasks: list.cards.length })
         })
-        // console.log('tasksPerList', tasksPerList)
         return tasksPerList
     }
 
     get getBarData() {
         const mapTasksPerList = this.getMapTasksPerList
-        // console.log('mapTasksPerList', mapTasksPerList)
         return {
             labels: mapTasksPerList.map(taskPerList => taskPerList.list),
             datasets: [
@@ -38,30 +36,29 @@ export class BarTaskPerList extends React.Component {
 
     render() {
         const data = this.getBarData
-        // console.log('data', data)
         return (
             <div className="bar-task-per-list">
                 <h1>Tasks per list</h1>
-                <Bar data={data} options={{
-                    scales: {
-                        y: {
-                            ticks: {
-                                stepSize: 1
+                <Bar data={data}
+                    height={200}
+                    width={350}
+                    options={{
+                        scales: {
+                            y: {
+                                ticks: {
+                                    stepSize: 1
+                                }
                             }
-                        }
-                    },
-                    // indexAxis: 'y',
-                    // responsive: true,
-                    // maintainAspectRatio: false,
-                    legend: {
-                        display: false,
-                    },
-                    plugins: {
+                        },
                         legend: {
                             display: false,
                         },
-                    },
-                }} />
+                        plugins: {
+                            legend: {
+                                display: false,
+                            },
+                        },
+                    }} />
             </div>
         )
     }

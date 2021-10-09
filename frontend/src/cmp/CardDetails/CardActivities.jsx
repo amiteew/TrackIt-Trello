@@ -2,11 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Avatar from '@mui/material/Avatar';
 import { Loading } from '../Loading';
-import { CommentsList } from '../CommentsList';
-import { ActivityList } from '../ActivityList';
+import { CommentsList } from './CommentsList';
+import { ActivityList } from './ActivityList';
 import { utilService } from '../../services/util.service';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+
 class _CardActivities extends React.Component {
     state = {
         board: null,
@@ -23,21 +24,10 @@ class _CardActivities extends React.Component {
         console.log('loggedin user: ', this.props.loggedInUser)
     }
 
-    // state = {
-    //     activities: null,
-    //     isEditing: false,
-    //     newActivityTxt: ''
-    // }
-
-    // componentDidMount() {
-    //     this.setState({ activities: this.props.cardActivities })
-    // }
-
     onToggleDetails = () => {
         this.setState({ ...this.state, isDetails: !this.state.isDetails })
     }
     onToggleComment = () => {
-        // ev.stopPropagation()
         this.setState({ ...this.state, isEditing: true })
     }
     handleChange = ({ target }) => {
@@ -49,7 +39,6 @@ class _CardActivities extends React.Component {
         const { currListIdx, currCardIdx } = this.state
         const newBoard = { ...this.state.board }
         newBoard.lists[currListIdx].cards[currCardIdx].comments.unshift({
-            // byMember: userService.getLoggedinUser(),
             byMember: this.props.loggedInUser,
             createdAt: Date.now(),
             id: utilService.makeId(),
@@ -69,7 +58,6 @@ class _CardActivities extends React.Component {
         if (!board || currCardIdx === null || currListIdx === null) return <Loading />
         const comments = board.lists[currListIdx].cards[currCardIdx].comments
         const currCard = board.lists[currListIdx].cards[currCardIdx]
-        // if (!comments) return <Loading />
         return (
             <div className="card-activities">
                 <div className="flex direction-row space-between ">
@@ -89,14 +77,11 @@ class _CardActivities extends React.Component {
                             type='text'
                             placeholder='Write a comment...'
                             onChange={this.handleChange}
-                            // onBlur={this.onToggleComment}
-
                             value={newActivityTxt}
                         />
                         {isEditing && <button className="comment-save" onClick={(ev) => this.onSaveActivity(ev)}>Save</button>}
                     </div>
                 </div>
-
 
                 {currCard.comments.length ? <CommentsList comments={currCard.comments} /> : <></>}
                 {isDetails && <ActivityList currCard={currCard} activities={board.activities} />}
@@ -112,10 +97,6 @@ function mapStateToProps(state) {
         loggedInUser: state.userReducer.loggedInUser
     }
 }
-const mapDispatchToProps = {
-    // removeBoard,
-    // loadBoard,
-    // updateBoard
-}
 
-export const CardActivities = connect(mapStateToProps, mapDispatchToProps)(_CardActivities)
+
+export const CardActivities = connect(mapStateToProps)(_CardActivities)

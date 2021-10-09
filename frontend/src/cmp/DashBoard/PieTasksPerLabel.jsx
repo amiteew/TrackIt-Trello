@@ -23,21 +23,29 @@ export class PieTasksPerLabel extends React.Component {
             })
         })
         mapTasksPerLabel = mapTasksPerLabel.filter(taskPerLabel => taskPerLabel.tasks !== 0)
-        // console.log('mapTasksPerLabel', mapTasksPerLabel)
         return mapTasksPerLabel
     }
 
     get getPieData() {
         const mapTasksPerLabel = this.mapTasksPerLabel
-        // console.log('tasksPerLabels', mapTasksPerLabel)
         return {
             labels: mapTasksPerLabel.map(taskPerLabel => taskPerLabel.label),
-            // labels: board.labels.map((label, idx) => label.title ? label.title : `label${idx + 1} (no title)`),
             datasets: [
                 {
                     label: '# of Votes', // WHAT IS IT?
                     data: mapTasksPerLabel.map(taskPerLabel => taskPerLabel.tasks),
                     backgroundColor: [
+                        '#61bd4fb1',
+                        '#f2d600b1',
+                        '#ff9f1ab1',
+                        '#eb5a46b1',
+                        '#c377e0b1',
+                        '#5ba4cfb1',
+                        '#51e898b1',
+                        '#2acce5b1',
+                        '#ff8ed4b1'
+                    ],
+                    borderColor: [
                         '#61bd4f',
                         '#f2d600',
                         '#ff9f1a',
@@ -48,9 +56,6 @@ export class PieTasksPerLabel extends React.Component {
                         '#2acce5',
                         '#ff8ed4'
                     ],
-                    borderColor: [
-                        'black'
-                    ],
                     borderWidth: .5,
                 },
             ],
@@ -59,12 +64,17 @@ export class PieTasksPerLabel extends React.Component {
 
     render() {
         const data = this.getPieData
-        // console.log('data', data)
-        if (!data.datasets[0].data.length) return <div>there is no tasks tagged to any labels</div>
+        if (!data.datasets[0].data.length) return (
+            <div className="pie-task-per-label no-result">
+                <h1>Tasks per label</h1>
+                Sorry, there is no tasks <br />
+                tagged to any labels...
+            </div>
+        )
         return (
             <div className="pie-task-per-label">
                 <h1>Tasks per label</h1>
-                <Pie data={data} />
+                <Pie data={data} height={10} width={10} />
             </div>
         )
     }

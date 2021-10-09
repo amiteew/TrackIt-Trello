@@ -1,7 +1,5 @@
 import React from 'react';
 import Popover from '@mui/material/Popover';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import { ActionList } from './DynamicPopover/ActionListPopOver';
 import { MembersPopover } from './DynamicPopover/MembersPopover';
 import { LabelsPopover } from './DynamicPopover/LabelsPopover';
@@ -14,9 +12,6 @@ import { TemporaryDrawer } from '../cmp/DroweMenu.jsx';
 import { AttachmentsPopover } from './DynamicPopover/AttachmentsPopover';
 import { DeleteCardPopover } from './DynamicPopover/DeleteCardPopover';
 import { MoveCopyCardPopover } from './DynamicPopover/MoveCopyCardPopover';
-import { MuiPickersUtilsProvider, DatePicker, TimePicker, DateTimePicker, } from '@material-ui/pickers';
-import DateFnsUtils from '@date-io/date-fns';
-import { removeUser } from '../store/user.actions';
 import { UserBoardsPopover } from './DynamicPopover/UserBoardsPopover';
 import { NotifPopover } from './DynamicPopover/NotifPopover';
 

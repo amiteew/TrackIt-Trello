@@ -1,5 +1,5 @@
 import React from 'react';
-import { MembersList } from './MembersList.jsx';
+import { MembersList } from './CardDetails/MembersList';
 import { CardCheckPreview } from './CardCheckPreview.jsx';
 import { CardCommentPreview } from './CardCommentPreview.jsx';
 import { CardVisibilityPreview } from './CardVisibilityPreview.jsx';
@@ -99,7 +99,7 @@ class _QuickCardEditor extends React.Component {
                             {/* <div onClick={this.onArchive}>Archive</div> */}
                             {isCover.fullTitle === 'half' && <span className="card-preview-icon flex">
                                 <div className="icons-preview flex wrap">
-                                    {card.dueDate.date && <CardDuDatePreview dueDate={card.dueDate} board={board} card={card} updateBoard={updateBoard}/>}
+                                    {card.dueDate.date && <CardDuDatePreview dueDate={card.dueDate} board={board} card={card} updateBoard={updateBoard} />}
                                     {card.description && <div className='badge flex align-center'><GrTextAlignFull /></div>}
                                     {/* <span className="badge is-watch">{card.cardMembers && <CardVisibilityPreview cardMembers={card.cardMembers} />} </span> */}
                                     {card.comments.length ? <CardCommentPreview cardComments={card.comments} /> : <> </>}

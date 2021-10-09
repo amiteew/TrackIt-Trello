@@ -2,7 +2,7 @@ import React from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { TaskInput } from './TaskInput';
-// export function ChecklistTask({ task, taskIdx, onDeleteTask, onEditTask }) {
+
 export class ChecklistTask extends React.Component {
     state = {
         isEdit: false

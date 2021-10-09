@@ -4,7 +4,6 @@ import { IconContext } from "react-icons";
 import { FiStar } from 'react-icons/fi';
 import { BsThreeDots } from "react-icons/bs";
 import AutosizeInput from 'react-input-autosize';
-
 import { userService } from "../services/user.service"
 import { updateBoard, setNotif, setFilterBy } from "../store/board.actions"
 import { MembersListBoard } from "./MembersListBoard"
@@ -27,7 +26,7 @@ class _BoardHeader extends React.Component {
   componentDidMount() {
     this.setState({ title: this.props.board.boardTitle })
     // socketService.setup()
-  
+
     // socketService.on('sending notification', (isNotif) => {
     //   this.props.setNotif(isNotif)
     // })

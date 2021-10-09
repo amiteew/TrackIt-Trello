@@ -1,5 +1,6 @@
 import React from 'react';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
+
 export class TaskInput extends React.Component {
     state = {
         newTaskTxt: null,
@@ -41,7 +42,6 @@ export class TaskInput extends React.Component {
                         type='text'
                         value={newTaskTxt}
                         onChange={this.handleChange}
-                        onBlur={this.onDiscardChanges}
                     />
                     <div className="flex direction-row align-center">
                         <button className="save-task" onClick={this.onSaveTask}>Save</button>
