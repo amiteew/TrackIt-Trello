@@ -1,65 +1,140 @@
-.notif-popover {
-    width: 250px;
+.noNotif,
+.newNotif {
 
-    &:first-child {
-        margin-top: 20px;
-    }
+    .MuiPaper-root {
+        right: 0;
+        top: 44px !important;
+        max-height: calc(100vh - 44px);
+        overflow-y: hidden;
+        overflow-x: auto;
 
-    .notif {
-        background: transparent;
-        padding: 8px 0;
-
-        &:hover {
-            background-color: $cardHoverColor;
+        .popover-header-title{
+            width: auto;
         }
 
-        &.unread {
-            background-color: #e4f7fa;
+        .popover-content-container{
+            padding: unset;
+        }
+    }
 
-            &:hover {
-                background-color: #e4f7fabc;
+    .notif-popover {
+        width: 100%;
+        padding-left: 2px;
+        height: calc(100vh - 84px);
+        overflow-y: auto;
+
+        
+        .notif-allert {
+            
+            &:first-child {
+                margin-top: 20px;
+            }
+            
+            &.unread {
+                background-color: #e4f7fa;
+
+                &:hover {
+                    background-color: #e4f7fabc;
+                }
             }
         }
 
-        .notification-content {
-            background: #F4F5F7;
-            border-bottom: 1px solid rgba(9, 45, 66, 0.13);
-            border-radius: 3px;
-            border: 0;
-            box-shadow: 0 1px 1px rgb(9 45 66 / 25%), 0 0 0 1px rgb(9 45 66 / 8%);
-            min-height: 32px;
-            padding: 0 0 8px;
-            position: relative;
+        .notif {
+            background: transparent;
+            padding: 8px 0;
+            width: 344px;
 
-            .notif-card-titles {
-                color: rgb(255, 255, 255);
-                background-size: 100% 64px, cover;
-                background-repeat: no-repeat;
+            .notif-content {
+                background: #F4F5F7;
+                border-bottom: 1px solid rgba(9, 45, 66, 0.13);
+                border-radius: 3px;
+                border: 0;
+                box-shadow: 0 1px 1px rgb(9 45 66 / 25%), 0 0 0 1px rgb(9 45 66 / 8%);
+                min-height: 32px;
+                padding: 0 0 8px;
+                position: relative;
+                margin: 0 0.8571428571rem 0.8571428571rem;
 
-                .notif-card-title {
-                    background-color: #FFFFFF;
-                    border-radius: 3px;
-                    box-sizing: border-box;
-                    box-shadow: 0 1px 0 0 rgb(9 30 66 / 25%);
-                    padding-bottom: 6px;
-                    margin: 8px 8px 8px 8px;
+                .notif-card-titles {
+                    color: rgb(255, 255, 255);
+                    background-size: 100% 64px, cover;
+                    background-repeat: no-repeat;
+                    padding: 8px 8px 7px 8px;
 
+                    .notif-card-title {
+                        background-color: #FFFFFF;
+                        border-radius: 3px;
+                        box-sizing: border-box;
+                        box-shadow: 0 1px 0 0 rgb(9 30 66 / 25%);
+                        padding: 6px 8px;
+                    }
 
+                    .notif-card-txt {
+                        color: #172B4D;
+                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', sans-serif;
+                        font-weight: normal;
+                        line-height: 20px;
+                    }
+
+                    .notif-card-board-title {
+                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', sans-serif;
+                        font-size: 12px;
+                        height: 16px;
+                        line-height: 16px;
+                        letter-spacing: -0.2px;
+                        padding: 4px 4px;
+                    }
                 }
+            }
+        }
 
-                .notif-card-txt {
-                    color: #172B4D;
-                    margin: 0;
-                    padding: 6px 8px 0;
-                }
+        .notif-member-section {
+            margin: 20px 8px 8px 8px;
+            align-items: flex-start;
 
-                .notif-card-board-title {
-                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', sans-serif;
-                    font-size: 12px;
-                    height: 16px;
-                    line-height: 16px;
-                    letter-spacing: -0.2px;
-                    padding: 4px 8px;
+            .notif-avatar {
+                justify-content: center;
+                margin-right: 8px;
+                height: 24px;
+                width: 24px;
+            }
+
+            .notif-member-name {
+                font-weight: bold;
+                white-space: pre-line;
+                line-height: 24px;
+                color: #172b4d;
+            }
+        }
+
+        .notif-action-section {
+            padding: 2px 8px;
+            margin-bottom: 5px;
+            margin-top: 10px;
+
+            .notif-action-icon {
+                align-items: center;
+                justify-content: center;
+                width: 24px;
+                height: 24px;
+                flex: 0 0 24px;
+                box-sizing: border-box;
+                border: 1px solid #DFE1E6;
+            }
+
+            .notif-action {
+                color: #172b4d;
+                flex: 1 1 auto;
+                position: relative;
+                width: 0;
+                word-wrap: break-word;
+
+                .notif-date {
+                    font-size: rem(12px);
+                    line-height: rem(14px);
+                    margin: 0 0 rem(6px) rem(4px);
+                    min-width: 105px;
+                    color: #6B778C;
                 }
             }
         }

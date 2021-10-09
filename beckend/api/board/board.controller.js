@@ -56,6 +56,7 @@ async function updateBoard(req, res) {
   try {
     const board = req.body
     let savedBoard = await boardService.save(board)
+    
     // savedBoard = _LimitActivities(savedBoard) //Avoiding Data leak - Board Object too large
     // if (board.activities[0].isNotif) socketService.emit('resieve notification');
     res.send(savedBoard)

@@ -10,6 +10,7 @@ import { ChooseBgColor } from './DynamicPopover/BoardMenu/ChooseBgColor';
 import { ChooseBgImg } from './DynamicPopover/BoardMenu/ChooseBgImg';
 import { SearchMenu } from './SearchMenu';
 import { ArchiveItems } from './ArchiveItems';
+import { NotifPopover } from './DynamicPopover/NotifPopover';
 
 export function DynamicBoardMenu({ board, toggleMenu, isMenuOpen, target, title, changeMenu, onFilterCards }) {
 
@@ -27,6 +28,8 @@ export function DynamicBoardMenu({ board, toggleMenu, isMenuOpen, target, title,
                 return <SearchMenu {...props} />
             case 'archive':
                 return <ArchiveItems {...props} />
+            case 'notifications':
+                return <NotifPopover {...props} />
         }
     }
 
@@ -58,7 +61,7 @@ export function DynamicBoardMenu({ board, toggleMenu, isMenuOpen, target, title,
                             </div>
                             <Divider />
                             <div className="menu-content fancy-scrollbar">
-                                <DynamicCmp target={target} board={board} changeMenu={changeMenu} toggleMenu={toggleMenu} onFilterCards={onFilterCards}/>
+                                <DynamicCmp target={target} board={board} changeMenu={changeMenu} toggleMenu={toggleMenu} onFilterCards={onFilterCards} />
                             </div>
                         </div>
                     </div>
