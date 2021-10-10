@@ -48,7 +48,7 @@ export class _AddCard extends React.Component {
         this.props.updateBoard(board, action, newCard);
         // this.props.onCloseAdding();
     }
-
+    
     render() {
         const { cardTitle } = this.state;
         return (
