@@ -10,6 +10,7 @@ class _NotifPopover extends React.Component {
 
     onNotifClick = (cardId) => {
         const { board } = this.props
+        // if (!board) return
         const list = board.lists.find(list => list.cards.find(card => card.cardId === cardId))
         if (!list) this.props.history.push(`/cardNotFound`)
         else this.props.history.push(`/boards/${board._id}/${list.listId}/${cardId}`);
