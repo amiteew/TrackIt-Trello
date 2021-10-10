@@ -78,14 +78,14 @@
     flex-wrap: wrap;
 
     // img {
-        // width: unset;
-        // border-radius: 50%;
-        // height: rem(28px);
-        // width: rem(28px);
-        // align-items: flex-end;
-        // position: absolute;
-        // right: rem(7px);
-        // bottom: rem(2px);
+    // width: unset;
+    // border-radius: 50%;
+    // height: rem(28px);
+    // width: rem(28px);
+    // align-items: flex-end;
+    // position: absolute;
+    // right: rem(7px);
+    // bottom: rem(2px);
     // }
 
     .icons-preview {
@@ -124,32 +124,40 @@
         span.clock {
             height: 16px;
         }
+
         &:hover {
             .clock {
                 display: none;
             }
+
             .check {
                 display: inherit;
             }
         }
+
         .check {
             display: none;
         }
+
         svg {
             font-size: 16px;
         }
+
         span {
             padding-right: 2px;
             padding-left: 2px;
         }
+
         .date {
             padding: 0 rem(5px);
         }
+
         &.overdue {
             background-color: #ec9488;
             border-radius: 3px;
             color: #fff;
         }
+
         // padding-right: 6px;
     }
 }
@@ -157,43 +165,39 @@
 .card-preview-content {
     position: relative;
     border-radius: 3px;
-    
+
     .quick-card-edit-btn {
         position: absolute;
         background-clip: padding-box;
-        background-color: #f4f5f7;
+        // background-color: #f4f5f7;
         background-origin: initial;
         border-radius: rem(3px);
         padding: rem(4px);
         position: absolute;
         right: rem(2px);
         top: rem(2px);
+        visibility: hidden;
+        opacity: 0.8;
 
     }
 
-    @include for-normal-layout {
+  
+    &:hover {
         .quick-card-edit-btn {
-            visibility: hidden;
-            opacity: 0.8;
+            visibility: visible;
 
-        }
-
-        &:hover {
-            .quick-card-edit-btn {
-                visibility: visible;
-
-                &:hover {
-                    background-color: #ebecf0;
-                    opacity: 1;
-                    color: #172b4d;
-                }
+            &:hover {
+                background-color: #ebecf0;
+                opacity: 1;
+                color: #172b4d;
             }
         }
-
     }
+
 
     .list-card-labels {
         display: none;
+
         &.show-labels {
             display: flex;
         }

@@ -1,3 +1,5 @@
+import { storageService } from '../services/storage.service';
+
 const initialState = {
   boards: [],
   board: null,
@@ -45,6 +47,10 @@ export function boardReducer(state = initialState, action = null) {
     //   }
     // }
     case 'UPDATE_BOARD': {
+      if (state.isOffline) {
+        console.log('im in offline');
+        storageService.saveToStorage('BOARD_DB', action.board);
+      }
       return {
         ...state, board: action.board, boards: state.boards.map(board =>
           board._id === action.board._id ? action.board : board)

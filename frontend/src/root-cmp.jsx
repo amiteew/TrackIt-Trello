@@ -4,8 +4,9 @@ import routes from './routes.js'
 import { AppHeader } from './cmp/Header/AppHeader.jsx'
 import { UserMsg } from './cmp/UserMsg';
 import { connect } from 'react-redux'
-import { setOffline } from '../src/store/board.actions';
+import { setOffline, updateBoard } from '../src/store/board.actions';
 import { storageService } from '../src/services/storage.service';
+import { showErrorMsg, showSuccessMsg } from '../src/services/event-bus.service'
 
 class _RootCmp extends React.Component {
 
@@ -13,16 +14,19 @@ class _RootCmp extends React.Component {
         window.addEventListener('offline', () => {
             console.log('offline');
             this.props.setOffline(true);
-            storageService.saveToStorage('BOARD_DB',this.props.board);
+            showErrorMsg('offline, changes will sync when back online')
         })
         window.addEventListener('online', () => {
             console.log('online');
             this.props.setOffline(false);
-
+            if (storageService.loadFromStorage('BOARD_DB')) {
+                const board = storageService.loadFromStorage('BOARD_DB')
+                storageService.saveToStorage('BOARD_DB', null);
+                this.props.updateBoard(board)
+                showSuccessMsg('Back online,all changes updated!')
+            }
         })
     }
-
-
 
     componentWillUnmount() {
 
@@ -53,7 +57,8 @@ function mapStateToProps(state) {
     }
 }
 const mapDispatchToProps = {
-    setOffline
+    setOffline,
+    updateBoard
 }
 
 

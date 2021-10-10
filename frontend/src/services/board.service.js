@@ -1,6 +1,7 @@
 import { httpService } from './http.service'
 import { storageService } from './async-storage.service'
 // import { userService } from './user.service'
+import { emitToUser, socketService } from '../services/socket.service'
 // import { socketService, SOCKET_EVENT_REVIEW_ADDED } from './socket.service'
 
 const BOARD_KEY = 'boardsDB'
@@ -67,7 +68,8 @@ function getBoardById(boardId, filterBy = {}) {
 
 function save(board) {
   // console.log('board', board);
-
+  // socketService.emit('update-board', board);
+  
   if (board._id) {
     return httpService.put(`boards/${board._id}`, board);
     // console.log('board in service.save', board);
