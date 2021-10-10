@@ -12,7 +12,7 @@ import { CardDetails } from '../pages/CardDetails.jsx';
 import { Dashboard } from './Dashboard'
 import { Loading } from '../cmp/Loading.jsx';
 import { socketService } from '../services/socket.service';
-import {utilService} from '../services/util.service';
+import { utilService } from '../services/util.service';
 
 class _BoardApp extends React.Component {
     state = {
@@ -32,13 +32,14 @@ class _BoardApp extends React.Component {
         })
         socketService.on('sending notification', (isNotif) => {
             this.props.setNotif(isNotif)
-          })
+        })
     }
 
     componentWillUnmount() {
         socketService.off('board updated', this.updateSocket);
         socketService.off('boardId');
-        // socketService.off('sending notification', this.resiveNotifi)
+        this.props.setNotif(false)
+        socketService.off('sending notification')
         // socketService.terminate()
     }
 
@@ -126,7 +127,7 @@ class _BoardApp extends React.Component {
                 <Route exact component={Dashboard} path="/boards/:boardId/dashboard" />
                 <BoardHeader board={board} onUpdateBoard={this.onUpdateBoard} onOpenDashboard={this.onOpenDashboard} goToTemplateClone={this.goToTemplateClone} />
                 <div className="board-background" style={bgStyle}></div>
-               
+
                 <div className="board-canvas flex">
                     <DragDropContext onDragEnd={this.onDragEnd}>
                         <BoardList board={board} lists={board.lists} onUpdateBoard={this.onUpdateBoard} className="board" />

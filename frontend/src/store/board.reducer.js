@@ -84,7 +84,7 @@ export function boardReducer(state = initialState, action = null) {
     case 'SET_NOTIF_COUNT':
       return { ...state, notifCount: action.count }
     case 'SET_NOTIF_COUNT++':
-      return { ...state, notifCount: state.notifCount + 1 }
+      return { ...state, notifCount: (state.notifCount + 1) }
     case 'SET_FILTER':
       return { ...state, filterBy: action.filterBy }
     case 'SET_LABEL':

@@ -10,18 +10,21 @@ class _NotifPopover extends React.Component {
 
     onNotifClick = (cardId) => {
         const { board } = this.props
-        // if (!board) return
         const list = board.lists.find(list => list.cards.find(card => card.cardId === cardId))
         if (!list) this.props.history.push(`/cardNotFound`)
         else this.props.history.push(`/boards/${board._id}/${list.listId}/${cardId}`);
         this.props.handleClose()
     }
 
-
-
     render() {
-        const { board, notifCount } = this.props
-        const notifications = board.activities.filter(activity => activity.isNotif)
+        const { board, notifCount, loggedInUser } = this.props
+        if (!board._id) return (
+            <div>
+                Enter a board to see your notifications
+            </div>
+        )
+        const notifications = board.activities.filter(activity => (activity.isNotif
+            && (activity.byMember._id !== loggedInUser._id)))
         return (
             <div className="notif-popover fancy-scrollbar flex align-center direction-col">
                 {notifications.length ?

@@ -1,5 +1,3 @@
-
-
 //Frontend in boardApp cmp
 componentDidMount() {
     const { boardId } = this.props.match.params
@@ -10,7 +8,7 @@ componentDidMount() {
     })
     socketService.on('sending notification', (isNotif) => {
         this.props.setNotif(isNotif)
-      })
+    })
 }
 
 
@@ -35,7 +33,7 @@ export function updateBoard(board, action = null, card = '', txt = '') {
 
 //Backend
 socket.on('update-board', board => {
-    socket.broadcast.to(socket.boardId).emit('board updated', board) 
+    socket.broadcast.to(socket.boardId).emit('board updated', board)
     if (board.activities[0].isNotif) {
         socket.broadcast.to(socket.boardId).emit('sending notification', true)
     }

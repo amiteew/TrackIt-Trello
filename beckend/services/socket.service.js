@@ -38,11 +38,12 @@ function connectSockets(http, session) {
             socket.join(boardId)
             socket.myTopic = boardId;
         })
-
         socket.on('update-board', board => {
             console.log('Emitting update board', board.boardTitle);
             socket.broadcast.to(socket.myTopic).emit('board updated', board) //CHECKING TEST
-            if (board.activities[0].isNotif) {
+            if (board.activities[0].isNotif === 'new-notif') {
+                console.log('sending notif from backend')
+
                 socket.broadcast.to(socket.myTopic).emit('sending notification', true)
             }
 

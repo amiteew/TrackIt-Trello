@@ -110,9 +110,9 @@ export function updateBoard(board, action = null, card = '', txt = "") {
       if (action) {
         var activity = _storeSaveActivity(action, card, txt);
         board.activities.unshift(activity);
-      }
+      } else board.activities[0].isNotif = 'alreday-sent-notif';
       dispatch({ type: 'UPDATE_BOARD', board: { ...board } });
-      
+
       await boardService.save(board);
       dispatch({ type: 'UPDATE_LAST_UPDATED_BOARD' });
       socketService.emit('update-board', board);
@@ -152,7 +152,7 @@ function _filterActionsNotif(activity) {
     case 'Completed checklist':
     // COMMENT
     case 'Added comment':
-      activity.isNotif = true
+      activity.isNotif = 'new-notif';
       break
     default:
       activity.isNotif = false
