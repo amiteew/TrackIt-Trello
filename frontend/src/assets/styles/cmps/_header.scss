@@ -3,38 +3,48 @@
     width: 100%;
     z-index: 1;
     padding: 16px;
-    background-color: #fafffe; /*remove later*/
+    background-color: #fafffe;
+
+    /*remove later*/
     .nav-bar {
         height: rem(36.25px);
         width: 100%;
+
         .logo-container {
             gap: rem(7px);
             font-size: rem(25px);
+
             .icon-span {
                 background-color: #45cbb2;
                 height: rem(25px);
                 width: rem(25px);
                 border-radius: rem(6px);
+
                 .icon {
                     height: 1.4rem;
                     width: 1.4rem;
                 }
             }
+
             .logo-name {
                 font-size: 33px;
                 color: #083e34;
                 margin: 0;
             }
         }
+
         .login-signup {
             font-family: SourceSansPro-Semi;
             font-size: rem(20px);
             gap: 5px;
-            & > a {
+
+            &>a {
                 padding: 5px 10px 7px;
             }
+
             .login {
                 color: #1db79a;
+
                 &:hover {
                     color: #82dfce;
                 }
@@ -51,24 +61,30 @@
     color: white;
     font-size: rem(14px);
     padding: 6px 1rem;
+
     // z-index: 1;
     .nav-bar {
         width: 100%;
+
         .main-nav-links {
             gap: 4px;
+
             .logo-container {
                 gap: rem(7px);
+
                 .icon-span {
                     height: 1.5rem;
                     width: 1.5rem;
                     border: 2px solid white;
                     // border: 2px solid white;
                     border-radius: rem(5px);
+
                     .icon {
                         height: 1rem;
                         width: 1rem;
                     }
                 }
+
                 .logo-name {
                     font-family: SourceSansPro-Reg;
                     letter-spacing: 1px;
@@ -77,69 +93,85 @@
                     margin-inline-end: 6px;
                 }
             }
+
             .header-btn {
                 padding: 6px 8px;
                 border-radius: 3px;
                 background-color: transparent;
                 color: white;
                 height: 32px;
+
                 button {
                     background-color: transparent;
                     color: white;
                     padding: 0;
+
                     span {
                         display: flex;
                         align-items: center;
                         gap: 6px;
+
                         img {
                             height: 16px;
                             width: 16px;
                         }
                     }
                 }
+
                 &.create,
                 &.create-small {
                     background-color: rgba(0, 0, 0, 0.24);
                 }
+
                 &.create-small {
                     padding: 0;
                     width: 32px;
+
                     img {
                         height: 20px;
                         width: 20px;
                     }
                 }
+
                 &.create,
                 &.starred {
                     display: none;
                 }
+
                 &:hover,
                 &.open {
                     background-color: rgba(255, 255, 255, 0.2);
                 }
             }
+
             @include for-narrow-layout {
                 margin-right: 6px;
+
                 .header-btn {
                     padding: 6px 12px;
+
                     &.create {
                         display: inline-block;
                         line-height: 20px;
                         margin-inline-start: 6px;
                     }
+
                     &.create-small {
                         display: none;
                     }
                 }
             }
+
             @include for-normal-layout {
                 .header-btn.starred {
                     display: inline-block;
                 }
             }
         }
+
         .user-section {
             gap: 8px;
+
             .notifications button {
                 display: flex;
                 align-items: center;
@@ -149,25 +181,33 @@
                 width: 32px;
                 padding: 0;
                 background-color: transparent;
+
                 svg {
                     color: white;
                 }
+
                 &:hover {
                     background-color: #ffffff33;
                 }
             }
 
-            .notif-background{
+            .notif-background {
                 background-color: red;
                 border-radius: 50%;
-                width: 30px;
+                margin-top: 2px;
+                // width: 30px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
             }
-            
+
+            .notif-count {
+                padding: 0 4px;
+            }
+
             .user-avatar {
                 height: 32px;
+
                 // position: absolute;
                 // right: 4px;
                 // top: 5px;
@@ -175,6 +215,7 @@
                     background-color: transparent;
                     padding: 0;
                 }
+
                 .MuiAvatar-root {
                     height: 32px;
                     width: 32px;
@@ -196,6 +237,7 @@
     justify-content: center;
     align-items: center;
     background-color: #bdbdbd;
+
     p {
         font-size: rem(15px);
     }

@@ -34,8 +34,9 @@ class _EditLabel extends React.Component {
     onSaveLabel = () => {
         const { labelName, labelColor } = this.state;
         const { labelsProps, board } = this.props
+
         const currLabel = labelsProps.label;
-        if (currLabel) {
+        if (currLabel.title || currLabel.color) {
             currLabel.title = labelName ? labelName : currLabel.title;
             currLabel.color = labelColor ? labelColor : currLabel.color;
         } else {

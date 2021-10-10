@@ -1,6 +1,21 @@
 
-//Frontend
-export function updateBoard(board, action = null, card = '', txt = "") {
+
+//Frontend in boardApp cmp
+componentDidMount() {
+    const { boardId } = this.props.match.params
+    this.props.loadBoard(boardId);
+    socketService.emit('boardId', boardId);
+    socketService.on('board updated', board => {
+        this.props.loadBoard(board._id)
+    })
+    socketService.on('sending notification', (isNotif) => {
+        this.props.setNotif(isNotif)
+      })
+}
+
+
+//Frontend in board.actions 
+export function updateBoard(board, action = null, card = '', txt = '') {
     return async dispatch => {
         try {
             if (action) {
@@ -9,7 +24,7 @@ export function updateBoard(board, action = null, card = '', txt = "") {
             }
             dispatch({ type: 'UPDATE_BOARD', board: { ...board } });
             await boardService.save(board);
-            dispatch({ type: 'UPDATE_LAST_UPDATED_BOARD' }); // Ask asaf
+            dispatch({ type: 'UPDATE_LAST_UPDATED_BOARD' });
             socketService.emit('update-board', board);
         } catch (err) {
             dispatch({ type: 'UNDO_UPDATE_BOARD' });
@@ -18,11 +33,11 @@ export function updateBoard(board, action = null, card = '', txt = "") {
     }
 }
 
-//Beckend
+//Backend
 socket.on('update-board', board => {
-    socket.broadcast.to(socket.myTopic).emit('board updated', board) 
+    socket.broadcast.to(socket.boardId).emit('board updated', board) 
     if (board.activities[0].isNotif) {
-        socket.broadcast.to(socket.myTopic).emit('sending notification', true)
+        socket.broadcast.to(socket.boardId).emit('sending notification', true)
     }
 
 })
