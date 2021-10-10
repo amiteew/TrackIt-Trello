@@ -13,7 +13,7 @@ export function ActionList({ list, board, onUpdateBoard }) {
 
     return (
         <div>
-            <p onClick={onDeleteList}>Delete</p>
+            <p className="pointer" onClick={onDeleteList}>Delete</p>
         </div>
     )
 

@@ -7,6 +7,7 @@ import { unsplashService } from '../../services/unsplash.service';
 import { color } from '@mui/system';
 import { SearchForCover } from '../DynamicPopover/SearchForCover';
 import { cloudinaryService } from '../../services/cloudinary.service.js';
+import { Loading } from '../../cmp/Loading'
 
 
 class _CoverPopover extends React.Component {
@@ -116,6 +117,7 @@ class _CoverPopover extends React.Component {
         const currCard = board.lists[currListIdx].cards[currCardIdx];
         const halfCover = !currCard.cardStyle.isCover ? 'selected' : '';
         const fullCover = currCard.cardStyle.isCover ? 'selected' : '';
+        // if(isSearch && !coverImgs || !coverImgs.lentgh) return <Loading />
         return (
             <section className="popover-cover">
                 {isSearch && <SearchForCover searchCover={searchCover} getImgForCover={this.getImgForCover} handleChange={this.handleChange} />}
@@ -158,7 +160,7 @@ class _CoverPopover extends React.Component {
                 <div >
                     {!isSearch && <h4>Unsplash</h4>}
                     {isSearch && <h4>Top photos</h4>}
-                    <div className="cover-img-plate ">
+                    <div className="cover-img-plate pointer">
                         {coverImgs.map(coverImg => (<div key={coverImg.id} onClick={() => this.onToggleImgCover(currCard, coverImg)}
                             className={`img-cover ${this.isCoverOnCard(currCard, coverImg.id) ? 'cover-selected' : ''} `} style={{ backgroundImage: `url(${coverImg.small})` }}></div>))}
                     </div>

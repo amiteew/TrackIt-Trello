@@ -11,7 +11,8 @@ class _Signup extends React.Component {
         credentials: {
             username: '',
             password: '',
-            fullname: ''
+            fullname: '',
+            imgUrl:''
         },
         isSignupFailed: false,
         isLoading: false
@@ -23,7 +24,8 @@ class _Signup extends React.Component {
         const emptyCredentials = {
             username: '',
             password: '',
-            fullname: ''
+            fullname: '',
+            imgUrl: ''
         }
         this.setState(prevState => ({ ...prevState, credentials: emptyCredentials }))
     }
@@ -52,6 +54,9 @@ class _Signup extends React.Component {
         this.setState({ isSignupFailed: false })
     }
 
+    responseGoogle = (response) =>{
+        console.log(response);
+    }
     render() {
         const { username, password, fullname } = this.state.credentials;
         const { isSignupFailed, isLoading } = this.state
@@ -90,10 +95,10 @@ class _Signup extends React.Component {
                         />
 
                         <GoogleLogin
-                            // clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+                            clientId="424178974509-9hf317najboqtp0hkg1to5j6ogduo4r6.apps.googleusercontent.com"
                             buttonText="Login"
-                            // onSuccess={responseGoogle}
-                            // onFailure={responseGoogle}
+                            onSuccess={this.responseGoogle}
+                            onFailure={this.responseGoogle}
                             cookiePolicy={'single_host_origin'}
                         />
                         <button>Sign up</button>
