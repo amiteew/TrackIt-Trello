@@ -12,7 +12,7 @@ class _Signup extends React.Component {
             username: '',
             password: '',
             fullname: '',
-            imgUrl:''
+            imgUrl: ''
         },
         isSignupFailed: false,
         isLoading: false
@@ -54,8 +54,13 @@ class _Signup extends React.Component {
         this.setState({ isSignupFailed: false })
     }
 
-    responseGoogle = (response) =>{
+    responseGoogle = (response) => {
         console.log(response);
+        const fullname = response.profileObj.name;
+        const username = response.profileObj.givenName;
+        const imgUrl = response.profileObj.imageUrl;
+        this.setState({ credentials: { ...this.state.credentials, fullname, username, imgUrl}})
+        this.onSignup();
     }
     render() {
         const { username, password, fullname } = this.state.credentials;

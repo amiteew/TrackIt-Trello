@@ -108,11 +108,11 @@
         &.members {
             flex-grow: 1;
             justify-content: flex-end;
-            margin-right: -1px;
-            margin-bottom: 7px;
+            margin-right: -3px;
+            margin-bottom: 6px;
 
             .btn-photo-member .MuiAvatar-root {
-                margin-left: 7px;
+                margin-left: 5px;
                 // margin-left: -8px;
                 height: 28px;
                 width: 28px;
@@ -225,7 +225,7 @@
 
         &.checkbox.done {
             margin-left: 5px;
-            margin-right: 3px;
+            // margin-right: 3px;
         }
     }
 
