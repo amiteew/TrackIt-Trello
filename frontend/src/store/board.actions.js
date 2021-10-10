@@ -112,22 +112,17 @@ export function updateBoard(board, action = null, card = '', txt = "") {
         board.activities.unshift(activity);
       }
       dispatch({ type: 'UPDATE_BOARD', board: { ...board } });
+      
       await boardService.save(board);
       dispatch({ type: 'UPDATE_LAST_UPDATED_BOARD' });
       socketService.emit('update-board', board);
-      // if (action && activity.isNotif) socketService.emit('received notification');
     } catch (err) {
-      // console.log('board id: ', board._id)
-      // loadBoard(board._id)
-      // dispatch({ type: 'UPDATE_BOARD', board: { ...board } });
       dispatch({ type: 'UNDO_UPDATE_BOARD' });
       showErrorMsg('Sorry cannot update board')
       console.log('BoardActions: err in updateBoard', err);
-      // console.log('after loadboard')
     }
   }
 }
-
 
 function _storeSaveActivity(action, card, txt) {
 
@@ -187,6 +182,17 @@ export function setUpdateLabel(labelsProps) {
       dispatch({ type: 'SET_LABEL', labelsProps });
     } catch (err) {
       console.log('Cannot set labels props', err);
+    }
+  }
+
+}
+
+export function setOffline(isOffline) {
+  return async dispatch => {
+    try {
+      dispatch({ type: 'SET_OFFLINE', isOffline });
+    } catch (err) {
+      console.log('Cannot set offline', err);
     }
   }
 

@@ -27,11 +27,6 @@ class _BoardHeader extends React.Component {
 
   componentDidMount() {
     this.setState({ title: this.props.board.boardTitle })
-    // socketService.setup()
-
-    // socketService.on('sending notification', (isNotif) => {
-    //   this.props.setNotif(isNotif)
-    // })
   }
 
   componentDidUpdate(prevProps, prevState) {

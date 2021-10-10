@@ -1,7 +1,7 @@
 {
   "name": "Keep everything on track",
   "short_name": "TrackIt",
-  "start_url": "%PUBLIC_URL%",
+  "start_url": ".",
   "display": "standalone",
   "icons": [
     {

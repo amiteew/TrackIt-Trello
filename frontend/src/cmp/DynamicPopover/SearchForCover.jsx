@@ -10,7 +10,7 @@ export class SearchForCover extends React.Component {
 
     render() {
         const { handleChange, searchCover, getImgForCover } = this.props;
-        const searchKey = ['Animals', 'Business', 'Architect', 'Nature', 'Organization', 'Colorful', 'Minimal', 'Space', 'Perspective'];
+        const searchKey = ['Animals', 'Business', 'Architect', 'Construction', 'Organization', 'Foundation', 'Minimal', 'Space', 'Perspective'];
         return (
             <div className="search-cover">
                 <div className="search-cover-input">

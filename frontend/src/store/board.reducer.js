@@ -18,7 +18,8 @@ const initialState = {
     label: {},
     isCreate: false
   },
-  searchBg: ''
+  searchBg: '',
+  isOffline: false
 }
 
 export function boardReducer(state = initialState, action = null) {
@@ -90,6 +91,8 @@ export function boardReducer(state = initialState, action = null) {
       return { ...state, labelsProps: action.labelsProps }
     case 'SET_SEARCH_BG':
       return { ...state, searchBg: action.searchStr }
+    case 'SET_OFFLINE':
+      return { ...state, isOffline: action.isOffline }
     default:
       return state
   }

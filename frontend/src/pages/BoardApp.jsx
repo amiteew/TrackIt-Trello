@@ -26,7 +26,6 @@ class _BoardApp extends React.Component {
         }
         const { boardId } = this.props.match.params
         this.props.loadBoard(boardId);
-        // socketService.setup();
         socketService.emit('boardId', boardId);
         socketService.on('board updated', board => {
             this.props.loadBoard(board._id)
@@ -34,7 +33,6 @@ class _BoardApp extends React.Component {
         socketService.on('sending notification', (isNotif) => {
             this.props.setNotif(isNotif)
           })
-        // console.log('board component did mount');
     }
 
     componentWillUnmount() {
