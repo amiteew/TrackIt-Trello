@@ -90,16 +90,16 @@
                             width: 100%;
                         }
                     }
-                    .MuiAvatar-root {
-                        background-color: #bdbdbd;
-                        color: white;
-                        height: 29px;
-                        width: 29px;
-                        // background-color: #00000014;
-                        font-size: rem(12px);
-                        &:hover {
-                            opacity: 0.8;
-                        }
+                }
+                .MuiAvatar-root {
+                    background-color: #bdbdbd;
+                    color: white;
+                    height: 29px;
+                    width: 29px;
+                    // background-color: #00000014;
+                    font-size: rem(12px);
+                    &:hover {
+                        opacity: 0.8;
                     }
                 }
             }

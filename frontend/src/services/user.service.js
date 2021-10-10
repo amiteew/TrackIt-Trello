@@ -102,7 +102,8 @@ function filterUserBoards(boards, userId, type) {
 }
 
 function isBoardStarred(board, userId) {
-    return board.boardMembers.find(member => member._id === userId).isStarred
+    const memberIdx = board.boardMembers.findIndex(member => member._id === userId)
+    if (memberIdx > -1) return board.boardMembers[memberIdx].isStarred
 }
 
 function toggleStarBoard(board, userId) {
