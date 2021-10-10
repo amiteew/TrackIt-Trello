@@ -4,6 +4,7 @@ import { emitToUser, socketService } from '../services/socket.service'
 import { userService } from '../services/user.service'
 import { utilService } from '../services/util.service.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service';
+import { storageService } from '../services/storage.service';
 
 export function loadBoards(userId) {
   return async dispatch => {
@@ -112,10 +113,13 @@ export function updateBoard(board, action = null, card = '', txt = "") {
         board.activities.unshift(activity);
       } else board.activities[0].isNotif = 'alreday-sent-notif';
       dispatch({ type: 'UPDATE_BOARD', board: { ...board } });
+      const serviceBoard = await boardService.save(board);
 
-      await boardService.save(board);
       dispatch({ type: 'UPDATE_LAST_UPDATED_BOARD' });
-      socketService.emit('update-board', board);
+      if (serviceBoard._id === board._id) {
+        socketService.emit('update-board', board);
+        console.log('im in socket');
+      }
     } catch (err) {
       dispatch({ type: 'UNDO_UPDATE_BOARD' });
       showErrorMsg('Sorry cannot update board')

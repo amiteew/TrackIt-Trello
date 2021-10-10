@@ -150,7 +150,7 @@ class _BoardHeader extends React.Component {
 
         </div>
         <div className="header-right flex">
-          {filterBy.isFilter && <div className="cards-count pointer">
+          {filterBy.isFilter && <div className="cards-count pointer flex align-center">
             <span onClick={this.openSearchOnMenu} className="number-count">{board.cardsCount} search results</span>
             <span onClick={this.resetSearch} className="close-filter-btn"><img src={close} alt="close" /></span>
           </div>}
