@@ -77,16 +77,16 @@
     align-items: flex-end;
     flex-wrap: wrap;
 
-    img {
-        width: unset;
-        border-radius: 50%;
-        height: rem(28px);
-        width: rem(28px);
-        align-items: flex-end;
-        position: absolute;
-        right: rem(7px);
+    // img {
+        // width: unset;
+        // border-radius: 50%;
+        // height: rem(28px);
+        // width: rem(28px);
+        // align-items: flex-end;
+        // position: absolute;
+        // right: rem(7px);
         // bottom: rem(2px);
-    }
+    // }
 
     .icons-preview {
         align-items: center;
@@ -108,56 +108,48 @@
         &.members {
             flex-grow: 1;
             justify-content: flex-end;
-            margin-right: -10px;
+            margin-right: -1px;
+            margin-bottom: 7px;
 
             .btn-photo-member .MuiAvatar-root {
-                margin-left: -8px;
+                margin-left: 7px;
+                // margin-left: -8px;
+                height: 28px;
+                width: 28px;
             }
         }
     }
 
     .due-date {
-
-
         span.clock {
             height: 16px;
         }
-
         &:hover {
-
             .clock {
                 display: none;
             }
-
             .check {
                 display: inherit;
             }
-
         }
-
         .check {
             display: none;
         }
-
         svg {
             font-size: 16px;
         }
-
         span {
             padding-right: 2px;
             padding-left: 2px;
         }
-
         .date {
             padding: 0 rem(5px);
         }
-
         &.overdue {
             background-color: #ec9488;
             border-radius: 3px;
             color: #fff;
         }
-
         // padding-right: 6px;
     }
 }
@@ -165,7 +157,7 @@
 .card-preview-content {
     position: relative;
     border-radius: 3px;
-
+    
     .quick-card-edit-btn {
         position: absolute;
         background-clip: padding-box;
@@ -194,7 +186,6 @@
 
     .list-card-labels {
         display: none;
-
         &.show-labels {
             display: flex;
         }
@@ -233,7 +224,6 @@
     &.is-watch {
         padding: 0 rem(6px) 0 rem(2px);
     }
-
 
     .card-txt {
         padding: 0 rem(4px) 0 rem(2px);

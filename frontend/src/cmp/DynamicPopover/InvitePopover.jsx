@@ -20,11 +20,9 @@ class _InvitePopover extends React.Component {
     }
 
     handleChange = ({ target }) => {
-        this.setState({ ...this.state, inputTxt: target.value }, () => {
-            const filterRegex = new RegExp(this.state.inputTxt, 'i')
-            const filteredUsers = this.state.users.filter(user => filterRegex.test(user.fullname))
-            this.setState({ ...this.state, filteredUsers })
-        })
+        const filterRegex = new RegExp(this.state.inputTxt, 'i')
+        const filteredUsers = this.state.users.filter(user => filterRegex.test(user.fullname))
+        this.setState({ ...this.state, inputTxt: target.value, filteredUsers })
     }
 
     isMemberInBoard = (userId) => {
@@ -33,7 +31,7 @@ class _InvitePopover extends React.Component {
 
     addUser = (user) => {
         if (this.isMemberInBoard(user._id)) return
-        const newBoard = {...this.props.board}
+        const newBoard = { ...this.props.board }
         newBoard.boardMembers.push(user)
         this.props.updateBoard(newBoard, `invited ${user.fullname} to the board`)
         this.props.handleClose()

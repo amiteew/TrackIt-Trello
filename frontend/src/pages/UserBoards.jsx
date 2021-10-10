@@ -23,7 +23,7 @@ class _UserBoards extends React.Component {
         let user = this.props.loggedInUser
         if (!user) user = await this.props.loginAsGuest()
         await this.props.loadBoards(user._id)
-        const userBoards = userService.filterUserBoards(this.props.boards, this.props.loggedInUser._id, "all")
+        const userBoards = userService.filterUserBoards(this.props.boards, user._id, "all")
         this.setState({ userBoards })
         this.props.loadBoard(null)
     }
@@ -32,10 +32,6 @@ class _UserBoards extends React.Component {
     getBoardsByType = (type) => {
         const { loggedInUser } = this.props
         return userService.filterUserBoards(this.state.userBoards, loggedInUser._id, type)
-    }
-
-    getGuestBoards = () => {
-
     }
 
     toggleStarBoard = (ev, board) => {
@@ -58,7 +54,6 @@ class _UserBoards extends React.Component {
         const starredBoards = userBoards.length ? this.getBoardsByType("starred") : []
         const owndBoards = userBoards.length ? this.getBoardsByType("owner") : []
         const guestdBoards = userBoards.length ? this.getBoardsByType("guest") : []
-        // const starredBoards = userBoards.length ? this.getStarredBoards() : []
         return (
             <section className="main-container boards">
                 <section className="boards-page flex">
