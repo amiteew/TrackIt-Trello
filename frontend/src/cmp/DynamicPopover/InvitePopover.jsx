@@ -15,8 +15,10 @@ class _InvitePopover extends React.Component {
 
     async componentDidMount() {
         const users = await userService.getUsers()
+        const { loggedInUser } = this.props;
         users.sort((u1, u2) => ((u1.fullname).localeCompare(u2.fullname)))
-        this.setState({ users, filteredUsers: users })
+        const filteredUsers = users.filter(user => user._id !== loggedInUser._id);
+        this.setState({ users, filteredUsers })
     }
 
     handleChange = ({ target }) => {
@@ -38,7 +40,7 @@ class _InvitePopover extends React.Component {
     }
 
     render() {
-        const { users, inputTxt, filteredUsers } = this.state
+        const { users, inputTxt, filteredUsers } = this.state;
         if (!users.length) return <></>
         return (
             <div className="invite-users">
@@ -65,7 +67,8 @@ class _InvitePopover extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        board: state.boardReducer.board
+        board: state.boardReducer.board,
+        loggedInUser: state.userReducer.loggedInUser
     }
 }
 

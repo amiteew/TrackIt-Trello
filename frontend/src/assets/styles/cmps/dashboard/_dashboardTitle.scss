@@ -6,7 +6,7 @@
         text-align: center;
         color: white;
         font-size: rem(50px);
-        margin-bottom: 20px;
+        margin-bottom: 45px;
         svg {
             width: rem(50px);
             height: rem(50px);
@@ -14,7 +14,7 @@
         }
     }
     .dashboard-stats {
-        margin-bottom: 30px;
+        // margin-bottom: 30px;
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -22,6 +22,7 @@
         li {
             // padding: 10px 30px;
             // border: 2px solid white;
+            
             .circle-overdue {
                 width: 100px;
                 align-self: center;
@@ -31,7 +32,7 @@
                 text-align: center;
                 color: white;
                 font-size: rem(30px);
-                margin-bottom: 15px;
+                margin-bottom: 45px;
                 display: flex;
                 align-items: center;
                 flex-direction: row;

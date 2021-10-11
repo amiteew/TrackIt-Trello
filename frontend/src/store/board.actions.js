@@ -3,15 +3,13 @@ import { socketService } from '../services/socket.service'
 import { userService } from '../services/user.service'
 import { utilService } from '../services/util.service.js'
 import { showErrorMsg } from '../services/event-bus.service';
+import { storageService } from '../services/storage.service';
 
 export function loadBoards(userId) {
   return async dispatch => {
     try {
       const boards = await boardService.query(userId)
       dispatch({ type: 'SET_BOARDS', boards })
-      // socketService.on(SOCKET_EVENT_BOARD_ADDED, (board) =>{
-      //   dispatch({ type: 'ADD_BOARD', board })
-      // })
 
     } catch (err) {
       showErrorMsg('Sorry cannot load boards')
@@ -25,9 +23,6 @@ export function loadBoard(boardId) {
     try {
       const board = !boardId ? null : await boardService.getBoardById(boardId)
       dispatch({ type: 'SET_BOARD', board: { ...board } })
-      // socketService.on(SOCKET_EVENT_BOARD_ADDED, (board) =>{
-      //   dispatch({ type: 'ADD_BOARD', board })
-      // })
     } catch (err) {
       showErrorMsg('Sorry cannot load board')
       console.log('BoardActions: err in loadBoards', err)
@@ -40,10 +35,6 @@ export function loadListAndCard(list, card) {
     try {
       dispatch({ type: 'SET_LIST', list })
       dispatch({ type: 'SET_CARD', card })
-
-      // socketService.on(SOCKET_EVENT_BOARD_ADDED, (board) =>{
-      //   dispatch({ type: 'ADD_BOARD', board })
-      // })
     } catch (err) {
       console.log('BoardActions: err in loadList', err)
     }
@@ -88,7 +79,6 @@ export function setFilterBy(filterBy, boardId) {
       dispatch({ type: 'SET_FILTER', filterBy: filterBy });
       const board = !boardId ? null : await boardService.getBoardById(boardId, filterBy)
       dispatch({ type: 'UPDATE_BOARD', board: { ...board } });
-      // dispatch({ type: 'SET_BOARD', board: { ...board } })
     } catch (err) {
       console.log('Cannot update notification', err);
     }
@@ -105,22 +95,27 @@ export function updateBoard(board, action = null, card = '', txt = '') {
   }
 
   return async dispatch => {
-    try {
+    try {      
       if (action) {
-        var activity = _storeSaveActivity(action, card, txt);        
+        var activity = _storeSaveActivity(action, card, txt);
         board.activities.unshift(activity);
       } else board.activities[0].isNotif = 'alreday-sent-notif';
-  
       dispatch({ type: 'UPDATE_BOARD', board: { ...board } });
-      const serviceBoard = await boardService.save(board);
-
+      console.log('here after store');
+      
+      await boardService.save(board);
       dispatch({ type: 'UPDATE_LAST_UPDATED_BOARD' });
-      if (serviceBoard._id === board._id) {
-        socketService.emit('update-board', board);
-      }
+      socketService.emit('update-board', board);
+      console.log('after board to backend');
     } catch (err) {
-      dispatch({ type: 'UNDO_UPDATE_BOARD' });
-      showErrorMsg('Sorry cannot update board')
+      if (navigator.onLine) {
+        console.log('im online board action');
+        dispatch({ type: 'UNDO_UPDATE_BOARD' });
+        showErrorMsg('Sorry cannot update board')
+      } else {
+        console.log('im in offline board action');
+        storageService.saveToStorage('BOARD_DB', board);
+      }
       console.log('BoardActions: err in updateBoard', err);
     }
   }

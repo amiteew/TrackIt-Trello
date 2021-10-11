@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { loadBoards, removeBoard, addBoard, updateBoard } from '../../store/board.actions.js';
 import DoneIcon from '@mui/icons-material/Done';
 import { TextareaAutosize } from '@mui/material';
+
 class _MembersPopover extends React.Component {
     state = {
         board: null,

@@ -182,6 +182,13 @@
                 padding: 0;
                 background-color: transparent;
 
+                & .unread-notif{
+                    background: #EB5A46;
+                    margin-right: 14px;
+                    border-radius: 3px;
+                    padding: 7px 6px;
+                }
+
                 svg {
                     color: white;
                 }
@@ -191,18 +198,19 @@
                 }
             }
 
-            .notif-background {
-                background-color: red;
-                border-radius: 50%;
-                margin-top: 2px;
-                // width: 30px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
+            // .notif-background {
+            //     background-color: red;
+            //     border-radius: 50%;
+            //     margin-top: 2px;
+            //     // width: 30px;
+            //     display: flex;
+            //     justify-content: center;
+            //     align-items: center;
+            // }
 
             .notif-count {
                 padding: 0 4px;
+                color: #fff;
             }
 
             .user-avatar {

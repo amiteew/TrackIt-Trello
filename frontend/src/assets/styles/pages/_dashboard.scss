@@ -13,6 +13,7 @@
         z-index: 1;
         background-color: rgba(0, 0, 0, 0.883);
     }
+
     .dashboard {
         position: relative;
         right: 0;
@@ -34,13 +35,13 @@
             flex-wrap: wrap;
             align-items: start;
             justify-content: center;
-            gap: 60px 90px;
+            gap: 80px 90px;
 
             div > h1 {
                 text-align: center;
                 color: white;
                 font-size: rem(30px);
-                margin-bottom: 15px;
+                margin-bottom: 45px;
             }
         }
     }

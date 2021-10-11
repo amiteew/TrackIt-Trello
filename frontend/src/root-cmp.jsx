@@ -7,6 +7,8 @@ import { connect } from 'react-redux'
 import { setOffline, updateBoard } from '../src/store/board.actions';
 import { storageService } from '../src/services/storage.service';
 import { showErrorMsg, showSuccessMsg } from '../src/services/event-bus.service'
+import { socketService } from '../src/services/socket.service'
+
 
 class _RootCmp extends React.Component {
 
@@ -16,16 +18,16 @@ class _RootCmp extends React.Component {
     }
 
     componentWillUnmount() {
-        // window.removeEventListener('online', this.onOnline)
-        // window.removeEventListener('offline', this.onOffline)
+        window.removeEventListener('online', this.onOnline)
+        window.removeEventListener('offline', this.onOffline)
     }
 
     onOnline = () => {
         console.log('online');
-        this.props.setOffline(false);
         if (storageService.loadFromStorage('BOARD_DB')) {
             const board = storageService.loadFromStorage('BOARD_DB')
             storageService.saveToStorage('BOARD_DB', null);
+            socketService.emit('boardId', board._id);
             this.props.updateBoard(board)
             showSuccessMsg('Back online,all changes updated!')
         }
