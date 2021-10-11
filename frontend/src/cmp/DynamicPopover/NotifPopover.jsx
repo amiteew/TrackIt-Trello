@@ -48,8 +48,13 @@ class _NotifPopover extends React.Component {
                                     <div className="notif-action-section flex">
                                         {/* <div className="notif-action-icon flex"><AiOutlineUserAdd /> </div> */}
                                         <div className="notif-action">
-                                            <span>{activity.action} {activity.action === 'Added' && <span> you</span>}{activity.txt}</span>
-                                            {/* {(display === 'menu') && activity.card.cardTitle && `on card: "${activity.card.cardTitle}"`} */}
+                                            <span>{activity.action}
+                                                {activity.action === 'Added' ? loggedInUser.username === activity.txt ?
+                                                 <span> you</span> : <span> {`  ${activity.txt}`} </span> : 
+                                                 activity.action === 'Removed' && loggedInUser.username === activity.txt ?
+                                                 <span> you</span> : <span> {`  ${activity.txt}`} </span> }
+                                            </span>
+
                                             <small className="notif-date"> {new Date(activity.createdAt).toString().substring(0, 16)}</small>
                                         </div>
                                     </div>

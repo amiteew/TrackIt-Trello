@@ -30,7 +30,7 @@ class _MembersPopover extends React.Component {
             currCard.cardMembers.push(member)
             var action = (loggedInUser._id === member._id) ? 'Join' : `Added`
         }
-        this.props.updateBoard(board, action, currCard)
+        this.props.updateBoard(board, action, currCard, member.username)
     }
 
     isMemberOnCard = (currCard, memberId) => {

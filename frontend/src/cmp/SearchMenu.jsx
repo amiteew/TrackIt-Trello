@@ -2,10 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { updateBoard, loadListAndCard, loadBoard, setFilterBy } from '../store/board.actions.js';
 import Divider from '@mui/material/Divider';
-import { TextareaAutosize } from '@mui/material';
 import { DebounceInput } from 'react-debounce-input';
 import checked from '../assets/imgs/checked.svg';
-import AvatarGroup from '@mui/material/AvatarGroup';
 import Avatar from '@mui/material/Avatar';
 
 class _SearchMenu extends React.Component {
@@ -90,7 +88,6 @@ class _SearchMenu extends React.Component {
                     <Divider />
                     <div className="members-type">
                         <ul className="members-search clean-list">
-                            {/* <AvatarGroup max={6} > */}
                             {board.boardMembers.map(member => (
                                 <li className="members-list flex align-center pointer" key={member._id} onClick={() => this.onFilterBy('members', member._id)} >
                                     <div>
@@ -100,7 +97,6 @@ class _SearchMenu extends React.Component {
                                     <span className="checked-icon members"> {this.onToggleSearch('members',member._id) && <img src={checked} alt="checked" />}</span>
                                 </li>
                             ))}
-                            {/* </AvatarGroup> */}
                         </ul>
                     </div>
                 </div>

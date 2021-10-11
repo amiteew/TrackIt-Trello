@@ -2,12 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { loadBoards, loadBoard, removeBoard, updateBoard, toggleLabels, setNotif } from '../store/board.actions.js';
 import { loginAsGuest } from '../store/user.actions.js';
-// import { boardService } from '../services/board.service.js';
 import { BoardList } from '../cmp/BoardList.jsx';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { BoardHeader } from '../cmp/BoardHeader.jsx';
 import { AddList } from '../cmp/AddList.jsx';
-import { Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { CardDetails } from '../pages/CardDetails.jsx';
 import { Dashboard } from './Dashboard'
 import { Loading } from '../cmp/Loading.jsx';
@@ -40,28 +39,22 @@ class _BoardApp extends React.Component {
         socketService.off('boardId');
         this.props.setNotif(false)
         socketService.off('sending notification')
-        // socketService.terminate()
     }
 
     componentDidUpdate(prevProps, prevState) {
         const { boardId } = this.props.match.params
-        // console.log('prevprops', prevProps);
         if (prevProps.board && boardId !== this.props.board._id) {
             this.props.loadBoard(boardId)
         }
-        // socketService.on('board updated', board => {
-        //     this.props.loadBoard(board._id)
-        // })
     }
 
     onUpdateBoard = (board, action, card = '', txt = '') => {
-        // const { board } = this.props
         this.props.updateBoard(board, action, card, txt);
     }
 
     onDragEnd = (res) => {
         console.log('res dnd', res);
-        const { destination, source, draggableId, type } = res;
+        const { destination, source, type } = res;
         const { board } = this.props
         if (!destination) return;
         const dndStart = source.droppableId;

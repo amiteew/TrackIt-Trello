@@ -11,28 +11,31 @@ import { showErrorMsg, showSuccessMsg } from '../src/services/event-bus.service'
 class _RootCmp extends React.Component {
 
     componentDidMount() {
-        window.addEventListener('offline', () => {
-            console.log('offline');
-            this.props.setOffline(true);
-            showErrorMsg('offline, changes will sync when back online')
-        })
-        window.addEventListener('online', () => {
-            console.log('online');
-            this.props.setOffline(false);
-            if (storageService.loadFromStorage('BOARD_DB')) {
-                const board = storageService.loadFromStorage('BOARD_DB')
-                storageService.saveToStorage('BOARD_DB', null);
-                this.props.updateBoard(board)
-                showSuccessMsg('Back online,all changes updated!')
-            }
-        })
+        window.addEventListener('offline', this.onOffline)
+        window.addEventListener('online', this.onOnline)
     }
 
     componentWillUnmount() {
-
+        // window.removeEventListener('online', this.onOnline)
+        // window.removeEventListener('offline', this.onOffline)
     }
 
+    onOnline = () => {
+        console.log('online');
+        this.props.setOffline(false);
+        if (storageService.loadFromStorage('BOARD_DB')) {
+            const board = storageService.loadFromStorage('BOARD_DB')
+            storageService.saveToStorage('BOARD_DB', null);
+            this.props.updateBoard(board)
+            showSuccessMsg('Back online,all changes updated!')
+        }
+    }
 
+    onOffline = () => {
+        console.log('offline');
+        this.props.setOffline(true);
+        showErrorMsg('offline, changes will sync when back online')
+    }
 
     render() {
         return (

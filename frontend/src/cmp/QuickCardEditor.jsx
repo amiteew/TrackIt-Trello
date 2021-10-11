@@ -1,18 +1,17 @@
 import React from 'react';
 import { MembersList } from './CardDetails/MembersList';
 import { CardCheckPreview } from './CardCheckPreview.jsx';
-import { CardCommentPreview } from './CardCommentPreview.jsx';
 import { CardVisibilityPreview } from './CardVisibilityPreview.jsx';
 import { BsPencil } from "react-icons/bs";
 import { GrTextAlignFull } from "react-icons/gr";
 import { connect } from 'react-redux';
 import { TextareaAutosize } from '@mui/material';
-import { DynamicPopover } from '../cmp/DynamicPopover.jsx';
 import { updateBoard, loadListAndCard, loadBoard } from '../store/board.actions.js';
 import { CardLabelsPreview } from './CardLabelsPreview.jsx';
 import { CardDuDatePreview } from './CardDuDatePreview.jsx';
 import { QuickCardActions } from './QuickCardActions.jsx';
 import close from '../assets/imgs/close-edit-card.svg';
+import { CardCommAttachPreview } from './CardCommAttachPreview';
 
 class _QuickCardEditor extends React.Component {
 
@@ -101,7 +100,8 @@ class _QuickCardEditor extends React.Component {
                                     {card.dueDate.date && <CardDuDatePreview dueDate={card.dueDate} board={board} card={card} updateBoard={updateBoard} />}
                                     {card.description && <div className='badge flex align-center'><GrTextAlignFull /></div>}
                                     {/* <span className="badge is-watch">{card.cardMembers && <CardVisibilityPreview cardMembers={card.cardMembers} />} </span> */}
-                                    {card.comments.length ? <CardCommentPreview cardComments={card.comments} /> : <> </>}
+                                    {card.comments.length ? <CardCommAttachPreview type={'comment'} cardCommAttach={card.comments} /> : <> </>}
+                                    {card.attachments.length ? <CardCommAttachPreview type={'attachment'} cardCommAttach={card.attachments} /> : <> </>}
                                     <div title="checklist">{card.checklists.length ? <CardCheckPreview checklists={card.checklists} /> : <> </>}</div>
                                 </div>
                                 <div className="badge-icon members flex">{card.cardMembers && <MembersList members={card.cardMembers} currCard={card} isCardOpen={false} />}

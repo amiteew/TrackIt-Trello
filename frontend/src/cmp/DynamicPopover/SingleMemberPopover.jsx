@@ -39,7 +39,7 @@ class _SingleMemberPopover extends React.Component {
         const memberIdx = currCard.cardMembers.findIndex(cardMember => cardMember._id === member._id)
         currCard.cardMembers.splice(memberIdx, 1);
         const action = (loggedInUser._id === member._id) ? 'Left' : 'Removed'
-        this.props.updateBoard(board, action, currCard)
+        this.props.updateBoard(board, action, currCard, member.username)
     }
 
 

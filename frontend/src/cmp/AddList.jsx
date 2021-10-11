@@ -3,8 +3,8 @@ import { utilService } from '../services/util.service.js';
 import { TextareaAutosize } from '@mui/material';
 import { Button } from '@mui/material';
 import close from '../assets/imgs/close.svg';
-import AddIcon from '@mui/icons-material/Add';
 import plus from '../assets/imgs/icons/plus-white.svg';
+
 export class AddList extends React.Component {
     state = {
         listTitle: "",

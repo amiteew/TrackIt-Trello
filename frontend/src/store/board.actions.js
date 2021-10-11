@@ -1,10 +1,8 @@
 import { boardService } from '../services/board.service'
-import { emitToUser, socketService } from '../services/socket.service'
-// import { socketService, SOCKET_EVENT_BOARD_ADDED } from '../services/socket.service'
+import { socketService } from '../services/socket.service'
 import { userService } from '../services/user.service'
 import { utilService } from '../services/util.service.js'
-import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service';
-import { storageService } from '../services/storage.service';
+import { showErrorMsg } from '../services/event-bus.service';
 
 export function loadBoards(userId) {
   return async dispatch => {
@@ -98,7 +96,7 @@ export function setFilterBy(filterBy, boardId) {
 
 }
 
-export function updateBoard(board, action = null, card = '', txt = "") {
+export function updateBoard(board, action = null, card = '', txt = '') {
   if (!board.createdBy) {
     return dispatch => {
       dispatch({ type: 'UNDO_UPDATE_BOARD' });
@@ -109,16 +107,16 @@ export function updateBoard(board, action = null, card = '', txt = "") {
   return async dispatch => {
     try {
       if (action) {
-        var activity = _storeSaveActivity(action, card, txt);
+        var activity = _storeSaveActivity(action, card, txt);        
         board.activities.unshift(activity);
       } else board.activities[0].isNotif = 'alreday-sent-notif';
+  
       dispatch({ type: 'UPDATE_BOARD', board: { ...board } });
       const serviceBoard = await boardService.save(board);
 
       dispatch({ type: 'UPDATE_LAST_UPDATED_BOARD' });
       if (serviceBoard._id === board._id) {
         socketService.emit('update-board', board);
-        console.log('im in socket');
       }
     } catch (err) {
       dispatch({ type: 'UNDO_UPDATE_BOARD' });
@@ -129,8 +127,6 @@ export function updateBoard(board, action = null, card = '', txt = "") {
 }
 
 function _storeSaveActivity(action, card, txt) {
-
-  // const cardCopy = { ...card } // MAYBE WE DONT NEED IT
   const activity = {
     id: utilService.makeId(),
     txt,
