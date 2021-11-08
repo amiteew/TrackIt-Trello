@@ -1,6 +1,4 @@
 import { userService } from "../services/user.service.js";
-// import { showErrorMsg } from '../services/event-bus.service.js'
-import { socketService } from '../services/socket.service'
 
 export function loadUsers() {
     return async dispatch => {
@@ -21,7 +19,6 @@ export function updateUser(user) {
         try {
             await userService.update(user);
             dispatch({ type: 'SET_USER', user });
-            // socket.emit('set-user-socket',user.id)
         } catch (err) {
             console.log('err in updateUser:', err);
         }
@@ -49,7 +46,6 @@ export function onLogin(credentials) {
             })
             return user
         } catch (err) {
-            // showErrorMsg('Cannot login')
             console.log('Cannot login', err)
             throw err
         }
@@ -58,6 +54,8 @@ export function onLogin(credentials) {
 
 
 export function onSignup(credentials) {
+    console.log('credentials', credentials);
+    
     return (dispatch) => {
         userService.signup(credentials)
             .then(user => {
@@ -67,7 +65,6 @@ export function onSignup(credentials) {
                 })
             })
             .catch(err => {
-                // showErrorMsg('Cannot signup')
                 console.log('Cannot signup', err)
             })
 

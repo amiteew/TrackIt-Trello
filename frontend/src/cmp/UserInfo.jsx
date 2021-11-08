@@ -1,12 +1,11 @@
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 
 function _UserInfo(props) {
     const closePopover = () => {
         props.handleClose()
     }
-    const { user, loggedInUser } = props
+    const { user } = props
 
     return (
         <div className="user-info flex">
@@ -16,7 +15,6 @@ function _UserInfo(props) {
             <div className="user-name-info">
                 <p className="fullname">{user.fullname}</p>
                 <p className="username">{user.username}</p>
-                {/* {(loggedInUser._id === user._id) && <Link className="edit-profile" to="/boards" onClick={closePopover}>Edit profile info</Link>} */}
             </div>
         </div>
     )

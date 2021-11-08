@@ -62,6 +62,7 @@ class _Signup extends React.Component {
         this.setState({ credentials: { ...this.state.credentials, fullname, username, imgUrl}})
         this.onSignup();
     }
+    
     render() {
         const { username, password, fullname } = this.state.credentials;
         const { isSignupFailed, isLoading } = this.state

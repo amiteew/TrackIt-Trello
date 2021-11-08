@@ -1,15 +1,16 @@
-import Divider from '@mui/material/Divider';
-import { ActivityPreview } from './ActivityPreview.jsx';
+import { ActivityPreview } from "./ActivityPreview.jsx";
 
 export function ShowMenu({ board }) {
-
-    return (
-        <>
-            {/* <div className="menu-content"> */}
-                {board.activities.length && board.activities.map(activity => <ActivityPreview activity={activity} display={'menu'} key={activity.id} />)}
-            {/* </div> */}
-        </>
-    )
-
+  return (
+    <>
+      {board.activities.length &&
+        board.activities.map((activity) => (
+          <ActivityPreview
+            activity={activity}
+            display={"menu"}
+            key={activity.id}
+          />
+        ))}
+    </>
+  );
 }
-

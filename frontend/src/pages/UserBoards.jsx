@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { userService } from '../services/user.service.js';
 import { loadBoards, loadBoard, updateBoard } from '../store/board.actions.js';
 import { loginAsGuest } from '../store/user.actions.js';
-import { socketService } from '../services/socket.service.js';
 
 import { BoardPreview } from '../cmp/UserBoards/BoardPreview'
 import { Loading } from '../cmp/Loading';
@@ -24,6 +23,7 @@ class _UserBoards extends React.Component {
         if (!user) user = await this.props.loginAsGuest()
         await this.props.loadBoards(user._id)
         const userBoards = userService.filterUserBoards(this.props.boards, user._id, "all")
+        console.log('userBoards', userBoards);
         this.setState({ userBoards })
         this.props.loadBoard(null)
     }

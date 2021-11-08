@@ -1,4 +1,3 @@
-import { storageService } from '../services/storage.service';
 
 const initialState = {
   boards: [],
