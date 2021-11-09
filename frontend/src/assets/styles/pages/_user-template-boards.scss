@@ -5,12 +5,10 @@
         margin: 40px 0 0;
         padding: 0 16px;
         width: 200px;
-        // background-color: rgb(250, 245, 237);
         gap: 6px;
         .nav-item {
             border-radius: 4px;
             padding: 6px 8px;
-            // background-color: yellow;
             min-height: rem(20px);
             gap: 10px;
             h3 {
@@ -53,7 +51,6 @@
                     margin-inline-end: 0.9rem;
                 }
                 h3 {
-                    // display: inline-block;
                     font-weight: 700;
                     margin: 0;
                 }

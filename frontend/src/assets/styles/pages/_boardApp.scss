@@ -1,12 +1,6 @@
 .board-app {
-    // max-height: calc(100vh - rem(44px));
     height: calc(100vh - rem(44px));
     position: relative;
-    // margin-right: 0;
-    // position: relative;
-    // transition: margin 0.1s ease-in;
-    // top: rem(44px);
-    // overflow-y: hidden;
 }
 .board-background {
     position: fixed;
@@ -43,33 +37,4 @@
         border-radius: 5px;
         background: #bfc3ce88;
     }
-
-    // .all-lists{
-    //     align-items: flex-start;
-    // }
 }
-
-// do we need this class? AW
-// .board {
-//     bottom: 0;
-//     left: 0;
-//     margin-bottom: 8px;
-//     overflow-x: auto;
-//     overflow-y: hidden;
-//     padding-bottom: 8px;
-//     position: absolute;
-//     right: 0;
-//     top: 0;
-//     user-select: none;
-//     white-space: nowrap;
-// }
-
-// .board-btn {
-//     font-size: rem(14px);
-//     border-radius: rem(3px);
-//     background-color: #00000014;
-//     color: #172b4d;
-//     &:hover {
-//         background-color: #00000029;
-//     }
-// }

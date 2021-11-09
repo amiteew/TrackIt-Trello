@@ -1,12 +1,8 @@
-// .card-details {
-//     .card-details-items {
 #due-date-preview-card {
     button {
         background-color: $cardBgcColor;
-        // display: flex;
         align-items: unset;
         padding: unset;
-        // padding: rem(6px) rem(12px);
     }
     .due-date-preview {
         .gray {
@@ -33,5 +29,3 @@
         }
     }
 }
-//     }
-// }

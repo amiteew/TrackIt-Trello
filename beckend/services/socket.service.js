@@ -104,11 +104,6 @@ async function _getAllSockets() {
     const sockets = await gIo.fetchSockets();
     return sockets;
 }
-// function _getAllSockets() {
-//     const socketIds = Object.keys(gIo.sockets.sockets)
-//     const sockets = socketIds.map(socketId => gIo.sockets.sockets[socketId])
-//     return sockets;
-// }
 
 async function _printSockets() {
     const sockets = await _getAllSockets()

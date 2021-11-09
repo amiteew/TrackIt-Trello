@@ -1,7 +1,7 @@
 import React from 'react'
 import { DynamicPopover } from './DynamicPopover'
 export function CardLabelsList({ cardLabelIds, boardLabels, board, currCardIdx, currListIdx, changeTitle }) {
-    
+
     return (
         <div>
             <h3>Labels</h3>
@@ -12,14 +12,13 @@ export function CardLabelsList({ cardLabelIds, boardLabels, board, currCardIdx, 
                         currListIdx={currListIdx}
                         currCardIdx={currCardIdx}
                     />)}
-                {/* <LabelPreview key={labelId} labelId={labelId} boardLabels={boardLabels} />)} */}
 
                 <DynamicPopover className="add-labels" type={'add-labels'} titleModal={'Labels'}
                     board={board}
                     currListIdx={currListIdx}
                     currCardIdx={currCardIdx}
                 />
-                
+
             </div>
         </div>
     )

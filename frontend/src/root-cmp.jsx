@@ -46,7 +46,6 @@ class _RootCmp extends React.Component {
                 <main>
                     <Switch>
                         {routes.map(route => <Route key={route.path} component={route.component} path={route.path} />)}
-                        {/* {routes.map(route => <Route key={route.path} exact component={route.component} path={route.path} />)} */}
                     </Switch>
                     <UserMsg />
                 </main>

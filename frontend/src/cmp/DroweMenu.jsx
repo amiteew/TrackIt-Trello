@@ -22,16 +22,11 @@ export function TemporaryDrawer({ board, toggleMenu, isMenuOpen }) {
       <div className="menu-screen" onClick={toggleDrawer(anchor, false)}></div>
       <div
         className="board-menu-content"
-        // sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
-        // role="presentation"
-        // onClick={toggleDrawer(anchor, false)}
-        // onKeyDown={toggleDrawer(anchor, false)}
       >
         <div className="board-menu-content-header flex">
           <div className="title">
             <h3>Menu</h3>
           </div>
-          {/* <span className="exit-icon" onClick={toggleMenu}> */}
           <span className="exit-icon" onClick={toggleDrawer(anchor, false)}>
             <img src={close} alt="Close" />
           </span>
@@ -41,7 +36,6 @@ export function TemporaryDrawer({ board, toggleMenu, isMenuOpen }) {
         <div className="menu-content fancy-scrollbar">
           <div className="board-actions">
             <button className="menu-action-btn">
-              {/* <span className="change-bg-preview" style={board.boardStyle}></span> */}
               Change background
             </button>
           </div>
@@ -62,7 +56,6 @@ export function TemporaryDrawer({ board, toggleMenu, isMenuOpen }) {
         <Drawer
           anchor={anchor}
           open={isMenuOpen}
-          // onClose={toggleDrawer(anchor, false)}
           hideBackdrop={true}
         >
           {list(anchor)}

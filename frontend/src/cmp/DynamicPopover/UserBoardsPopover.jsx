@@ -32,11 +32,6 @@ class _UserBoardsPopover extends React.Component {
                 </Link >
                 {(this.props.type === 'starredBoards') ? <button className="star-board" onClick={(ev) => this.toggleStar(ev, board)}><FiStar /></button> : <></>}
             </div>
-            // <button key={board._id} className="board-menu-btn flex align-center" onClick={() => this.props.goToBoard(board._id)}>
-            //      <span className="board-bg" style={bgStyle}></span>
-            //      <p>{board.boardTitle}</p>
-            //      {(this.props.type === 'starredBoards') ? <span onClick={(ev) => this.toggleStar(ev, board)}><FiStar /></span> : <></>}
-            //  </button>
         })
     }
 

@@ -11,14 +11,11 @@ export const storageService = {
 
 function query(entityType, delay = 0) {
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
-    // console.log('entities', entities);
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            // reject('OOOOPs')
             resolve(entities)
         }, delay)
     })
-    // return Promise.resolve(entities)
 }
 
 

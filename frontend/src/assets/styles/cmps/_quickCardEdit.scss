@@ -14,7 +14,7 @@
         position: absolute;
         right: 0;
         top: 0;
-        transition-duration: .15s;
+        transition-duration: 0.15s;
         transition-property: transform, color;
 
         &:hover {
@@ -27,21 +27,16 @@
 
 .quick-card-edit-preview {
     position: absolute;
-    // top: 50%;
-    // left: 50%;
-    // transform: translate(-50%, -50%);
     z-index: 2;
     width: 256px;
 
     .card-preview-content {
-
         .quick-card-input {
             width: 100%;
             resize: none;
             height: 90px;
             border: none;
         }
-
     }
 
     .save-quick-card-btn {
@@ -58,4 +53,3 @@
         }
     }
 }
-

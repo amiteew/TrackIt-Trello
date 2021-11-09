@@ -16,11 +16,8 @@
     color: #172b4d;
     box-sizing: border-box;
     height: 100%;
-    // overflow-x: hidden;
-    // overflow-y: auto;
     overflow-x: auto;
     overflow-y: hidden;
-    // padding: rem(12px) rem(6px) rem(12px) rem(12px);
     width: rem(339px);
     padding: 12px 6px 12px 12px;
 
@@ -47,8 +44,6 @@
         .exit-icon {
             font-size: rem(20px);
             position: absolute;
-            // right: rem(23px);
-            // top: rem(23px);
             right: 6px;
             top: 13px;
             cursor: pointer;
@@ -68,11 +63,9 @@
 
 .menu-content {
     height: calc(100vh - 44px - 48px);
-    // height: calc(100vh - 92px);
     overflow-y: auto;
     padding-inline-end: 6px;
     position: relative;
-    // padding: 20px 6px 12px 12px;
     > div {
         padding: 12px 0;
     }
@@ -81,7 +74,6 @@
         line-height: 20px;
         padding: 6px;
         padding-inline-start: 42px;
-        // padding-inline-start: 40px;
         width: 100%;
         text-align: start;
         color: #172b4d;
@@ -91,22 +83,18 @@
             background-color: #091e4214;
         }
 
-        &.search{
+        &.search {
             padding-inline-start: 12px;
 
-            .search-cards-icon{
+            .search-cards-icon {
                 height: 20px;
                 width: 20px;
             }
 
-            .search-cards-txt{
+            .search-cards-txt {
                 margin-left: rem(9px);
             }
         }
-        // h3 {
-        //     margin: 0;
-        //     font-size: rem(14px);
-        // }
         .change-bg-preview {
             position: absolute;
             left: 12px;
@@ -117,18 +105,13 @@
             background-size: cover;
         }
 
-        // .search-cards{
-
-        // }
-
-        &.archive{
+        &.archive {
             padding-inline-start: rem(15px);
 
-            .archive-txt{
+            .archive-txt {
                 margin-left: rem(12px);
             }
         }
-
     }
     .select-bg {
         width: 100%;

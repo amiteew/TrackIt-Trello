@@ -82,8 +82,6 @@ class _MoveCopyCardPopoverWithRouter extends React.Component {
               placeholder="Title"
               onChange={this.handleChange}
               value={title}
-              // onBlur={this.onSaveDescription}
-              // onFocus={(ev) => ev.target.select()}
               autoFocus
             />
           </div>

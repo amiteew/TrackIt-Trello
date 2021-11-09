@@ -56,9 +56,6 @@ async function updateBoard(req, res) {
   try {
     const board = req.body
     let savedBoard = await boardService.save(board)
-    
-    // savedBoard = _LimitActivities(savedBoard) //Avoiding Data leak - Board Object too large
-    // if (board.activities[0].isNotif) socketService.emit('resieve notification');
     res.send(savedBoard)
   } catch (err) {
     console.log(err)
@@ -68,11 +65,9 @@ async function updateBoard(req, res) {
 }
 
 function _filterBoard(filterBy, board) {
-  // console.log('before', filterBy);
-  // filterBy = JSON.stringify(filterBy)
   const newFilterBy = JSON.parse(filterBy.filterBy)
   const filteredBoard = JSON.parse(JSON.stringify(board))
-  
+
   if (!newFilterBy.isFilter) return board
 
   filteredBoard.lists.forEach(list => {
@@ -95,23 +90,12 @@ function _filterBoard(filterBy, board) {
       return isTxtOnCard && isMemberOnCard && isLabelsOnCard
     })
     filteredBoard.cardsCount += list.cards.reduce((acc, card) => {
-      acc++ 
+      acc++
       return acc;
     }, 0)
   })
   return filteredBoard
 }
-
-// function _LimitActivities(board) {
-//   if (board.activities.length > 20) {
-//     console.log('activities', board.activities.length)
-//     board.activities.splice(19)
-//     console.log('activities', board.activities.length)
-
-//     // console.log('activities', board.activities);
-//   }
-//   return board;
-// }
 
 module.exports = {
   getBoards,

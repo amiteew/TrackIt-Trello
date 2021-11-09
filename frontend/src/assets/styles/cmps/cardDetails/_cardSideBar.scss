@@ -47,10 +47,7 @@
     .add-to-card {
         padding-left: 16px;
         .btn-container {
-            // display: flex;
-            // flex-direction: column;
             grid-template-columns: 168px;
-            // margin: 0 24px;
             & :nth-child(6) {
                 margin-bottom: 25px;
             }

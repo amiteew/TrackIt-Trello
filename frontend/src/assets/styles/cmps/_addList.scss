@@ -5,20 +5,18 @@
     min-height: 32px;
     align-items: center;
     border-radius: 3px;
-    background-color: hsla(0,0%,100%,.24);
+    background-color: hsla(0, 0%, 100%, 0.24);
     height: rem(40px);
     padding: rem(4px);
     transition: background-color 85ms ease-in;
-    // margin-right: 8px;
     margin: 0px 4px;
-    
 
     &.add-mode {
         background-color: $bgcColor;
         height: fit-content;
 
         &:hover {
-            background-color: $bgcColor
+            background-color: $bgcColor;
         }
     }
 
@@ -60,7 +58,6 @@
         width: 24px;
         margin-left: 5px;
     }
-
 
     .add-list-txt {
         margin-left: 3px;

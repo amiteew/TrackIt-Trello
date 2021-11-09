@@ -2,9 +2,6 @@ import { connect } from 'react-redux'
 import Avatar from '@mui/material/Avatar';
 
 function _UserInfo(props) {
-    const closePopover = () => {
-        props.handleClose()
-    }
     const { user } = props
 
     return (

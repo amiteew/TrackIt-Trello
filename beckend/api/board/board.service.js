@@ -1,6 +1,5 @@
 const dbService = require('../../services/db.service')
 const logger = require('../../services/logger.service')
-const socketService = require('../../services/socket.service')
 
 const ObjectId = require('mongodb').ObjectId
 
@@ -9,8 +8,6 @@ async function query(userId) {
         const criteria = _buildCriteria(userId)
         const collection = await dbService.getCollection('board')
         const boards = await collection.find(criteria).toArray()
-        // var boards = await collection.find(criteria).toArray()
-        // results: { $elemMatch: { product: "xyz", score: { $gte: 8 } } }        
         return boards
     } catch (err) {
         logger.error('cannot find boards', err)
@@ -88,7 +85,6 @@ function _buildCriteria(userId) {
 module.exports = {
     query,
     getById,
-    // add,
     remove,
     save
 }

@@ -88,14 +88,6 @@ class _BoardApp extends React.Component {
         this.props.updateBoard(board);
     }
 
-    // onPopOver = (position, name, props) => {
-    //     <DynamicPopover type={'labels'} title={'Labels'} titleModal={'Labels'}
-    //         board={board}
-    //         currListIdx={currListIdx}
-    //         currCardIdx={currCardIdx}
-    //     />
-    // }
-
     onToggleLabels = () => {
         this.props.toggleLabels()
     }

@@ -1,6 +1,4 @@
 .search-cards {
-
-
     input {
         width: 100%;
         max-height: 256px;
@@ -16,7 +14,6 @@
         box-shadow: inset 0 0 0 2px #0079bf;
     }
 
-
     p {
         padding: 8px 8px 2px;
         margin: 0 0 8px;
@@ -26,8 +23,6 @@
     .search-types {
         margin-bottom: 10px;
         margin-top: 14px;
-
-
 
         .clean-list {
             list-style: none;
@@ -61,7 +56,6 @@
                 width: 30px;
                 border-radius: 4px;
             }
-
         }
     }
 
@@ -88,7 +82,6 @@
     }
 
     .checked-icon {
-
         img {
             position: absolute;
             right: 10px;
@@ -106,5 +99,4 @@
             margin-bottom: 5px;
         }
     }
-
 }

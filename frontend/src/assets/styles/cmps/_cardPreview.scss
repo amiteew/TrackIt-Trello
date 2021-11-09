@@ -4,8 +4,6 @@
     min-height: 1px;
     overflow-x: hidden;
     overflow-y: auto;
-    // padding: 0 rem(4px);
-    // z-index: 1;
 }
 
 .card-preview-content {
@@ -77,17 +75,6 @@
     align-items: flex-end;
     flex-wrap: wrap;
 
-    // img {
-    // width: unset;
-    // border-radius: 50%;
-    // height: rem(28px);
-    // width: rem(28px);
-    // align-items: flex-end;
-    // position: absolute;
-    // right: rem(7px);
-    // bottom: rem(2px);
-    // }
-
     .icons-preview {
         align-items: center;
         margin-bottom: 4px;
@@ -101,7 +88,6 @@
         > :not(:last-child) {
             margin-inline-end: 10px;
         }
-
     }
 
     .badge-icon {
@@ -113,7 +99,6 @@
 
             .btn-photo-member .MuiAvatar-root {
                 margin-left: 5px;
-                // margin-left: -8px;
                 height: 28px;
                 width: 28px;
             }
@@ -157,8 +142,6 @@
             border-radius: 3px;
             color: #fff;
         }
-
-        // padding-right: 6px;
     }
 }
 
@@ -169,7 +152,6 @@
     .quick-card-edit-btn {
         position: absolute;
         background-clip: padding-box;
-        // background-color: #f4f5f7;
         background-origin: initial;
         border-radius: rem(3px);
         padding: rem(4px);
@@ -178,10 +160,8 @@
         top: rem(2px);
         visibility: hidden;
         opacity: 0.8;
-
     }
 
-  
     &:hover {
         .quick-card-edit-btn {
             visibility: visible;
@@ -194,7 +174,6 @@
         }
     }
 
-
     .list-card-labels {
         display: none;
 
@@ -203,7 +182,6 @@
         }
     }
 }
-
 
 .badge {
     color: #5e6c84;
@@ -229,7 +207,6 @@
 
         &.checkbox.done {
             margin-left: 5px;
-            // margin-right: 3px;
         }
     }
 
@@ -244,9 +221,3 @@
         font-size: rem(12px);
     }
 }
-
-
-
-// .card-icon ::before {
-//     vertical-align: top;
-// }

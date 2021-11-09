@@ -25,6 +25,7 @@
         background-color: #f4f5f7;
         border-radius: 3px;
         max-width: 768px;
+        min-width: 350px;
         margin-bottom: 40px;
 
         .card-details-main-content {
@@ -164,7 +165,6 @@
                 flex-direction: row;
                 color: $clr10;
                 .card-details-main {
-                    // width: 552px;
                     width: 552px;
                 }
             }

@@ -1,5 +1,5 @@
-.invite-users{
-    .search-users{
+.invite-users {
+    .search-users {
         width: 100%;
         margin: 16px 0 12px;
         padding: 8px 12px;
@@ -8,7 +8,7 @@
         border-radius: 3px;
         border: none;
     }
-    .user-preview{
+    .user-preview {
         width: 100%;
         background-color: transparent;
         padding: 4px 8px;
@@ -16,15 +16,14 @@
             height: 32px;
             width: 32px;
             margin-inline-end: 12px;
-            // border-radius: 50%;
         }
         .name {
             color: #172b4d;
             font-size: rem(14px);
             line-height: rem(16px);
         }
-        &:hover{
-            background-color:#091e420a;
+        &:hover {
+            background-color: #091e420a;
         }
     }
 }

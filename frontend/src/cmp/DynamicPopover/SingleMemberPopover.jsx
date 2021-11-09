@@ -60,7 +60,6 @@ class _SingleMemberPopover extends React.Component {
             horizontal: "left",
           }}
         >
-          {/* OPEN MODAL */}
           <div className="single-member-popover-header-title flex direction-row">
             <div className="single-member-title flex direction-row">
               <Avatar src={member.imgUrl} className="avatar">
@@ -69,9 +68,6 @@ class _SingleMemberPopover extends React.Component {
               <div className="user-name-info">
                 <h4 className="fullname">{member.fullname}</h4>
                 <p className="username">@{member.username}</p>
-                {/* {(loggedInUser && loggedInUser._id === member._id) &&
-                                    <Link className="edit-profile" to="/boards"
-                                        onClick={this.handleClose}><p>Edit profile info</p></Link>} */}
               </div>
             </div>
             <button className="close-popover" onClick={this.handleClose}>

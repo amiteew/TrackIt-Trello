@@ -42,7 +42,6 @@ export function DynamicBoardMenu({ board, toggleMenu, isMenuOpen, target, title,
                 <Drawer
                     anchor={anchor}
                     open={isMenuOpen}
-                    // onClose={toggleDrawer(anchor, false)}
                     hideBackdrop={true}
                 >
                     <div className="menu-wrapper">

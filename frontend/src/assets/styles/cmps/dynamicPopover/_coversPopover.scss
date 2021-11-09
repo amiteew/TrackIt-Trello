@@ -1,5 +1,4 @@
 .popover-cover {
-
     h4 {
         color: $fontColor;
         font-size: rem(12px);
@@ -7,8 +6,6 @@
         letter-spacing: 0.04em;
         line-height: rem(20px);
         margin: 8px 8px 7px 0;
-        // text-transform: uppercase;
-
     }
 
     .header-cover {
@@ -21,10 +18,9 @@
         border: 1px solid rgba(9, 30, 66, 0.08);
 
         .header-full-cover {
-            background: #5E6C84;
+            background: #5e6c84;
             opacity: 0.3;
             padding-top: 37px;
-
         }
 
         .selected {
@@ -33,7 +29,7 @@
 
         .paragraph {
             height: 31px;
-            background: #5E6C84;
+            background: #5e6c84;
             opacity: 0.3;
             margin-bottom: 3px;
         }
@@ -41,12 +37,11 @@
         .row {
             height: 5px;
             width: 70%;
-            background: #5E6C84;
+            background: #5e6c84;
             opacity: 0.3;
             border-radius: 3px;
             margin-bottom: 3px;
             margin-left: 2px;
-
         }
 
         .second {
@@ -54,22 +49,20 @@
         }
 
         .full {
-            background: #FFFFFF;
+            background: #ffffff;
             opacity: 1;
         }
     }
-
 }
 
 .colors-for-cover {
     margin-top: 2px;
-
 }
 
 .color-plate {
     display: grid;
     gap: 8px;
-    padding: 3px;;
+    padding: 3px;
     margin: 0 -4px;
     overflow-x: hidden;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -91,9 +84,7 @@
     }
 }
 
-
 .cover-img-plate {
-
     display: grid;
     grid-gap: 8px;
     grid-template-columns: 1fr 1fr 1fr;
@@ -125,16 +116,9 @@
     background-color: #091e420a;
     text-align: center;
 
-    &.remove-cover {}
-
-    &.uplaod-img {}
-
-    &.search-cover {}
-
     &:hover {
         background-color: #091e4214;
     }
-
 }
 
 .file-input {

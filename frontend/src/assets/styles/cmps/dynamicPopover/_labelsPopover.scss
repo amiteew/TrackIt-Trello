@@ -6,7 +6,6 @@
         box-shadow: inset 0 0 0 2px #dfe1e6;
         background-color: #fafbfc;
         border-radius: 3px;
-        // outline: none;
         border: none;
     }
 
@@ -16,56 +15,54 @@
         font-weight: 500;
         letter-spacing: 0.04em;
         margin-top: rem(16px);
-        // text-transform: uppercase;
     }
 }
 
-    .edit-label-popover {
-        padding-right: rem(36px);
-        position: relative;
-        align-items: center;
+.edit-label-popover {
+    padding-right: rem(36px);
+    position: relative;
+    align-items: center;
 
-        .edit-label-icon {
-            border-radius: rem(4px);
-            padding: rem(6px);
-            position: absolute;
-            right: 0;
-            top: 0;
-            color: #42526e;
-        }
-
-        .edit-label-color {
-            border-radius: 4px;
-            color: #fff;
-            cursor: pointer;
-            font-weight: 700;
-            margin: 0 0 rem(4px);
-            min-height: 31px;
-            padding: rem(6px) rem(12px);
-            position: relative;
-            flex-grow: 1;
-            transition: max-width .4s height .4s .4s padding 4s .4s color #fff;
-
-            &:hover {
-                margin-left: rem(5px);
-            }
-
-            svg {
-                position: absolute;
-                right: rem(6px);
-                font-size: rem(16px);
-            }
-        }
+    .edit-label-icon {
+        border-radius: rem(4px);
+        padding: rem(6px);
+        position: absolute;
+        right: 0;
+        top: 0;
+        color: #42526e;
     }
 
+    .edit-label-color {
+        border-radius: 4px;
+        color: #fff;
+        cursor: pointer;
+        font-weight: 700;
+        margin: 0 0 rem(4px);
+        min-height: 31px;
+        padding: rem(6px) rem(12px);
+        position: relative;
+        flex-grow: 1;
+        transition: max-width 0.4s height 0.4s 0.4s padding 4s 0.4s color #fff;
 
-.create-label{
+        &:hover {
+            margin-left: rem(5px);
+        }
+
+        svg {
+            position: absolute;
+            right: rem(6px);
+            font-size: rem(16px);
+        }
+    }
+}
+
+.create-label {
     background-color: #091e420a;
     margin: 8px 0;
     border-radius: 3px;
     padding: rem(12px) 0;
     text-align: center;
-    &:hover{
+    &:hover {
         background-color: #091e4214;
     }
 }

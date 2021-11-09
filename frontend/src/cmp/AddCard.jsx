@@ -45,9 +45,8 @@ export class _AddCard extends React.Component {
         this.setState({ cardTitle: "" })
         const action = `Added card`;
         this.props.updateBoard(board, action, newCard);
-        // this.props.onCloseAdding();
     }
-    
+
     render() {
         const { cardTitle } = this.state;
         return (
@@ -58,11 +57,9 @@ export class _AddCard extends React.Component {
                     aria-label="empty textarea"
                     onChange={this.handleChange}
                     onKeyPress={this.handleChange}
-                    // onBlur={this.onAddCard}
                     autoFocus
                 />
                 <div className="add-card-actions flex align-center">
-                    {/* <Button onClick={this.onAddCard} variant="contained" className="add-card-btn">Add card</Button> */}
                     <button onClick={this.onAddCard} className="add-card-btn">Add card</button>
                     <button className="flex" onClick={this.props.onCloseAdding}><img src={close} alt="close" /></button>
                 </div>

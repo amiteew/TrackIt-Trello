@@ -49,7 +49,7 @@ class _AppHeader extends React.Component {
 
   render() {
     const { loggedInUser, isNotif } = this.props;
-    const {} = this.state;
+    const { } = this.state;
     if (!loggedInUser) return <></>;
     const notificaion = isNotif ? "newNotif" : "noNotif";
     return (
@@ -59,9 +59,8 @@ class _AppHeader extends React.Component {
             <div className="main-nav-links flex align-center">
               <LogoName isLoggedIn={true} />
               <span
-                className={`header-btn${
-                  this.state.isUserBoardsOpen ? " open" : ""
-                }`}
+                className={`header-btn${this.state.isUserBoardsOpen ? " open" : ""
+                  }`}
               >
                 <DynamicPopover
                   type={"userBoards"}
@@ -70,9 +69,8 @@ class _AppHeader extends React.Component {
                 />
               </span>
               <span
-                className={`header-btn starred${
-                  this.state.isStarredBoardsOpen ? " open" : ""
-                }`}
+                className={`header-btn starred${this.state.isStarredBoardsOpen ? " open" : ""
+                  }`}
               >
                 <DynamicPopover
                   type={"starredBoards"}
@@ -111,8 +109,6 @@ class _AppHeader extends React.Component {
               </div>
             </div>
 
-            {/* {!isNotifi && <div><NotificationsNoneIcon /> </div>}
-                        {isNotifi && <div><NotificationsActiveOutlinedIcon /></div>} */}
           </nav>
         </header>
         {this.state.isCreateBoard && (

@@ -16,8 +16,6 @@ export class AddNewTask extends React.Component {
         }
         else this.setState({ txt: ev.target.value })
     }
-    handleKeyPress = (ev) => {
-    }
     onAddTask = () => {
         const newTaskTxt = this.state.txt
         if (!newTaskTxt) return

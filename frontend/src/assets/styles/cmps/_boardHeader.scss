@@ -1,7 +1,6 @@
 .board-header {
     padding: 8px 4px 8px 14px;
     width: 100%;
-    // line-height: rem(20px);
     gap: 5px;
     .board-btn {
         height: 32px;
@@ -96,7 +95,6 @@
                     color: white;
                     height: 29px;
                     width: 29px;
-                    // background-color: #00000014;
                     font-size: rem(12px);
                     &:hover {
                         opacity: 0.8;
@@ -187,22 +185,3 @@
     margin-top: 8px;
     margin-left: 4px;
 }
-
-// .light-bg {
-//     .header-title:hover {
-//         background-color: #00000029;
-//     }
-//     .board-btn {
-//         &:hover {
-//             background-color: #00000029;
-//         }
-//         &.star {
-//             &.active {
-//                 background-color: #00000029;
-//                 &:hover {
-//                     background-color: #0000003d;
-//                 }
-//             }
-//         }
-//     }
-// }

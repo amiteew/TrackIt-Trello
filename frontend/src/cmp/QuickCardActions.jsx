@@ -21,12 +21,6 @@ export function QuickCardActions({ board, currListIdx, currCardIdx, currCard, On
             />
             </span>
 
-            {/* <DynamicPopover type={'edit-dates'} title={'Edit dates'} titleModal={'Dates'}
-                board={board}
-                currListIdx={currListIdx}
-                currCardIdx={currCardIdx}
-            /> */}
-
             <span className="quick-card-actions-btn"><DynamicPopover type={'change cover'} title={'Change cover'} titleModal={'Cover'}
                 board={board}
                 currListIdx={currListIdx}

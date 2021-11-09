@@ -37,7 +37,6 @@ class _Login extends React.Component {
         try {
             this.setState({ isLoading: true })
             await this.props.onLogin(this.state.credentials);
-            // await this.props.loadBoards(this.props.loggedInUser._id)
             this.props.history.push('/boards')
         } catch (err) {
             this.setState(prevState => ({ ...prevState, isLoading: false, isLoginFailed: true }))

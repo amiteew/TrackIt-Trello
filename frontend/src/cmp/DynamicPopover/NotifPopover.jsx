@@ -60,7 +60,6 @@ class _NotifPopover extends React.Component {
                     </span>
                   </div>
                   <div className="notif-action-section flex">
-                    {/* <div className="notif-action-icon flex"><AiOutlineUserAdd /> </div> */}
                     <div className="notif-action">
                       <span>
                         {activity.action}

@@ -169,10 +169,6 @@ class _BoardHeader extends React.Component {
 
           <div className="board-members">
             <MembersListBoard members={board.boardMembers} />
-            {/* {board.boardMembers.map((member) => {
-              if (member.username === 'pandaguest') return
-              return <DynamicPopover type={'boardMember'} titleModal={''} member={member} from="BoardHeader" />
-            })} */}
           </div>
           <span className="board-btn invite">
             <DynamicPopover

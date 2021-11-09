@@ -13,10 +13,6 @@ class _MoveCard extends React.Component {
         cardsCount: 0
     }
 
-    // componentDidMount() {
-    //     this.props.loadBoards();
-    // }
-
     countOptions = () => {
         const { boards } = this.props;
         const trelloCount = boards.reduce((acc, board) => {
@@ -32,8 +28,6 @@ class _MoveCard extends React.Component {
     }
 
     render() {
-        const { boards } = this.props;
-        // console.log(boards);
         return (
             <div>
                 <FormControl fullWidth>
@@ -47,7 +41,7 @@ class _MoveCard extends React.Component {
                             id: 'uncontrolled-native',
                         }}
                     >
-                         <MenuItem value={'hello'}>{'hello'}</MenuItem>                        
+                        <MenuItem value={'hello'}>{'hello'}</MenuItem>
                     </NativeSelect>
                 </FormControl>
                 <p onClick={this.countOptions}>hello</p>

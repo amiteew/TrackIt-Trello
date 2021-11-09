@@ -137,7 +137,6 @@ class _QuickCardEditor extends React.Component {
                   autoFocus
                 />
               )}
-              {/* <div onClick={this.onArchive}>Archive</div> */}
               {isCover.fullTitle === "half" && (
                 <span className="card-preview-icon flex">
                   <div className="icons-preview flex wrap">
@@ -154,7 +153,6 @@ class _QuickCardEditor extends React.Component {
                         <GrTextAlignFull />
                       </div>
                     )}
-                    {/* <span className="badge is-watch">{card.cardMembers && <CardVisibilityPreview cardMembers={card.cardMembers} />} </span> */}
                     {card.comments.length ? (
                       <CardCommAttachPreview
                         type={"comment"}

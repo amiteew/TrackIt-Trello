@@ -50,7 +50,6 @@ class _DynamicButton extends React.Component {
                 case 'cover':
                 case 'change cover':
                     return <><CallToActionOutlinedIcon /> <span>{props.title}</span></>
-                // return <><CallToActionOutlinedIcon /> <span>Cover</span></>
                 case 'delete-card':
                     return <> <HorizontalRuleIcon /> Delete</>
                 case 'move-card':

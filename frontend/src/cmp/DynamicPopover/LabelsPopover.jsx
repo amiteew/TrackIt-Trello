@@ -16,7 +16,6 @@ class _LabelsPopover extends React.Component {
     board: null,
     currListIdx: null,
     currCardIdx: null,
-    // isCreate: false,
     currLabel: "",
     filteredLabels: [],
     inputTxt: "",
@@ -96,8 +95,6 @@ class _LabelsPopover extends React.Component {
               type="text"
               onChange={this.handleChange}
               value={inputTxt}
-              // onKeyPress={this.handleChange}
-              // onBlur={this.onDiscardChanges}
             />
             <h4>Labels</h4>
             {filteredLabels.length ? (

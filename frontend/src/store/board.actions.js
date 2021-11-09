@@ -95,14 +95,14 @@ export function updateBoard(board, action = null, card = '', txt = '') {
   }
 
   return async dispatch => {
-    try {      
+    try {
       if (action) {
         var activity = _storeSaveActivity(action, card, txt);
         board.activities.unshift(activity);
       } else board.activities[0].isNotif = 'alreday-sent-notif';
       dispatch({ type: 'UPDATE_BOARD', board: { ...board } });
       console.log('here after store');
-      
+
       await boardService.save(board);
       dispatch({ type: 'UPDATE_LAST_UPDATED_BOARD' });
       socketService.emit('update-board', board);

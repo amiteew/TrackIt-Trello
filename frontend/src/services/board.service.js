@@ -15,7 +15,6 @@ function query(userId) {
 }
 
 function remove(boardId) {
-  // return httpService.delete(`board/${boardId}`)
   return storageService.remove(BOARD_KEY, boardId)
 }
 
@@ -23,7 +22,7 @@ function getBoardById(boardId, filterBy = {}) {
   return httpService.get(`boards/${boardId}`, { filterBy: filterBy })
 }
 
-function save(board) {  
+function save(board) {
   if (board._id) {
     return httpService.put(`boards/${board._id}`, board);
   } else {

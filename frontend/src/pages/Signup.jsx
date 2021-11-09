@@ -41,7 +41,6 @@ class _Signup extends React.Component {
         try {
             this.setState({ isLoading: true })
             await this.props.onSignup(this.state.credentials);
-            // await this.props.loadBoards(this.props.loggedInUser._id)
             this.props.history.push('/boards')
         } catch (err) {
             this.setState(prevState => ({ ...prevState, isLoading: false, isSignupFailed: true }))
@@ -59,10 +58,10 @@ class _Signup extends React.Component {
         const fullname = response.profileObj.name;
         const username = response.profileObj.givenName;
         const imgUrl = response.profileObj.imageUrl;
-        this.setState({ credentials: { ...this.state.credentials, fullname, username, imgUrl}})
+        this.setState({ credentials: { ...this.state.credentials, fullname, username, imgUrl } })
         this.onSignup();
     }
-    
+
     render() {
         const { username, password, fullname } = this.state.credentials;
         const { isSignupFailed, isLoading } = this.state

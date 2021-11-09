@@ -48,8 +48,6 @@ class _DatesPopover extends React.Component {
                 <DatePicker
                     onSelect={this.handleDateSelect}
                     startDate={Date.now()}
-                    // startDate={new Date()}
-                    // dateFormat="Pp"
                     openToDate={date}
                     inline
                     formatWeekDay={nameOfDay => nameOfDay.substr(0, 3)}

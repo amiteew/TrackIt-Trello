@@ -121,7 +121,6 @@ class _CoverPopover extends React.Component {
     const currCard = board.lists[currListIdx].cards[currCardIdx];
     const halfCover = !currCard.cardStyle.isCover ? "selected" : "";
     const fullCover = currCard.cardStyle.isCover ? "selected" : "";
-    // if(isSearch && !coverImgs || !coverImgs.lentgh) return <Loading />
     return (
       <section className="popover-cover">
         {isSearch && (
@@ -168,7 +167,6 @@ class _CoverPopover extends React.Component {
           </div>
         )}
 
-        {/* { <div className="colors-for-cover"> */}
         {!isSearch && <h4 className="color-title">Colors</h4>}
         {!isSearch && (
           <div className="color-plate">
@@ -178,16 +176,14 @@ class _CoverPopover extends React.Component {
                   key={cover.id}
                   onClick={() => this.onToggleCover(cover)}
                   className={`color-sqr pointer ${cover.color} 
-                             ${
-                               this.isCoverOnCard(currCard, cover.id)
-                                 ? "color-selected"
-                                 : ""
-                             } `}
+                             ${this.isCoverOnCard(currCard, cover.id)
+                      ? "color-selected"
+                      : ""
+                    } `}
                 ></div>
               ))}
           </div>
         )}
-        {/* </div>} */}
         {!isSearch && (
           <div>
             <h4>Attachment</h4>
@@ -211,11 +207,10 @@ class _CoverPopover extends React.Component {
               <div
                 key={coverImg.id}
                 onClick={() => this.onToggleImgCover(currCard, coverImg)}
-                className={`img-cover ${
-                  this.isCoverOnCard(currCard, coverImg.id)
-                    ? "cover-selected"
-                    : ""
-                } `}
+                className={`img-cover ${this.isCoverOnCard(currCard, coverImg.id)
+                  ? "cover-selected"
+                  : ""
+                  } `}
                 style={{ backgroundImage: `url(${coverImg.small})` }}
               ></div>
             ))}
@@ -227,7 +222,6 @@ class _CoverPopover extends React.Component {
             <span
               onClick={() => {
                 changeTitle(true, "change cover");
-                // this.setState({ ...this.state, isSearch: !this.state.isSearch })
               }}
             >
               Search for photos

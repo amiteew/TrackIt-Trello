@@ -19,7 +19,6 @@ class _ChecklistPopover extends React.Component {
 
   handleChange = ({ target }) => {
     this.setState({ ...this.state, title: target.value });
-    // this.setState({ ...this.state, board: boardToUpdate })
   };
 
   onAddChecklist = (ev) => {
