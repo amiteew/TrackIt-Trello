@@ -1,6 +1,6 @@
 <h1 align="center">TrackIt- PWA Full-Stack Project</h1>
 
-<a  href="https://on-trackit.herokuapp.com/boards/616190b15d29044e6f2c599d"> Link to TrackIt  </a>
+<a  href="https://on-trackit.herokuapp.com/boards/616190b15d29044e6f2c599d">Link to TrackIt</a>
 
 <h3 align="left">This E2E Full-Stack project is a clone to Trello Project Management App.</h3>
 
